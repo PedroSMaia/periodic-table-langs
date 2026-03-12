@@ -79,7 +79,7 @@ export default function FilterBar({ filter, setFilter, mode, isDesktop, FILTER_B
                     height: FILTER_BAR_H + "px",
                     display: "flex", alignItems: "center",
                     justifyContent: isDesktop ? "center" : "flex-start",
-                    gap: "1px", padding: "0 12px",
+                    gap: "4px", padding: "0 16px",
                     overflowX: "auto", overflowY: "hidden",
                     WebkitOverflowScrolling: "touch",
                 }}
@@ -91,12 +91,12 @@ export default function FilterBar({ filter, setFilter, mode, isDesktop, FILTER_B
                             key={f.key}
                             onClick={() => setFilter(f.key === "all" ? null : (filter === f.key ? null : f.key))}
                             style={{
-                                display: "flex", alignItems: "center", gap: "3px",
-                                padding: "2px 8px", flexShrink: 0,
+                                display: "flex", alignItems: "center", gap: "5px",
+                                padding: "4px 14px", flexShrink: 0,
                                 borderRadius: "4px", cursor: "pointer",
                                 fontFamily: "'Plus Jakarta Sans',sans-serif",
                                 fontWeight: active ? 700 : 500,
-                                fontSize: "10px", letterSpacing: "0.03em",
+                                fontSize: "12px", letterSpacing: "0.03em",
                                 border: "none",
                                 background: active ? f.bg : "transparent",
                                 color: active ? f.color : th.sub,
@@ -106,7 +106,7 @@ export default function FilterBar({ filter, setFilter, mode, isDesktop, FILTER_B
                             onMouseLeave={e => { if (!active) { e.currentTarget.style.color = th.sub; e.currentTarget.style.background = "transparent"; } }}
                         >
                             {/* Category color dot */}
-                            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: f.color, flexShrink: 0, opacity: active ? 1 : 0.5 }} />
+                            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: f.color, flexShrink: 0, opacity: active ? 1 : 0.5 }} />
                             {f.label}
 
                         </button>

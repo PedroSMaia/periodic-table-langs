@@ -1,4 +1,4 @@
-import { LANGS, CATEGORIES } from "../data/index.js";
+import { CATEGORIES } from "../data/index.js";
 import { TIOBE, SO_LOVED, SO_USED } from "../data/metrics.js";
 
 /**
@@ -15,7 +15,7 @@ import { TIOBE, SO_LOVED, SO_USED } from "../data/metrics.js";
  * @param {string|null} filter - Active category key, or null to show all languages
  * @param {object}      T      - Theme tokens
  */
-export default function PopularityList({ filter, T }) {
+export default function PopularityList({ filter, T, langs = [] }) {
     const th = T || { card: "#111827", border: "#1F2937" };
 
     // Sort by TIOBE rank ascending; languages not in TIOBE get rank 999 (bottom)

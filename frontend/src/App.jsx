@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { LANGS, CATEGORIES } from "./data/index.js";
+import { CATEGORIES } from "./data/index.js";
+import { useLanguages } from "./hooks/useLanguages.js";
 import { getPos } from "./utils/grid.js";
 import { COLS } from "./utils/constants.js";
 import { useLocalStorage } from "./hooks/useLocalStorage.js";
@@ -48,7 +49,7 @@ const MODES = [
 
 // Fixed layout heights
 const NAVBAR_H     = 48;
-const FILTER_BAR_H = 36;
+const FILTER_BAR_H = 48;
 
 export default function App() {
     // ── State ──────────────────────────────────────────────────────────────────
@@ -63,6 +64,9 @@ export default function App() {
 
     // Dark mode persisted via localStorage so the preference survives page reloads
     const [darkMode, setDarkMode] = useLocalStorage("ptl-dark", true);
+
+    // Languages fetched from the API
+    const { langs: LANGS, loading: langsLoading, error: langsError } = useLanguages();
 
     // Keyboard-focused cell ID — managed via ref + state to avoid stale closures in keydown handler
     const [focusedId, setFocusedIdS] = useState(null);
@@ -140,8 +144,6 @@ export default function App() {
 
     // On desktop: find the number of columns where cells achieve the target aspect ratio
     // while fitting entirely on screen without scroll.
-    // Strategy: more cols → smaller slotW but also fewer rows → taller cellH.
-    // We iterate upward until cellH/slotW reaches TARGET_RATIO or we hit COLS.
     const TARGET_RATIO = 1.2;
     let effectiveCols;
     if (isDesktop) {
@@ -149,14 +151,14 @@ export default function App() {
         let best = minCols;
         for (let n = minCols; n <= COLS + 6; n++) {
             const sw = Math.floor((gridW - GAP * (n - 1)) / n);
-            if (sw < 60) break; // cells too narrow, stop
+            if (sw < 60) break;
             const nFullRows = simpleLayout
                 ? Math.ceil(LANGS.length / n)
                 : Math.ceil(Math.max(0, LANGS.length - 6) / n);
             const nRows = simpleLayout ? nFullRows : 2 + nFullRows;
             const ch = Math.floor((gridH - GAP * (nRows - 1)) / nRows);
             best = n;
-            if (ch / sw >= TARGET_RATIO) break; // good enough ratio found, stop here
+            if (ch / sw >= TARGET_RATIO) break;
         }
         effectiveCols = best;
     } else {
@@ -169,7 +171,6 @@ export default function App() {
     const numRows = simpleLayout ? numFullRows : 2 + numFullRows;
 
     // Assign grid positions to each language.
-    // Hidden cells (filtered out) still occupy their original position so the grid doesn't jump.
     let visIdx = 0;
     const langsWithPos = LANGS.map((lang, i) => {
         const visible = !filter || lang.cat === filter;
@@ -185,23 +186,19 @@ export default function App() {
     const displayCount = filter ? LANGS.filter(l => l.cat === filter).length : LANGS.length;
 
     const slotW = Math.floor((gridW - GAP * (effectiveCols - 1)) / effectiveCols);
-    // Desktop: fit everything on screen (no scroll). Mobile: use aspect ratio and scroll.
     const cellH = isDesktop
         ? Math.floor((gridH - GAP * (numRows - 1)) / numRows)
         : Math.round(slotW * 1.28);
     const scrollGridH = numRows * cellH + (numRows - 1) * GAP;
 
-    // Width available for the big title text in the top-right header area
     const titleWidth = slotW * (effectiveCols - 2) + GAP * (effectiveCols - 3);
 
-    // Keep ref in sync with currently visible languages for the keyboard handler
     const visLangs = langsWithPos.filter(l => !l.hidden);
     visLangsRef.current = visLangs;
 
     // ── Keyboard navigation ────────────────────────────────────────────────────
     useEffect(() => {
         const fn = (e) => {
-            // Escape: close modals and selections in priority order
             if (e.key === "Escape") {
                 if (showSearch)             { setShowSearch(false);  return; }
                 if (showQuiz)               { setShowQuiz(false);    return; }
@@ -209,7 +206,6 @@ export default function App() {
                 if (selected)               { setSelected(null);     return; }
                 return;
             }
-            // Arrow / Enter navigation — disabled while modals are open
             if (showSearch || showQuiz) return;
             if (!["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Enter"].includes(e.key)) return;
             e.preventDefault();
@@ -242,8 +238,8 @@ export default function App() {
     const FILTER_LIST = [
         {
             key: "all", label: "All", count: LANGS.length,
-            color: T.bg === "#FFFFFF" ? "#374151" : "rgba(255,255,255,0.75)",
-            bg:    T.bg === "#FFFFFF" ? "#E5E7EB" : "rgba(255,255,255,0.08)",
+            color: darkMode ? "rgba(255,255,255,0.75)" : "#374151",
+            bg:    darkMode ? "rgba(255,255,255,0.08)" : "#E5E7EB",
         },
         ...Object.entries(CATEGORIES).map(([k, v]) => ({
             key:   k,
@@ -256,7 +252,6 @@ export default function App() {
 
     // ── Handlers ──────────────────────────────────────────────────────────────
 
-    // Toggle a language in/out of the compare list (max 3)
     const toggleCompare = (lang) => {
         setCompareList(prev => {
             if (prev.includes(lang.id)) return prev.filter(id => id !== lang.id);
@@ -266,7 +261,6 @@ export default function App() {
         setSelected(null);
     };
 
-    // Add a language to compare from the DetailPanel and switch to compare mode
     const handleAddToCompare = (lang) => {
         setCompareList(prev => {
             if (prev.includes(lang.id)) return prev;
@@ -277,20 +271,45 @@ export default function App() {
         setSelected(null);
     };
 
-    // Switch view mode — clear compare list when leaving compare, clear selection when leaving table
     const handleSetMode = (m) => {
         setMode(m);
         if (m !== "compare") setCompareList([]);
         if (m !== "table")   setSelected(null);
     };
 
-    // Popularity list replaces the grid on narrow screens
     const showPopList = mode === "popularity" && !isDesktop;
+
+    // ── Loading / error states ─────────────────────────────────────────────────
+    if (langsLoading) {
+        return (
+            <div style={{ width: "100vw", height: "100vh", background: T.bg, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: "14px" }}>
+                <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.8rem", letterSpacing: "0.08em", background: "linear-gradient(135deg,#FF7A00,#FFA94D)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    LOADING LANGUAGES…
+                </div>
+                <div style={{ width: "200px", height: "3px", background: T.border, borderRadius: "99px", overflow: "hidden" }}>
+                    <div style={{ height: "100%", background: "linear-gradient(90deg,#FF7A00,#FFA94D)", animation: "ptl-load 1.2s ease-in-out infinite", borderRadius: "99px" }} />
+                </div>
+                <style>{`@keyframes ptl-load { 0%{width:0%;margin-left:0} 50%{width:80%;margin-left:0} 100%{width:0%;margin-left:100%} }`}</style>
+            </div>
+        );
+    }
+
+    if (langsError) {
+        return (
+            <div style={{ width: "100vw", height: "100vh", background: T.bg, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: "12px" }}>
+                <div style={{ fontSize: "2.5rem" }}>⚠️</div>
+                <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.4rem", letterSpacing: "0.06em", color: "#f87171" }}>Failed to load languages</div>
+                <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.75rem", color: T.dim }}>{langsError}</div>
+                <button onClick={() => window.location.reload()} style={{ marginTop: "8px", padding: "6px 18px", borderRadius: "8px", border: "1px solid #f87171", background: "transparent", color: "#f87171", cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.8rem" }}>
+                    Retry
+                </button>
+            </div>
+        );
+    }
 
     // ── Render ─────────────────────────────────────────────────────────────────
     return (
         <div style={{ width: "100vw", height: "100vh", background: T.bg, color: T.text, overflow: "hidden", display: "flex", flexDirection: "column", boxSizing: "border-box", position: "relative" }}>
-            {/* Global style resets — scrollbar hidden on .no-scrollbar elements */}
             <style>{`
         * { box-sizing: border-box; }
         body { margin: 0; overflow: hidden; }
@@ -301,14 +320,12 @@ export default function App() {
             {/* ── Navbar ── */}
             <div style={{ height: NAVBAR_H + "px", flexShrink: 0, display: "flex", alignItems: "center", padding: "0 12px", gap: isMobile ? "4px" : "6px", background: T.navBg, backdropFilter: "blur(14px)", borderBottom: "1px solid " + T.border, position: "relative", zIndex: 42 }}>
 
-                {/* Brand wordmark */}
                 <div style={{ fontFamily: "'Bebas Neue',display", fontSize: isMobile ? "13px" : "15px", letterSpacing: isMobile ? "0.08em" : "0.1em", background: "linear-gradient(135deg,#FF7A00,#FFA94D)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", whiteSpace: "nowrap", marginRight: isMobile ? "4px" : "8px" }}>
                     {isMobile ? "PT" : "PERIODIC TABLE"}
                 </div>
 
                 {!isMobile && <div style={{ width: "1px", height: "20px", background: T.divider, marginRight: "4px" }} />}
 
-                {/* View mode buttons */}
                 {MODES.map(m => {
                     const active = mode === m.id;
                     return (
@@ -325,7 +342,6 @@ export default function App() {
 
                 {!isMobile && <div style={{ width: "1px", height: "20px", background: T.divider, margin: "0 2px" }} />}
 
-                {/* Quiz button */}
                 <button
                     onClick={() => setShowQuiz(true)}
                     style={{ display: "flex", alignItems: "center", gap: "4px", padding: isMobile ? "6px 10px" : "5px 14px", borderRadius: "8px", border: "1px solid rgba(255,122,0,0.4)", background: "rgba(255,122,0,0.1)", color: "#FF7A00", cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "12px", letterSpacing: "0.04em", transition: "all .15s", whiteSpace: "nowrap" }}
@@ -333,7 +349,6 @@ export default function App() {
                     onMouseLeave={e => e.currentTarget.style.background = "rgba(255,122,0,0.1)"}
                 ><span>?</span>{!isMobile && " Quiz"}</button>
 
-                {/* Clear quiz highlights button */}
                 {highlighted.length > 0 && (
                     <button
                         onClick={() => setHighlighted([])}
@@ -343,7 +358,6 @@ export default function App() {
 
                 <div style={{ flex: 1 }} />
 
-                {/* Search button + Cmd+K hint */}
                 <button
                     onClick={() => setShowSearch(true)}
                     style={{ display: "flex", alignItems: "center", gap: "5px", padding: "5px 10px", borderRadius: "8px", border: "1px solid " + T.btnBorder, background: T.btnBg, color: T.btnColor, cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "12px", transition: "all .15s", whiteSpace: "nowrap" }}
@@ -354,7 +368,6 @@ export default function App() {
                     {!isMobile && <kbd style={{ padding: "1px 5px", borderRadius: "3px", border: "1px solid " + T.kbdBorder, background: T.kbdBg, fontSize: "10px", fontFamily: "'JetBrains Mono',monospace", color: T.dim }}>⌘K</kbd>}
                 </button>
 
-                {/* Dark / light mode toggle */}
                 <button
                     onClick={() => setDarkMode(v => !v)}
                     title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
@@ -363,7 +376,6 @@ export default function App() {
                     onMouseLeave={e => { e.currentTarget.style.background = T.btnBg;      e.currentTarget.style.color = T.btnColor; }}
                 >{darkMode ? "☀" : "🌙"}</button>
 
-                {/* TIOBE tier legend — popularity mode, mobile only */}
                 {mode === "popularity" && isMobile && <>
                     <span style={{ fontSize: "10px", color: "#fbbf24", fontFamily: "'JetBrains Mono',monospace" }}>🥇5</span>
                     <span style={{ fontSize: "10px", color: "#94a3b8", fontFamily: "'JetBrains Mono',monospace" }}>🥈20</span>
@@ -379,14 +391,13 @@ export default function App() {
             </div>
 
             {/* ── Popularity list (mobile / tablet) ── */}
-            {showPopList && <PopularityList filter={filter} T={T} />}
+            {showPopList && <PopularityList filter={filter} T={T} langs={LANGS} />}
 
             {/* ── Grid area ── */}
             {!showPopList && (
                 <div style={{ flex: 1, overflowY: isDesktop ? "hidden" : "auto", overflowX: "hidden", position: "relative" }}>
 
                     {displayCount === 0 ? (
-                        // Empty state when active filter has no languages
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "10px", paddingBottom: "60px" }}>
                             <div style={{ fontSize: "2.5rem" }}>🔭</div>
                             <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.4rem", letterSpacing: "0.06em", color: T.sub }}>No languages found</div>
@@ -394,7 +405,6 @@ export default function App() {
                             <button onClick={() => setFilter(null)} style={{ marginTop: "4px", padding: "5px 16px", borderRadius: "99px", border: "1px solid " + T.border, background: "transparent", color: T.sub, fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.75rem", cursor: "pointer" }}>Clear filter</button>
                         </div>
                     ) : (
-                        // Main CSS grid
                         <div style={{
                             position: "relative",
                             top: PAD + "px", left: PAD + "px",
@@ -412,7 +422,6 @@ export default function App() {
                             {langsWithPos.map(lang => (
                                 <Cell key={lang.id} lang={lang}
                                       gridRow={lang.gridRow} gridCol={lang.gridCol}
-                                    // Stagger entrance animation based on grid position (capped at 400ms)
                                       animDelay={Math.min((lang.gridRow * effectiveCols + lang.gridCol) * 8, 400)}
                                       onClick={l => { setSelected(l); setHighlighted([]); setFocusedId(null); }}
                                       active={selected?.id === lang.id}
@@ -429,7 +438,6 @@ export default function App() {
                                 />
                             ))}
 
-                            {/* Big title text — only on wide enough grids (desktop) */}
                             {!simpleLayout && effectiveCols >= 7 && titleWidth >= 300 && (() => {
                                 const maxFsByWidth = titleWidth / 13;
                                 const fs    = Math.min(Math.max(12, cellH * 0.48), maxFsByWidth);
@@ -445,7 +453,6 @@ export default function App() {
                         </div>
                     )}
 
-                    {/* Compare drawer — shown at the bottom of the grid area in compare mode */}
                     {mode === "compare" && (
                         <CompareDrawer
                             langs={compareList.map(id => LANGS.find(l => l.id === id)).filter(Boolean)}
@@ -460,7 +467,6 @@ export default function App() {
                 </div>
             )}
 
-            {/* Detail panel — not shown in compare mode */}
             {selected && mode !== "compare" && (
                 <DetailPanel
                     lang={selected}
@@ -473,25 +479,24 @@ export default function App() {
                 />
             )}
 
-            {/* Quiz modal */}
             {showQuiz && (
                 <QuizModal
                     onClose={() => setShowQuiz(false)}
                     onHighlight={ids => { setHighlighted(ids); setMode("table"); setFilter(null); }}
                     T={T}
+                    langs={LANGS}
                 />
             )}
 
-            {/* Search modal */}
             {showSearch && (
                 <SearchModal
                     T={T}
                     onClose={() => setShowSearch(false)}
                     onSelect={l => { setSelected(l); setMode("table"); setHighlighted([]); }}
+                    langs={LANGS}
                 />
             )}
 
-            {/* Keyboard navigation hint — shown when a cell has keyboard focus */}
             {focusedId && !showSearch && (
                 <div style={{ position: "fixed", bottom: "12px", left: "50%", transform: "translateX(-50%)", background: T.card, border: "1px solid " + T.border, borderRadius: "8px", padding: "5px 12px", display: "flex", gap: "8px", alignItems: "center", zIndex: 35, pointerEvents: "none", backdropFilter: "blur(8px)" }}>
                     <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "11px", color: T.sub }}>↑↓←→ navigate</span>
