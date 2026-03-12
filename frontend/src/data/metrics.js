@@ -64,16 +64,23 @@ export const TIOBE = {
 };
 
 export const SO_LOVED = {
+    // SO Developer Survey 2024 — "Admired" %
     "Rust":84,"Elixir":73,"TypeScript":72,"Julia":72,"Python":68,
     "Dart":68,"Swift":67,"Kotlin":67,"JavaScript":66,"Go":65,
     "C#":64,"Haskell":64,"Gleam":63,"Elm":62,"OCaml":62,
-    "Ruby":61,"Scala":60,"WebAssembly":59,"F#":59,"Clojure":58,
-    "R":55,"PHP":53,"Java":52,"C++":51,"C":50,
+    "Ruby":61,"Scala":60,"HTML":60,"CSS":59,"Lua":59,
+    "WebAssembly":59,"F#":59,"Clojure":58,"SQL":58,"Zig":71,
+    "R":55,"Erlang":55,"Java":52,"C++":51,"C":50,
+    "PHP":53,"Bash":47,"Assembly":47,"Groovy":42,"MATLAB":39,
+    "PowerShell":44,"Perl":31,"VBA":20,"COBOL":15,
 };
 
 export const SO_USED = {
-    "JavaScript":65,"Python":48,"TypeScript":39,"SQL":36,"Java":30,
-    "C#":27,"C++":23,"PHP":22,"C":19,"Go":11,
-    "Kotlin":9,"Rust":9,"Ruby":7,"Swift":5,"Dart":5,
-    "Scala":4,"Bash":4,"PowerShell":4,"R":4,"MATLAB":3,
+    // SO Developer Survey 2024 — "Used" %
+    "JavaScript":65,"HTML":53,"CSS":53,"Python":48,"TypeScript":39,
+    "SQL":51,"Java":30,"C#":27,"C++":23,"PHP":22,
+    "C":19,"PowerShell":11,"Go":11,"Kotlin":9,"Rust":9,
+    "Ruby":7,"VBA":6,"Assembly":5,"Perl":5,"Swift":5,
+    "Dart":5,"Scala":4,"Bash":4,"R":4,"MATLAB":3,
+    "Groovy":3,"Lua":3,"Erlang":2,"Haskell":2,"Elixir":2,
 };
