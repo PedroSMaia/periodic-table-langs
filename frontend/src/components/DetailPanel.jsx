@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { CATEGORIES } from "../data/index.js";
-import { TIOBE, SO_LOVED, SO_USED } from "../data/metrics.js";
 import { deviconUrl } from "../data/devicons.js";
 import { GITHUB_REPO } from "../utils/constants.js";
 
@@ -19,7 +18,7 @@ import { GITHUB_REPO } from "../utils/constants.js";
  * @param {boolean}  canCompare     - Whether more langs can be added to compare (max not reached)
  * @param {object}   T              - Theme tokens
  */
-export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, inCompare, canCompare, T }) {
+export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, inCompare, canCompare, T, metrics = {} }) {
     // Controls the CSS transition — panel starts hidden, mounts after 12ms to trigger animation
     const [mounted, setMounted] = useState(false);
     const [copied, setCopied] = useState(false);
@@ -215,24 +214,24 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
                         <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                             <span style={{ padding: "3px 11px", borderRadius: "99px", border: "1px solid " + c.color, color: c.color, background: c.bg, fontSize: "0.69rem", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600 }}>{c.label}</span>
                             {lang.year && <span style={{ padding: "3px 11px", borderRadius: "99px", border: "1px solid " + th.border, color: th.sub, fontSize: "0.69rem", fontFamily: "'JetBrains Mono',monospace" }}>since {lang.year}</span>}
-                            {TIOBE[lang.name] && <span style={{ padding: "3px 11px", borderRadius: "99px", border: "1px solid #fbbf2444", color: "#fbbf24", background: "#fbbf2410", fontSize: "0.69rem", fontFamily: "'JetBrains Mono',monospace" }}>TIOBE #{TIOBE[lang.name]}</span>}
+                            {metrics.tiobe?.[lang.name] && <span style={{ padding: "3px 11px", borderRadius: "99px", border: "1px solid #fbbf2444", color: "#fbbf24", background: "#fbbf2410", fontSize: "0.69rem", fontFamily: "'JetBrains Mono',monospace" }}>TIOBE #{metrics.tiobe?.[lang.name]}</span>}
                         </div>
 
                         {lang.paradigm && <div style={{ marginTop: "6px", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.7rem", color: th.dim }}>{lang.paradigm}</div>}
 
                         {/* SO Loved / SO Used stats — only rendered when data exists */}
-                        {(SO_LOVED[lang.name] != null || SO_USED[lang.name] != null) && (
+                        {(metrics.so_loved?.[lang.name] != null || metrics.so_used?.[lang.name] != null) && (
                             <div style={{ display: "flex", gap: "8px", marginTop: "11px" }}>
-                                {SO_LOVED[lang.name] != null && (
+                                {metrics.so_loved?.[lang.name] != null && (
                                     <div style={{ flex: 1, padding: "6px 10px", borderRadius: "7px", background: th.card, border: "1px solid " + th.border }}>
                                         <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.58rem", color: th.dim, marginBottom: "2px" }}>❤️ SO Loved</div>
-                                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.45rem", color: c.color }}>{SO_LOVED[lang.name]}%</div>
+                                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.45rem", color: c.color }}>{metrics.so_loved?.[lang.name]}%</div>
                                     </div>
                                 )}
-                                {SO_USED[lang.name] != null && (
+                                {metrics.so_used?.[lang.name] != null && (
                                     <div style={{ flex: 1, padding: "6px 10px", borderRadius: "7px", background: th.card, border: "1px solid " + th.border }}>
                                         <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.58rem", color: th.dim, marginBottom: "2px" }}>📊 SO Used</div>
-                                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.45rem", color: c.color }}>{SO_USED[lang.name]}%</div>
+                                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.45rem", color: c.color }}>{metrics.so_used?.[lang.name]}%</div>
                                     </div>
                                 )}
                             </div>

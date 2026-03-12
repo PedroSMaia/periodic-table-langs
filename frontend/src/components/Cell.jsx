@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { CATEGORIES } from "../data/index.js";
-import { TIOBE } from "../data/metrics.js";
 
 /**
  * A single language cell in the periodic table grid.
@@ -33,7 +32,7 @@ import { TIOBE } from "../data/metrics.js";
 export default function Cell({
                                  lang, gridRow, gridCol, onClick, active, mode, inCompare,
                                  onCompare, highlighted, showPop, cardW, cellH, hidden,
-                                 keyFocused, T, isDesktop, animDelay,
+                                 keyFocused, T, isDesktop, animDelay, metrics = {},
                              }) {
     const [hov, setHov] = useState(false);
 
@@ -53,7 +52,7 @@ export default function Cell({
     const lit = hov || active || inCompare || highlighted || keyFocused;
 
     // TIOBE rank for this language (undefined if not in top list)
-    const tRank = TIOBE[lang.name];
+    const tRank = metrics.tiobe?.[lang.name];
 
     // --- Dynamic font sizing based on card dimensions ---
     const pad      = Math.max(2, Math.round(Math.min(cardW, cellH) * 0.07));

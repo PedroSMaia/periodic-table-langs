@@ -75,10 +75,10 @@ function scoreQuiz(answers, langs) {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 5)
         .map(([name, pts]) => ({
-            lang: LANGS.find(l => l.name === name),
+            lang: langs.find(l => l.name === name),
             pct:  Math.round((pts / max) * 100),
         }))
-        .filter(x => x.lang); // drop any names not found in LANGS
+        .filter(x => x.lang); // drop any names not found in langs
 }
 
 /**

@@ -66,7 +66,7 @@ export default function App() {
     const [darkMode, setDarkMode] = useLocalStorage("ptl-dark", true);
 
     // Languages fetched from the API
-    const { langs: LANGS, loading: langsLoading, error: langsError } = useLanguages();
+    const { langs: LANGS, metrics, loading: langsLoading, error: langsError } = useLanguages();
 
     // Keyboard-focused cell ID — managed via ref + state to avoid stale closures in keydown handler
     const [focusedId, setFocusedIdS] = useState(null);
@@ -391,7 +391,7 @@ export default function App() {
             </div>
 
             {/* ── Popularity list (mobile / tablet) ── */}
-            {showPopList && <PopularityList filter={filter} T={T} langs={LANGS} />}
+            {showPopList && <PopularityList filter={filter} T={T} langs={LANGS} metrics={metrics} />}
 
             {/* ── Grid area ── */}
             {!showPopList && (
@@ -435,6 +435,7 @@ export default function App() {
                                       keyFocused={focusedId === lang.id}
                                       T={T}
                                       isDesktop={isDesktop}
+                                      metrics={metrics}
                                 />
                             ))}
 
@@ -461,6 +462,7 @@ export default function App() {
                             isMobile={isMobile}
                             effectiveCols={effectiveCols}
                             T={T}
+                            metrics={metrics}
                             onClose={() => setMode("table")}
                         />
                     )}
@@ -476,6 +478,7 @@ export default function App() {
                     inCompare={compareList.includes(selected.id)}
                     canCompare={compareList.length < 3 && !compareList.includes(selected.id)}
                     T={T}
+                    metrics={metrics}
                 />
             )}
 
@@ -494,6 +497,7 @@ export default function App() {
                     onClose={() => setShowSearch(false)}
                     onSelect={l => { setSelected(l); setMode("table"); setHighlighted([]); }}
                     langs={LANGS}
+                    metrics={metrics}
                 />
             )}
 

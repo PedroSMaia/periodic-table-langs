@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { CATEGORIES } from "../data/index.js";
-import { TIOBE } from "../data/metrics.js";
+
 import { useDebounce } from "../hooks/useDebounce.js";
 
 // Languages shown as quick-select pills when the search input is empty
@@ -21,7 +21,7 @@ const POPULAR = ["Python", "JavaScript", "Rust", "Go", "TypeScript", "Haskell", 
  * @param {function} onSelect - Called with the selected language object
  * @param {object}   T        - Theme tokens
  */
-export default function SearchModal({ onClose, onSelect, T, langs = [] }) {
+export default function SearchModal({ onClose, onSelect, T, langs = [], metrics = {} }) {
     const [q, setQ]             = useState("");
     const [activeIdx, setActiveIdx] = useState(-1);
 
@@ -140,7 +140,7 @@ export default function SearchModal({ onClose, onSelect, T, langs = [] }) {
                                     </div>
 
                                     {/* TIOBE rank badge */}
-                                    {TIOBE[l.name] && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.6rem", color: "#fbbf24", whiteSpace: "nowrap" }}>#{TIOBE[l.name]}</span>}
+                                    {metrics.tiobe?.[l.name] && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.6rem", color: "#fbbf24", whiteSpace: "nowrap" }}>#{metrics.tiobe?.[l.name]}</span>}
 
                                     {/* Enter-to-select hint for the active row */}
                                     {isActive && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "9px", color: th.dim, flexShrink: 0 }}>↵</span>}

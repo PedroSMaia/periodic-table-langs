@@ -1,5 +1,5 @@
 import { CATEGORIES } from "../data/index.js";
-import { TIOBE, SO_LOVED, SO_USED } from "../data/metrics.js";
+
 
 /**
  * Sorted list of languages by TIOBE rank, used in the "popularity" view mode.
@@ -15,13 +15,13 @@ import { TIOBE, SO_LOVED, SO_USED } from "../data/metrics.js";
  * @param {string|null} filter - Active category key, or null to show all languages
  * @param {object}      T      - Theme tokens
  */
-export default function PopularityList({ filter, T, langs = [] }) {
+export default function PopularityList({ filter, T, langs = [], metrics = {} }) {
     const th = T || { card: "#111827", border: "#1F2937" };
 
     // Sort by TIOBE rank ascending; languages not in TIOBE get rank 999 (bottom)
     const sorted = LANGS
         .filter(l => !filter || l.cat === filter)
-        .sort((a, b) => (TIOBE[a.name] || 999) - (TIOBE[b.name] || 999));
+        .sort((a, b) => (metrics.tiobe?.[a.name] || 999) - (metrics.tiobe?.[b.name] || 999));
 
     // Color for the rank badge based on TIOBE tier
     const tierColor = (r) => !r || r > 50 ? "#6B7280" : r <= 5 ? "#fbbf24" : r <= 20 ? "#94a3b8" : "#cd7f32";
@@ -33,9 +33,9 @@ export default function PopularityList({ filter, T, langs = [] }) {
         <div style={{ flex: 1, overflowY: "auto", padding: "8px 10px 80px", display: "flex", flexDirection: "column", gap: "4px" }}>
             {sorted.map(l => {
                 const cat  = CATEGORIES[l.cat];
-                const rank = TIOBE[l.name];
-                const lv   = SO_LOVED[l.name];
-                const us   = SO_USED[l.name];
+                const rank = metrics.tiobe?.[l.name];
+                const lv   = metrics.so_loved?.[l.name];
+                const us   = metrics.so_used?.[l.name];
 
                 return (
                     <div key={l.id} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "8px 10px", borderRadius: "8px", border: "1px solid " + cat.color + "22", background: cat.bg }}>

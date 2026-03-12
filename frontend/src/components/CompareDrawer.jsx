@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { CATEGORIES } from "../data/index.js";
-import { RATINGS, TIOBE } from "../data/metrics.js";
 
 /**
  * Bottom drawer that appears when the user is in "compare" mode.
@@ -22,7 +21,7 @@ import { RATINGS, TIOBE } from "../data/metrics.js";
  * @param {object}   T             - Theme tokens
  * @param {function} onClose       - Called when the user swipes down or closes the drawer
  */
-export default function CompareDrawer({ langs, onRemove, onClear, isMobile, effectiveCols, T, onClose }) {
+export default function CompareDrawer({ langs, onRemove, onClear, isMobile, effectiveCols, T, onClose, metrics = {} }) {
     const th = T || { card: "#111827", border: "#1F2937", bg: "#0B0F19" };
 
     // Swipe-down-to-close gesture (mobile)
@@ -50,10 +49,10 @@ export default function CompareDrawer({ langs, onRemove, onClear, isMobile, effe
      * Uses curated RATINGS if available, otherwise estimates from the TIOBE rank.
      */
     const getVal = (lang, m) => {
-        const r = RATINGS[lang.name];
+        const r = metrics.ratings?.[lang.name];
         if (r) return r[m.idx];
         // Fallback: estimate from TIOBE rank (higher rank = higher base score)
-        const rank = TIOBE[lang.name] || 80;
+        const rank = metrics.tiobe?.[lang.name] || 80;
         const base = Math.max(2, Math.round(8 - (rank / 120) * 5));
         if (m.idx === 0) return base;
         if (m.idx === 1) return Math.min(10, Math.max(2, base + 1));
