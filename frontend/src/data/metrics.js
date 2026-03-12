@@ -17,7 +17,7 @@ export const RATINGS = {
     // OOP
     "Java":[8,6,10,9],"C#":[8,7,9,9],"Kotlin":[8,8,7,8],
     "Swift":[8,8,7,8],"Objective-C":[7,5,5,5],"Scala":[8,6,6,7],
-    "Groovy":[6,7,6,6],"Smalltalk":[6,6,4,6],"Eiffel":[7,4,3,5],
+    "Smalltalk":[6,6,4,6],"Eiffel":[7,4,3,5],
     "Self":[6,5,2,5],"Simula":[6,4,2,4],"ActionScript":[5,4,3,4],
     "Vala":[6,6,3,5],"Ring":[5,6,2,4],
     // Functional
@@ -46,7 +46,7 @@ export const RATINGS = {
     "Prolog":[7,5,4,6],"Datalog":[7,6,3,6],"Mercury":[8,5,2,5],
     "Oz":[7,5,2,5],"Curry":[7,5,2,5],"ASP":[6,5,3,5],
     // General
-    "BASIC":[4,5,5,5],"Ada":[9,3,4,4],"Algol":[7,4,2,5],
+    "BASIC":[4,5,5,5],"Algol":[7,4,2,5],
     "APL":[7,4,3,6],"Forth":[6,5,3,5],"Logo":[4,5,3,5],
     "Tcl":[5,6,4,4],"Rexx":[5,5,3,4],"MUMPS":[5,4,2,3],
     // Hardware
