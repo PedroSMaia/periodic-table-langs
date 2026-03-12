@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { CATEGORIES } from "../data/index.js";
-
 import { useDebounce } from "../hooks/useDebounce.js";
 
 // Languages shown as quick-select pills when the search input is empty
@@ -21,7 +20,7 @@ const POPULAR = ["Python", "JavaScript", "Rust", "Go", "TypeScript", "Haskell", 
  * @param {function} onSelect - Called with the selected language object
  * @param {object}   T        - Theme tokens
  */
-export default function SearchModal({ onClose, onSelect, T, langs = [], metrics = {} }) {
+export default function SearchModal({ onClose, onSelect, T, langs = [] }) {
     const [q, setQ]             = useState("");
     const [activeIdx, setActiveIdx] = useState(-1);
 
@@ -40,7 +39,7 @@ export default function SearchModal({ onClose, onSelect, T, langs = [], metrics 
     useEffect(() => { setActiveIdx(-1); }, [debouncedQ]);
 
     // Filter LANGS by name, symbol, or category label — cap at 9 results
-    const results = debouncedQ.trim().length === 0 ? [] : LANGS.filter(l =>
+    const results = debouncedQ.trim().length === 0 ? [] : langs.filter(l =>
         l.name.toLowerCase().includes(debouncedQ.toLowerCase()) ||
         l.sym.toLowerCase().includes(debouncedQ.toLowerCase())  ||
         CATEGORIES[l.cat]?.label.toLowerCase().includes(debouncedQ.toLowerCase())
@@ -98,7 +97,7 @@ export default function SearchModal({ onClose, onSelect, T, langs = [], metrics 
                         <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.68rem", color: th.dim, marginBottom: "7px", letterSpacing: "0.05em" }}>POPULAR</div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
                             {POPULAR.map(name => {
-                                const l = LANGS.find(x => x.name === name);
+                                const l = langs.find(x => x.name === name);
                                 if (!l) return null;
                                 const cat = CATEGORIES[l.cat];
                                 return (
@@ -140,7 +139,7 @@ export default function SearchModal({ onClose, onSelect, T, langs = [], metrics 
                                     </div>
 
                                     {/* TIOBE rank badge */}
-                                    {metrics.tiobe?.[l.name] && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.6rem", color: "#fbbf24", whiteSpace: "nowrap" }}>#{metrics.tiobe?.[l.name]}</span>}
+                                    {TIOBE[l.name] && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.6rem", color: "#fbbf24", whiteSpace: "nowrap" }}>#{TIOBE[l.name]}</span>}
 
                                     {/* Enter-to-select hint for the active row */}
                                     {isActive && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "9px", color: th.dim, flexShrink: 0 }}>↵</span>}

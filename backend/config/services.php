@@ -40,4 +40,8 @@ return [
         'repo'  => env('GITHUB_REPO'),
     ],
 
+    'anthropic' => [
+        'key' => env('ANTHROPIC_API_KEY'),
+    ],
+
 ];

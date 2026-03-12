@@ -12,6 +12,8 @@ import CompareDrawer from "./components/CompareDrawer.jsx";
 import SearchModal   from "./components/SearchModal.jsx";
 import QuizModal     from "./components/QuizModal.jsx";
 import PopularityList from "./components/PopularityList.jsx";
+import RoadmapModal  from "./components/RoadmapModal.jsx";
+import { useRoadmap } from "./hooks/useRoadmap.js";
 
 // ── Theme tokens ─────────────────────────────────────────────────────────────
 // Two complete sets of design tokens — dark (default) and light.
@@ -67,6 +69,15 @@ export default function App() {
 
     // Languages fetched from the API
     const { langs: LANGS, metrics, loading: langsLoading, error: langsError } = useLanguages();
+
+    // Roadmap
+    const { roadmap, loading: roadmapLoading, error: roadmapError, fetchRoadmap } = useRoadmap();
+    const [roadmapLang, setRoadmapLang] = useState(null);
+
+    const handleViewRoadmap = (lang) => {
+        setRoadmapLang(lang);
+        fetchRoadmap(lang.name);
+    };
 
     // Keyboard-focused cell ID — managed via ref + state to avoid stale closures in keydown handler
     const [focusedId, setFocusedIdS] = useState(null);
@@ -479,6 +490,7 @@ export default function App() {
                     canCompare={compareList.length < 3 && !compareList.includes(selected.id)}
                     T={T}
                     metrics={metrics}
+                    onViewRoadmap={handleViewRoadmap}
                 />
             )}
 
@@ -498,6 +510,18 @@ export default function App() {
                     onSelect={l => { setSelected(l); setMode("table"); setHighlighted([]); }}
                     langs={LANGS}
                     metrics={metrics}
+                    onViewRoadmap={handleViewRoadmap}
+                />
+            )}
+
+            {roadmapLang && (
+                <RoadmapModal
+                    lang={roadmapLang}
+                    roadmap={roadmap}
+                    loading={roadmapLoading}
+                    error={roadmapError}
+                    onClose={() => setRoadmapLang(null)}
+                    T={T}
                 />
             )}
 

@@ -18,7 +18,7 @@ import { GITHUB_REPO } from "../utils/constants.js";
  * @param {boolean}  canCompare     - Whether more langs can be added to compare (max not reached)
  * @param {object}   T              - Theme tokens
  */
-export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, inCompare, canCompare, T, metrics = {} }) {
+export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, inCompare, canCompare, T, metrics = {}, onViewRoadmap }) {
     // Controls the CSS transition — panel starts hidden, mounts after 12ms to trigger animation
     const [mounted, setMounted] = useState(false);
     const [copied, setCopied] = useState(false);
@@ -172,10 +172,10 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
                     {/* Colored top accent line */}
                     <div style={{ height: "3px", background: "linear-gradient(90deg,transparent," + c.color + ",transparent)" }} />
 
-                    <div style={{ padding: "22px 24px 16px", position: "relative" }}>
+                    <div style={{ padding: "12px 16px 16px" }}>
 
                         {/* Action buttons: Share, Compare, Close */}
-                        <div style={{ position: "absolute", top: "16px", right: "16px", display: "flex", gap: "8px", alignItems: "center" }}>
+                        <div style={{ display: "flex", gap: "6px", alignItems: "center", justifyContent: "flex-end", marginBottom: "14px" }}>
                             <button
                                 onClick={share}
                                 title="Copy link"
@@ -192,6 +192,16 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
                                     onMouseEnter={e => { if (!inCompare && canCompare) { e.currentTarget.style.background = th.border; e.currentTarget.style.color = th.text; } }}
                                     onMouseLeave={e => { if (!inCompare && canCompare) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = th.sub; } }}
                                 >{inCompare ? "⇄ Added" : "⇄ Compare"}</button>
+                            )}
+
+                            {onViewRoadmap && (
+                                <button
+                                    onClick={() => onViewRoadmap(lang)}
+                                    title="View Learning Roadmap"
+                                    style={{ padding: "4px 10px", borderRadius: "6px", border: "1px solid " + c.color + "55", background: c.color + "15", color: c.color, cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.68rem", fontWeight: 600, transition: "all .14s", display: "flex", alignItems: "center", gap: "4px" }}
+                                    onMouseEnter={e => { e.currentTarget.style.background = c.color + "28"; }}
+                                    onMouseLeave={e => { e.currentTarget.style.background = c.color + "15"; }}
+                                >✦ Roadmap</button>
                             )}
 
                             <button
