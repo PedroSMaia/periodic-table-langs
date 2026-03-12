@@ -28,15 +28,15 @@ const DARK_THEME = {
 };
 
 const LIGHT_THEME = {
-    bg: "#FFFFFF", card: "#F5F8FC", border: "#E5E7EB",
+    bg: "#F0F2F5", card: "#FFFFFF", border: "#E5E7EB",
     text: "#1F2937", sub: "#374151", dim: "#6B7280",
-    navBg: "rgba(255,255,255,0.97)", cellText: "#1F2937",
+    navBg: "rgba(240,242,245,0.97)", cellText: "#1F2937",
     btnBorder: "#E5E7EB", btnBorderActive: "#1F2937",
     btnBg: "transparent", btnBgActive: "rgba(31,41,55,0.08)",
     btnColor: "#6B7280", btnColorActive: "#1F2937",
     btnHoverBg: "rgba(31,41,55,0.05)", btnHoverColor: "#1F2937",
     divider: "#E5E7EB", kbdBorder: "#E5E7EB",
-    kbdBg: "#F5F8FC",
+    kbdBg: "#F0F2F5",
 };
 
 // View mode definitions for the navbar buttons
@@ -136,11 +136,33 @@ export default function App() {
     const totalHeaderH = NAVBAR_H + FILTER_BAR_H;
     const gridH       = dims.h - totalHeaderH - PAD * 2;
 
-    const MIN_CELL_W    = 130;
-    const effectiveCols = Math.min(COLS, Math.max(3, Math.floor((gridW + GAP) / (MIN_CELL_W + GAP))));
-
-    // Simple layout (mobile): all cells fill rows sequentially with no fixed positions
     const simpleLayout = isMobile;
+
+    // On desktop: find the number of columns where cells achieve the target aspect ratio
+    // while fitting entirely on screen without scroll.
+    // Strategy: more cols → smaller slotW but also fewer rows → taller cellH.
+    // We iterate upward until cellH/slotW reaches TARGET_RATIO or we hit COLS.
+    const TARGET_RATIO = 1.2;
+    let effectiveCols;
+    if (isDesktop) {
+        const minCols = Math.max(3, Math.floor((gridW + GAP) / (130 + GAP)));
+        let best = minCols;
+        for (let n = minCols; n <= COLS + 6; n++) {
+            const sw = Math.floor((gridW - GAP * (n - 1)) / n);
+            if (sw < 60) break; // cells too narrow, stop
+            const nFullRows = simpleLayout
+                ? Math.ceil(LANGS.length / n)
+                : Math.ceil(Math.max(0, LANGS.length - 6) / n);
+            const nRows = simpleLayout ? nFullRows : 2 + nFullRows;
+            const ch = Math.floor((gridH - GAP * (nRows - 1)) / nRows);
+            best = n;
+            if (ch / sw >= TARGET_RATIO) break; // good enough ratio found, stop here
+        }
+        effectiveCols = best;
+    } else {
+        effectiveCols = Math.min(COLS, Math.max(3, Math.floor((gridW + GAP) / (95 + GAP))));
+    }
+
     const numFullRows  = simpleLayout
         ? Math.ceil(LANGS.length / effectiveCols)
         : Math.ceil(Math.max(0, LANGS.length - 6) / effectiveCols);
@@ -162,11 +184,12 @@ export default function App() {
 
     const displayCount = filter ? LANGS.filter(l => l.cat === filter).length : LANGS.length;
 
-    const slotW      = Math.floor((gridW - GAP * (effectiveCols - 1)) / effectiveCols);
-    const cellH      = isDesktop
+    const slotW = Math.floor((gridW - GAP * (effectiveCols - 1)) / effectiveCols);
+    // Desktop: fit everything on screen (no scroll). Mobile: use aspect ratio and scroll.
+    const cellH = isDesktop
         ? Math.floor((gridH - GAP * (numRows - 1)) / numRows)
         : Math.round(slotW * 1.28);
-    const scrollGridH = !isDesktop ? (numRows * cellH + (numRows - 1) * GAP) : 0;
+    const scrollGridH = numRows * cellH + (numRows - 1) * GAP;
 
     // Width available for the big title text in the top-right header area
     const titleWidth = slotW * (effectiveCols - 2) + GAP * (effectiveCols - 3);
@@ -350,7 +373,9 @@ export default function App() {
 
             {/* ── Filter bar ── */}
             <div style={{ position: "relative", zIndex: 41 }}>
-                <FilterBar filter={filter} setFilter={setFilter} mode={mode} isDesktop={isDesktop} FILTER_BAR_H={FILTER_BAR_H} FILTER_LIST={FILTER_LIST} T={T} />
+                <div style={{ pointerEvents: selected ? "none" : "auto", opacity: selected ? 0.4 : 1, transition: "opacity 0.2s" }}>
+                    <FilterBar filter={filter} setFilter={setFilter} mode={mode} isDesktop={isDesktop} FILTER_BAR_H={FILTER_BAR_H} FILTER_LIST={FILTER_LIST} T={T} />
+                </div>
             </div>
 
             {/* ── Popularity list (mobile / tablet) ── */}
@@ -358,7 +383,7 @@ export default function App() {
 
             {/* ── Grid area ── */}
             {!showPopList && (
-                <div style={{ flex: 1, overflowY: isDesktop ? "visible" : "auto", overflowX: "hidden", position: "relative" }}>
+                <div style={{ flex: 1, overflowY: isDesktop ? "hidden" : "auto", overflowX: "hidden", position: "relative" }}>
 
                     {displayCount === 0 ? (
                         // Empty state when active filter has no languages
@@ -411,10 +436,9 @@ export default function App() {
                                 const subFs = Math.max(5, fs * 0.30);
                                 const tagFs = Math.max(4, fs * 0.20);
                                 return (
-                                    <div style={{ position: "absolute", top: "0", left: (slotW + GAP) + "px", width: titleWidth + "px", height: cellH + "px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pointerEvents: "none", overflow: "hidden" }}>
-                                        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 300, fontSize: subFs + "px", letterSpacing: "0.1em", color: T.sub, textTransform: "uppercase", lineHeight: 1, whiteSpace: "nowrap" }}>Periodic Table of</div>
-                                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: fs + "px", letterSpacing: "0.04em", lineHeight: 0.95, background: "linear-gradient(135deg,#FF7A00 0%,#FFA94D 60%,#FF7A00 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", whiteSpace: "nowrap" }}>Programming Languages</div>
-                                        {fs > 24 && <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: tagFs + "px", color: T.dim, marginTop: "2px", whiteSpace: "nowrap" }}>Every language. One table.</div>}
+                                    <div style={{ position: "absolute", top: "0", left: (slotW + GAP) + "px", width: titleWidth + "px", height: cellH + "px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pointerEvents: "none", overflow: "visible" }}>
+                                        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 300, fontSize: subFs + "px", letterSpacing: "0.1em", color: T.sub, textTransform: "uppercase", lineHeight: 1, whiteSpace: "nowrap", marginTop: "8px" }}>Periodic Table of</div>
+                                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: fs + "px", letterSpacing: "0.04em", lineHeight: 1.1, background: "linear-gradient(135deg,#FF7A00 0%,#FFA94D 60%,#FF7A00 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", whiteSpace: "nowrap" }}>Programming Languages</div>
                                     </div>
                                 );
                             })()}

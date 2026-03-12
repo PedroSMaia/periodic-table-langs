@@ -220,17 +220,23 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
 
                         {lang.paradigm && <div style={{ marginTop: "6px", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.7rem", color: th.dim }}>{lang.paradigm}</div>}
 
-                        {/* SO Loved / SO Used stats */}
-                        <div style={{ display: "flex", gap: "8px", marginTop: "11px" }}>
-                            <div style={{ flex: 1, padding: "6px 10px", borderRadius: "7px", background: th.card, border: "1px solid " + th.border }}>
-                                <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.58rem", color: th.dim, marginBottom: "2px" }}>❤️ SO Loved</div>
-                                <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.45rem", color: c.color }}>{SO_LOVED[lang.name] ?? "-"}%</div>
+                        {/* SO Loved / SO Used stats — only rendered when data exists */}
+                        {(SO_LOVED[lang.name] != null || SO_USED[lang.name] != null) && (
+                            <div style={{ display: "flex", gap: "8px", marginTop: "11px" }}>
+                                {SO_LOVED[lang.name] != null && (
+                                    <div style={{ flex: 1, padding: "6px 10px", borderRadius: "7px", background: th.card, border: "1px solid " + th.border }}>
+                                        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.58rem", color: th.dim, marginBottom: "2px" }}>❤️ SO Loved</div>
+                                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.45rem", color: c.color }}>{SO_LOVED[lang.name]}%</div>
+                                    </div>
+                                )}
+                                {SO_USED[lang.name] != null && (
+                                    <div style={{ flex: 1, padding: "6px 10px", borderRadius: "7px", background: th.card, border: "1px solid " + th.border }}>
+                                        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.58rem", color: th.dim, marginBottom: "2px" }}>📊 SO Used</div>
+                                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.45rem", color: c.color }}>{SO_USED[lang.name]}%</div>
+                                    </div>
+                                )}
                             </div>
-                            <div style={{ flex: 1, padding: "6px 10px", borderRadius: "7px", background: th.card, border: "1px solid " + th.border }}>
-                                <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.58rem", color: th.dim, marginBottom: "2px" }}>📊 SO Used</div>
-                                <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.45rem", color: c.color }}>{SO_USED[lang.name] ?? "-"}%</div>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
 
@@ -318,10 +324,7 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
                 </div>
 
                 {/* ── FOOTER ── */}
-                <div style={{ padding: "11px 24px", borderTop: "1px solid " + th.border, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <div style={{ fontSize: "0.59rem", color: th.dim, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
-                        Periodic Table of Languages · Every language. One table.
-                    </div>
+                <div style={{ padding: "11px 24px", borderTop: "1px solid " + th.border, display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
                     {/* Link to open a GitHub issue to suggest a missing link */}
                     <a
                         href={"https://github.com/" + GITHUB_REPO + "/issues/new?title=" + encodeURIComponent("[suggest] " + lang.name + ": add/fix link") + "&body=" + encodeURIComponent("**Language:** " + lang.name + "\n\n**Link type:** (official site / docs / tutorial / framework / other)\n\n**URL:** \n\n**Why it's useful:** ")}

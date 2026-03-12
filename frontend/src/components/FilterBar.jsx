@@ -70,10 +70,6 @@ export default function FilterBar({ filter, setFilter, mode, isDesktop, FILTER_B
             {canLeft  && <div style={fade("left")} />}
             {canRight && <div style={fade("right")} />}
 
-            {/* Arrow buttons — desktop only */}
-            {isDesktop && <button style={arrowBtn("left",  canLeft)}  onClick={() => scroll(-1)}>‹</button>}
-            {isDesktop && <button style={arrowBtn("right", canRight)} onClick={() => scroll(1)}>›</button>}
-
             {/* Scrollable pill list */}
             <div
                 ref={scrollRef}
@@ -81,9 +77,11 @@ export default function FilterBar({ filter, setFilter, mode, isDesktop, FILTER_B
                 onScroll={checkScroll}
                 style={{
                     height: FILTER_BAR_H + "px",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    gap: "1px", padding: "0 6px",
+                    display: "flex", alignItems: "center",
+                    justifyContent: isDesktop ? "center" : "flex-start",
+                    gap: "1px", padding: "0 12px",
                     overflowX: "auto", overflowY: "hidden",
+                    WebkitOverflowScrolling: "touch",
                 }}
             >
                 {FILTER_LIST.map(f => {
@@ -110,8 +108,7 @@ export default function FilterBar({ filter, setFilter, mode, isDesktop, FILTER_B
                             {/* Category color dot */}
                             <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: f.color, flexShrink: 0, opacity: active ? 1 : 0.5 }} />
                             {f.label}
-                            {/* Language count badge */}
-                            <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "8px", opacity: active ? 0.7 : 0.35, marginLeft: "1px" }}>{f.count}</span>
+
                         </button>
                     );
                 })}

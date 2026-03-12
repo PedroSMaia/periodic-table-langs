@@ -61,7 +61,11 @@ export default function Cell({
     const symLen   = lang.sym.length;
     // Wider symbols get a smaller font to avoid overflow
     const symSize  = Math.round(Math.min(cellH * 0.38, cardW / (symLen > 2 ? 2.0 : 1.5)));
-    const nameSize = Math.max(6, Math.round(cellH * 0.11));
+    const nameSize = Math.max(6, Math.round(
+        lang.name.length > 10 ? cellH * 0.09 :
+            lang.name.length > 7  ? cellH * 0.10 :
+                cellH * 0.11
+    ));
 
     // --- Color tokens ---
     const ORANGE = "#FF7A00";
@@ -117,7 +121,7 @@ export default function Cell({
                                 ? "0 2px 14px " + c.color + "33, inset 0 0 0 1px " + c.color + "33"
                                 : "none",
                 transition: "all 0.17s cubic-bezier(.34,1.5,.64,1)",
-                overflow: "visible",
+                overflow: "hidden",
                 boxSizing: "border-box",
                 position: "relative",
             }}>
