@@ -297,16 +297,46 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
                         </div>
                     )}
 
-                    {/* Frameworks & tools */}
+                    {/* Frameworks */}
                     {lang.frameworks?.length > 0 && (
                         <div>
-                            <SectionLabel>Frameworks & Tools</SectionLabel>
+                            <SectionLabel>Frameworks</SectionLabel>
                             <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
                                 {lang.frameworks.map((f, i) => {
                                     const href  = typeof f === "string" ? f : f.url;
                                     const label = typeof f === "string" ? new URL(f).hostname.replace("www.", "") : f.name;
                                     const desc  = typeof f === "object" && f.desc ? f.desc : null;
+                                    return <Row key={i} href={href} label={label} icon="🏗️" desc={desc} />;
+                                })}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Tools */}
+                    {lang.tools?.length > 0 && (
+                        <div>
+                            <SectionLabel>Tools</SectionLabel>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                                {lang.tools.map((f, i) => {
+                                    const href  = typeof f === "string" ? f : f.url;
+                                    const label = typeof f === "string" ? new URL(f).hostname.replace("www.", "") : f.name;
+                                    const desc  = typeof f === "object" && f.desc ? f.desc : null;
                                     return <Row key={i} href={href} label={label} icon="⚙️" desc={desc} />;
+                                })}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Notable packages */}
+                    {lang.packages?.length > 0 && (
+                        <div>
+                            <SectionLabel>Notable Packages</SectionLabel>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                                {lang.packages.map((f, i) => {
+                                    const href  = typeof f === "string" ? f : f.url;
+                                    const label = typeof f === "string" ? new URL(f).hostname.replace("www.", "") : f.name;
+                                    const desc  = typeof f === "object" && f.desc ? f.desc : null;
+                                    return <Row key={i} href={href} label={label} icon="📦" desc={desc} />;
                                 })}
                             </div>
                         </div>
