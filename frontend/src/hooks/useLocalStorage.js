@@ -22,11 +22,13 @@ export function useLocalStorage(key, defaultValue) {
     });
 
     const set = (newValue) => {
+        // Support functional updater form: set(prev => !prev)
+        const resolved = typeof newValue === "function" ? newValue(value) : newValue;
         // Update React state so the component re-renders
-        setValue(newValue);
+        setValue(resolved);
         try {
-            // Persist the new value to localStorage for future sessions
-            localStorage.setItem(key, JSON.stringify(newValue));
+            // Persist the resolved value to localStorage for future sessions
+            localStorage.setItem(key, JSON.stringify(resolved));
         } catch {
             // Silently ignore write errors (e.g. storage quota exceeded)
         }

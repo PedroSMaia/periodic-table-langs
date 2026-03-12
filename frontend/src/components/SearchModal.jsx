@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { LANGS, CATEGORIES } from "../data/index.js";
+import { CATEGORIES } from "../data/index.js";
 import { TIOBE } from "../data/metrics.js";
 import { useDebounce } from "../hooks/useDebounce.js";
 
@@ -21,7 +21,7 @@ const POPULAR = ["Python", "JavaScript", "Rust", "Go", "TypeScript", "Haskell", 
  * @param {function} onSelect - Called with the selected language object
  * @param {object}   T        - Theme tokens
  */
-export default function SearchModal({ onClose, onSelect, T }) {
+export default function SearchModal({ onClose, onSelect, T, langs = [] }) {
     const [q, setQ]             = useState("");
     const [activeIdx, setActiveIdx] = useState(-1);
 

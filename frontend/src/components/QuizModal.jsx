@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { LANGS, CATEGORIES } from "../data/index.js";
+import { CATEGORIES } from "../data/index.js";
 
 /**
  * Quiz question definitions.
@@ -62,7 +62,7 @@ const QUIZ = [
  * @param {Array} answers - Array of selected option objects (one per question)
  * @returns {Array} - Top 5 results: [{ lang: LangObject, pct: number }]
  */
-function scoreQuiz(answers) {
+function scoreQuiz(answers, langs) {
     const scores = {};
     answers.forEach(opt => {
         if (!opt?.w) return;
@@ -95,7 +95,7 @@ function scoreQuiz(answers) {
  * @param {function} onHighlight - Called with an array of lang IDs to highlight on the grid
  * @param {object}   T           - Theme tokens
  */
-export default function QuizModal({ onClose, onHighlight, T }) {
+export default function QuizModal({ onClose, onHighlight, T, langs = [] }) {
     const th = T || { card: "#111827", border: "#1F2937", bg: "#0B0F19", text: "#F9FAFB", sub: "#9CA3AF", dim: "#6B7280" };
 
     // Use a slightly lighter overlay in light mode so it doesn't look washed out
@@ -129,7 +129,7 @@ export default function QuizModal({ onClose, onHighlight, T }) {
             setAnswers(a);
             setStep(step + 1);
         } else {
-            setResults(scoreQuiz(a));
+            setResults(scoreQuiz(a, langs));
         }
     };
 
