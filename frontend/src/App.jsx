@@ -14,7 +14,9 @@ import QuizModal     from "./components/QuizModal.jsx";
 import PopularityList from "./components/PopularityList.jsx";
 import RoadmapModal        from "./components/RoadmapModal.jsx";
 import RoadmapCompareModal from "./components/RoadmapCompareModal.jsx";
+import AuthModal           from "./components/AuthModal.jsx";
 import { useRoadmap } from "./hooks/useRoadmap.js";
+import { useAuth }    from "./hooks/useAuth.js";
 
 // ── Theme tokens ─────────────────────────────────────────────────────────────
 const DARK_THEME = {
@@ -59,16 +61,27 @@ export default function App() {
     const [showQuiz,    setShowQuiz]    = useState(false);
     const [highlighted, setHighlighted] = useState([]);
     const [showSearch,  setShowSearch]  = useState(false);
+    const [showUserMenu, setShowUserMenu] = useState(false);
     const [dims,        setDims]        = useState({ w: window.innerWidth, h: window.innerHeight });
 
     const [darkMode, setDarkMode] = useLocalStorage("ptl-dark", true);
+    const [showAuth, setShowAuth] = useState(false);
 
     const { langs: LANGS, metrics, loading: langsLoading, error: langsError } = useLanguages();
+    const { user, token, login, register, logout } = useAuth();
 
-    const { roadmap, loading: roadmapLoading, error: roadmapError, fetchRoadmap, fetchPath, pathLoading, pathError } = useRoadmap();
+    const { roadmap, loading: roadmapLoading, error: roadmapError, fetchRoadmap, fetchPath, pathLoading, pathError, syncProgressToServer, flushSync, reloadProgress, progressVersion } = useRoadmap(token);
     const [roadmapLang,        setRoadmapLang]        = useState(null);
     const [roadmapCompareList, setRoadmapCompareList] = useState([]);
     const [showRoadmapCompare, setShowRoadmapCompare] = useState(false);
+
+    // When token changes (login/logout) and a roadmap is open, fetch server progress.
+    // progressVersion (bumped inside loadProgressFromServer) is used in the key prop
+    // to force RoadmapModal to remount AFTER localStorage is updated.
+    useEffect(() => {
+        if (!token || !roadmapLang) return;
+        reloadProgress(roadmapLang.name, roadmap?.generated_at);
+    }, [token]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleAddToRoadmapCompare = (item) => {
         setRoadmapCompareList(prev => {
@@ -409,6 +422,43 @@ export default function App() {
                     onMouseLeave={e => { e.currentTarget.style.background = T.btnBg;      e.currentTarget.style.color = T.btnColor; }}
                 ><span style={{ fontSize: "13px" }}>{darkMode ? "☀" : "🌙"}</span>{!isMobile && (darkMode ? " Light" : " Dark")}</button>
 
+                {user ? (
+                    <div style={{ position: "relative" }}>
+                        <button
+                            onClick={() => setShowUserMenu(v => !v)}
+                            style={{ display: "flex", alignItems: "center", gap: "5px", padding: isMobile ? "6px 10px" : "5px 14px", borderRadius: "8px", border: "1px solid rgba(74,222,128,0.3)", background: showUserMenu ? "rgba(74,222,128,0.15)" : "rgba(74,222,128,0.08)", color: "#4ade80", cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "12px", letterSpacing: "0.04em", transition: "all .15s", whiteSpace: "nowrap" }}
+                            onMouseEnter={e => { e.currentTarget.style.background = "rgba(74,222,128,0.15)"; }}
+                            onMouseLeave={e => { if (!showUserMenu) e.currentTarget.style.background = "rgba(74,222,128,0.08)"; }}
+                        >
+                            <span style={{ width: "18px", height: "18px", borderRadius: "50%", background: "rgba(74,222,128,0.2)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "10px", fontWeight: 700, color: "#4ade80" }}>{user.name.charAt(0).toUpperCase()}</span>
+                            {!isMobile && user.name.split(" ")[0]}
+                        </button>
+                        {showUserMenu && <>
+                            <div onClick={() => setShowUserMenu(false)} style={{ position: "fixed", inset: 0, zIndex: 50 }} />
+                            <div style={{ position: "absolute", top: "calc(100% + 6px)", right: 0, zIndex: 51, minWidth: "160px", padding: "8px", borderRadius: "10px", border: "1px solid " + T.border, background: T.card, boxShadow: "0 8px 24px rgba(0,0,0,0.3)", backdropFilter: "blur(12px)" }}>
+                                <div style={{ padding: "6px 10px", marginBottom: "4px" }}>
+                                    <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "0.8rem", color: T.text }}>{user.name}</div>
+                                    <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.62rem", color: T.dim, marginTop: "2px" }}>{user.email}</div>
+                                </div>
+                                <div style={{ height: "1px", background: T.border, margin: "4px 0" }} />
+                                <button
+                                    onClick={() => { setShowUserMenu(false); logout(); }}
+                                    style={{ width: "100%", display: "flex", alignItems: "center", gap: "6px", padding: "6px 10px", borderRadius: "6px", border: "none", background: "transparent", color: "#f87171", cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: "0.75rem", transition: "background .12s" }}
+                                    onMouseEnter={e => { e.currentTarget.style.background = "rgba(248,113,113,0.1)"; }}
+                                    onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
+                                >Logout</button>
+                            </div>
+                        </>}
+                    </div>
+                ) : (
+                    <button
+                        onClick={() => setShowAuth(true)}
+                        style={{ display: "flex", alignItems: "center", gap: isMobile ? "0" : "6px", padding: isMobile ? "6px 10px" : "5px 14px", borderRadius: "8px", border: "1px solid " + T.btnBorder, background: T.btnBg, color: T.btnColor, cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "12px", letterSpacing: "0.04em", transition: "all .15s", whiteSpace: "nowrap" }}
+                        onMouseEnter={e => { e.currentTarget.style.background = T.btnHoverBg; e.currentTarget.style.color = T.btnHoverColor; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = T.btnBg;      e.currentTarget.style.color = T.btnColor; }}
+                    ><span style={{ fontSize: "13px" }}>↳</span>{!isMobile && " Login"}</button>
+                )}
+
                 <a
                     href={reportUrl}
                     target="_blank"
@@ -546,12 +596,13 @@ export default function App() {
             )}
 
             {roadmapLang && (
-                <RoadmapModal fetchPath={fetchPath} pathLoading={pathLoading} pathError={pathError}
+                <RoadmapModal key={`${roadmapLang.name}-${progressVersion}`}
+                              fetchPath={fetchPath} pathLoading={pathLoading} pathError={pathError}
                               lang={roadmapLang}
                               roadmap={roadmap}
                               loading={roadmapLoading}
                               error={roadmapError}
-                              onClose={() => { setRoadmapLang(null); }}
+                              onClose={() => { if (token && roadmapLang) flushSync(roadmapLang.name); setRoadmapLang(null); }}
                               T={T}
                               onAddToCompare={handleAddToRoadmapCompare}
                               inCompare={roadmapCompareList.some(x => x.lang.name === roadmapLang.name)}
@@ -565,6 +616,15 @@ export default function App() {
                     onClose={() => setShowRoadmapCompare(false)}
                     T={T}
                     langs={LANGS}
+                />
+            )}
+
+            {showAuth && (
+                <AuthModal
+                    T={T}
+                    onClose={() => setShowAuth(false)}
+                    onLogin={login}
+                    onRegister={register}
                 />
             )}
 

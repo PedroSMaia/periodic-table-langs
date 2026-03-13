@@ -2,22 +2,109 @@ import { useState, useCallback, useRef } from "react";
 
 const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 const POLL_INTERVAL = 4000;
+const SYNC_DEBOUNCE = 500;
 
-export function useRoadmap() {
+export function useRoadmap(token) {
     const [roadmap,     setRoadmap]     = useState(null);
     const [loading,     setLoading]     = useState(false);
     const [error,       setError]       = useState(null);
     const [pathLoading, setPathLoading] = useState(false);
     const [pathError,   setPathError]   = useState(null);
+    // Bumped after server progress is written to localStorage — consumers use this
+    // as part of a React key to force remount of components that read localStorage.
+    const [progressVersion, setProgressVersion] = useState(0);
 
     const cache      = useRef({});
     const pathCache  = useRef({});
     const pollTimer  = useRef(null);
     const pathTimers = useRef({});
+    const syncTimer  = useRef(null);
+    const tokenRef   = useRef(token);
+    tokenRef.current = token;
 
     const stopPolling = () => {
         if (pollTimer.current) { clearInterval(pollTimer.current); pollTimer.current = null; }
     };
+
+    // ── Sync helpers ──────────────────────────────────────────────────────────
+
+    const apiFetch = (path, opts = {}) => {
+        const headers = { "Content-Type": "application/json", ...opts.headers };
+        if (tokenRef.current) headers["Authorization"] = `Bearer ${tokenRef.current}`;
+        return fetch(`${BASE}/api${path}`, { ...opts, headers });
+    };
+
+    const loadProgressFromServer = useCallback(async (langName, generatedAt) => {
+        if (!tokenRef.current || !langName) return null;
+        try {
+            const res = await apiFetch("/progress");
+            if (!res.ok) return null;
+            const data = await res.json();
+            const entry = data[langName];
+            if (!entry) return null;
+            const topics = entry.completed_topics ?? [];
+            localStorage.setItem(`ptl_progress_${langName}`, JSON.stringify(topics));
+            // Write the gen key so RoadmapModal's loadProgress() doesn't invalidate
+            if (generatedAt) {
+                localStorage.setItem(`ptl_progress_gen_${langName}`, String(generatedAt));
+            }
+            if (entry.selected_path_id) {
+                localStorage.setItem(`ptl_path_${langName}`, entry.selected_path_id);
+            } else {
+                localStorage.removeItem(`ptl_path_${langName}`);
+            }
+            setProgressVersion(v => v + 1);
+            return entry;
+        } catch { return null; }
+    }, []);
+
+    const reloadProgress = useCallback(async (langName, generatedAt) => {
+        if (!langName) return;
+        cache.current = {};
+        pathCache.current = {};
+        await loadProgressFromServer(langName, generatedAt);
+    }, [loadProgressFromServer]);
+
+    const syncProgressToServer = useCallback((langName) => {
+        if (!tokenRef.current || !langName) return;
+        if (syncTimer.current) clearTimeout(syncTimer.current);
+        syncTimer.current = setTimeout(async () => {
+            try {
+                const completedRaw = localStorage.getItem(`ptl_progress_${langName}`);
+                const completed    = completedRaw ? JSON.parse(completedRaw) : [];
+                const pathId       = localStorage.getItem(`ptl_path_${langName}`) || null;
+                await apiFetch("/progress", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        language:         langName,
+                        completed_topics: completed,
+                        selected_path_id: pathId,
+                    }),
+                });
+            } catch { /* silent */ }
+        }, SYNC_DEBOUNCE);
+    }, []);
+
+    // Flush any pending sync immediately (call before unmount / logout)
+    const flushSync = useCallback((langName) => {
+        if (!tokenRef.current || !langName) return;
+        if (syncTimer.current) {
+            clearTimeout(syncTimer.current);
+            syncTimer.current = null;
+        }
+        const completedRaw = localStorage.getItem(`ptl_progress_${langName}`);
+        const completed    = completedRaw ? JSON.parse(completedRaw) : [];
+        const pathId       = localStorage.getItem(`ptl_path_${langName}`) || null;
+        // Use sendBeacon for reliability on page close, fall back to fetch
+        const body = JSON.stringify({ language: langName, completed_topics: completed, selected_path_id: pathId });
+        const headers = { "Content-Type": "application/json" };
+        if (tokenRef.current) headers["Authorization"] = `Bearer ${tokenRef.current}`;
+        try {
+            fetch(`${BASE}/api/progress`, { method: "POST", headers, body, keepalive: true });
+        } catch { /* best effort */ }
+    }, []);
+
+    // ── Fetch roadmap ─────────────────────────────────────────────────────────
 
     const fetchRoadmap = useCallback(async (langName) => {
         if (!langName) return;
@@ -25,6 +112,7 @@ export function useRoadmap() {
         if (cache.current[langName]) {
             setRoadmap(cache.current[langName]);
             setError(null);
+            if (tokenRef.current) loadProgressFromServer(langName, cache.current[langName]?.generated_at);
             return;
         }
 
@@ -38,7 +126,6 @@ export function useRoadmap() {
                 const res  = await fetch(`${BASE}/api/roadmap/${encodeURIComponent(langName)}`);
                 const data = await res.json();
 
-                // 404 = not generated yet — show "Coming Soon", don't poll
                 if (res.status === 404) {
                     stopPolling();
                     setLoading(false);
@@ -55,13 +142,14 @@ export function useRoadmap() {
                     return;
                 }
 
-                if (data.status === 'generating') return; // Keep polling
+                if (data.status === 'generating') return;
 
-                // Ready
                 stopPolling();
                 cache.current[langName] = data;
                 setRoadmap(data);
                 setLoading(false);
+
+                if (tokenRef.current) loadProgressFromServer(langName, data.generated_at);
             } catch (err) {
                 stopPolling();
                 setLoading(false);
@@ -73,7 +161,9 @@ export function useRoadmap() {
         if (!cache.current[langName]) {
             pollTimer.current = setInterval(doFetch, POLL_INTERVAL);
         }
-    }, []);
+    }, [loadProgressFromServer]);
+
+    // ── Fetch path ────────────────────────────────────────────────────────────
 
     const fetchPath = useCallback(async (langName, pathId) => {
         if (!langName || !pathId) return null;
@@ -89,7 +179,6 @@ export function useRoadmap() {
                 const res  = await fetch(`${BASE}/api/roadmap/${encodeURIComponent(langName)}/path/${encodeURIComponent(pathId)}`);
                 const data = await res.json();
 
-                // 404 = not generated yet — don't poll, show "Coming Soon"
                 if (res.status === 404) {
                     if (pathTimers.current[key]) { clearInterval(pathTimers.current[key]); delete pathTimers.current[key]; }
                     setPathLoading(false);
@@ -106,9 +195,8 @@ export function useRoadmap() {
                     return null;
                 }
 
-                if (data.status === 'generating') return null; // Keep polling
+                if (data.status === 'generating') return null;
 
-                // Ready
                 if (pathTimers.current[key]) { clearInterval(pathTimers.current[key]); delete pathTimers.current[key]; }
                 pathCache.current[key] = data;
 
@@ -141,5 +229,8 @@ export function useRoadmap() {
         return result;
     }, []);
 
-    return { roadmap, loading, error, fetchRoadmap, fetchPath, pathLoading, pathError };
+    return {
+        roadmap, loading, error, fetchRoadmap, fetchPath, pathLoading, pathError,
+        syncProgressToServer, flushSync, reloadProgress, progressVersion,
+    };
 }
