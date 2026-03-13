@@ -10,7 +10,6 @@ class RoadmapController extends Controller
 {
     public function show(string $language)
     {
-        // Return from DB if exists
         $roadmap = Roadmap::where('language', $language)->first();
 
         if ($roadmap) {
@@ -20,7 +19,6 @@ class RoadmapController extends Controller
             ));
         }
 
-        // First time: generate, persist, and return
         try {
             $data = $this->generate($language);
 
@@ -62,17 +60,22 @@ class RoadmapController extends Controller
             'x-api-key'         => $apiKey,
             'anthropic-version' => '2023-06-01',
             'content-type'      => 'application/json',
-        ])->timeout(60)->post('https://api.anthropic.com/v1/messages', [
-            'model'      => 'claude-sonnet-4-20250514',
-            'max_tokens' => 2000,
-            'messages'   => [
+        ])->timeout(90)->post('https://api.anthropic.com/v1/messages', [
+            'model'       => 'claude-sonnet-4-20250514',
+            'max_tokens'  => 4000,
+            'temperature' => 0,
+            'messages'    => [
                 [
                     'role'    => 'user',
-                    'content' => "Generate a learning roadmap for the programming language: {$language}.
+                    'content' => "Generate a complete learning roadmap for the programming language: {$language}.
 Return ONLY a raw JSON object. No markdown. No backticks. No explanation. No text before or after.
 Use exactly this structure:
-{\"phases\":[{\"id\":\"phase-1\",\"label\":\"Phase Title\",\"description\":\"Brief description\",\"order\":0,\"topics\":[{\"id\":\"topic-1\",\"label\":\"Topic Name\",\"description\":\"Brief description\",\"type\":\"required\",\"links_to\":[]}]}]}
-Types must be one of: required, optional, advanced.",
+{\"phases\":[{\"id\":\"phase-1\",\"label\":\"Phase Title\",\"description\":\"Brief description\",\"order\":0,\"topics\":[{\"id\":\"topic-1\",\"label\":\"Topic Name\",\"description\":\"Brief description of what to learn\",\"type\":\"required\",\"resources\":[\"https://real-url-1.com\",\"https://real-url-2.com\"],\"links_to\":[]}]}]}
+Rules:
+- types must be one of: required, optional, advanced
+- resources must be 2-3 real, working URLs per topic (official docs, MDN, tutorials, articles)
+- include 4-6 phases with 5-8 topics each
+- links_to contains ids of prerequisite topics",
                 ],
             ],
         ]);
