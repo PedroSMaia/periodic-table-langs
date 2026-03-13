@@ -19,7 +19,7 @@ export default function PopularityList({ filter, T, langs = [], metrics = {} }) 
     const th = T || { card: "#111827", border: "#1F2937" };
 
     // Sort by TIOBE rank ascending; languages not in TIOBE get rank 999 (bottom)
-    const sorted = LANGS
+    const sorted = langs
         .filter(l => !filter || l.cat === filter)
         .sort((a, b) => (metrics.tiobe?.[a.name] || 999) - (metrics.tiobe?.[b.name] || 999));
 
