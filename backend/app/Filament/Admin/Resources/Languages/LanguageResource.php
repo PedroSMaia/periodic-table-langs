@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\Languages\Pages\CreateLanguage;
 use App\Filament\Admin\Resources\Languages\Pages\EditLanguage;
 use App\Filament\Admin\Resources\Languages\Pages\ListLanguages;
 use App\Filament\Admin\Resources\Languages\Pages\ViewLanguage;
+use App\Filament\Admin\Resources\Languages\RelationManagers\RoadmapPathsRelationManager;
 use App\Filament\Admin\Resources\Languages\Schemas\LanguageForm;
 use App\Filament\Admin\Resources\Languages\Schemas\LanguageInfolist;
 use App\Filament\Admin\Resources\Languages\Tables\LanguagesTable;
@@ -19,9 +20,7 @@ use Filament\Tables\Table;
 class LanguageResource extends Resource
 {
     protected static ?string $model = Language::class;
-
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCodeBracket;
-
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema
@@ -41,7 +40,9 @@ class LanguageResource extends Resource
 
     public static function getRelations(): array
     {
-        return [];
+        return [
+            RoadmapPathsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

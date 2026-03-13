@@ -12,5 +12,6 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('languages', LanguageController::class);
 Route::get('/metrics', [MetricsController::class, 'index']);
+Route::get('/roadmap/{language}/path/{pathId}', [RoadmapController::class, 'showPath']);
 Route::get('/roadmap/{language}', [RoadmapController::class, 'show']);
 Route::post('/roadmap/{language}/refresh', [RoadmapController::class, 'refresh']);

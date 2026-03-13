@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\Languages\Schemas;
 
+use App\Models\Roadmap;
 use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
@@ -57,6 +58,45 @@ class LanguageInfolist
                         TextEntry::make('desc')
                             ->label('Description')
                             ->columnSpanFull(),
+                    ]),
+
+                // ── Roadmap ────────────────────────────────────────────────
+                Section::make('Roadmap')
+                    ->columns(2)
+                    ->schema([
+                        TextEntry::make('roadmap_status')
+                            ->label('Status')
+                            ->html()
+                            ->getStateUsing(function ($record): string {
+                                $roadmap = Roadmap::where('language', $record->name)->first();
+                                if (! $roadmap) {
+                                    return '<span style="color:#6b7280;font-size:0.85rem">Not generated</span>';
+                                }
+                                $status = $roadmap->data['status'] ?? 'unknown';
+                                $color  = match ($status) {
+                                    'ready'      => '#4ade80',
+                                    'generating' => '#fbbf24',
+                                    'failed'     => '#f87171',
+                                    default      => '#6b7280',
+                                };
+                                $label = ucfirst($status);
+                                $date  = $roadmap->generated_at?->format('d M Y H:i') ?? '—';
+                                return "<span style=\"color:{$color};font-weight:600\">{$label}</span> <span style=\"color:#6b7280;font-size:0.75rem\">· generated {$date}</span>";
+                            }),
+
+                        TextEntry::make('roadmap_stats')
+                            ->label('Stats')
+                            ->html()
+                            ->getStateUsing(function ($record): string {
+                                $roadmap = Roadmap::where('language', $record->name)->first();
+                                if (! $roadmap || ($roadmap->data['status'] ?? '') !== 'ready') {
+                                    return '<span style="color:#6b7280;font-size:0.85rem">—</span>';
+                                }
+                                $phases = count($roadmap->data['core'] ?? []);
+                                $topics = collect($roadmap->data['core'] ?? [])->sum(fn ($p) => count($p['topics'] ?? []));
+                                $paths  = count($roadmap->data['paths'] ?? []);
+                                return "<span style=\"color:#e5e7eb;font-size:0.85rem\">{$phases} core phases · {$topics} topics · {$paths} paths available</span>";
+                            }),
                     ]),
 
                 // ── Tabs ───────────────────────────────────────────────────
