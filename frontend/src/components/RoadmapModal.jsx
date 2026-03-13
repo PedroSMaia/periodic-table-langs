@@ -13,11 +13,11 @@ import "@xyflow/react/dist/style.css";
 import { CATEGORIES } from "../data/index.js";
 
 // ── ReactFlow style overrides ─────────────────────────────────────────────────
-const FLOW_OVERRIDE = `
-  .react-flow__controls { background: #111827 !important; border: 1px solid #1F2937 !important; border-radius: 8px !important; box-shadow: none !important; }
-  .react-flow__controls-button { background: #111827 !important; border-bottom: 1px solid #1F2937 !important; color: #9CA3AF !important; fill: #9CA3AF !important; }
-  .react-flow__controls-button:hover { background: #1F2937 !important; }
-  .react-flow__controls-button svg { fill: #9CA3AF !important; }
+const flowOverride = (th) => `
+  .react-flow__controls { background: ${th.card} !important; border: 1px solid ${th.border} !important; border-radius: 8px !important; box-shadow: none !important; }
+  .react-flow__controls-button { background: ${th.card} !important; border-bottom: 1px solid ${th.border} !important; color: ${th.sub} !important; fill: ${th.sub} !important; }
+  .react-flow__controls-button:hover { background: ${th.border} !important; }
+  .react-flow__controls-button svg { fill: ${th.sub} !important; }
   .react-flow__controls-button:last-child { border-bottom: none !important; }
 `;
 
@@ -54,6 +54,7 @@ function PhaseNode({ data }) {
             cursor:         "default",
             userSelect:     "none",
         }}>
+            <Handle type="target" position={Position.Left} style={{ opacity: 0 }} />
             <div style={{
                 fontFamily:    "'Bebas Neue',display",
                 fontSize:      "1.05rem",
@@ -91,7 +92,7 @@ function TopicNode({ data }) {
                 minHeight:      TOPIC_H + "px",
                 borderRadius:   "8px",
                 border:         "1.5px solid " + (hov ? data.color + "99" : data.color + "33"),
-                background:     hov ? data.color + "18" : "#111827",
+                background:     hov ? data.color + "18" : data.cardBg,
                 display:        "flex",
                 flexDirection:  "column",
                 justifyContent: "center",
@@ -104,10 +105,9 @@ function TopicNode({ data }) {
                 boxSizing:      "border-box",
             }}
         >
-            <Handle type="target" position={Position.Left}   style={{ opacity: 0 }} />
-            <Handle type="source" position={Position.Right}  style={{ opacity: 0 }} />
             <Handle type="target" position={Position.Top}    style={{ opacity: 0, left: "50%" }} />
             <Handle type="source" position={Position.Bottom} style={{ opacity: 0, left: "50%" }} />
+            <Handle type="source" position={Position.Right}  style={{ opacity: 0 }} />
 
             <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "5px" }}>
                 <div style={{
@@ -122,7 +122,7 @@ function TopicNode({ data }) {
                     fontFamily:    "'Plus Jakarta Sans',sans-serif",
                     fontSize:      "0.78rem",
                     fontWeight:    700,
-                    color:         hov ? data.color : "#F9FAFB",
+                    color:         hov ? data.color : data.textColor,
                     lineHeight:    1.2,
                     letterSpacing: "0.01em",
                 }}>{data.label}</span>
@@ -132,7 +132,7 @@ function TopicNode({ data }) {
                 <div style={{
                     fontFamily:      "'Plus Jakarta Sans',sans-serif",
                     fontSize:        "0.6rem",
-                    color:           "#9CA3AF",
+                    color:           data.subColor,
                     lineHeight:      1.45,
                     overflow:        "hidden",
                     display:         "-webkit-box",
@@ -147,7 +147,7 @@ function TopicNode({ data }) {
 const NODE_TYPES = { phase: PhaseNode, topic: TopicNode };
 
 // ── Build nodes + edges from API response ─────────────────────────────────────
-function buildGraph(roadmap, catColor) {
+function buildGraph(roadmap, catColor, th) {
     if (!roadmap?.phases?.length) return { nodes: [], edges: [] };
 
     const nodes = [];
@@ -180,6 +180,9 @@ function buildGraph(roadmap, catColor) {
                     description: topic.description,
                     type:        topic.type,
                     color:       catColor,
+                    cardBg:      th.card,
+                    textColor:   th.text,
+                    subColor:    th.sub,
                 },
                 draggable: true,
             });
@@ -197,7 +200,7 @@ function buildGraph(roadmap, catColor) {
                 });
             }
 
-            // Topic → next topic within same phase (vertical flow)
+            // Topic → next topic within same phase
             const nextTopic = phase.topics[tIdx + 1];
             if (nextTopic) {
                 edges.push({
@@ -211,15 +214,30 @@ function buildGraph(roadmap, catColor) {
                 });
             }
         });
+
+        // Last topic → next phase header
+        const nextPhase = roadmap.phases[pIdx + 1];
+        if (nextPhase && phase.topics?.length) {
+            const lastTopic = phase.topics[phase.topics.length - 1];
+            edges.push({
+                id:        "e_next_phase_" + phase.id + "_" + nextPhase.id,
+                source:    lastTopic.id,
+                target:    "phase_" + nextPhase.id,
+                type:      "smoothstep",
+                animated:  false,
+                style:     { stroke: catColor + "66", strokeWidth: 1.5 },
+                markerEnd: { type: MarkerType.ArrowClosed, color: catColor + "66" },
+            });
+        }
     });
 
     return { nodes, edges };
 }
 
 // ── Loading animation ─────────────────────────────────────────────────────────
-function RoadmapLoading({ lang, color }) {
+function RoadmapLoading({ lang, color, th }) {
     return (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "18px" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "18px", background: th.bg }}>
             <div style={{
                 fontFamily:           "'Bebas Neue',display",
                 fontSize:             "1.6rem",
@@ -230,7 +248,7 @@ function RoadmapLoading({ lang, color }) {
             }}>
                 GENERATING {lang.toUpperCase()} ROADMAP…
             </div>
-            <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.8rem", color: "#6B7280" }}>
+            <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.8rem", color: th.dim }}>
                 Powered by Claude AI
             </div>
             <div style={{ display: "flex", gap: "8px" }}>
@@ -262,11 +280,11 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
 
     useEffect(() => {
         if (roadmap) {
-            const { nodes: n, edges: e } = buildGraph(roadmap, color);
+            const { nodes: n, edges: e } = buildGraph(roadmap, color, th);
             setRfNodes(n);
             setRfEdges(e);
         }
-    }, [roadmap, color]);
+    }, [roadmap, color, th.card]);
 
     useEffect(() => {
         const fn = (e) => { if (e.key === "Escape") onClose(); };
@@ -281,12 +299,12 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
             position:       "fixed",
             inset:          0,
             zIndex:         100,
-            background:     "#0B0F19F5",
+            background:     th.bg + "F5",
             backdropFilter: "blur(8px)",
             display:        "flex",
             flexDirection:  "column",
         }}>
-            <style>{FLOW_OVERRIDE}</style>
+            <style>{flowOverride(th)}</style>
 
             {/* Header */}
             <div style={{
@@ -369,10 +387,10 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
 
             {/* Body */}
             <div style={{ flex: 1, position: "relative" }}>
-                {loading && <RoadmapLoading lang={lang.name} color={color} />}
+                {loading && <RoadmapLoading lang={lang.name} color={color} th={th} />}
 
                 {error && (
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "12px" }}>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "12px", background: th.bg }}>
                         <div style={{ fontSize: "2rem" }}>⚠️</div>
                         <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.2rem", color: "#f87171", letterSpacing: "0.06em" }}>
                             FAILED TO GENERATE ROADMAP
@@ -392,10 +410,10 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
                         fitViewOptions={{ padding: 0.12 }}
                         minZoom={0.2}
                         maxZoom={2}
-                        style={{ background: "#0B0F19" }}
+                        style={{ background: th.bg }}
                         proOptions={{ hideAttribution: true }}
                     >
-                        <Background color="#1F2937" gap={24} size={1} />
+                        <Background color={th.border} gap={24} size={1} />
                         <Controls />
                     </ReactFlow>
                 )}

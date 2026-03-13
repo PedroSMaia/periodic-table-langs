@@ -4,11 +4,11 @@ namespace App\Filament\Admin\Resources\Languages\Pages;
 
 use App\Filament\Admin\Resources\Languages\LanguageResource;
 use App\Models\Roadmap;
+use App\Http\Controllers\RoadmapController;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Illuminate\Support\Facades\Http;
 
 class ViewLanguage extends ViewRecord
 {
@@ -31,26 +31,22 @@ class ViewLanguage extends ViewRecord
                     $language = $this->record->name;
 
                     try {
-                        $response = Http::timeout(90)->post(
-                            config('app.url') . '/api/roadmap/' . urlencode($language) . '/refresh'
-                        );
+                        $controller = new RoadmapController();
+                        $response   = $controller->refresh($language);
+                        $data       = json_decode($response->getContent(), true);
 
-                        if ($response->successful()) {
-                            Notification::make()
-                                ->title('Roadmap regenerated')
-                                ->body("Roadmap for {$language} has been updated successfully.")
-                                ->success()
-                                ->send();
-                        } else {
-                            Notification::make()
-                                ->title('Failed to regenerate roadmap')
-                                ->body('Error: ' . $response->status())
-                                ->danger()
-                                ->send();
+                        if (isset($data['error'])) {
+                            throw new \Exception($data['error']);
                         }
+
+                        Notification::make()
+                            ->title('Roadmap regenerated')
+                            ->body("Roadmap for {$language} has been updated successfully.")
+                            ->success()
+                            ->send();
                     } catch (\Exception $e) {
                         Notification::make()
-                            ->title('Error')
+                            ->title('Failed to regenerate roadmap')
                             ->body($e->getMessage())
                             ->danger()
                             ->send();
