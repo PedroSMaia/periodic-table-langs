@@ -9,6 +9,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\Middleware\WithoutOverlapping;
+use Illuminate\Queue\Middleware\ThrottlesExceptions;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -16,10 +18,24 @@ class GenerateRoadmapJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public int $timeout = 1200; // 20 minutes max
-    public int $tries   = 1;    // Don't retry — expensive API calls
+    public int $timeout = 1200;
+    public int $tries   = 3;
+    public int $backoff = 60;
 
-    public function __construct(public readonly string $language) {}
+    public function __construct(public readonly string $language)
+    {
+        $this->onQueue('roadmaps');
+    }
+
+    public function middleware(): array
+    {
+        return [
+            // Prevent same language from being generated twice simultaneously
+            (new WithoutOverlapping($this->language))->releaseAfter(600),
+            // Throttle: max 1 attempt per 10s per key (prevents hammering Claude API)
+            new ThrottlesExceptions(1, 10),
+        ];
+    }
 
     public function handle(): void
     {
@@ -38,14 +54,6 @@ class GenerateRoadmapJob implements ShouldQueue
                 ['language' => $this->language],
                 ['data' => $data, 'generated_at' => now()]
             );
-
-            // Create stubs for all paths not yet cached
-            foreach ($data['paths'] as $path) {
-                RoadmapPath::firstOrCreate(
-                    ['language' => $this->language, 'path_id' => $path['id']],
-                    ['data' => ['status' => 'not_cached', 'label' => $path['label'] ?? '', 'category' => $path['category'] ?? '', 'icon' => $path['icon'] ?? ''], 'generated_at' => now()]
-                );
-            }
 
             Log::info('GenerateRoadmapJob completed', [
                 'language' => $this->language,

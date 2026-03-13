@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { CATEGORIES } from "./data/index.js";
 import { useLanguages } from "./hooks/useLanguages.js";
 import { getPos } from "./utils/grid.js";
@@ -12,7 +12,8 @@ import CompareDrawer from "./components/CompareDrawer.jsx";
 import SearchModal   from "./components/SearchModal.jsx";
 import QuizModal     from "./components/QuizModal.jsx";
 import PopularityList from "./components/PopularityList.jsx";
-import RoadmapModal  from "./components/RoadmapModal.jsx";
+import RoadmapModal        from "./components/RoadmapModal.jsx";
+import RoadmapCompareModal from "./components/RoadmapCompareModal.jsx";
 import { useRoadmap } from "./hooks/useRoadmap.js";
 
 // ── Theme tokens ─────────────────────────────────────────────────────────────
@@ -64,7 +65,18 @@ export default function App() {
     const { langs: LANGS, metrics, loading: langsLoading, error: langsError } = useLanguages();
 
     const { roadmap, loading: roadmapLoading, error: roadmapError, fetchRoadmap, fetchPath, pathLoading, pathError } = useRoadmap();
-    const [roadmapLang, setRoadmapLang] = useState(null);
+    const [roadmapLang,        setRoadmapLang]        = useState(null);
+    const [roadmapCompareList, setRoadmapCompareList] = useState([]);
+    const [showRoadmapCompare, setShowRoadmapCompare] = useState(false);
+
+    const handleAddToRoadmapCompare = (item) => {
+        setRoadmapCompareList(prev => {
+            if (prev.find(x => x.id === item.id)) return prev;
+            const next = prev.length >= 2 ? [prev[1], item] : [...prev, item];
+            return next;
+        });
+        setShowRoadmapCompare(true); // ← sempre reabre, mesmo se já estava na lista
+    };
 
     const handleViewRoadmap = (lang) => {
         setRoadmapLang(lang);
@@ -525,6 +537,19 @@ export default function App() {
                               error={roadmapError}
                               onClose={() => { setRoadmapLang(null); }}
                               T={T}
+                              onAddToCompare={handleAddToRoadmapCompare}
+                              inCompare={roadmapCompareList.some(x => x.lang.name === roadmapLang.name)}
+                />
+            )}
+
+            {showRoadmapCompare && (
+                <RoadmapCompareModal
+                    items={roadmapCompareList}
+                    onItemsChange={setRoadmapCompareList}
+                    onClose={() => setShowRoadmapCompare(false)}
+                    T={T}
+                    langs={LANGS}
+
                 />
             )}
 

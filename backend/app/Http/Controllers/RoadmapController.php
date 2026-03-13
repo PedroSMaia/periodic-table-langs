@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\GenerateRoadmapJob;
-use App\Jobs\GenerateRoadmapPathJob;
 use App\Models\Roadmap;
 use App\Models\RoadmapPath;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class RoadmapController extends Controller
 {
@@ -15,15 +14,8 @@ class RoadmapController extends Controller
     {
         $roadmap = Roadmap::where('language', $language)->first();
 
-        // Not in DB yet — create placeholder and dispatch job
         if (! $roadmap) {
-            Roadmap::create([
-                'language'     => $language,
-                'data'         => ['status' => 'generating', 'core' => [], 'paths' => []],
-                'generated_at' => now(),
-            ]);
-            GenerateRoadmapJob::dispatch($language);
-            return response()->json(['language' => $language, 'status' => 'generating']);
+            return response()->json(['language' => $language, 'status' => 'not_cached'], 404);
         }
 
         $status = $roadmap->data['status'] ?? 'ready';
@@ -32,65 +24,51 @@ class RoadmapController extends Controller
             return response()->json(['language' => $language, 'status' => $status]);
         }
 
+        $cachedPathIds = RoadmapPath::where('language', $language)
+            ->pluck('path_id')
+            ->flip()
+            ->toArray();
+
+        $data = $roadmap->data;
+        $data['paths'] = array_map(function ($path) use ($cachedPathIds) {
+            $path['status'] = array_key_exists($path['id'], $cachedPathIds)
+                ? 'cached'
+                : 'not_cached';
+            return $path;
+        }, $data['paths'] ?? []);
+
         return response()->json(array_merge(
             ['language' => $roadmap->language, 'status' => 'ready', 'generated_at' => $roadmap->generated_at],
-            $roadmap->data
+            $data
         ));
     }
 
-    // ── GET /api/roadmap/{language}/path/{pathId} ─────────────────────────────
+    // ── GET /api/roadmap/{language}/path/{pathId} — read-only ─────────────────
     public function showPath(string $language, string $pathId)
     {
         $cached = RoadmapPath::where('language', $language)->where('path_id', $pathId)->first();
 
-        // Already ready
         if ($cached && ($cached->data['status'] ?? 'ready') === 'ready') {
             return response()->json($cached->data);
         }
 
-        // Already generating
-        if ($cached && ($cached->data['status'] ?? '') === 'generating') {
-            return response()->json(['status' => 'generating']);
-        }
-
-         // Failed — allow retry
-         if ($cached && ($cached->data['status'] ?? '') === 'failed') {
-             $cached->delete();
-         }
-
-        // Get path stub from main roadmap
-        $roadmap = Roadmap::where('language', $language)->first();
-        if (! $roadmap || ($roadmap->data['status'] ?? '') !== 'ready') {
-            return response()->json(['error' => 'Roadmap not ready'], 404);
-        }
-
-        $pathStub = collect($roadmap->data['paths'] ?? [])->firstWhere('id', $pathId);
-        if (! $pathStub) {
-            return response()->json(['error' => 'Path not found'], 404);
-        }
-
-        // Dispatch job and create placeholder
-        RoadmapPath::updateOrCreate(
-            ['language' => $language, 'path_id' => $pathId],
-            [
-            'language'     => $language,
-            'path_id'      => $pathId,
-            'data'         => ['status' => 'generating'],
-            'generated_at' => now(),
-        ]);
-        GenerateRoadmapPathJob::dispatch($language, $pathId, $pathStub);
-
-        return response()->json(['status' => 'generating']);
+        // Not generated — never auto-generate from frontend
+        $status = $cached ? ($cached->data['status'] ?? 'not_cached') : 'not_cached';
+        return response()->json(['status' => $status], 404);
     }
 
-    // ── POST /api/roadmap/{language}/refresh ──────────────────────────────────
+    // ── POST /api/roadmap/{language}/refresh — Admin only ─────────────────────
     public function refresh(string $language)
     {
-        // Delete existing data
+        $roadmap = Roadmap::where('language', $language)->first();
+
+        if ($roadmap && ($roadmap->data['status'] ?? '') === 'generating') {
+            return response()->json(['language' => $language, 'status' => 'generating']);
+        }
+
         Roadmap::where('language', $language)->delete();
         RoadmapPath::where('language', $language)->delete();
 
-        // Dispatch fresh generation
         GenerateRoadmapJob::dispatch($language);
 
         return response()->json(['language' => $language, 'status' => 'generating']);

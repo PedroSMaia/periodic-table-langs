@@ -48,7 +48,7 @@ const loadProgress  = (lang, generatedAt) => {
 };
 const saveProgress  = (lang, set) => localStorage.setItem(storageKey(lang), JSON.stringify([...set]));
 const loadPath      = (lang) => { try { return localStorage.getItem(pathKey(lang)) || null; } catch { return null; } };
-const savePath      = (lang, pathId) => localStorage.setItem(pathKey(lang), pathId);
+const savePath = (lang, pathId) => { if (pathId) localStorage.setItem(pathKey(lang), pathId); else localStorage.removeItem(pathKey(lang)); };
 
 // ── Compute unlocked topics ───────────────────────────────────────────────────
 function computeUnlocked(roadmap, progress, selectedPathId) {
@@ -241,13 +241,15 @@ function PathSelector({ paths, color, th, selectedPathId, onSelect, onClose }) {
             {activeCat && (
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "center", maxWidth: "900px" }}>
                     {activePaths.map(path => {
-                        const isSelected = selectedPathId === path.id;
+                        const isSelected   = selectedPathId === path.id;
+                        const notGenerated = path.status === "not_cached";
                         return (
-                            <div key={path.id} onClick={() => onSelect(path.id)}
-                                 style={{ width: "200px", padding: "20px", borderRadius: "12px", border: "2px solid " + (isSelected ? color + "CC" : color + "33"), background: isSelected ? color + "18" : th.card, cursor: "pointer", transition: "all .2s", boxShadow: isSelected ? "0 0 24px " + color + "44" : "none", display: "flex", flexDirection: "column", gap: "8px" }}
-                                 onMouseEnter={e => { if (!isSelected) { e.currentTarget.style.borderColor = color + "77"; e.currentTarget.style.background = color + "0C"; } }}
-                                 onMouseLeave={e => { if (!isSelected) { e.currentTarget.style.borderColor = color + "33"; e.currentTarget.style.background = th.card; } }}
+                            <div key={path.id} onClick={() => { if (!notGenerated) onSelect(path.id); }}
+                                 style={{ width: "200px", padding: "20px", borderRadius: "12px", border: "2px solid " + (isSelected ? color + "CC" : color + "33"), background: isSelected ? color + "18" : th.card, cursor: notGenerated ? "not-allowed" : "pointer", transition: "all .2s", boxShadow: isSelected ? "0 0 24px " + color + "44" : "none", display: "flex", flexDirection: "column", gap: "8px", opacity: notGenerated ? 0.5 : 1, position: "relative" }}
+                                 onMouseEnter={e => { if (!isSelected && !notGenerated) { e.currentTarget.style.borderColor = color + "77"; e.currentTarget.style.background = color + "0C"; } }}
+                                 onMouseLeave={e => { if (!isSelected && !notGenerated) { e.currentTarget.style.borderColor = color + "33"; e.currentTarget.style.background = th.card; } }}
                             >
+                                {notGenerated && <span style={{ position: "absolute", top: "8px", right: "8px", fontFamily: "'JetBrains Mono',monospace", fontSize: "0.5rem", padding: "2px 6px", borderRadius: "4px", background: th.border, color: th.dim, letterSpacing: "0.05em" }}>SOON</span>}
                                 <div style={{ fontSize: "2rem" }}>{path.icon}</div>
                                 <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1rem", letterSpacing: "0.06em", color: isSelected ? color : th.text }}>{path.label}</div>
                                 <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.7rem", color: th.sub, lineHeight: 1.5 }}>{path.description}</div>
@@ -385,14 +387,14 @@ function OverallProgress({ roadmap, progress, selectedPathId, color, th }) {
     );
 }
 
-function RoadmapLoading({ lang, color, th, isNew = false }) {
+function RoadmapLoading({ lang, color, th }) {
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "18px", background: th.bg }}>
             <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.6rem", letterSpacing: "0.1em", background: "linear-gradient(135deg," + color + ",#FFA94D)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                {isNew ? `GENERATING ${lang.toUpperCase()} ROADMAP…` : `LOADING ${lang.toUpperCase()} ROADMAP…`}
+                LOADING {lang.toUpperCase()} ROADMAP…
             </div>
             <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.8rem", color: th.dim }}>
-                {isNew ? "Powered by Claude AI — this may take a minute" : "Fetching from database…"}
+                Fetching from database…
             </div>
             <div style={{ display: "flex", gap: "8px" }}>
                 {[0,1,2,3,4].map(i => (
@@ -405,7 +407,7 @@ function RoadmapLoading({ lang, color, th, isNew = false }) {
 }
 
 // ── Main modal ────────────────────────────────────────────────────────────────
-export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T, fetchPath, pathLoading, pathError }) {
+export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T, fetchPath, pathLoading, pathError, onAddToCompare, inCompare }) {
     const th    = T || { bg: "#0B0F19", card: "#111827", border: "#1F2937", text: "#F9FAFB", sub: "#9CA3AF", dim: "#6B7280" };
     const cat   = CATEGORIES[lang.cat];
     const color = cat?.color ?? "#FF7A00";
@@ -480,7 +482,6 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
         const url = window.location.origin + window.location.pathname + "?" + params.toString();
 
         if (e.shiftKey) {
-            // Shift+click → screenshot download
             try {
                 const el = modalRef.current;
                 if (!el) return;
@@ -491,12 +492,61 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
                 a.click();
             } catch (err) { console.error("Screenshot failed", err); }
         } else {
-            // Click → copy URL
             try { await navigator.clipboard.writeText(url); } catch { /* fallback */ }
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         }
     }, [lang.name, selectedPathId, th.bg]);
+
+    // ── Compare ───────────────────────────────────────────────────────────────
+    const handleCompare = useCallback(async () => {
+        if (!onAddToCompare) return;
+
+        const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000/api";
+
+        // Use prop data if available, otherwise fetch fresh
+        let rm = roadmap;
+        if (!rm || (rm.core?.length ?? 0) === 0) {
+            try {
+                const res = await fetch(`${API_BASE}/roadmap/${encodeURIComponent(lang.name)}`);
+                if (!res.ok) return;
+                const json = await res.json();
+                rm = json.data ?? json;
+            } catch { return; }
+        }
+        if (!rm || (rm.core?.length ?? 0) === 0) return;
+
+        const selectedPath = (rm.paths ?? []).find(p => p.id === selectedPathId);
+
+        // For paths, fetch path detail if phases are missing
+        let phases;
+        if (selectedPathId) {
+            phases = selectedPath?.phases ?? [];
+            if (!phases.length) {
+                try {
+                    const res = await fetch(`${API_BASE}/roadmap/${encodeURIComponent(lang.name)}/path/${encodeURIComponent(selectedPathId)}?no_generate=1`);
+                    if (res.ok) {
+                        const json = await res.json();
+                        const pathData = json.data ?? json;
+                        if (pathData.phases?.length) phases = pathData.phases;
+                    }
+                } catch { /* keep empty */ }
+            }
+        } else {
+            phases = rm.core ?? [];
+        }
+
+        onAddToCompare({
+            id:        selectedPathId ? `${lang.name}::${selectedPathId}` : `${lang.name}::core`,
+            lang,
+            type:      selectedPathId ? "path" : "core",
+            pathId:    selectedPathId ?? null,
+            pathLabel: selectedPath?.label ?? null,
+            pathIcon:  selectedPath?.icon  ?? null,
+            phases,
+            color,
+        });
+    }, [onAddToCompare, roadmap, lang, selectedPathId, color]);
 
     // Auto-show path picker when core is completed
     const prevCoreDone = useRef(false);
@@ -521,7 +571,6 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
         return () => window.removeEventListener("keydown", fn);
     }, [onClose, selectedTopic, showPathPicker]);
 
-    const legend       = Object.entries(TYPE_CONFIG).map(([k, v]) => ({ key: k, ...v }));
     const selectedPath = (roadmap?.paths ?? []).find(p => p.id === selectedPathId);
 
     return (
@@ -556,6 +605,19 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
                     <OverallProgress roadmap={roadmap} progress={progress} selectedPathId={selectedPathId} color={color} th={th} />
                 )}
 
+                {/* Compare button */}
+                {onAddToCompare && !loading && roadmap && (
+                    <button
+                        onClick={handleCompare}
+                        title={inCompare ? "Already in comparison" : "Add to comparison"}
+                        style={{ padding: "4px 10px", borderRadius: "6px", border: "1px solid " + (inCompare ? color + "88" : th.border), background: inCompare ? color + "18" : "transparent", color: inCompare ? color : th.dim, fontFamily: "'JetBrains Mono',monospace", fontSize: "0.6rem", cursor: inCompare ? "default" : "pointer", transition: "all .2s", display: "flex", alignItems: "center", gap: "5px" }}
+                        onMouseEnter={e => { if (!inCompare) { e.currentTarget.style.borderColor = color + "66"; e.currentTarget.style.color = color; } }}
+                        onMouseLeave={e => { if (!inCompare) { e.currentTarget.style.borderColor = th.border; e.currentTarget.style.color = th.dim; } }}
+                    >
+                        {inCompare ? "⇄ added" : "⇄ compare"}
+                    </button>
+                )}
+
                 {/* Share button */}
                 <button
                     onClick={handleShare}
@@ -582,14 +644,29 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
 
             {/* Body */}
             <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
-                {loading && <RoadmapLoading lang={lang.name} color={color} th={th} isNew={!roadmap} />}
-                {error && (
+                {loading && <RoadmapLoading lang={lang.name} color={color} th={th} />}
+
+                {/* Coming Soon — roadmap not generated yet */}
+                {!loading && error === 'not_cached' && (
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "14px", background: th.bg }}>
+                        <div style={{ fontSize: "3rem" }}>🚧</div>
+                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.4rem", color: th.text, letterSpacing: "0.08em" }}>COMING SOON</div>
+                        <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.82rem", color: th.sub }}>
+                            The <strong style={{ color: th.text }}>{lang.name}</strong> roadmap hasn't been generated yet.
+                        </div>
+                        <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.65rem", color: th.dim }}>Check back later or suggest it via the feedback button.</div>
+                    </div>
+                )}
+
+                {/* Actual error */}
+                {!loading && error && error !== 'not_cached' && (
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", gap: "12px", background: th.bg }}>
                         <div style={{ fontSize: "2rem" }}>⚠️</div>
-                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.2rem", color: "#f87171", letterSpacing: "0.06em" }}>FAILED TO GENERATE ROADMAP</div>
+                        <div style={{ fontFamily: "'Bebas Neue',display", fontSize: "1.2rem", color: "#f87171", letterSpacing: "0.06em" }}>FAILED TO LOAD ROADMAP</div>
                         <div style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: "0.72rem", color: th.dim }}>{error}</div>
                     </div>
                 )}
+
                 {!loading && !error && roadmap && (
                     <>
                         <ReactFlow
@@ -613,7 +690,16 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
                                         <div key={i} style={{ width: "6px", height: "6px", borderRadius: "50%", background: color, animation: "rmDot 1.2s ease-in-out infinite", animationDelay: (i * 0.15) + "s", opacity: 0.3 }} />
                                     ))}
                                 </div>
-                                <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.75rem", color: th.sub }}>Generating path with Claude AI…</span>
+                                <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.75rem", color: th.sub }}>Loading path…</span>
+                            </div>
+                        )}
+
+                        {pathError && (
+                            <div style={{ position: "absolute", bottom: "20px", left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: "10px", padding: "10px 20px", borderRadius: "8px", background: th.card, border: "1px solid " + (pathError === 'not_cached' ? th.border : "#f8717144"), boxShadow: "0 4px 24px rgba(0,0,0,0.4)" }}>
+                                <span style={{ fontSize: "0.9rem" }}>{pathError === 'not_cached' ? '🚧' : '⚠️'}</span>
+                                <span style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.75rem", color: th.sub }}>
+                                    {pathError === 'not_cached' ? "This path hasn't been generated yet — coming soon." : "Failed to load path."}
+                                </span>
                             </div>
                         )}
 

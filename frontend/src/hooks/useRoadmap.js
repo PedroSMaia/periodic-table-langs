@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from "react";
 
 const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
-const POLL_INTERVAL = 4000; // 4s polling while generating
+const POLL_INTERVAL = 4000;
 
 export function useRoadmap() {
     const [roadmap,     setRoadmap]     = useState(null);
@@ -22,7 +22,6 @@ export function useRoadmap() {
     const fetchRoadmap = useCallback(async (langName) => {
         if (!langName) return;
 
-        // Serve from memory cache immediately
         if (cache.current[langName]) {
             setRoadmap(cache.current[langName]);
             setError(null);
@@ -36,21 +35,27 @@ export function useRoadmap() {
 
         const doFetch = async () => {
             try {
-                const res = await fetch(`${BASE}/api/roadmap/${encodeURIComponent(langName)}`);
-                if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+                const res  = await fetch(`${BASE}/api/roadmap/${encodeURIComponent(langName)}`);
                 const data = await res.json();
+
+                // 404 = not generated yet — show "Coming Soon", don't poll
+                if (res.status === 404) {
+                    stopPolling();
+                    setLoading(false);
+                    setError('not_cached');
+                    return;
+                }
+
+                if (!res.ok) throw new Error(`Server responded with ${res.status}`);
 
                 if (data.status === 'failed') {
                     stopPolling();
                     setLoading(false);
-                    setError('Failed to generate roadmap');
+                    setError('failed');
                     return;
                 }
 
-                if (data.status === 'generating') {
-                    // Keep polling — don't stop loading
-                    return;
-                }
+                if (data.status === 'generating') return; // Keep polling
 
                 // Ready
                 stopPolling();
@@ -64,8 +69,7 @@ export function useRoadmap() {
             }
         };
 
-        const initial = await doFetch();
-        // Only start polling if still generating (no cache set yet)
+        await doFetch();
         if (!cache.current[langName]) {
             pollTimer.current = setInterval(doFetch, POLL_INTERVAL);
         }
@@ -82,14 +86,23 @@ export function useRoadmap() {
 
         const doFetch = async () => {
             try {
-                const res = await fetch(`${BASE}/api/roadmap/${encodeURIComponent(langName)}/path/${encodeURIComponent(pathId)}`);
-                if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+                const res  = await fetch(`${BASE}/api/roadmap/${encodeURIComponent(langName)}/path/${encodeURIComponent(pathId)}`);
                 const data = await res.json();
+
+                // 404 = not generated yet — don't poll, show "Coming Soon"
+                if (res.status === 404) {
+                    if (pathTimers.current[key]) { clearInterval(pathTimers.current[key]); delete pathTimers.current[key]; }
+                    setPathLoading(false);
+                    setPathError('not_cached');
+                    return null;
+                }
+
+                if (!res.ok) throw new Error(`Server responded with ${res.status}`);
 
                 if (data.status === 'failed') {
                     if (pathTimers.current[key]) { clearInterval(pathTimers.current[key]); delete pathTimers.current[key]; }
                     setPathLoading(false);
-                    setPathError('Failed to generate path');
+                    setPathError('failed');
                     return null;
                 }
 
@@ -107,7 +120,7 @@ export function useRoadmap() {
                             p.id === pathId ? { ...p, ...data } : p
                         ),
                     };
-                    cache.current[langName] = updated; // keep cache in sync
+                    cache.current[langName] = updated;
                     return updated;
                 });
 

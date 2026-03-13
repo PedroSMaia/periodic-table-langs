@@ -123,4 +123,16 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin API Key
+    |--------------------------------------------------------------------------
+    |
+    | Used by the AdminApiKey middleware to protect admin-only endpoints
+    | (e.g. roadmap generation). Set via ADMIN_API_KEY in .env.
+    |
+    */
+
+    'admin_api_key' => env('ADMIN_API_KEY'),
+
 ];

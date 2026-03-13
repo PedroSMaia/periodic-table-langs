@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\Middleware\WithoutOverlapping;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -17,12 +18,22 @@ class GenerateRoadmapPathJob implements ShouldQueue
 
     public int $timeout = 1200;
     public int $tries   = 3;
+    public int $backoff = 60;
 
     public function __construct(
         public readonly string $language,
         public readonly string $pathId,
         public readonly array  $pathStub,
-    ) {}
+    ) {
+        $this->onQueue('roadmaps');
+    }
+
+    public function middleware(): array
+    {
+        return [
+            (new WithoutOverlapping("{$this->language}::{$this->pathId}"))->releaseAfter(600),
+        ];
+    }
 
     public function handle(): void
     {

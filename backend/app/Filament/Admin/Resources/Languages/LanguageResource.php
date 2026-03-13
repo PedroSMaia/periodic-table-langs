@@ -6,7 +6,6 @@ use App\Filament\Admin\Resources\Languages\Pages\CreateLanguage;
 use App\Filament\Admin\Resources\Languages\Pages\EditLanguage;
 use App\Filament\Admin\Resources\Languages\Pages\ListLanguages;
 use App\Filament\Admin\Resources\Languages\Pages\ViewLanguage;
-use App\Filament\Admin\Resources\Languages\RelationManagers\RoadmapPathsRelationManager;
 use App\Filament\Admin\Resources\Languages\Schemas\LanguageForm;
 use App\Filament\Admin\Resources\Languages\Schemas\LanguageInfolist;
 use App\Filament\Admin\Resources\Languages\Tables\LanguagesTable;
@@ -40,9 +39,7 @@ class LanguageResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            RoadmapPathsRelationManager::class,
-        ];
+        return [];
     }
 
     public static function getPages(): array
