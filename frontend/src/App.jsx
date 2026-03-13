@@ -49,6 +49,7 @@ const MODES = [
 
 const NAVBAR_H     = 48;
 const FILTER_BAR_H = 48;
+const GITHUB_REPO  = "PedroSMaia/periodic-table-langs";
 
 export default function App() {
     const [selected,    setSelected]    = useState(null);
@@ -75,7 +76,7 @@ export default function App() {
             const next = prev.length >= 2 ? [prev[1], item] : [...prev, item];
             return next;
         });
-        setShowRoadmapCompare(true); // ← sempre reabre, mesmo se já estava na lista
+        setShowRoadmapCompare(true);
     };
 
     const handleViewRoadmap = (lang) => {
@@ -306,6 +307,10 @@ export default function App() {
 
     const showPopList = mode === "popularity" && !isDesktop;
 
+    const reportUrl = "https://github.com/" + GITHUB_REPO + "/issues/new"
+        + "?title=" + encodeURIComponent("[feedback] ")
+        + "&body=" + encodeURIComponent("**Type:** bug / suggestion / other\n\n**Description:**\n");
+
     // ── Loading / error states ─────────────────────────────────────────────────
     if (langsLoading) {
         return (
@@ -387,21 +392,32 @@ export default function App() {
 
                 <button
                     onClick={() => setShowSearch(true)}
-                    style={{ display: "flex", alignItems: "center", gap: "5px", padding: "5px 10px", borderRadius: "8px", border: "1px solid " + T.btnBorder, background: T.btnBg, color: T.btnColor, cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "12px", transition: "all .15s", whiteSpace: "nowrap" }}
+                    style={{ display: "flex", alignItems: "center", gap: isMobile ? "0" : "6px", padding: isMobile ? "6px 10px" : "5px 14px", borderRadius: "8px", border: "1px solid " + T.btnBorder, background: T.btnBg, color: T.btnColor, cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "12px", letterSpacing: "0.04em", transition: "all .15s", whiteSpace: "nowrap" }}
                     onMouseEnter={e => { e.currentTarget.style.background = T.btnHoverBg; e.currentTarget.style.color = T.btnHoverColor; }}
                     onMouseLeave={e => { e.currentTarget.style.background = T.btnBg;      e.currentTarget.style.color = T.btnColor; }}
                 >
-                    <span style={{ fontSize: "14px" }}>⌕</span>
+                    <span style={{ fontSize: "13px" }}>⌕</span>
+                    {!isMobile && "Search"}
                     {!isMobile && <kbd style={{ padding: "1px 5px", borderRadius: "3px", border: "1px solid " + T.kbdBorder, background: T.kbdBg, fontSize: "10px", fontFamily: "'JetBrains Mono',monospace", color: T.dim }}>⌘K</kbd>}
                 </button>
 
                 <button
                     onClick={() => setDarkMode(v => !v)}
                     title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-                    style={{ padding: "5px 8px", borderRadius: "8px", border: "1px solid " + T.btnBorder, background: T.btnBg, color: T.btnColor, cursor: "pointer", fontSize: "14px", transition: "all .15s", lineHeight: 1 }}
+                    style={{ display: "flex", alignItems: "center", gap: isMobile ? "0" : "6px", padding: isMobile ? "6px 10px" : "5px 14px", borderRadius: "8px", border: "1px solid " + T.btnBorder, background: T.btnBg, color: T.btnColor, cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "12px", letterSpacing: "0.04em", transition: "all .15s", whiteSpace: "nowrap" }}
                     onMouseEnter={e => { e.currentTarget.style.background = T.btnHoverBg; e.currentTarget.style.color = T.btnHoverColor; }}
                     onMouseLeave={e => { e.currentTarget.style.background = T.btnBg;      e.currentTarget.style.color = T.btnColor; }}
-                >{darkMode ? "☀" : "🌙"}</button>
+                ><span style={{ fontSize: "13px" }}>{darkMode ? "☀" : "🌙"}</span>{!isMobile && (darkMode ? " Light" : " Dark")}</button>
+
+                <a
+                    href={reportUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Report an issue or suggest a feature"
+                    style={{ display: "flex", alignItems: "center", gap: isMobile ? "0" : "6px", padding: isMobile ? "6px 10px" : "5px 14px", borderRadius: "8px", border: "1px solid " + T.btnBorder, background: T.btnBg, color: T.btnColor, cursor: "pointer", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "12px", letterSpacing: "0.04em", transition: "all .15s", textDecoration: "none", whiteSpace: "nowrap" }}
+                    onMouseEnter={e => { e.currentTarget.style.background = T.btnHoverBg; e.currentTarget.style.color = T.btnHoverColor; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = T.btnBg;      e.currentTarget.style.color = T.btnColor; }}
+                ><span style={{ fontSize: "13px" }}>{"↗"}</span>{!isMobile && " Report"}</a>
 
                 {mode === "popularity" && isMobile && <>
                     <span style={{ fontSize: "10px", color: "#fbbf24", fontFamily: "'JetBrains Mono',monospace" }}>🥇5</span>
@@ -549,7 +565,6 @@ export default function App() {
                     onClose={() => setShowRoadmapCompare(false)}
                     T={T}
                     langs={LANGS}
-
                 />
             )}
 
