@@ -2,8 +2,13 @@
 
 namespace App\Filament\Admin\Resources\Languages\Schemas;
 
+use App\Jobs\GenerateRoadmapJob;
+use App\Models\Roadmap;
+use App\Models\RoadmapPath;
+use Filament\Actions\Action;
 use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
@@ -176,6 +181,72 @@ class LanguageInfolist
                                     }),
                             ]),
 
+                    ]),
+
+                    // ── Roadmap ────────────────────────────────────────────────
+                Section::make('Roadmap')
+                    ->columns(2)
+                    ->headerActions([
+                        Action::make('regenerate_roadmap')
+                            ->label(fn ($record) => Roadmap::where('language', $record->name)->exists()
+                                ? '✦ Regenerate Roadmap'
+                                : '✦ Generate Roadmap'
+                            )
+                            ->icon('heroicon-o-map')
+                            ->color('warning')
+                            ->requiresConfirmation()
+                            ->modalHeading('Regenerate Roadmap')
+                            ->modalDescription(fn ($record) => 'This will delete the existing roadmap and paths for ' . $record->name . ' and queue a fresh generation. Continue?')
+                            ->modalSubmitActionLabel('Yes, regenerate')
+                            ->action(function ($record) {
+                                $language = $record->name;
+
+                                Roadmap::where('language', $language)->delete();
+                                RoadmapPath::where('language', $language)->delete();
+
+                                GenerateRoadmapJob::dispatch($language);
+
+                                Notification::make()
+                                    ->title('Roadmap generation queued')
+                                    ->body("Roadmap for {$language} is being generated. This may take a few minutes.")
+                                    ->success()
+                                    ->send();
+                            }),
+                    ])
+                    ->schema([
+                        TextEntry::make('roadmap_status')
+                            ->label('Status')
+                            ->html()
+                            ->getStateUsing(function ($record): string {
+                                $roadmap = Roadmap::where('language', $record->name)->first();
+                                if (! $roadmap) {
+                                    return '<span style="color:#6b7280;font-size:0.85rem">Not generated</span>';
+                                }
+                                $status = $roadmap->data['status'] ?? 'unknown';
+                                $color  = match ($status) {
+                                    'ready'      => '#4ade80',
+                                    'generating' => '#fbbf24',
+                                    'failed'     => '#f87171',
+                                    default      => '#6b7280',
+                                };
+                                $label = ucfirst($status);
+                                $date  = $roadmap->generated_at?->format('d M Y H:i') ?? '—';
+                                return "<span style=\"color:{$color};font-weight:600\">{$label}</span> <span style=\"color:#6b7280;font-size:0.75rem\">· generated {$date}</span>";
+                            }),
+
+                        TextEntry::make('roadmap_stats')
+                            ->label('Stats')
+                            ->html()
+                            ->getStateUsing(function ($record): string {
+                                $roadmap = Roadmap::where('language', $record->name)->first();
+                                if (! $roadmap || ($roadmap->data['status'] ?? '') !== 'ready') {
+                                    return '<span style="color:#6b7280;font-size:0.85rem">—</span>';
+                                }
+                                $phases = count($roadmap->data['core'] ?? []);
+                                $topics = collect($roadmap->data['core'] ?? [])->sum(fn ($p) => count($p['topics'] ?? []));
+                                $paths  = count($roadmap->data['paths'] ?? []);
+                                return "<span style=\"color:#e5e7eb;font-size:0.85rem\">{$phases} core phases · {$topics} topics · {$paths} paths available</span>";
+                            }),
                     ]),
             ]);
     }

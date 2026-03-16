@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\RoadmapPath;
 use Illuminate\Database\Eloquent\Model;
 
 class Language extends Model
@@ -37,6 +38,11 @@ class Language extends Model
      * Both formats are valid arrays — this accessor ensures a consistent
      * {name, url} shape when reading, regardless of how it was saved.
      */
+    public function roadmapPaths(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(RoadmapPath::class, 'language', 'name');
+    }
+
     public function getPackageManagerAttribute(mixed $value): ?array
     {
         $decoded = is_string($value) ? json_decode($value, true) : $value;

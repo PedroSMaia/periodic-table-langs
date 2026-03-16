@@ -19,9 +19,7 @@ use Filament\Tables\Table;
 class LanguageResource extends Resource
 {
     protected static ?string $model = Language::class;
-
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCodeBracket;
-
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema
