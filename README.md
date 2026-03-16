@@ -2,7 +2,7 @@
 
 An interactive reference for 120 programming languages, built as a periodic table. Browse languages, track your learning progress through AI-generated roadmaps, and compare paths side by side.
 
-🌐 **Live at [tpl.pedrosmaia.com](https://tpl.pedrosmaia.com)**
+🌐 **Live at [tpl.pedrosmaia.com](https://tpl.pedrosmaia.com)** (soon)
 
 ![Grid view](docs/screenshots/01-grid.png)
 
