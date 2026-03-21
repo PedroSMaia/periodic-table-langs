@@ -27,11 +27,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/progress',    [ProgressController::class, 'upsert']);
 });
 
-// Public read-only routes
-Route::get('/roadmap/{language}/path/{pathId}', [RoadmapController::class, 'showPath']);
-Route::get('/roadmap/{language}', [RoadmapController::class, 'show']);
+// Public read-only routes (allow encoded slashes in language names like PL/SQL)
+Route::get('/roadmap/{language}/path/{pathId}', [RoadmapController::class, 'showPath'])
+    ->where('language', '.*(?<!path)');
+Route::get('/roadmap/{language}', [RoadmapController::class, 'show'])
+    ->where('language', '.+');
 
 // Admin-only routes (protected by API key)
 Route::middleware('admin.api_key')->group(function () {
-    Route::post('/roadmap/{language}/refresh', [RoadmapController::class, 'refresh']);
+    Route::post('/roadmap/{language}/refresh', [RoadmapController::class, 'refresh'])
+        ->where('language', '.+');
 });
