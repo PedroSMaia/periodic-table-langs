@@ -245,6 +245,12 @@ docker exec periodic-table-langs-backend-1 php artisan schedule:list
 # Clear application cache
 docker exec periodic-table-langs-backend-1 php artisan cache:clear
 
+# Import roadmap JSON files from storage/app/roadmaps/ into the database
+docker exec periodic-table-langs-backend-1 php artisan roadmap:import
+
+# Import a single language
+docker exec periodic-table-langs-backend-1 php artisan roadmap:import --lang=Python
+
 # Check Horizon queue status
 docker exec periodic-table-langs-backend-1 php artisan horizon:status
 
