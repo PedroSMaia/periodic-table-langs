@@ -75,7 +75,7 @@ cp backend/.env.example backend/.env
 Edit `backend/.env` and fill in:
 
 ```env
-APP_KEY=          # generate with: docker exec ... php artisan key:generate
+APP_KEY=          # will be generated in the next step
 APP_URL=http://localhost:8000
 
 DB_HOST=mysql
@@ -92,6 +92,8 @@ GITHUB_TOKEN=        # optional, for the "Suggest a link" feature
 GITHUB_REPO=PedroSMaia/periodic-table-langs
 ```
 
+> **Tip:** Generate a secure `ADMIN_API_KEY` with: `openssl rand -hex 32`
+
 ### 3. Start the containers
 
 ```bash
@@ -105,26 +107,45 @@ This starts:
 - `redis` — Redis
 - `horizon` — Laravel Horizon (queue worker)
 
-### 4. Install frontend dependencies
+### 4. Install backend dependencies
+
+On a fresh clone the `vendor/` directory won't exist. Install it before anything else:
 
 ```bash
-docker exec periodic-table-langs-frontend-1 npm install html2canvas @xyflow/react
+docker compose -f docker-compose.dev.yml run --rm backend composer install
+docker compose -f docker-compose.dev.yml up -d
 ```
 
-### 5. Run migrations and seed
-
-```bash
-docker exec periodic-table-langs-backend-1 php artisan migrate
-docker exec periodic-table-langs-backend-1 php artisan db:seed
-```
-
-### 6. Generate app key
+### 5. Generate app key
 
 ```bash
 docker exec periodic-table-langs-backend-1 php artisan key:generate
 ```
 
-### 7. Create an admin user
+### 6. Install frontend dependencies
+
+```bash
+docker exec periodic-table-langs-frontend-1 npm install
+docker exec periodic-table-langs-frontend-1 npm install html2canvas @xyflow/react
+```
+
+### 7. Run migrations and seed
+
+```bash
+docker exec periodic-table-langs-backend-1 php artisan migrate
+docker exec periodic-table-langs-backend-1 php artisan db:seed
+docker exec periodic-table-langs-backend-1 php artisan storage:link
+```
+
+### 8. Fetch popularity metrics
+
+```bash
+docker exec periodic-table-langs-backend-1 php artisan metrics:fetch
+```
+
+This scrapes the TIOBE index and merges it with Stack Overflow Developer Survey data into `storage/app/metrics.json`. The command is also scheduled to run **weekly** automatically via the Laravel scheduler.
+
+### 9. Create an admin user
 
 ```bash
 docker exec -it periodic-table-langs-backend-1 php artisan make:filament-user
@@ -132,7 +153,9 @@ docker exec -it periodic-table-langs-backend-1 php artisan make:filament-user
 
 Make sure the email matches one of the `ADMIN_EMAILS` in your `.env`.
 
-### 8. Open the app
+> **Tip:** Verify Horizon is processing jobs: `docker exec periodic-table-langs-backend-1 php artisan horizon:status`
+
+### 10. Open the app
 
 | Service | URL |
 |---|---|
@@ -140,6 +163,12 @@ Make sure the email matches one of the `ADMIN_EMAILS` in your `.env`.
 | Backend API | http://localhost:8000/api |
 | Filament Admin | http://localhost:8000/admin |
 | Horizon Dashboard | http://localhost:8000/horizon |
+
+> **Note:** If you run the frontend outside Docker (e.g. `npm run dev` on the host), create `frontend/.env` with:
+> ```env
+> VITE_API_URL=http://localhost:8000
+> ```
+> Inside Docker this is not needed — the Vite dev server proxies `/api/*` to the backend automatically.
 
 ---
 
@@ -187,6 +216,45 @@ cd backend
 
 ---
 
+## Production Build
+
+```bash
+# Frontend — generate static build
+docker exec periodic-table-langs-frontend-1 npm run build
+
+# Backend — cache configuration for performance
+docker exec periodic-table-langs-backend-1 php artisan config:cache
+docker exec periodic-table-langs-backend-1 php artisan route:cache
+docker exec periodic-table-langs-backend-1 php artisan view:cache
+```
+
+---
+
+## Useful Commands
+
+```bash
+# Fetch/refresh popularity metrics (TIOBE + Stack Overflow)
+docker exec periodic-table-langs-backend-1 php artisan metrics:fetch
+
+# Run the Laravel scheduler manually (executes all due scheduled tasks)
+docker exec periodic-table-langs-backend-1 php artisan schedule:run
+
+# List all scheduled tasks
+docker exec periodic-table-langs-backend-1 php artisan schedule:list
+
+# Clear application cache
+docker exec periodic-table-langs-backend-1 php artisan cache:clear
+
+# Check Horizon queue status
+docker exec periodic-table-langs-backend-1 php artisan horizon:status
+
+# View container logs
+docker compose -f docker-compose.dev.yml logs -f backend
+docker compose -f docker-compose.dev.yml logs -f frontend
+```
+
+---
+
 ## Resetting the database
 
 If you need to reset roadmap data after restarting containers:
@@ -204,13 +272,17 @@ docker exec periodic-table-langs-mysql-1 mysql -u root -proot ptl -e "TRUNCATE T
 periodic-table-langs/
 ├── backend/                    # Laravel 12 API
 │   ├── app/
+│   │   ├── Console/Commands/   # Artisan commands (metrics:fetch, etc.)
 │   │   ├── Filament/           # Admin panel resources and widgets
 │   │   ├── Http/Controllers/   # API controllers
 │   │   ├── Jobs/               # Queue jobs (roadmap generation)
 │   │   └── Models/
 │   ├── scripts/
 │   │   └── generate-all.sh     # Bulk roadmap generation script
-│   └── routes/api.php
+│   ├── routes/
+│   │   ├── api.php             # API routes
+│   │   └── console.php         # Scheduled tasks
+│   └── storage/app/metrics.json # TIOBE + SO survey data (auto-generated)
 └── frontend/                   # React 19 + Vite
     └── src/
         ├── components/         # UI components

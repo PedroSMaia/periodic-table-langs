@@ -26,8 +26,20 @@
 
 ADMIN_KEY=$(grep ADMIN_API_KEY .env | cut -d= -f2)
 BASE="http://localhost:8000/api"
-GENERATE_PATHS=${1:-""}
+GENERATE_PATHS=""
+SELECTED_TIER="all"
 MAX_PATHS=5
+
+# Parse arguments (order-independent)
+for arg in "$@"; do
+    case "$arg" in
+        --paths) GENERATE_PATHS="--paths" ;;
+        --tier1) SELECTED_TIER="tier1" ;;
+        --tier2) SELECTED_TIER="tier2" ;;
+        --tier3) SELECTED_TIER="tier3" ;;
+        *) echo "Unknown argument: $arg"; exit 1 ;;
+    esac
+done
 
 # ── Language tiers ────────────────────────────────────────────────────────────
 
@@ -46,12 +58,12 @@ TIER3=(
     "Groovy" "PowerShell" "Assembly" "Bash" "F#"
 )
 
-# Select tier based on argument
-case "${2:-all}" in
-    --tier1) LANGS=("${TIER1[@]}") ;;
-    --tier2) LANGS=("${TIER2[@]}") ;;
-    --tier3) LANGS=("${TIER3[@]}") ;;
-    *)       LANGS=("${TIER1[@]}" "${TIER2[@]}" "${TIER3[@]}") ;;
+# Select tier
+case "$SELECTED_TIER" in
+    tier1) LANGS=("${TIER1[@]}") ;;
+    tier2) LANGS=("${TIER2[@]}") ;;
+    tier3) LANGS=("${TIER3[@]}") ;;
+    *)     LANGS=("${TIER1[@]}" "${TIER2[@]}" "${TIER3[@]}") ;;
 esac
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -116,7 +128,7 @@ for p in not_cached[:$MAX_PATHS]:
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 echo "🚀 Starting generation for ${#LANGS[@]} languages..."
-echo "   Tier: ${2:-all} | Paths: ${GENERATE_PATHS:-no}"
+echo "   Tier: $SELECTED_TIER | Paths: ${GENERATE_PATHS:-no}"
 echo ""
 
 for lang in "${LANGS[@]}"; do
