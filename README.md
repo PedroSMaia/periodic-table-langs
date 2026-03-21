@@ -251,6 +251,12 @@ docker exec periodic-table-langs-backend-1 php artisan roadmap:import
 # Import a single language
 docker exec periodic-table-langs-backend-1 php artisan roadmap:import --lang=Python
 
+# Import path details from storage/app/roadmap-paths/ into the database
+docker exec periodic-table-langs-backend-1 php artisan roadmap:import-paths
+
+# Import paths for a single language
+docker exec periodic-table-langs-backend-1 php artisan roadmap:import-paths --lang=Python
+
 # Check Horizon queue status
 docker exec periodic-table-langs-backend-1 php artisan horizon:status
 
