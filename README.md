@@ -216,16 +216,76 @@ cd backend
 
 ---
 
-## Production Build
+## Production Deployment
+
+### 1. Configure environment
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and fill in:
+
+```env
+APP_KEY=                          # generated automatically on first start
+APP_URL=https://your-domain.com
+
+DB_PASSWORD=                      # openssl rand -base64 32
+DB_ROOT_PASSWORD=                 # openssl rand -base64 32
+
+ADMIN_API_KEY=                    # openssl rand -hex 32
+ADMIN_EMAILS=your@email.com
+ANTHROPIC_API_KEY=                # optional, for roadmap generation
+```
+
+### 2. Build and start
+
+```bash
+docker compose up -d --build
+```
+
+This starts:
+- `frontend` — nginx serving static build + API proxy (port 80)
+- `backend` — Laravel with auto-migrations, config caching, and cron scheduler
+- `horizon` — queue worker for background jobs
+- `mysql` — with persistent volume
+- `redis` — with AOF persistence
+
+### 3. First-time setup
+
+```bash
+# Generate app key
+docker compose exec backend php artisan key:generate
+
+# Seed the database
+docker compose exec backend php artisan db:seed
+
+# Fetch popularity metrics
+docker compose exec backend php artisan metrics:fetch
+
+# Create admin user
+docker compose exec -it backend php artisan make:filament-user
+```
+
+### What's included automatically
+
+- **Migrations** run on container start
+- **Config/route/view caching** applied on start
+- **Cron scheduler** runs `metrics:fetch` weekly
+- **Health checks** on MySQL before backend starts
+
+### Manual build (without Docker)
 
 ```bash
 # Frontend — generate static build
-docker exec periodic-table-langs-frontend-1 npm run build
+cd frontend && npm ci && npm run build
 
 # Backend — cache configuration for performance
-docker exec periodic-table-langs-backend-1 php artisan config:cache
-docker exec periodic-table-langs-backend-1 php artisan route:cache
-docker exec periodic-table-langs-backend-1 php artisan view:cache
+cd backend
+composer install --no-dev --optimize-autoloader
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
 ```
 
 ---
