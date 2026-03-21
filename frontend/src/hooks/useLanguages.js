@@ -17,23 +17,19 @@ export function useLanguages() {
 
         async function fetchAll() {
             try {
-                const [langsRes, metricsRes] = await Promise.all([
-                    fetch("/api/languages"),
-                    fetch("/api/metrics"),
-                ]);
+                const langsRes = await fetch("/api/languages");
+                if (!langsRes.ok) throw new Error(`Languages API error: HTTP ${langsRes.status}`);
+                const langsData = await langsRes.json();
+                if (!cancelled) setLangs(langsData);
 
-                if (!langsRes.ok)   throw new Error(`Languages API error: HTTP ${langsRes.status}`);
-                if (!metricsRes.ok) throw new Error(`Metrics API error: HTTP ${metricsRes.status}`);
-
-                const [langsData, metricsData] = await Promise.all([
-                    langsRes.json(),
-                    metricsRes.json(),
-                ]);
-
-                if (!cancelled) {
-                    setLangs(langsData);
-                    setMetrics(metricsData);
-                }
+                // Metrics are optional — don't block the UI if they fail
+                try {
+                    const metricsRes = await fetch("/api/metrics");
+                    if (metricsRes.ok) {
+                        const metricsData = await metricsRes.json();
+                        if (!cancelled) setMetrics(metricsData);
+                    }
+                } catch { /* metrics unavailable, keep defaults */ }
             } catch (err) {
                 if (!cancelled) setError(err.message);
             } finally {
