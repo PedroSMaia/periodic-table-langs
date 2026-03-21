@@ -1,0 +1,135 @@
+{
+  "language": "Go",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Go Fundamentals",
+      "description": "Installation, syntax, types, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & Go Toolchain", "description": "Install Go, set up GOPATH, and use go run, go build, go mod. The Go toolchain is batteries-included.", "type": "required", "resources": ["https://go.dev/doc/install", "https://go.dev/doc/tutorial/getting-started"]},
+        {"id": "core-1-2", "label": "Hello World & Package Structure", "description": "Understand package main, func main, and Go's file/package organization. Every Go program starts in package main.", "type": "required", "resources": ["https://go.dev/tour/basics/1", "https://go.dev/doc/code"]},
+        {"id": "core-1-3", "label": "Variables & Types", "description": "int, float64, string, bool, and short declaration (:=). Go is statically typed with type inference.", "type": "required", "resources": ["https://go.dev/tour/basics/8", "https://gobyexample.com/variables"]},
+        {"id": "core-1-4", "label": "Constants & iota", "description": "Declare constants with const and use iota for auto-incrementing enums. Go has no enum keyword.", "type": "required", "resources": ["https://go.dev/tour/basics/15", "https://gobyexample.com/constants"]},
+        {"id": "core-1-5", "label": "Control Flow", "description": "if/else (with init statement), switch, for (the only loop), break, continue. Go's for replaces while too.", "type": "required", "resources": ["https://go.dev/tour/flowcontrol/1", "https://gobyexample.com/for"]},
+        {"id": "core-1-6", "label": "Functions", "description": "Multiple return values, named returns, and variadic functions. Multiple returns are idiomatic for error handling.", "type": "required", "resources": ["https://go.dev/tour/basics/4", "https://gobyexample.com/functions"]},
+        {"id": "core-1-7", "label": "Pointers", "description": "Pointer syntax with & and *. Go has pointers but no pointer arithmetic — safe by design.", "type": "required", "resources": ["https://go.dev/tour/moretypes/1", "https://gobyexample.com/pointers"]},
+        {"id": "core-1-8", "label": "Strings, Runes & Bytes", "description": "Strings are byte slices, runes represent Unicode code points. Understand the difference for text processing.", "type": "required", "resources": ["https://go.dev/blog/strings", "https://gobyexample.com/strings-and-runes"]},
+        {"id": "core-1-9", "label": "Arrays & Slices", "description": "Fixed-size arrays vs dynamic slices. Slices are Go's primary sequence type with append and slice expressions.", "type": "required", "resources": ["https://go.dev/tour/moretypes/7", "https://go.dev/blog/slices-intro"]},
+        {"id": "core-1-10", "label": "Maps", "description": "Key-value hash maps with make(map[K]V). Maps are the built-in dictionary type.", "type": "required", "resources": ["https://go.dev/tour/moretypes/19", "https://gobyexample.com/maps"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Structs, Interfaces & Methods",
+      "description": "Go's type system, methods, and interface-based polymorphism.",
+      "topics": [
+        {"id": "core-2-1", "label": "Structs", "description": "Define composite types with struct. Structs are Go's primary data modeling tool — there are no classes.", "type": "required", "resources": ["https://go.dev/tour/moretypes/2", "https://gobyexample.com/structs"]},
+        {"id": "core-2-2", "label": "Methods", "description": "Attach functions to types with receiver syntax. Methods on structs are Go's equivalent of class methods.", "type": "required", "resources": ["https://go.dev/tour/methods/1", "https://gobyexample.com/methods"]},
+        {"id": "core-2-3", "label": "Pointer vs Value Receivers", "description": "Choose between pointer and value receivers based on mutation and size. Pointer receivers modify the original.", "type": "required", "resources": ["https://go.dev/tour/methods/4", "https://go.dev/doc/faq#methods_on_values_or_pointers"]},
+        {"id": "core-2-4", "label": "Interfaces", "description": "Implicit interface satisfaction — no implements keyword. Interfaces are Go's mechanism for polymorphism.", "type": "required", "resources": ["https://go.dev/tour/methods/9", "https://gobyexample.com/interfaces"]},
+        {"id": "core-2-5", "label": "Empty Interface & Type Assertions", "description": "interface{} (or any) holds any value. Type assertions and type switches recover the concrete type.", "type": "required", "resources": ["https://go.dev/tour/methods/14", "https://gobyexample.com/interfaces"]},
+        {"id": "core-2-6", "label": "Embedding", "description": "Compose types by embedding structs and interfaces. Embedding provides delegation without inheritance.", "type": "required", "resources": ["https://go.dev/doc/effective_go#embedding", "https://gobyexample.com/struct-embedding"]},
+        {"id": "core-2-7", "label": "Generics", "description": "Type parameters with [T any] and constraints (Go 1.18+). Generics reduce code duplication for type-safe functions.", "type": "required", "resources": ["https://go.dev/doc/tutorial/generics", "https://go.dev/blog/intro-generics"]},
+        {"id": "core-2-8", "label": "Stringer & Common Interfaces", "description": "Implement fmt.Stringer, io.Reader, io.Writer, error. These interfaces are used throughout the standard library.", "type": "required", "resources": ["https://go.dev/tour/methods/17", "https://pkg.go.dev/fmt#Stringer"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Error Handling & I/O",
+      "description": "Go's error pattern, file operations, and standard library I/O.",
+      "topics": [
+        {"id": "core-3-1", "label": "Error Handling Pattern", "description": "Return errors as values with if err != nil. Go's explicit error handling replaces exceptions.", "type": "required", "resources": ["https://go.dev/blog/error-handling-and-go", "https://gobyexample.com/errors"]},
+        {"id": "core-3-2", "label": "Custom Errors", "description": "Create error types implementing the error interface. errors.Is and errors.As for error inspection.", "type": "required", "resources": ["https://go.dev/blog/go1.13-errors", "https://gobyexample.com/errors"]},
+        {"id": "core-3-3", "label": "Wrapping Errors", "description": "Wrap errors with fmt.Errorf(%w) for context. Error wrapping creates error chains for debugging.", "type": "required", "resources": ["https://go.dev/blog/go1.13-errors", "https://pkg.go.dev/fmt#Errorf"]},
+        {"id": "core-3-4", "label": "Defer, Panic & Recover", "description": "defer for cleanup, panic for unrecoverable errors, recover to catch panics. Defer is used for file/lock cleanup.", "type": "required", "resources": ["https://go.dev/blog/defer-panic-and-recover", "https://gobyexample.com/defer"]},
+        {"id": "core-3-5", "label": "File I/O", "description": "Read and write files with os and io packages. os.ReadFile and os.WriteFile for simple cases.", "type": "required", "resources": ["https://gobyexample.com/reading-files", "https://gobyexample.com/writing-files"]},
+        {"id": "core-3-6", "label": "io.Reader & io.Writer", "description": "The fundamental I/O interfaces. Everything in Go (files, network, buffers) implements Reader/Writer.", "type": "required", "resources": ["https://pkg.go.dev/io#Reader", "https://go.dev/tour/methods/21"]},
+        {"id": "core-3-7", "label": "JSON Encoding/Decoding", "description": "Marshal and unmarshal JSON with encoding/json. Struct tags control JSON field names.", "type": "required", "resources": ["https://go.dev/blog/json", "https://gobyexample.com/json"]},
+        {"id": "core-3-8", "label": "Working with HTTP", "description": "Make HTTP requests with net/http client and parse responses. The standard library HTTP client is production-ready.", "type": "required", "resources": ["https://pkg.go.dev/net/http", "https://gobyexample.com/http-client"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Concurrency",
+      "description": "Goroutines, channels, and concurrent patterns.",
+      "topics": [
+        {"id": "core-4-1", "label": "Goroutines", "description": "Launch concurrent functions with the go keyword. Goroutines are lightweight — you can run millions.", "type": "required", "resources": ["https://go.dev/tour/concurrency/1", "https://gobyexample.com/goroutines"]},
+        {"id": "core-4-2", "label": "Channels", "description": "Communicate between goroutines with typed channels. Channels are Go's primary synchronization mechanism.", "type": "required", "resources": ["https://go.dev/tour/concurrency/2", "https://gobyexample.com/channels"]},
+        {"id": "core-4-3", "label": "Buffered Channels", "description": "Channels with capacity for async sends. Buffered channels decouple sender and receiver timing.", "type": "required", "resources": ["https://go.dev/tour/concurrency/3", "https://gobyexample.com/channel-buffering"]},
+        {"id": "core-4-4", "label": "Select", "description": "Multiplex channel operations with select. Select blocks until one case is ready.", "type": "required", "resources": ["https://go.dev/tour/concurrency/5", "https://gobyexample.com/select"]},
+        {"id": "core-4-5", "label": "WaitGroups", "description": "Wait for a collection of goroutines to finish with sync.WaitGroup.", "type": "required", "resources": ["https://pkg.go.dev/sync#WaitGroup", "https://gobyexample.com/waitgroups"]},
+        {"id": "core-4-6", "label": "Mutexes", "description": "Protect shared state with sync.Mutex and sync.RWMutex. Use mutexes when channels aren't the right fit.", "type": "required", "resources": ["https://go.dev/tour/concurrency/9", "https://gobyexample.com/mutexes"]},
+        {"id": "core-4-7", "label": "Context", "description": "Propagate cancellation and deadlines with context.Context. Context is used in every Go server and API client.", "type": "required", "resources": ["https://go.dev/blog/context", "https://pkg.go.dev/context"]},
+        {"id": "core-4-8", "label": "Concurrency Patterns", "description": "Fan-out/fan-in, worker pools, pipelines, and rate limiting. Patterns for structuring concurrent programs.", "type": "optional", "resources": ["https://go.dev/blog/pipelines", "https://gobyexample.com/worker-pools"]},
+        {"id": "core-4-9", "label": "Race Detector", "description": "Detect data races with go run -race. The race detector finds bugs that are impossible to catch manually.", "type": "required", "resources": ["https://go.dev/doc/articles/race_detector", "https://go.dev/blog/race-detector"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Packages & Modules",
+      "description": "Go modules, dependency management, and project organization.",
+      "topics": [
+        {"id": "core-5-1", "label": "Go Modules", "description": "Initialize with go mod init, manage dependencies with go.mod and go.sum. Modules are Go's dependency system.", "type": "required", "resources": ["https://go.dev/blog/using-go-modules", "https://go.dev/doc/modules/managing-dependencies"]},
+        {"id": "core-5-2", "label": "Package Organization", "description": "Structure projects with internal/, cmd/, pkg/ conventions. Good package design makes Go projects maintainable.", "type": "required", "resources": ["https://go.dev/doc/modules/layout", "https://github.com/golang-standards/project-layout"]},
+        {"id": "core-5-3", "label": "Exported vs Unexported", "description": "Capital letter = exported, lowercase = unexported. Go's visibility is controlled by naming convention.", "type": "required", "resources": ["https://go.dev/tour/basics/3", "https://go.dev/doc/effective_go#names"]},
+        {"id": "core-5-4", "label": "go install & go generate", "description": "Install binaries and run code generation. go generate automates code generation workflows.", "type": "optional", "resources": ["https://go.dev/doc/go-generate", "https://pkg.go.dev/cmd/go"]},
+        {"id": "core-5-5", "label": "Vendoring", "description": "Include dependencies in the vendor/ directory for reproducible builds.", "type": "optional", "resources": ["https://go.dev/ref/mod#vendoring", "https://go.dev/blog/using-go-modules"]},
+        {"id": "core-5-6", "label": "Build Tags & Cross-Compilation", "description": "Conditional compilation with //go:build tags and cross-compile with GOOS/GOARCH.", "type": "optional", "resources": ["https://pkg.go.dev/go/build#hdr-Build_Constraints", "https://go.dev/doc/install/source#environment"]},
+        {"id": "core-5-7", "label": "Standard Library Deep Dive", "description": "Explore net/http, os, fmt, strings, strconv, sort, sync, time, and regexp.", "type": "required", "resources": ["https://pkg.go.dev/std", "https://go.dev/doc/effective_go"]},
+        {"id": "core-5-8", "label": "Go Doc & Documentation", "description": "Write doc comments and use godoc. Documentation is generated from comments above declarations.", "type": "required", "resources": ["https://go.dev/blog/godoc", "https://go.dev/doc/comment"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Testing",
+      "description": "Go's built-in testing framework, benchmarks, and best practices.",
+      "topics": [
+        {"id": "core-6-1", "label": "Unit Testing", "description": "Write tests in _test.go files with func TestXxx(t *testing.T). Go's testing is built into the toolchain.", "type": "required", "resources": ["https://go.dev/doc/tutorial/add-a-test", "https://gobyexample.com/testing"]},
+        {"id": "core-6-2", "label": "Table-Driven Tests", "description": "Parameterize tests with slices of test cases. The idiomatic Go pattern for comprehensive test coverage.", "type": "required", "resources": ["https://go.dev/wiki/TableDrivenTests", "https://gobyexample.com/testing"]},
+        {"id": "core-6-3", "label": "Subtests", "description": "Run named subtests with t.Run for better organization and selective execution.", "type": "required", "resources": ["https://go.dev/blog/subtests", "https://pkg.go.dev/testing#T.Run"]},
+        {"id": "core-6-4", "label": "Benchmarks", "description": "Measure performance with func BenchmarkXxx(b *testing.B). Benchmark before optimizing.", "type": "optional", "resources": ["https://pkg.go.dev/testing#hdr-Benchmarks", "https://gobyexample.com/testing-and-benchmarking"]},
+        {"id": "core-6-5", "label": "Mocking & Interfaces", "description": "Mock dependencies by defining interfaces and providing test implementations. Go's interfaces make mocking natural.", "type": "required", "resources": ["https://go.dev/doc/effective_go#interfaces", "https://quii.gitbook.io/learn-go-with-tests/"]},
+        {"id": "core-6-6", "label": "Test Coverage", "description": "Generate coverage reports with go test -cover. Visualize coverage with go tool cover.", "type": "optional", "resources": ["https://go.dev/blog/cover", "https://pkg.go.dev/cmd/cover"]},
+        {"id": "core-6-7", "label": "Fuzzing", "description": "Find edge cases with Go's built-in fuzzing (Go 1.18+). Fuzzing tests with random inputs.", "type": "advanced", "resources": ["https://go.dev/doc/tutorial/fuzz", "https://go.dev/blog/fuzz-beta"]},
+        {"id": "core-6-8", "label": "go vet & staticcheck", "description": "Static analysis with go vet and staticcheck. Catch bugs the compiler misses.", "type": "required", "resources": ["https://pkg.go.dev/cmd/vet", "https://staticcheck.dev/"]}
+      ]
+    },
+    {
+      "id": "core-7",
+      "label": "Web & Production Go",
+      "description": "HTTP servers, databases, and production deployment.",
+      "topics": [
+        {"id": "core-7-1", "label": "HTTP Server", "description": "Build HTTP servers with net/http, handlers, and the new ServeMux (Go 1.22+). No framework needed for basics.", "type": "required", "resources": ["https://go.dev/doc/tutorial/web-service-gin", "https://gobyexample.com/http-servers"]},
+        {"id": "core-7-2", "label": "Middleware Pattern", "description": "Chain handlers for logging, auth, CORS, etc. Middleware is a function that wraps an http.Handler.", "type": "required", "resources": ["https://go.dev/doc/articles/wiki/", "https://pkg.go.dev/net/http#Handler"]},
+        {"id": "core-7-3", "label": "Database Access (database/sql)", "description": "Connect to databases with database/sql and drivers. The standard SQL interface works with any database.", "type": "required", "resources": ["https://go.dev/doc/tutorial/database-access", "https://go.dev/doc/database/"]},
+        {"id": "core-7-4", "label": "Configuration & Environment", "description": "Read env vars, flags, and config files. os.Getenv and flag package for CLI applications.", "type": "required", "resources": ["https://gobyexample.com/environment-variables", "https://gobyexample.com/command-line-flags"]},
+        {"id": "core-7-5", "label": "Logging (slog)", "description": "Structured logging with the slog package (Go 1.21+). Structured logs are essential for production observability.", "type": "required", "resources": ["https://pkg.go.dev/log/slog", "https://go.dev/blog/slog"]},
+        {"id": "core-7-6", "label": "Graceful Shutdown", "description": "Handle OS signals and drain connections before exiting. Essential for zero-downtime deployments.", "type": "required", "resources": ["https://gobyexample.com/signals", "https://pkg.go.dev/os/signal"]},
+        {"id": "core-7-7", "label": "Docker & Deployment", "description": "Build minimal Docker images with multi-stage builds. Go produces static binaries ideal for containers.", "type": "optional", "resources": ["https://docs.docker.com/language/golang/", "https://go.dev/doc/install"]},
+        {"id": "core-7-8", "label": "Profiling (pprof)", "description": "Profile CPU, memory, and goroutines with pprof. Go has built-in profiling tools.", "type": "optional", "resources": ["https://go.dev/blog/pprof", "https://pkg.go.dev/net/http/pprof"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-gin", "label": "Gin", "icon": "🍸", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-echo", "label": "Echo", "icon": "📢", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-fiber", "label": "Fiber", "icon": "⚡", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-chi", "label": "Chi", "icon": "🔀", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-grpc-go", "label": "gRPC", "icon": "🔗", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-graphql-go", "label": "gqlgen (GraphQL)", "icon": "◆", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-gorm", "label": "GORM", "icon": "🗄️", "category": "Database & ORM", "category_icon": "💾"},
+    {"id": "path-sqlx", "label": "sqlx", "icon": "📝", "category": "Database & ORM", "category_icon": "💾"},
+    {"id": "path-ent", "label": "Ent", "icon": "🏗️", "category": "Database & ORM", "category_icon": "💾"},
+    {"id": "path-docker-go", "label": "Docker SDK", "icon": "🐳", "category": "DevOps & Cloud", "category_icon": "☁️"},
+    {"id": "path-kubernetes-go", "label": "Kubernetes Client", "icon": "☸️", "category": "DevOps & Cloud", "category_icon": "☁️"},
+    {"id": "path-terraform-provider", "label": "Terraform Provider", "icon": "🏗️", "category": "DevOps & Cloud", "category_icon": "☁️"},
+    {"id": "path-cobra", "label": "Cobra", "icon": "🐍", "category": "CLI Tools", "category_icon": "💻"},
+    {"id": "path-bubbletea", "label": "Bubble Tea", "icon": "🫧", "category": "CLI Tools", "category_icon": "💻"},
+    {"id": "path-nats-go", "label": "NATS", "icon": "📨", "category": "Messaging", "category_icon": "📬"},
+    {"id": "path-kafka-go", "label": "Kafka (sarama)", "icon": "📬", "category": "Messaging", "category_icon": "📬"},
+    {"id": "path-testify", "label": "Testify", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-gomock", "label": "GoMock", "icon": "🎭", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-ebpf-go", "label": "eBPF (cilium)", "icon": "🔬", "category": "Systems Programming", "category_icon": "⚙️"},
+    {"id": "path-wasm-go", "label": "WebAssembly", "icon": "🕸️", "category": "WebAssembly", "category_icon": "🌐"}
+  ]
+}

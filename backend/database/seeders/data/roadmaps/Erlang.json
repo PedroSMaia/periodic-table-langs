@@ -1,0 +1,45 @@
+{
+  "language": "Erlang",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Erlang Fundamentals",
+      "description": "Syntax, data types, pattern matching, and the BEAM VM.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & Shell", "description": "Install Erlang/OTP and use the erl shell. Erlang runs on the BEAM virtual machine.", "type": "required", "resources": ["https://www.erlang.org/downloads", "https://www.erlang.org/doc/getting_started/seq_prog"]},
+        {"id": "core-1-2", "label": "Data Types", "description": "Atoms, numbers, tuples, lists, maps, binaries, and PIDs. Atoms are named constants.", "type": "required", "resources": ["https://www.erlang.org/doc/reference_manual/data_types", "https://learnyousomeerlang.com/starting-out-for-real"]},
+        {"id": "core-1-3", "label": "Pattern Matching", "description": "The = operator matches patterns. Pattern matching is used everywhere in Erlang.", "type": "required", "resources": ["https://www.erlang.org/doc/reference_manual/patterns", "https://learnyousomeerlang.com/syntax-in-functions"]},
+        {"id": "core-1-4", "label": "Functions & Modules", "description": "Define functions in modules with -module and -export. Functions are identified by name/arity.", "type": "required", "resources": ["https://www.erlang.org/doc/reference_manual/modules", "https://learnyousomeerlang.com/modules"]},
+        {"id": "core-1-5", "label": "Guards & Control Flow", "description": "case, if, guards (when), and function clause matching. No loops — use recursion.", "type": "required", "resources": ["https://www.erlang.org/doc/reference_manual/expressions#guards", "https://learnyousomeerlang.com/syntax-in-functions"]},
+        {"id": "core-1-6", "label": "Recursion & Tail Calls", "description": "Iterate with recursive functions. Tail-call optimization makes recursion efficient.", "type": "required", "resources": ["https://www.erlang.org/doc/efficiency_guide/functions", "https://learnyousomeerlang.com/recursion"]},
+        {"id": "core-1-7", "label": "List Operations", "description": "Head/tail ([H|T]), lists module functions, and list comprehensions.", "type": "required", "resources": ["https://www.erlang.org/doc/man/lists", "https://learnyousomeerlang.com/starting-out-for-real#lists"]},
+        {"id": "core-1-8", "label": "Higher-Order Functions", "description": "fun/lambda syntax, lists:map, lists:filter, lists:foldl. Functions as values.", "type": "required", "resources": ["https://www.erlang.org/doc/reference_manual/expressions#funs", "https://learnyousomeerlang.com/higher-order-functions"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Concurrency & OTP",
+      "description": "Processes, message passing, and OTP behaviours.",
+      "topics": [
+        {"id": "core-2-1", "label": "Processes & spawn", "description": "Create lightweight processes with spawn. Erlang processes are isolated with no shared memory.", "type": "required", "resources": ["https://www.erlang.org/doc/getting_started/conc_prog", "https://learnyousomeerlang.com/the-hitchhikers-guide-to-concurrency"]},
+        {"id": "core-2-2", "label": "Message Passing", "description": "Send (!) and receive messages between processes. The only way processes communicate.", "type": "required", "resources": ["https://www.erlang.org/doc/reference_manual/processes#message-passing", "https://learnyousomeerlang.com/more-on-multiprocessing"]},
+        {"id": "core-2-3", "label": "Links & Monitors", "description": "Link processes for crash propagation, monitor for notifications. Foundation of fault tolerance.", "type": "required", "resources": ["https://www.erlang.org/doc/reference_manual/processes#links", "https://learnyousomeerlang.com/errors-and-processes"]},
+        {"id": "core-2-4", "label": "gen_server", "description": "Generic server behaviour — handle_call, handle_cast, handle_info. The most used OTP behaviour.", "type": "required", "resources": ["https://www.erlang.org/doc/man/gen_server", "https://learnyousomeerlang.com/clients-and-servers"]},
+        {"id": "core-2-5", "label": "Supervisors", "description": "Monitor and restart child processes. Supervision trees are Erlang's fault-tolerance model.", "type": "required", "resources": ["https://www.erlang.org/doc/man/supervisor", "https://learnyousomeerlang.com/supervisors"]},
+        {"id": "core-2-6", "label": "Applications", "description": "Package code as OTP applications with .app files.", "type": "required", "resources": ["https://www.erlang.org/doc/design_principles/applications", "https://learnyousomeerlang.com/building-otp-applications"]},
+        {"id": "core-2-7", "label": "ETS", "description": "In-memory key-value storage shared between processes. Extremely fast lookups.", "type": "required", "resources": ["https://www.erlang.org/doc/man/ets", "https://learnyousomeerlang.com/ets"]},
+        {"id": "core-2-8", "label": "Error Handling & Let It Crash", "description": "try/catch, throw, exit, and the philosophy of letting processes crash and restart.", "type": "required", "resources": ["https://www.erlang.org/doc/reference_manual/errors", "https://learnyousomeerlang.com/errors-and-exceptions"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-cowboy", "label": "Cowboy (HTTP)", "icon": "🤠", "category": "Web", "category_icon": "🌐"},
+    {"id": "path-rabbitmq-erl", "label": "RabbitMQ", "icon": "🐇", "category": "Messaging", "category_icon": "📬"},
+    {"id": "path-mnesia", "label": "Mnesia (Database)", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-rebar3", "label": "Rebar3 (Build)", "icon": "🔨", "category": "Build Tools", "category_icon": "🔧"},
+    {"id": "path-distributed-erlang", "label": "Distributed Erlang", "icon": "🌐", "category": "Distributed", "category_icon": "🔗"},
+    {"id": "path-common-test", "label": "Common Test", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-eunit", "label": "EUnit", "icon": "✅", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-ejabberd", "label": "ejabberd (XMPP)", "icon": "💬", "category": "Applications", "category_icon": "📱"}
+  ]
+}

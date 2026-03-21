@@ -1,0 +1,1 @@
+{"name": "Prolog", "packages": [{"name": "SWI-Prolog", "url": "https://www.swi-prolog.org/", "desc": "Full-featured Prolog"}, {"name": "SICStus", "url": "https://sicstus.sics.se/", "desc": "Commercial Prolog"}, {"name": "CLP(FD)", "url": "https://www.swi-prolog.org/pldoc/man?section=clpfd", "desc": "Constraint solving"}]}

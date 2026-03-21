@@ -1,0 +1,62 @@
+{
+  "language": "Clojure",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Clojure Fundamentals",
+      "description": "Setup, syntax, immutable data, and the REPL.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & REPL", "description": "Install Clojure CLI tools and start the REPL. REPL-driven development is Clojure's primary workflow.", "type": "required", "resources": ["https://clojure.org/guides/install_clojure", "https://clojure.org/guides/repl/introduction"]},
+        {"id": "core-1-2", "label": "Syntax & S-expressions", "description": "Everything is a list — (function arg1 arg2). Prefix notation and homoiconicity (code is data).", "type": "required", "resources": ["https://clojure.org/guides/learn/syntax", "https://clojure.org/reference/reader"]},
+        {"id": "core-1-3", "label": "Data Types", "description": "Numbers, strings, keywords, symbols, booleans, nil. Keywords (:name) are commonly used as map keys.", "type": "required", "resources": ["https://clojure.org/guides/learn/syntax#_literals", "https://clojure.org/reference/data_structures"]},
+        {"id": "core-1-4", "label": "Immutable Collections", "description": "Lists, vectors, maps, and sets — all immutable and persistent. Structural sharing keeps them efficient.", "type": "required", "resources": ["https://clojure.org/reference/data_structures", "https://clojure.org/guides/learn/hashed_colls"]},
+        {"id": "core-1-5", "label": "Functions", "description": "defn, fn, and #() anonymous functions. Functions are the primary unit of abstraction.", "type": "required", "resources": ["https://clojure.org/guides/learn/functions", "https://clojure.org/reference/special_forms#fn"]},
+        {"id": "core-1-6", "label": "Control Flow", "description": "if, when, cond, case, and do. All control structures are expressions that return values.", "type": "required", "resources": ["https://clojure.org/guides/learn/flow", "https://clojure.org/reference/special_forms"]},
+        {"id": "core-1-7", "label": "Sequences & Laziness", "description": "map, filter, reduce, take, drop on lazy sequences. Most operations are lazy by default.", "type": "required", "resources": ["https://clojure.org/reference/sequences", "https://clojure.org/guides/learn/sequential_colls"]},
+        {"id": "core-1-8", "label": "Destructuring", "description": "Extract values from vectors and maps in let, fn, and defn. Powerful nested destructuring.", "type": "required", "resources": ["https://clojure.org/guides/destructuring", "https://clojure.org/guides/learn/functions#_destructuring"]},
+        {"id": "core-1-9", "label": "Threading Macros", "description": "-> and ->> for readable data pipelines. Thread-first and thread-last macros.", "type": "required", "resources": ["https://clojure.org/guides/threading_macros", "https://clojure.org/reference/macros"]},
+        {"id": "core-1-10", "label": "Namespaces", "description": "Organize code with ns, require, use, and import. Namespaces map to files.", "type": "required", "resources": ["https://clojure.org/reference/namespaces", "https://clojure.org/guides/learn/namespaces"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "State, Concurrency & Interop",
+      "description": "Managed state, concurrency primitives, and Java interop.",
+      "topics": [
+        {"id": "core-2-1", "label": "Atoms", "description": "Managed mutable state with atom, swap!, reset!, deref/@. Atoms are thread-safe.", "type": "required", "resources": ["https://clojure.org/reference/atoms", "https://clojure.org/guides/learn/flow#_atoms"]},
+        {"id": "core-2-2", "label": "Refs & STM", "description": "Coordinated state changes with refs, dosync, alter. Software Transactional Memory.", "type": "optional", "resources": ["https://clojure.org/reference/refs", "https://clojure.org/about/concurrent_programming"]},
+        {"id": "core-2-3", "label": "Agents", "description": "Asynchronous state changes with send and send-off. Agents handle independent state updates.", "type": "optional", "resources": ["https://clojure.org/reference/agents", "https://clojure.org/about/concurrent_programming"]},
+        {"id": "core-2-4", "label": "core.async", "description": "CSP-style concurrency with channels, go blocks, and alt!. Clojure's answer to Go channels.", "type": "required", "resources": ["https://clojure.org/news/2013/06/28/clojure-clore-async-channels", "https://github.com/clojure/core.async"]},
+        {"id": "core-2-5", "label": "Java Interop", "description": "Call Java methods (.method obj), create instances (Class.), and import classes.", "type": "required", "resources": ["https://clojure.org/reference/java_interop", "https://clojure.org/guides/learn/java_interop"]},
+        {"id": "core-2-6", "label": "Protocols & Records", "description": "Define interfaces with defprotocol and implementations with defrecord. Polymorphism in Clojure.", "type": "required", "resources": ["https://clojure.org/reference/protocols", "https://clojure.org/reference/datatypes"]},
+        {"id": "core-2-7", "label": "Multimethods", "description": "Open dispatch on arbitrary criteria with defmulti and defmethod. More flexible than protocols.", "type": "required", "resources": ["https://clojure.org/reference/multimethods", "https://clojure.org/guides/learn/polymorphism"]},
+        {"id": "core-2-8", "label": "Specs", "description": "Describe data shapes and function contracts with clojure.spec. Runtime validation and generative testing.", "type": "optional", "resources": ["https://clojure.org/guides/spec", "https://clojure.org/about/spec"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Tooling & Testing",
+      "description": "deps.edn, Leiningen, testing, and project management.",
+      "topics": [
+        {"id": "core-3-1", "label": "deps.edn & CLI", "description": "Manage dependencies and run programs with the Clojure CLI and deps.edn.", "type": "required", "resources": ["https://clojure.org/guides/deps_and_cli", "https://clojure.org/reference/deps_and_cli"]},
+        {"id": "core-3-2", "label": "Leiningen", "description": "Build automation with lein — the traditional Clojure build tool.", "type": "optional", "resources": ["https://leiningen.org/", "https://leiningen.org/tutorial.html"]},
+        {"id": "core-3-3", "label": "Testing (clojure.test)", "description": "Write tests with deftest, testing, is, and are. Built-in testing framework.", "type": "required", "resources": ["https://clojure.org/guides/test", "https://clojure.github.io/clojure/clojure.test-api.html"]},
+        {"id": "core-3-4", "label": "Macros", "description": "Write code that writes code with defmacro. Macros transform forms at compile time.", "type": "advanced", "resources": ["https://clojure.org/reference/macros", "https://clojure.org/guides/learn/macros"]},
+        {"id": "core-3-5", "label": "Error Handling", "description": "try/catch/finally and ex-info/ex-data for structured exceptions.", "type": "required", "resources": ["https://clojure.org/guides/learn/flow#_exception_handling", "https://clojure.org/reference/special_forms#try"]},
+        {"id": "core-3-6", "label": "Transducers", "description": "Composable algorithmic transformations without intermediate collections. High-performance data processing.", "type": "optional", "resources": ["https://clojure.org/reference/transducers", "https://clojure.org/guides/transducers"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-ring", "label": "Ring", "icon": "🔗", "category": "Web", "category_icon": "🌐"},
+    {"id": "path-compojure", "label": "Compojure", "icon": "🌐", "category": "Web", "category_icon": "🌐"},
+    {"id": "path-pedestal", "label": "Pedestal", "icon": "🏗️", "category": "Web", "category_icon": "🌐"},
+    {"id": "path-reagent", "label": "Reagent (ClojureScript)", "icon": "⚛️", "category": "Frontend", "category_icon": "🖥️"},
+    {"id": "path-re-frame", "label": "re-frame", "icon": "🔄", "category": "Frontend", "category_icon": "🖥️"},
+    {"id": "path-datomic", "label": "Datomic", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-next-jdbc", "label": "next.jdbc", "icon": "📝", "category": "Database", "category_icon": "💾"},
+    {"id": "path-babashka", "label": "Babashka (Scripting)", "icon": "👶", "category": "Scripting", "category_icon": "💻"},
+    {"id": "path-clojurescript", "label": "ClojureScript", "icon": "🌐", "category": "JS Target", "category_icon": "🖥️"},
+    {"id": "path-integrant", "label": "Integrant (DI)", "icon": "🔧", "category": "Architecture", "category_icon": "🏗️"}
+  ]
+}

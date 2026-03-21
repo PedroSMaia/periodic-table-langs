@@ -1,0 +1,1 @@
+{"name": "Chisel", "packages": [{"name": "Chisel", "url": "https://www.chisel-lang.org/", "desc": "Hardware construction"}, {"name": "chiseltest", "url": "https://github.com/ucb-bar/chiseltest", "desc": "Testing"}]}

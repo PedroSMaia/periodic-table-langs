@@ -1,0 +1,114 @@
+{
+  "language": "SQL",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "SQL Fundamentals",
+      "description": "Basic queries, filtering, and data retrieval.",
+      "topics": [
+        {"id": "core-1-1", "label": "SELECT & FROM", "description": "Retrieve data from tables with SELECT. The most fundamental SQL operation.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_select.asp", "https://mode.com/sql-tutorial/sql-select-statement"]},
+        {"id": "core-1-2", "label": "WHERE & Filtering", "description": "Filter rows with WHERE, AND, OR, NOT, IN, BETWEEN, LIKE, and IS NULL.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_where.asp", "https://mode.com/sql-tutorial/sql-where"]},
+        {"id": "core-1-3", "label": "ORDER BY & LIMIT", "description": "Sort results and limit output. Essential for pagination and top-N queries.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_orderby.asp", "https://mode.com/sql-tutorial/sql-order-by"]},
+        {"id": "core-1-4", "label": "DISTINCT & Aliases", "description": "Remove duplicates with DISTINCT and name columns/tables with AS.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_distinct.asp", "https://mode.com/sql-tutorial/sql-distinct"]},
+        {"id": "core-1-5", "label": "INSERT", "description": "Add rows with INSERT INTO. Single and multi-row inserts.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_insert.asp", "https://mode.com/sql-tutorial/sql-insert-statement"]},
+        {"id": "core-1-6", "label": "UPDATE", "description": "Modify existing rows with UPDATE SET WHERE. Always use WHERE to avoid updating all rows.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_update.asp", "https://mode.com/sql-tutorial/sql-update-statement"]},
+        {"id": "core-1-7", "label": "DELETE", "description": "Remove rows with DELETE FROM WHERE. Always use WHERE to avoid deleting all rows.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_delete.asp", "https://mode.com/sql-tutorial/sql-delete-statement"]},
+        {"id": "core-1-8", "label": "Data Types", "description": "INT, VARCHAR, TEXT, DATE, TIMESTAMP, BOOLEAN, DECIMAL. Choose appropriate types for your data.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_datatypes.asp", "https://dev.mysql.com/doc/refman/8.0/en/data-types.html"]},
+        {"id": "core-1-9", "label": "NULL Handling", "description": "Understand NULL semantics, IS NULL, IS NOT NULL, COALESCE, and IFNULL/NULLIF.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_null_values.asp", "https://mode.com/sql-tutorial/sql-is-null"]},
+        {"id": "core-1-10", "label": "Comments & Formatting", "description": "Write readable SQL with proper indentation, -- and /* */ comments. Readability matters for maintenance.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_comments.asp", "https://www.sqlstyle.guide/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Aggregate Functions & Grouping",
+      "description": "Summarize data with aggregates and GROUP BY.",
+      "topics": [
+        {"id": "core-2-1", "label": "COUNT, SUM, AVG", "description": "Count rows, sum values, and calculate averages. The most common aggregate functions.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_count_avg_sum.asp", "https://mode.com/sql-tutorial/sql-aggregate-functions"]},
+        {"id": "core-2-2", "label": "MIN, MAX", "description": "Find minimum and maximum values. Useful for date ranges and extremes.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_min_max.asp", "https://mode.com/sql-tutorial/sql-min-max"]},
+        {"id": "core-2-3", "label": "GROUP BY", "description": "Group rows by columns for aggregation. GROUP BY transforms rows into summary rows.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_groupby.asp", "https://mode.com/sql-tutorial/sql-group-by"]},
+        {"id": "core-2-4", "label": "HAVING", "description": "Filter groups after aggregation. WHERE filters rows, HAVING filters groups.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_having.asp", "https://mode.com/sql-tutorial/sql-having"]},
+        {"id": "core-2-5", "label": "CASE Expressions", "description": "Conditional logic in queries with CASE WHEN THEN ELSE END. SQL's if/else equivalent.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_case.asp", "https://mode.com/sql-tutorial/sql-case"]},
+        {"id": "core-2-6", "label": "String Functions", "description": "CONCAT, SUBSTRING, UPPER, LOWER, TRIM, LENGTH, REPLACE. Common text manipulation in SQL.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_ref_functions.asp", "https://mode.com/sql-tutorial/sql-string-functions-for-cleaning"]},
+        {"id": "core-2-7", "label": "Date Functions", "description": "NOW, DATE, EXTRACT, DATE_ADD, DATEDIFF, DATE_FORMAT. Date manipulation varies by database.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_dates.asp", "https://mode.com/sql-tutorial/sql-datetime-format"]},
+        {"id": "core-2-8", "label": "Type Conversion", "description": "CAST, CONVERT, and implicit type coercion. Convert between types for calculations and comparisons.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_ref_cast.asp", "https://mode.com/sql-tutorial/sql-cast"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Joins & Relationships",
+      "description": "Combine data from multiple tables.",
+      "topics": [
+        {"id": "core-3-1", "label": "INNER JOIN", "description": "Return rows that match in both tables. The most common join type.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_join_inner.asp", "https://mode.com/sql-tutorial/sql-inner-join"]},
+        {"id": "core-3-2", "label": "LEFT JOIN", "description": "Return all rows from the left table plus matching right rows. NULL for non-matching right rows.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_join_left.asp", "https://mode.com/sql-tutorial/sql-left-join"]},
+        {"id": "core-3-3", "label": "RIGHT JOIN & FULL JOIN", "description": "Right outer join and full outer join for complete data from one or both tables.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_join_right.asp", "https://mode.com/sql-tutorial/sql-right-join"]},
+        {"id": "core-3-4", "label": "CROSS JOIN", "description": "Cartesian product of two tables. Every row paired with every other row.", "type": "optional", "resources": ["https://www.w3schools.com/sql/sql_join_cross.asp", "https://mode.com/sql-tutorial/sql-cross-join"]},
+        {"id": "core-3-5", "label": "Self Joins", "description": "Join a table to itself. Used for hierarchical data and row comparisons.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_join_self.asp", "https://mode.com/sql-tutorial/sql-self-joins"]},
+        {"id": "core-3-6", "label": "Multiple Joins", "description": "Chain joins across 3+ tables. Common in normalized databases.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_join.asp", "https://mode.com/sql-tutorial/sql-join-types"]},
+        {"id": "core-3-7", "label": "UNION & UNION ALL", "description": "Combine result sets vertically. UNION removes duplicates, UNION ALL keeps them.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_union.asp", "https://mode.com/sql-tutorial/sql-union"]},
+        {"id": "core-3-8", "label": "INTERSECT & EXCEPT", "description": "Set operations for finding common or unique rows between queries.", "type": "optional", "resources": ["https://www.w3schools.com/sql/sql_intersect.asp", "https://mode.com/sql-tutorial/sql-intersect"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Subqueries & Advanced Queries",
+      "description": "Subqueries, CTEs, and complex query patterns.",
+      "topics": [
+        {"id": "core-4-1", "label": "Subqueries in WHERE", "description": "Nest queries inside WHERE for dynamic filtering. Subqueries return values for comparison.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_subqueries.asp", "https://mode.com/sql-tutorial/sql-sub-queries"]},
+        {"id": "core-4-2", "label": "Subqueries in FROM", "description": "Use subqueries as derived tables. Pre-aggregate data before joining.", "type": "required", "resources": ["https://mode.com/sql-tutorial/sql-sub-queries", "https://www.w3schools.com/sql/sql_subqueries.asp"]},
+        {"id": "core-4-3", "label": "Correlated Subqueries", "description": "Subqueries that reference the outer query. Execute once per outer row.", "type": "required", "resources": ["https://mode.com/sql-tutorial/sql-sub-queries#correlated-sub-queries", "https://www.w3schools.com/sql/sql_exists.asp"]},
+        {"id": "core-4-4", "label": "EXISTS & NOT EXISTS", "description": "Check for existence of rows in a subquery. Often faster than IN for large datasets.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_exists.asp", "https://mode.com/sql-tutorial/sql-exists"]},
+        {"id": "core-4-5", "label": "CTEs (WITH clause)", "description": "Common Table Expressions for readable, reusable subqueries. CTEs are named temporary result sets.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_with.asp", "https://mode.com/sql-tutorial/sql-cte"]},
+        {"id": "core-4-6", "label": "Recursive CTEs", "description": "Self-referencing CTEs for hierarchical data. Used for org charts, categories, and graphs.", "type": "optional", "resources": ["https://www.w3schools.com/sql/sql_with.asp", "https://learnsql.com/blog/recursive-cte-sql-server/"]},
+        {"id": "core-4-7", "label": "Window Functions Basics", "description": "ROW_NUMBER, RANK, DENSE_RANK, and NTILE with OVER(PARTITION BY ORDER BY). Compute across row sets.", "type": "required", "resources": ["https://mode.com/sql-tutorial/sql-window-functions", "https://www.postgresql.org/docs/current/tutorial-window.html"]},
+        {"id": "core-4-8", "label": "Advanced Window Functions", "description": "LAG, LEAD, FIRST_VALUE, LAST_VALUE, SUM/AVG OVER, and frame clauses.", "type": "optional", "resources": ["https://mode.com/sql-tutorial/sql-window-functions#lag-and-lead", "https://www.postgresql.org/docs/current/functions-window.html"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "DDL & Schema Design",
+      "description": "Create tables, constraints, and design schemas.",
+      "topics": [
+        {"id": "core-5-1", "label": "CREATE TABLE", "description": "Define tables with columns, types, and constraints. Schema design is the foundation of a database.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_create_table.asp", "https://mode.com/sql-tutorial/sql-create-table"]},
+        {"id": "core-5-2", "label": "PRIMARY KEY & FOREIGN KEY", "description": "Define unique row identifiers and relationships between tables. Keys enforce data integrity.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_primarykey.asp", "https://www.w3schools.com/sql/sql_foreignkey.asp"]},
+        {"id": "core-5-3", "label": "Constraints", "description": "NOT NULL, UNIQUE, CHECK, DEFAULT. Constraints enforce data rules at the database level.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_constraints.asp", "https://www.postgresql.org/docs/current/ddl-constraints.html"]},
+        {"id": "core-5-4", "label": "ALTER TABLE", "description": "Add, modify, and drop columns and constraints. Schema evolution for existing tables.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_alter.asp", "https://www.postgresql.org/docs/current/sql-altertable.html"]},
+        {"id": "core-5-5", "label": "Indexes", "description": "CREATE INDEX for faster queries. Indexes speed up reads but slow down writes.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_create_index.asp", "https://use-the-index-luke.com/"]},
+        {"id": "core-5-6", "label": "Normalization", "description": "1NF, 2NF, 3NF — reduce data redundancy and anomalies. Normal forms guide schema design.", "type": "required", "resources": ["https://www.guru99.com/database-normalization.html", "https://en.wikipedia.org/wiki/Database_normalization"]},
+        {"id": "core-5-7", "label": "Views", "description": "Create virtual tables with CREATE VIEW. Views simplify complex queries and control access.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_view.asp", "https://www.postgresql.org/docs/current/sql-createview.html"]},
+        {"id": "core-5-8", "label": "DROP & TRUNCATE", "description": "Remove tables with DROP and clear data with TRUNCATE. Understand the differences and risks.", "type": "required", "resources": ["https://www.w3schools.com/sql/sql_drop_table.asp", "https://www.w3schools.com/sql/sql_truncate.asp"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Performance & Administration",
+      "description": "Query optimization, EXPLAIN, and database administration.",
+      "topics": [
+        {"id": "core-6-1", "label": "EXPLAIN / Query Plans", "description": "Analyze query execution with EXPLAIN. Understand sequential scans vs index scans.", "type": "required", "resources": ["https://www.postgresql.org/docs/current/sql-explain.html", "https://dev.mysql.com/doc/refman/8.0/en/explain.html"]},
+        {"id": "core-6-2", "label": "Index Optimization", "description": "Choose the right indexes — B-tree, hash, composite, covering, partial. Indexes are the primary tuning tool.", "type": "required", "resources": ["https://use-the-index-luke.com/", "https://www.postgresql.org/docs/current/indexes.html"]},
+        {"id": "core-6-3", "label": "Query Optimization", "description": "Rewrite slow queries, avoid SELECT *, reduce subqueries, and use JOINs efficiently.", "type": "required", "resources": ["https://use-the-index-luke.com/sql/where-clause", "https://dev.mysql.com/doc/refman/8.0/en/optimization.html"]},
+        {"id": "core-6-4", "label": "Transactions & ACID", "description": "Atomicity, Consistency, Isolation, Durability. Transaction isolation levels control concurrency.", "type": "required", "resources": ["https://www.postgresql.org/docs/current/transaction-iso.html", "https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html"]},
+        {"id": "core-6-5", "label": "Stored Procedures & Functions", "description": "Encapsulate logic in the database with stored procedures. Useful for complex business rules.", "type": "optional", "resources": ["https://www.postgresql.org/docs/current/sql-createfunction.html", "https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html"]},
+        {"id": "core-6-6", "label": "Triggers", "description": "Auto-execute logic on INSERT, UPDATE, DELETE. Triggers enforce rules and audit changes.", "type": "optional", "resources": ["https://www.postgresql.org/docs/current/sql-createtrigger.html", "https://dev.mysql.com/doc/refman/8.0/en/triggers.html"]},
+        {"id": "core-6-7", "label": "Backup & Recovery", "description": "pg_dump, mysqldump, point-in-time recovery. Backups are essential for disaster recovery.", "type": "required", "resources": ["https://www.postgresql.org/docs/current/backup.html", "https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html"]},
+        {"id": "core-6-8", "label": "User Management & Permissions", "description": "GRANT, REVOKE, CREATE USER, roles. Control who can access and modify data.", "type": "required", "resources": ["https://www.postgresql.org/docs/current/sql-grant.html", "https://dev.mysql.com/doc/refman/8.0/en/grant.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-postgresql", "label": "PostgreSQL", "icon": "🐘", "category": "Relational Databases", "category_icon": "💾"},
+    {"id": "path-mysql", "label": "MySQL", "icon": "🐬", "category": "Relational Databases", "category_icon": "💾"},
+    {"id": "path-sqlite-sql", "label": "SQLite", "icon": "🪶", "category": "Relational Databases", "category_icon": "💾"},
+    {"id": "path-mssql", "label": "SQL Server", "icon": "🔷", "category": "Relational Databases", "category_icon": "💾"},
+    {"id": "path-oracle-db", "label": "Oracle Database", "icon": "🔴", "category": "Relational Databases", "category_icon": "💾"},
+    {"id": "path-mariadb", "label": "MariaDB", "icon": "🦭", "category": "Relational Databases", "category_icon": "💾"},
+    {"id": "path-cockroachdb", "label": "CockroachDB", "icon": "🪳", "category": "NewSQL", "category_icon": "🌐"},
+    {"id": "path-timescaledb", "label": "TimescaleDB", "icon": "⏱️", "category": "Time-Series", "category_icon": "📊"},
+    {"id": "path-clickhouse", "label": "ClickHouse", "icon": "🏠", "category": "Analytics", "category_icon": "📊"},
+    {"id": "path-dbt", "label": "dbt", "icon": "🔄", "category": "Data Engineering", "category_icon": "🔧"},
+    {"id": "path-apache-spark-sql", "label": "Spark SQL", "icon": "✨", "category": "Big Data", "category_icon": "📊"},
+    {"id": "path-presto-trino", "label": "Trino (Presto)", "icon": "🔍", "category": "Query Engines", "category_icon": "⚙️"},
+    {"id": "path-pg-extensions", "label": "PostgreSQL Extensions", "icon": "🧩", "category": "Extensions", "category_icon": "🔌"},
+    {"id": "path-database-design", "label": "Database Design Patterns", "icon": "📐", "category": "Architecture", "category_icon": "🏗️"},
+    {"id": "path-sql-performance", "label": "Query Performance Tuning", "icon": "⚡", "category": "Performance", "category_icon": "🏎️"}
+  ]
+}

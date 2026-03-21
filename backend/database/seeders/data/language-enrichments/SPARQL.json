@@ -1,0 +1,1 @@
+{"name": "SPARQL", "tools": [{"name": "Wikidata SPARQL", "url": "https://query.wikidata.org/", "desc": "Query endpoint"}, {"name": "Apache Jena", "url": "https://jena.apache.org/", "desc": "RDF framework"}]}

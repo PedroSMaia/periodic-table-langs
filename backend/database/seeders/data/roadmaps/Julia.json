@@ -1,0 +1,62 @@
+{
+  "language": "Julia",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Julia Fundamentals",
+      "description": "Syntax, types, arrays, and the REPL.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & REPL", "description": "Install Julia and use the interactive REPL with help (?), shell (;), and package (]) modes.", "type": "required", "resources": ["https://julialang.org/downloads/", "https://docs.julialang.org/en/v1/manual/getting-started/"]},
+        {"id": "core-1-2", "label": "Variables & Types", "description": "Int64, Float64, String, Bool, Char. Julia is dynamically typed with optional type annotations.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/variables/", "https://docs.julialang.org/en/v1/manual/types/"]},
+        {"id": "core-1-3", "label": "Arrays & Matrices", "description": "N-dimensional arrays with 1-based indexing. Arrays are Julia's core data structure for numerical work.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/arrays/", "https://docs.julialang.org/en/v1/base/arrays/"]},
+        {"id": "core-1-4", "label": "Control Flow", "description": "if/elseif/else/end, for, while, begin/end blocks. Loops are fast in Julia (unlike Python/R).", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/control-flow/", "https://docs.julialang.org/en/v1/base/base/"]},
+        {"id": "core-1-5", "label": "Functions", "description": "Single-line and multi-line functions, multiple dispatch, anonymous functions. Multiple dispatch is Julia's key feature.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/functions/", "https://docs.julialang.org/en/v1/manual/methods/"]},
+        {"id": "core-1-6", "label": "Strings", "description": "String interpolation ($), multi-line strings, regex. Strings are UTF-8 encoded.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/strings/", "https://docs.julialang.org/en/v1/base/strings/"]},
+        {"id": "core-1-7", "label": "Dictionaries & Sets", "description": "Dict for key-value pairs, Set for unique elements. Similar to Python's dict and set.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/base/collections/#Dictionaries", "https://docs.julialang.org/en/v1/base/collections/"]},
+        {"id": "core-1-8", "label": "Broadcasting (.)", "description": "Apply functions element-wise with dot syntax (f.(x)). Broadcasting avoids explicit loops.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/arrays/#Broadcasting", "https://docs.julialang.org/en/v1/manual/mathematical-operations/"]},
+        {"id": "core-1-9", "label": "Comprehensions", "description": "Array and generator comprehensions for concise array creation. Similar to Python but with type annotations.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/arrays/#man-comprehensions", "https://docs.julialang.org/en/v1/manual/arrays/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Type System & Multiple Dispatch",
+      "description": "Julia's type hierarchy, abstract types, and dispatch.",
+      "topics": [
+        {"id": "core-2-1", "label": "Type Hierarchy", "description": "Abstract types, concrete types, and the Any/Number/Integer hierarchy. Julia's types form a tree.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/types/", "https://docs.julialang.org/en/v1/manual/types/#Abstract-Types"]},
+        {"id": "core-2-2", "label": "Multiple Dispatch", "description": "Define methods specialized on argument types. Julia dispatches on all argument types, not just the first.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/methods/", "https://docs.julialang.org/en/v1/manual/methods/#Defining-Methods"]},
+        {"id": "core-2-3", "label": "Structs", "description": "Define composite types with struct (immutable) and mutable struct. Julia's primary data modeling tool.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/types/#Composite-Types", "https://docs.julialang.org/en/v1/manual/constructors/"]},
+        {"id": "core-2-4", "label": "Parametric Types", "description": "Generic types with type parameters. Array{Float64, 2} is a 2D array of Float64.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/types/#Parametric-Types", "https://docs.julialang.org/en/v1/manual/methods/"]},
+        {"id": "core-2-5", "label": "Error Handling", "description": "try/catch/finally, throw, and custom exception types.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling", "https://docs.julialang.org/en/v1/base/base/#Core.try"]},
+        {"id": "core-2-6", "label": "Modules & Packages", "description": "Organize code with module and manage dependencies with Pkg.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/modules/", "https://pkgdocs.julialang.org/v1/"]},
+        {"id": "core-2-7", "label": "Macros", "description": "Metaprogramming with @macro syntax. Julia macros transform code at parse time.", "type": "optional", "resources": ["https://docs.julialang.org/en/v1/manual/metaprogramming/", "https://docs.julialang.org/en/v1/manual/metaprogramming/#man-macros"]},
+        {"id": "core-2-8", "label": "Performance & @benchmark", "description": "Write fast code with type stability, avoid globals, and profile with BenchmarkTools.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/performance-tips/", "https://github.com/JuliaCI/BenchmarkTools.jl"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "I/O, Testing & Ecosystem",
+      "description": "File I/O, plotting, testing, and the Julia ecosystem.",
+      "topics": [
+        {"id": "core-3-1", "label": "File I/O", "description": "Read and write files with open, readline, readlines, write. CSV.jl for CSV data.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/manual/networking-and-streams/", "https://csv.juliadata.org/stable/"]},
+        {"id": "core-3-2", "label": "DataFrames.jl", "description": "Tabular data manipulation similar to R/Pandas. The core data science package.", "type": "required", "resources": ["https://dataframes.juliadata.org/stable/", "https://dataframes.juliadata.org/stable/man/getting_started/"]},
+        {"id": "core-3-3", "label": "Plotting (Plots.jl / Makie.jl)", "description": "Create visualizations with Plots.jl (multiple backends) or Makie.jl (GPU-accelerated).", "type": "required", "resources": ["https://docs.juliaplots.org/stable/", "https://docs.makie.org/stable/"]},
+        {"id": "core-3-4", "label": "Testing", "description": "Write tests with @test, @testset from the Test standard library.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/stdlib/Test/", "https://docs.julialang.org/en/v1/stdlib/Test/#Basic-Unit-Tests"]},
+        {"id": "core-3-5", "label": "Linear Algebra", "description": "Built-in LinearAlgebra — eigvals, svd, lu, qr, norm. Julia is designed for numerical computing.", "type": "required", "resources": ["https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/", "https://docs.julialang.org/en/v1/manual/arrays/"]},
+        {"id": "core-3-6", "label": "Parallel & Distributed", "description": "Threads, @distributed, pmap, and Distributed.jl. Julia supports easy parallelism.", "type": "optional", "resources": ["https://docs.julialang.org/en/v1/manual/multi-threading/", "https://docs.julialang.org/en/v1/manual/distributed-computing/"]},
+        {"id": "core-3-7", "label": "Calling Python/R/C", "description": "PyCall.jl, RCall.jl, and ccall for seamless interop with other languages.", "type": "optional", "resources": ["https://github.com/JuliaPy/PyCall.jl", "https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code/"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-flux", "label": "Flux.jl (Deep Learning)", "icon": "🧠", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-mlj", "label": "MLJ.jl", "icon": "🤖", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-differentialequations", "label": "DifferentialEquations.jl", "icon": "📐", "category": "Scientific Computing", "category_icon": "🔬"},
+    {"id": "path-jump", "label": "JuMP (Optimization)", "icon": "📈", "category": "Optimization", "category_icon": "📊"},
+    {"id": "path-genie", "label": "Genie.jl (Web)", "icon": "🌐", "category": "Web", "category_icon": "🌐"},
+    {"id": "path-pluto", "label": "Pluto.jl (Notebooks)", "icon": "📓", "category": "Notebooks", "category_icon": "📝"},
+    {"id": "path-makie", "label": "Makie.jl (Visualization)", "icon": "📊", "category": "Visualization", "category_icon": "📉"},
+    {"id": "path-cuda-jl", "label": "CUDA.jl (GPU)", "icon": "⚡", "category": "GPU Computing", "category_icon": "🏎️"},
+    {"id": "path-agents-jl", "label": "Agents.jl (ABM)", "icon": "🤖", "category": "Simulation", "category_icon": "⚙️"},
+    {"id": "path-turing-jl", "label": "Turing.jl (Bayesian)", "icon": "📊", "category": "Statistics", "category_icon": "📊"}
+  ]
+}

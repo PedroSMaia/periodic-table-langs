@@ -1,0 +1,145 @@
+{
+  "language": "Java",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Java Fundamentals",
+      "description": "JDK setup, syntax, primitive types, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "JDK Installation & IDEs", "description": "Install the JDK and set up an IDE (IntelliJ or VS Code). The JDK includes the compiler, JVM, and standard library.", "type": "required", "resources": ["https://dev.java/learn/getting-started/", "https://www.jetbrains.com/idea/guide/tutorials/getting-started-with-intellij-idea/"]},
+        {"id": "core-1-2", "label": "Hello World & Program Structure", "description": "Understand the main method, classes as entry points, and compilation with javac. Every Java program lives inside a class.", "type": "required", "resources": ["https://dev.java/learn/getting-started/", "https://docs.oracle.com/javase/tutorial/getStarted/cupojava/index.html"]},
+        {"id": "core-1-3", "label": "Primitive Types & Variables", "description": "int, long, double, float, char, boolean, byte, short. Java has strict typing with no implicit narrowing.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html", "https://dev.java/learn/language-basics/"]},
+        {"id": "core-1-4", "label": "Operators & Expressions", "description": "Arithmetic, comparison, logical, bitwise, and ternary operators. Foundation of all program logic.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html", "https://dev.java/learn/language-basics/"]},
+        {"id": "core-1-5", "label": "Control Flow", "description": "if/else, switch (including switch expressions), for, while, do-while, break, continue. Standard flow control.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html", "https://dev.java/learn/language-basics/"]},
+        {"id": "core-1-6", "label": "Strings", "description": "String class, immutability, StringBuilder, and common methods. Strings are objects in Java, not primitives.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/data/strings.html", "https://dev.java/learn/api/"]},
+        {"id": "core-1-7", "label": "Arrays", "description": "Fixed-size typed arrays and multi-dimensional arrays. Arrays are the simplest data structure in Java.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html", "https://dev.java/learn/language-basics/"]},
+        {"id": "core-1-8", "label": "Methods", "description": "Define methods with parameters, return types, and overloading. Methods are how you organize logic in Java.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html", "https://dev.java/learn/oop/"]},
+        {"id": "core-1-9", "label": "Packages & Imports", "description": "Organize classes into packages and use import statements. Packages prevent naming conflicts and structure projects.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/package/index.html", "https://dev.java/learn/oop/"]},
+        {"id": "core-1-10", "label": "Type Casting & Wrapper Classes", "description": "Cast between types and use Integer, Double, etc. for boxing/unboxing. Wrappers bridge primitives and objects.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html", "https://dev.java/learn/numbers-strings/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Object-Oriented Programming",
+      "description": "Classes, inheritance, polymorphism, interfaces, and encapsulation.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Objects", "description": "Define classes with fields, constructors, and methods. Everything in Java revolves around objects.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/javaOO/index.html", "https://dev.java/learn/oop/"]},
+        {"id": "core-2-2", "label": "Constructors & this", "description": "Default, parameterized, and copy constructors. this refers to the current instance.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html", "https://dev.java/learn/oop/"]},
+        {"id": "core-2-3", "label": "Encapsulation & Access Modifiers", "description": "private, protected, public, and package-private. Encapsulation hides implementation details.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html", "https://dev.java/learn/oop/"]},
+        {"id": "core-2-4", "label": "Inheritance", "description": "Extend classes with extends, use super, and understand the Object class. Java supports single class inheritance.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html", "https://dev.java/learn/inheritance/"]},
+        {"id": "core-2-5", "label": "Polymorphism", "description": "Method overriding, dynamic dispatch, and the @Override annotation. Polymorphism enables flexible, extensible code.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/IandI/polymorphism.html", "https://dev.java/learn/inheritance/"]},
+        {"id": "core-2-6", "label": "Abstract Classes", "description": "Define partial implementations with abstract methods. Abstract classes provide a template for subclasses.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html", "https://dev.java/learn/inheritance/"]},
+        {"id": "core-2-7", "label": "Interfaces", "description": "Define contracts with interface, default methods, and static methods. Interfaces enable multiple type inheritance.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html", "https://dev.java/learn/interfaces/"]},
+        {"id": "core-2-8", "label": "Enums", "description": "Type-safe constants with fields, methods, and constructors. Java enums are full objects, not just integers.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html", "https://dev.java/learn/language-basics/"]},
+        {"id": "core-2-9", "label": "Records", "description": "Immutable data carriers with auto-generated equals, hashCode, and toString. Records reduce boilerplate for DTOs.", "type": "required", "resources": ["https://docs.oracle.com/en/java/javase/21/language/records.html", "https://dev.java/learn/records/"]},
+        {"id": "core-2-10", "label": "Sealed Classes", "description": "Restrict which classes can extend a type. Sealed classes enable exhaustive pattern matching.", "type": "optional", "resources": ["https://docs.oracle.com/en/java/javase/21/language/sealed-classes-and-interfaces.html", "https://dev.java/learn/sealed-classes/"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Collections & Generics",
+      "description": "The Collections Framework, generics, and data structures.",
+      "topics": [
+        {"id": "core-3-1", "label": "List (ArrayList, LinkedList)", "description": "Ordered collections with index access. ArrayList is the most used collection in Java.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/collections/interfaces/list.html", "https://dev.java/learn/api/collections-framework/"]},
+        {"id": "core-3-2", "label": "Set (HashSet, TreeSet)", "description": "Unique element collections. HashSet for O(1) lookups, TreeSet for sorted order.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/collections/interfaces/set.html", "https://dev.java/learn/api/collections-framework/"]},
+        {"id": "core-3-3", "label": "Map (HashMap, TreeMap)", "description": "Key-value mappings. HashMap is the workhorse for fast lookups in Java.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/collections/interfaces/map.html", "https://dev.java/learn/api/collections-framework/"]},
+        {"id": "core-3-4", "label": "Queue & Deque", "description": "FIFO queues and double-ended queues. Used for task scheduling, BFS, and buffering.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/collections/interfaces/queue.html", "https://dev.java/learn/api/collections-framework/"]},
+        {"id": "core-3-5", "label": "Iterators & for-each", "description": "Traverse collections with Iterator and enhanced for loops. The Iterable interface powers for-each.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html", "https://dev.java/learn/api/collections-framework/"]},
+        {"id": "core-3-6", "label": "Generics Basics", "description": "Parameterize classes and methods with type parameters. Generics provide compile-time type safety.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/generics/index.html", "https://dev.java/learn/generics/"]},
+        {"id": "core-3-7", "label": "Wildcards & Bounds", "description": "Use ?, extends, and super for flexible generic types. Wildcards enable covariance and contravariance.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html", "https://dev.java/learn/generics/"]},
+        {"id": "core-3-8", "label": "Comparable & Comparator", "description": "Define natural ordering and custom sorting. Essential for sorted collections and Arrays.sort.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html", "https://dev.java/learn/api/collections-framework/"]},
+        {"id": "core-3-9", "label": "Collections Utility Class", "description": "sort, shuffle, unmodifiableList, synchronizedList, and more. Utility methods for common collection operations.", "type": "optional", "resources": ["https://docs.oracle.com/javase/tutorial/collections/algorithms/index.html", "https://dev.java/learn/api/collections-framework/"]},
+        {"id": "core-3-10", "label": "Immutable Collections", "description": "List.of, Set.of, Map.of for unmodifiable collections. Immutable collections are safer and thread-friendly.", "type": "required", "resources": ["https://docs.oracle.com/en/java/javase/21/core/creating-immutable-lists-sets-and-maps.html", "https://dev.java/learn/api/collections-framework/"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Exception Handling & I/O",
+      "description": "Error handling, file operations, and serialization.",
+      "topics": [
+        {"id": "core-4-1", "label": "Try/Catch/Finally", "description": "Handle checked and unchecked exceptions. Java distinguishes between recoverable and programming errors.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html", "https://dev.java/learn/exceptions/"]},
+        {"id": "core-4-2", "label": "Custom Exceptions", "description": "Create domain-specific exception classes extending Exception or RuntimeException.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/exceptions/creating.html", "https://dev.java/learn/exceptions/"]},
+        {"id": "core-4-3", "label": "Try-with-Resources", "description": "Auto-close resources implementing AutoCloseable. Eliminates resource leak bugs.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html", "https://dev.java/learn/exceptions/"]},
+        {"id": "core-4-4", "label": "File I/O with NIO.2", "description": "Read and write files with Files, Path, and Paths. NIO.2 is the modern Java file API.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/io/fileio.html", "https://dev.java/learn/java-io/"]},
+        {"id": "core-4-5", "label": "Streams (InputStream/OutputStream)", "description": "Byte and character streams for I/O operations. Foundation for reading network data and files.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/io/streams.html", "https://dev.java/learn/java-io/"]},
+        {"id": "core-4-6", "label": "Buffered I/O & Readers/Writers", "description": "BufferedReader, BufferedWriter, and PrintWriter for efficient text I/O.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/io/buffers.html", "https://dev.java/learn/java-io/"]},
+        {"id": "core-4-7", "label": "Serialization", "description": "Serialize objects to bytes with Serializable. Understand why modern Java prefers JSON over native serialization.", "type": "optional", "resources": ["https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html", "https://dev.java/learn/java-io/"]},
+        {"id": "core-4-8", "label": "Working with JSON", "description": "Parse and generate JSON with Jackson or Gson. JSON is the standard for API communication.", "type": "required", "resources": ["https://github.com/FasterXML/jackson", "https://www.baeldung.com/jackson"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Functional Programming & Streams",
+      "description": "Lambda expressions, Stream API, Optional, and functional interfaces.",
+      "topics": [
+        {"id": "core-5-1", "label": "Lambda Expressions", "description": "Anonymous functions for concise callback syntax. Lambdas transformed Java from verbose to expressive.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html", "https://dev.java/learn/lambdas/"]},
+        {"id": "core-5-2", "label": "Functional Interfaces", "description": "Predicate, Function, Consumer, Supplier, and BiFunction. The building blocks for lambda-based APIs.", "type": "required", "resources": ["https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html", "https://dev.java/learn/lambdas/"]},
+        {"id": "core-5-3", "label": "Method References", "description": "Shorthand for lambdas that call existing methods. String::toLowerCase is cleaner than s -> s.toLowerCase().", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html", "https://dev.java/learn/lambdas/"]},
+        {"id": "core-5-4", "label": "Stream API Basics", "description": "Process collections with filter, map, reduce, collect. Streams enable declarative data processing.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/collections/streams/index.html", "https://dev.java/learn/api/streams/"]},
+        {"id": "core-5-5", "label": "Stream Collectors", "description": "toList, toSet, toMap, groupingBy, partitioningBy, joining. Collectors transform stream results.", "type": "required", "resources": ["https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html", "https://dev.java/learn/api/streams/"]},
+        {"id": "core-5-6", "label": "Optional", "description": "Avoid null with Optional<T>. Optional forces explicit handling of absent values.", "type": "required", "resources": ["https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html", "https://dev.java/learn/api/streams/"]},
+        {"id": "core-5-7", "label": "Parallel Streams", "description": "Process streams in parallel with .parallel(). Easy parallelism but requires understanding of thread safety.", "type": "optional", "resources": ["https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html", "https://dev.java/learn/api/streams/"]},
+        {"id": "core-5-8", "label": "Pattern Matching", "description": "Pattern matching for instanceof and switch (Java 21+). Reduces casting boilerplate and enables exhaustive checks.", "type": "optional", "resources": ["https://docs.oracle.com/en/java/javase/21/language/pattern-matching.html", "https://dev.java/learn/pattern-matching/"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Concurrency",
+      "description": "Threads, executors, synchronization, and modern concurrency.",
+      "topics": [
+        {"id": "core-6-1", "label": "Threads & Runnable", "description": "Create threads with Thread and Runnable. Understanding threads is essential for server-side Java.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/concurrency/index.html", "https://dev.java/learn/concurrency/"]},
+        {"id": "core-6-2", "label": "Synchronization & Locks", "description": "synchronized blocks, ReentrantLock, and volatile. Prevent data races in shared-state concurrency.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html", "https://dev.java/learn/concurrency/"]},
+        {"id": "core-6-3", "label": "ExecutorService & Thread Pools", "description": "Manage thread lifecycles with Executors. Thread pools avoid the overhead of creating threads per task.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/concurrency/executors.html", "https://dev.java/learn/concurrency/"]},
+        {"id": "core-6-4", "label": "CompletableFuture", "description": "Compose async operations with thenApply, thenCompose, and allOf. Modern async programming in Java.", "type": "required", "resources": ["https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html", "https://www.baeldung.com/java-completablefuture"]},
+        {"id": "core-6-5", "label": "Concurrent Collections", "description": "ConcurrentHashMap, CopyOnWriteArrayList, BlockingQueue. Thread-safe collections for concurrent access.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/essential/concurrency/collections.html", "https://dev.java/learn/concurrency/"]},
+        {"id": "core-6-6", "label": "Virtual Threads (Project Loom)", "description": "Lightweight threads for massive concurrency (Java 21+). Virtual threads simplify concurrent server code.", "type": "optional", "resources": ["https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html", "https://dev.java/learn/virtual-threads/"]},
+        {"id": "core-6-7", "label": "Atomic Variables", "description": "AtomicInteger, AtomicReference for lock-free thread-safe operations. Atomics are faster than synchronization.", "type": "optional", "resources": ["https://docs.oracle.com/javase/tutorial/essential/concurrency/atomicvars.html", "https://www.baeldung.com/java-atomic-variables"]},
+        {"id": "core-6-8", "label": "Structured Concurrency", "description": "Manage concurrent subtask lifecycles as a unit (Java 21+ preview). Prevents thread leaks in complex async flows.", "type": "advanced", "resources": ["https://docs.oracle.com/en/java/javase/21/core/structured-concurrency.html", "https://www.baeldung.com/java-structured-concurrency"]}
+      ]
+    },
+    {
+      "id": "core-7",
+      "label": "Build Tools, Testing & JVM",
+      "description": "Maven/Gradle, unit testing, modules, and JVM internals.",
+      "topics": [
+        {"id": "core-7-1", "label": "Maven", "description": "Dependency management and build lifecycle with pom.xml. Maven is the most widely used Java build tool.", "type": "required", "resources": ["https://maven.apache.org/guides/getting-started/", "https://www.baeldung.com/maven"]},
+        {"id": "core-7-2", "label": "Gradle", "description": "Flexible build automation with Groovy/Kotlin DSL. Gradle is faster and more configurable than Maven.", "type": "required", "resources": ["https://docs.gradle.org/current/userguide/getting_started.html", "https://www.baeldung.com/gradle"]},
+        {"id": "core-7-3", "label": "JUnit 5", "description": "Write unit tests with @Test, assertions, and lifecycle hooks. JUnit is the standard Java testing framework.", "type": "required", "resources": ["https://junit.org/junit5/docs/current/user-guide/", "https://www.baeldung.com/junit-5"]},
+        {"id": "core-7-4", "label": "Mockito", "description": "Mock dependencies for isolated unit tests. Mockito is the most popular Java mocking framework.", "type": "required", "resources": ["https://site.mockito.org/", "https://www.baeldung.com/mockito-series"]},
+        {"id": "core-7-5", "label": "JDBC Basics", "description": "Connect to databases with JDBC, execute queries, and handle ResultSets. The foundation for all Java database access.", "type": "required", "resources": ["https://docs.oracle.com/javase/tutorial/jdbc/basics/index.html", "https://www.baeldung.com/java-jdbc"]},
+        {"id": "core-7-6", "label": "Modules (JPMS)", "description": "Modularize applications with module-info.java. JPMS provides strong encapsulation at the package level.", "type": "optional", "resources": ["https://docs.oracle.com/javase/tutorial/java/module/index.html", "https://dev.java/learn/modules/"]},
+        {"id": "core-7-7", "label": "JVM Internals Overview", "description": "Class loading, bytecode, JIT compilation, and memory model. Understanding the JVM helps diagnose production issues.", "type": "optional", "resources": ["https://docs.oracle.com/javase/specs/jvms/se21/html/index.html", "https://www.baeldung.com/jvm-series"]},
+        {"id": "core-7-8", "label": "Garbage Collection", "description": "GC algorithms (G1, ZGC, Shenandoah), tuning flags, and monitoring. GC knowledge is essential for Java performance.", "type": "optional", "resources": ["https://docs.oracle.com/javase/gc-tuning/", "https://www.baeldung.com/jvm-garbage-collectors"]},
+        {"id": "core-7-9", "label": "Debugging & Profiling", "description": "Use debugger, JFR (Java Flight Recorder), and VisualVM. Profiling reveals bottlenecks in running applications.", "type": "required", "resources": ["https://docs.oracle.com/en/java/javase/21/troubleshoot/diagnostic-tools.html", "https://www.baeldung.com/java-flight-recorder-monitoring"]},
+        {"id": "core-7-10", "label": "Logging (SLF4J + Logback)", "description": "Structured logging with SLF4J API and Logback implementation. Proper logging is critical for production debugging.", "type": "required", "resources": ["https://www.slf4j.org/manual.html", "https://www.baeldung.com/logback"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-spring-boot", "label": "Spring Boot", "icon": "🍃", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-jakarta-ee", "label": "Jakarta EE", "icon": "☕", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-quarkus", "label": "Quarkus", "icon": "⚡", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-micronaut", "label": "Micronaut", "icon": "🔬", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-spring-cloud", "label": "Spring Cloud", "icon": "☁️", "category": "Microservices", "category_icon": "🔗"},
+    {"id": "path-android", "label": "Android SDK", "icon": "🤖", "category": "Mobile", "category_icon": "📱"},
+    {"id": "path-javafx", "label": "JavaFX", "icon": "🖼️", "category": "Desktop & GUI", "category_icon": "🖥️"},
+    {"id": "path-swing", "label": "Swing", "icon": "🪟", "category": "Desktop & GUI", "category_icon": "🖥️"},
+    {"id": "path-hibernate", "label": "Hibernate", "icon": "🗄️", "category": "ORM & Database", "category_icon": "💾"},
+    {"id": "path-jooq", "label": "jOOQ", "icon": "📝", "category": "ORM & Database", "category_icon": "💾"},
+    {"id": "path-spring-data", "label": "Spring Data", "icon": "🍃", "category": "ORM & Database", "category_icon": "💾"},
+    {"id": "path-kafka", "label": "Apache Kafka", "icon": "📨", "category": "Messaging", "category_icon": "📬"},
+    {"id": "path-rabbitmq-java", "label": "RabbitMQ", "icon": "🐇", "category": "Messaging", "category_icon": "📬"},
+    {"id": "path-spark", "label": "Apache Spark", "icon": "✨", "category": "Big Data", "category_icon": "📊"},
+    {"id": "path-hadoop", "label": "Hadoop", "icon": "🐘", "category": "Big Data", "category_icon": "📊"},
+    {"id": "path-flink", "label": "Apache Flink", "icon": "🔄", "category": "Big Data", "category_icon": "📊"},
+    {"id": "path-junit-advanced", "label": "JUnit 5 Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-testcontainers", "label": "Testcontainers", "icon": "🐳", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-reactor", "label": "Project Reactor", "icon": "⚛️", "category": "Reactive Programming", "category_icon": "🔄"},
+    {"id": "path-rxjava", "label": "RxJava", "icon": "🔁", "category": "Reactive Programming", "category_icon": "🔄"},
+    {"id": "path-grpc-java", "label": "gRPC", "icon": "🔗", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-spring-security", "label": "Spring Security", "icon": "🔒", "category": "Security", "category_icon": "🔐"},
+    {"id": "path-docker-java", "label": "Docker & Kubernetes", "icon": "🐳", "category": "Cloud & DevOps", "category_icon": "☁️"},
+    {"id": "path-graalvm", "label": "GraalVM", "icon": "🏎️", "category": "Performance", "category_icon": "⚡"},
+    {"id": "path-netty", "label": "Netty", "icon": "🌐", "category": "Networking", "category_icon": "🔗"}
+  ]
+}

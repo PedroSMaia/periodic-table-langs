@@ -1,0 +1,1 @@
+{"name": "APL", "tools": [{"name": "Dyalog APL", "url": "https://www.dyalog.com/", "desc": "Commercial APL"}, {"name": "TryAPL", "url": "https://tryapl.org/", "desc": "Online REPL"}], "packages": [{"name": "dfns", "url": "https://dfns.dyalog.com/", "desc": "Function library"}]}

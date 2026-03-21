@@ -1,0 +1,142 @@
+{
+  "language": "C#",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "C# Fundamentals",
+      "description": ".NET setup, syntax, types, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": ".NET SDK & Project Setup", "description": "Install the .NET SDK, create projects with dotnet new, and understand the project structure. The SDK includes everything needed.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/core/get-started", "https://dotnet.microsoft.com/en-us/learn/dotnet/hello-world-tutorial/intro"]},
+        {"id": "core-1-2", "label": "Hello World & Top-Level Statements", "description": "Write your first program using top-level statements (C# 9+). Minimal boilerplate to get started.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/program-structure/top-level-statements", "https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/"]},
+        {"id": "core-1-3", "label": "Value Types & Reference Types", "description": "int, double, bool, char, struct vs class, and nullable types. The value/reference distinction is fundamental in C#.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-types", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/"]},
+        {"id": "core-1-4", "label": "Strings & Interpolation", "description": "string methods, string interpolation ($\"\"), verbatim strings (@\"\"), and raw string literals. Strings are immutable in C#.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/strings/", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated"]},
+        {"id": "core-1-5", "label": "Operators & Expressions", "description": "Arithmetic, comparison, logical, null-coalescing (??), and null-conditional (?.) operators.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/"]},
+        {"id": "core-1-6", "label": "Control Flow", "description": "if/else, switch expressions, for, foreach, while, do-while. Switch expressions are a modern C# feature.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/"]},
+        {"id": "core-1-7", "label": "Arrays & Collections", "description": "Arrays, List<T>, Dictionary<TKey,TValue>, and HashSet<T>. Generic collections are type-safe and performant.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/arrays/", "https://learn.microsoft.com/en-us/dotnet/standard/collections/"]},
+        {"id": "core-1-8", "label": "Methods & Parameters", "description": "Methods with ref, out, in, params, and optional parameters. C# offers flexible parameter passing.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/methods", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods"]},
+        {"id": "core-1-9", "label": "Namespaces & Using", "description": "Organize code with namespaces and file-scoped namespaces. using directives and global usings simplify imports.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/namespaces", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-directive"]},
+        {"id": "core-1-10", "label": "Nullable Reference Types", "description": "Enable nullable context to catch null reference bugs at compile time. A major safety feature in modern C#.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/nullable-references", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Object-Oriented Programming",
+      "description": "Classes, inheritance, interfaces, and encapsulation.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Objects", "description": "Fields, properties, constructors, and methods. Classes are the core building block of C# applications.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/classes", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/"]},
+        {"id": "core-2-2", "label": "Properties & Auto-Properties", "description": "Encapsulate fields with get/set accessors and init-only setters. Properties are idiomatic C# for data access.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/properties", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties"]},
+        {"id": "core-2-3", "label": "Inheritance & virtual/override", "description": "Derive classes, override methods, and use base. C# supports single class inheritance.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/inheritance"]},
+        {"id": "core-2-4", "label": "Interfaces", "description": "Define contracts with interface, default implementations, and explicit interface implementation.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface"]},
+        {"id": "core-2-5", "label": "Abstract Classes", "description": "Partial implementations with abstract methods and properties. Use abstract classes when sharing state and behavior.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/abstract", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/polymorphism"]},
+        {"id": "core-2-6", "label": "Records", "description": "Immutable reference types with value equality. Records are ideal for DTOs, events, and configuration.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/records"]},
+        {"id": "core-2-7", "label": "Structs", "description": "Value types for small, immutable data. Structs avoid heap allocation and GC pressure.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/"]},
+        {"id": "core-2-8", "label": "Enums", "description": "Named constants backed by integer types. Use [Flags] for bit-flag enumerations.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/"]},
+        {"id": "core-2-9", "label": "Sealed Classes", "description": "Prevent inheritance with sealed. Sealed classes enable compiler optimizations and exhaustive pattern matching.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sealed", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance"]},
+        {"id": "core-2-10", "label": "Access Modifiers", "description": "public, private, protected, internal, and protected internal. Control visibility across assemblies.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/access-modifiers"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Generics, Delegates & LINQ",
+      "description": "Generic programming, delegates, events, and Language Integrated Query.",
+      "topics": [
+        {"id": "core-3-1", "label": "Generics", "description": "Create type-safe classes and methods with type parameters. Generics eliminate boxing and casting.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/generics", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/"]},
+        {"id": "core-3-2", "label": "Generic Constraints", "description": "Restrict type parameters with where clauses. Constraints enable calling methods on generic types.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/where-generic-type-constraint"]},
+        {"id": "core-3-3", "label": "Delegates", "description": "Type-safe function pointers with delegate, Action, Func, and Predicate. Delegates power events and callbacks.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/delegates-overview", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/"]},
+        {"id": "core-3-4", "label": "Events", "description": "Publish-subscribe pattern with event keyword. Events decouple producers from consumers.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/events-overview", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/events/"]},
+        {"id": "core-3-5", "label": "Lambda Expressions", "description": "Inline anonymous functions with => syntax. Lambdas are used everywhere in LINQ and async code.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-operator"]},
+        {"id": "core-3-6", "label": "LINQ Basics", "description": "Query collections with Where, Select, OrderBy, GroupBy. LINQ unifies data querying across sources.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/linq/", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/"]},
+        {"id": "core-3-7", "label": "LINQ Advanced", "description": "Join, Aggregate, SelectMany, query syntax vs method syntax, and deferred execution.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/linq/standard-query-operators/", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq"]},
+        {"id": "core-3-8", "label": "Extension Methods", "description": "Add methods to existing types without modifying them. LINQ itself is built on extension methods.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/"]},
+        {"id": "core-3-9", "label": "Indexers & Operator Overloading", "description": "Define [] access on classes and custom operator behavior. Makes domain types feel like built-in types.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Exception Handling & File I/O",
+      "description": "Error handling, file operations, and working with data.",
+      "topics": [
+        {"id": "core-4-1", "label": "Try/Catch/Finally", "description": "Handle exceptions with try/catch/finally and exception filters (when). C# exceptions are class-based.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/exceptions/", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/exception-handling-statements"]},
+        {"id": "core-4-2", "label": "Custom Exceptions", "description": "Create domain-specific exceptions extending Exception. Custom exceptions improve error clarity.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/exceptions/creating-and-throwing-exceptions", "https://learn.microsoft.com/en-us/dotnet/standard/exceptions/how-to-create-user-defined-exceptions"]},
+        {"id": "core-4-3", "label": "Using & IDisposable", "description": "Deterministic resource cleanup with using statements and IDisposable. Prevents resource leaks.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/using", "https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose"]},
+        {"id": "core-4-4", "label": "File I/O", "description": "Read and write files with File, StreamReader, StreamWriter, and FileStream.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/standard/io/", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/"]},
+        {"id": "core-4-5", "label": "Working with JSON", "description": "Serialize and deserialize with System.Text.Json. The built-in JSON library for modern .NET.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview", "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to"]},
+        {"id": "core-4-6", "label": "Logging (ILogger)", "description": "Structured logging with Microsoft.Extensions.Logging. The standard logging abstraction in .NET.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/core/extensions/logging", "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/"]},
+        {"id": "core-4-7", "label": "Configuration", "description": "appsettings.json, environment variables, and IConfiguration. Externalized configuration is a .NET convention.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration", "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/"]},
+        {"id": "core-4-8", "label": "Regular Expressions", "description": "Pattern matching with System.Text.RegularExpressions. Source generators improve regex performance in .NET 7+.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions", "https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Async Programming",
+      "description": "async/await, Task-based patterns, and concurrent programming.",
+      "topics": [
+        {"id": "core-5-1", "label": "async/await Basics", "description": "Write non-blocking code with async and await. Async is pervasive in .NET for I/O-bound work.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/", "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/"]},
+        {"id": "core-5-2", "label": "Task & Task<T>", "description": "Represent async operations with Task. Understand Task.Run, Task.WhenAll, and Task.WhenAny.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task", "https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/task-based-asynchronous-programming"]},
+        {"id": "core-5-3", "label": "ValueTask", "description": "Reduce allocations for frequently synchronous async methods. Use ValueTask when the common path is synchronous.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.valuetask-1", "https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/"]},
+        {"id": "core-5-4", "label": "Cancellation Tokens", "description": "Cooperative cancellation with CancellationToken. Essential for graceful shutdown and timeout handling.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads", "https://learn.microsoft.com/en-us/dotnet/fundamentals/networking/http/httpclient-guidelines"]},
+        {"id": "core-5-5", "label": "Async Streams (IAsyncEnumerable)", "description": "Stream data asynchronously with await foreach. Perfect for database cursors and real-time data.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/generate-consume-asynchronous-stream", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements"]},
+        {"id": "core-5-6", "label": "Channels", "description": "Producer-consumer queues for async data flow. Channels are the modern way to communicate between async tasks.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/core/extensions/channels", "https://devblogs.microsoft.com/dotnet/an-introduction-to-system-threading-channels/"]},
+        {"id": "core-5-7", "label": "Thread Safety & lock", "description": "Protect shared state with lock, SemaphoreSlim, and concurrent collections.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock", "https://learn.microsoft.com/en-us/dotnet/standard/threading/overview-of-synchronization-primitives"]},
+        {"id": "core-5-8", "label": "Parallel Programming", "description": "Parallel.For, Parallel.ForEach, and PLINQ for CPU-bound parallelism.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/", "https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/how-to-write-a-simple-parallel-for-loop"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Advanced Language Features",
+      "description": "Pattern matching, attributes, reflection, and .NET ecosystem.",
+      "topics": [
+        {"id": "core-6-1", "label": "Pattern Matching", "description": "is patterns, switch expressions, property patterns, and relational patterns. Pattern matching makes code more expressive.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns"]},
+        {"id": "core-6-2", "label": "Tuples & Deconstruction", "description": "Return multiple values with tuples and deconstruct them. Tuples reduce the need for helper classes.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-tuples", "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/deconstruct"]},
+        {"id": "core-6-3", "label": "Attributes", "description": "Annotate code with metadata using attributes. Used for serialization, validation, and framework configuration.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/", "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/attributes"]},
+        {"id": "core-6-4", "label": "Reflection", "description": "Inspect types at runtime with System.Reflection. Used by DI containers, ORMs, and serializers.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/reflection", "https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/"]},
+        {"id": "core-6-5", "label": "Dependency Injection", "description": "Built-in DI with Microsoft.Extensions.DependencyInjection. DI is fundamental to ASP.NET Core and modern .NET.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection", "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection"]},
+        {"id": "core-6-6", "label": "NuGet Packages", "description": "Manage dependencies with NuGet. Understanding package management is essential for any .NET project.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-using-the-dotnet-cli", "https://learn.microsoft.com/en-us/nuget/what-is-nuget"]},
+        {"id": "core-6-7", "label": "Source Generators", "description": "Generate code at compile time to eliminate reflection and boilerplate. A powerful metaprogramming feature.", "type": "advanced", "resources": ["https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview", "https://devblogs.microsoft.com/dotnet/introducing-c-source-generators/"]},
+        {"id": "core-6-8", "label": "Span<T> & Memory<T>", "description": "High-performance memory access without allocations. Essential for performance-critical code paths.", "type": "advanced", "resources": ["https://learn.microsoft.com/en-us/dotnet/standard/memory-and-spans/", "https://learn.microsoft.com/en-us/dotnet/api/system.span-1"]}
+      ]
+    },
+    {
+      "id": "core-7",
+      "label": "Testing & DevOps",
+      "description": "Unit testing, debugging, and deployment practices.",
+      "topics": [
+        {"id": "core-7-1", "label": "xUnit", "description": "Write tests with [Fact], [Theory], and assertions. xUnit is the most popular .NET testing framework.", "type": "required", "resources": ["https://xunit.net/docs/getting-started/netcore/cmdline", "https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test"]},
+        {"id": "core-7-2", "label": "NUnit", "description": "Alternative testing framework with [Test] and [TestCase]. Widely used in enterprise .NET projects.", "type": "optional", "resources": ["https://docs.nunit.org/articles/nunit/intro.html", "https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-nunit"]},
+        {"id": "core-7-3", "label": "Moq & NSubstitute", "description": "Mock dependencies for isolated tests. Moq is the most popular .NET mocking library.", "type": "required", "resources": ["https://github.com/moq/moq4/wiki/Quickstart", "https://nsubstitute.github.io/help/getting-started/"]},
+        {"id": "core-7-4", "label": "Integration Testing", "description": "Test full request pipelines with WebApplicationFactory. Catches bugs that unit tests miss.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests", "https://learn.microsoft.com/en-us/dotnet/core/testing/"]},
+        {"id": "core-7-5", "label": "Code Coverage", "description": "Measure test coverage with coverlet. Coverage reports reveal untested paths.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-code-coverage", "https://github.com/coverlet-coverage/coverlet"]},
+        {"id": "core-7-6", "label": "Debugging in Visual Studio / Rider", "description": "Breakpoints, watch windows, and diagnostic tools. Effective debugging saves hours of guessing.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/visualstudio/debugger/", "https://www.jetbrains.com/help/rider/Debugging_Code.html"]},
+        {"id": "core-7-7", "label": "dotnet CLI", "description": "Build, run, test, publish, and manage packages from the command line. The CLI is the backbone of .NET tooling.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/core/tools/", "https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet"]},
+        {"id": "core-7-8", "label": "Publishing & Deployment", "description": "dotnet publish, self-contained apps, trimming, and AOT compilation. Understand deployment options for production.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/core/deploying/", "https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-aspnet-core", "label": "ASP.NET Core", "icon": "🌐", "category": "Web Development", "category_icon": "🌐"},
+    {"id": "path-blazor", "label": "Blazor", "icon": "🔥", "category": "Web Development", "category_icon": "🌐"},
+    {"id": "path-minimal-apis", "label": "Minimal APIs", "icon": "⚡", "category": "Web Development", "category_icon": "🌐"},
+    {"id": "path-unity", "label": "Unity", "icon": "🎮", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-godot-csharp", "label": "Godot (C#)", "icon": "🤖", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-monogame", "label": "MonoGame", "icon": "🕹️", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-maui", "label": ".NET MAUI", "icon": "📱", "category": "Mobile & Cross-Platform", "category_icon": "📱"},
+    {"id": "path-avalonia", "label": "Avalonia UI", "icon": "🖼️", "category": "Desktop & GUI", "category_icon": "🖥️"},
+    {"id": "path-wpf", "label": "WPF", "icon": "🪟", "category": "Desktop & GUI", "category_icon": "🖥️"},
+    {"id": "path-winforms", "label": "Windows Forms", "icon": "📋", "category": "Desktop & GUI", "category_icon": "🖥️"},
+    {"id": "path-ef-core", "label": "Entity Framework Core", "icon": "🗄️", "category": "ORM & Database", "category_icon": "💾"},
+    {"id": "path-dapper", "label": "Dapper", "icon": "📝", "category": "ORM & Database", "category_icon": "💾"},
+    {"id": "path-azure-functions", "label": "Azure Functions", "icon": "☁️", "category": "Cloud & Azure", "category_icon": "☁️"},
+    {"id": "path-azure-sdk", "label": "Azure SDK", "icon": "🔷", "category": "Cloud & Azure", "category_icon": "☁️"},
+    {"id": "path-signalr", "label": "SignalR", "icon": "📡", "category": "Real-Time", "category_icon": "🔄"},
+    {"id": "path-grpc-csharp", "label": "gRPC", "icon": "🔗", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-mediatr", "label": "MediatR", "icon": "📨", "category": "Architecture", "category_icon": "🏗️"},
+    {"id": "path-orleans", "label": "Orleans", "icon": "🌾", "category": "Distributed Systems", "category_icon": "🔗"},
+    {"id": "path-mlnet", "label": "ML.NET", "icon": "🧠", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-xunit-advanced", "label": "xUnit Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-benchmark-dotnet", "label": "BenchmarkDotNet", "icon": "⏱️", "category": "Performance", "category_icon": "⚡"},
+    {"id": "path-docker-dotnet", "label": "Docker & Containers", "icon": "🐳", "category": "DevOps", "category_icon": "🔧"},
+    {"id": "path-rabbitmq-csharp", "label": "RabbitMQ", "icon": "🐇", "category": "Messaging", "category_icon": "📬"},
+    {"id": "path-masstransit", "label": "MassTransit", "icon": "🚌", "category": "Messaging", "category_icon": "📬"},
+    {"id": "path-identity", "label": "ASP.NET Identity", "icon": "🔒", "category": "Security", "category_icon": "🔐"}
+  ]
+}

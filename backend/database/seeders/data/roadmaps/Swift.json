@@ -1,0 +1,100 @@
+{
+  "language": "Swift",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Swift Fundamentals",
+      "description": "Syntax, types, optionals, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Xcode & Playgrounds", "description": "Set up Xcode and experiment with Swift Playgrounds. Playgrounds are great for learning interactively.", "type": "required", "resources": ["https://developer.apple.com/swift/", "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/guidedtour"]},
+        {"id": "core-1-2", "label": "Variables & Constants", "description": "var for mutable, let for immutable. Swift encourages using let whenever possible.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics#Constants-and-Variables", "https://developer.apple.com/swift/"]},
+        {"id": "core-1-3", "label": "Basic Types", "description": "Int, Double, Float, Bool, String, Character. Swift is strongly typed with type inference.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics", "https://developer.apple.com/documentation/swift"]},
+        {"id": "core-1-4", "label": "String Interpolation & Operations", "description": "Embed values with \\(expression) and use rich string APIs. Strings are value types in Swift.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters", "https://developer.apple.com/documentation/swift/string"]},
+        {"id": "core-1-5", "label": "Collections (Array, Dictionary, Set)", "description": "Typed collections with generics. Arrays, dictionaries, and sets are the core data structures.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/collectiontypes", "https://developer.apple.com/documentation/swift/array"]},
+        {"id": "core-1-6", "label": "Control Flow", "description": "if/else, guard, switch (pattern matching), for-in, while, repeat-while. guard enables early returns.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/controlflow", "https://developer.apple.com/swift/"]},
+        {"id": "core-1-7", "label": "Optionals", "description": "Represent the absence of a value with Optional (Type?). if let, guard let, and ?? for safe unwrapping.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics#Optionals", "https://developer.apple.com/documentation/swift/optional"]},
+        {"id": "core-1-8", "label": "Functions", "description": "Functions with argument labels, default parameters, variadic parameters, and inout. Argument labels improve readability.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions", "https://developer.apple.com/swift/"]},
+        {"id": "core-1-9", "label": "Tuples", "description": "Group multiple values into a single compound value. Useful for function return types.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics#Tuples", "https://developer.apple.com/swift/"]},
+        {"id": "core-1-10", "label": "Closures", "description": "Self-contained blocks of code with trailing closure syntax. Closures are used everywhere in Swift APIs.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures", "https://developer.apple.com/swift/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "OOP & Value Types",
+      "description": "Classes, structs, enums, and protocols.",
+      "topics": [
+        {"id": "core-2-1", "label": "Structs vs Classes", "description": "Structs are value types (copied), classes are reference types (shared). Prefer structs in Swift.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/classesandstructures", "https://developer.apple.com/documentation/swift/choosing-between-structures-and-classes"]},
+        {"id": "core-2-2", "label": "Properties", "description": "Stored, computed, lazy, and property observers (willSet/didSet). Properties encapsulate state.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/properties", "https://developer.apple.com/swift/"]},
+        {"id": "core-2-3", "label": "Initializers", "description": "Designated and convenience initializers, failable initializers (init?). Swift has strict initialization rules.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization", "https://developer.apple.com/swift/"]},
+        {"id": "core-2-4", "label": "Enumerations", "description": "Enums with associated values, raw values, and methods. Swift enums are algebraic data types.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/enumerations", "https://developer.apple.com/swift/"]},
+        {"id": "core-2-5", "label": "Protocols", "description": "Define contracts with protocol. Protocols with extensions enable protocol-oriented programming.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols", "https://developer.apple.com/swift/"]},
+        {"id": "core-2-6", "label": "Protocol Extensions", "description": "Add default implementations to protocols. Protocol extensions are Swift's primary code reuse mechanism.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols#Protocol-Extensions", "https://developer.apple.com/swift/"]},
+        {"id": "core-2-7", "label": "Inheritance", "description": "Class inheritance with override and final. Only classes support inheritance — structs use protocols.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/inheritance", "https://developer.apple.com/swift/"]},
+        {"id": "core-2-8", "label": "Extensions", "description": "Add methods, computed properties, and protocol conformance to existing types. Extensions are used everywhere.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/extensions", "https://developer.apple.com/swift/"]},
+        {"id": "core-2-9", "label": "Access Control", "description": "open, public, internal, fileprivate, private. Control visibility across modules and files.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/accesscontrol", "https://developer.apple.com/swift/"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Generics & Pattern Matching",
+      "description": "Generics, associated types, and advanced pattern matching.",
+      "topics": [
+        {"id": "core-3-1", "label": "Generics", "description": "Write type-safe generic functions and types with <T>. Generics are central to Swift's standard library.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/generics", "https://developer.apple.com/swift/"]},
+        {"id": "core-3-2", "label": "Generic Constraints", "description": "Constrain generics with protocol conformance and where clauses.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/generics#Type-Constraints", "https://developer.apple.com/swift/"]},
+        {"id": "core-3-3", "label": "Associated Types", "description": "Protocol associated types for generic protocols. Used in Collection, Sequence, and Iterator.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/generics#Associated-Types", "https://developer.apple.com/swift/"]},
+        {"id": "core-3-4", "label": "Opaque Types (some)", "description": "Return types hidden behind some Protocol. Used extensively in SwiftUI.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/opaquetypes", "https://developer.apple.com/swift/"]},
+        {"id": "core-3-5", "label": "Pattern Matching", "description": "Advanced switch patterns — value binding, tuple matching, where clauses, and enum patterns.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/patterns", "https://developer.apple.com/swift/"]},
+        {"id": "core-3-6", "label": "Result Type", "description": "Represent success or failure with Result<Success, Failure>. Functional error handling pattern.", "type": "required", "resources": ["https://developer.apple.com/documentation/swift/result", "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling"]},
+        {"id": "core-3-7", "label": "Error Handling", "description": "throw, try, catch, and do blocks. Swift errors are typed and must be handled explicitly.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/errorhandling", "https://developer.apple.com/swift/"]},
+        {"id": "core-3-8", "label": "Custom Operators", "description": "Define prefix, infix, and postfix operators. Used sparingly for domain-specific expressiveness.", "type": "optional", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/advancedoperators", "https://developer.apple.com/swift/"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Concurrency & Memory",
+      "description": "async/await, actors, ARC, and memory management.",
+      "topics": [
+        {"id": "core-4-1", "label": "async/await", "description": "Write asynchronous code with async functions and await. Swift's structured concurrency model.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency", "https://developer.apple.com/documentation/swift/updating-an-app-to-use-swift-concurrency"]},
+        {"id": "core-4-2", "label": "Tasks & Task Groups", "description": "Create concurrent work with Task and TaskGroup. Structured concurrency manages task lifecycles.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency#Tasks-and-Task-Groups", "https://developer.apple.com/documentation/swift/task"]},
+        {"id": "core-4-3", "label": "Actors", "description": "Protect mutable state with actor types. Actors prevent data races by isolating state.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency#Actors", "https://developer.apple.com/documentation/swift/actor"]},
+        {"id": "core-4-4", "label": "Sendable & @MainActor", "description": "Mark types as safe to share across concurrency domains. @MainActor ensures UI updates on the main thread.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency#Sendable-Types", "https://developer.apple.com/documentation/swift/mainactor"]},
+        {"id": "core-4-5", "label": "ARC (Automatic Reference Counting)", "description": "Understand how Swift manages memory for classes. ARC automatically frees unused objects.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/automaticreferencecounting", "https://developer.apple.com/swift/"]},
+        {"id": "core-4-6", "label": "Strong, Weak & Unowned", "description": "Break retain cycles with weak and unowned references. Critical for avoiding memory leaks.", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/automaticreferencecounting#Resolving-Strong-Reference-Cycles-Between-Class-Instances", "https://developer.apple.com/swift/"]},
+        {"id": "core-4-7", "label": "Closures & Capture Lists", "description": "Control how closures capture references with [weak self] and [unowned self].", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/automaticreferencecounting#Strong-Reference-Cycles-for-Closures", "https://developer.apple.com/swift/"]},
+        {"id": "core-4-8", "label": "AsyncSequence", "description": "Iterate over asynchronous data with for await. Used for streams, notifications, and real-time data.", "type": "optional", "resources": ["https://developer.apple.com/documentation/swift/asyncsequence", "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Testing & Swift Package Manager",
+      "description": "Testing, SPM, and code quality.",
+      "topics": [
+        {"id": "core-5-1", "label": "XCTest", "description": "Write unit tests with XCTestCase, assertions, and setup/teardown. Apple's built-in testing framework.", "type": "required", "resources": ["https://developer.apple.com/documentation/xctest", "https://developer.apple.com/documentation/xctest/defining-test-cases-and-test-methods"]},
+        {"id": "core-5-2", "label": "Swift Testing", "description": "Modern testing with @Test macro and #expect (Swift 5.10+). The new Swift-native testing framework.", "type": "optional", "resources": ["https://developer.apple.com/documentation/testing", "https://swiftpackageindex.com/apple/swift-testing"]},
+        {"id": "core-5-3", "label": "Swift Package Manager", "description": "Manage dependencies and create packages with Package.swift. SPM is Swift's built-in package manager.", "type": "required", "resources": ["https://www.swift.org/documentation/package-manager/", "https://developer.apple.com/documentation/xcode/swift-packages"]},
+        {"id": "core-5-4", "label": "Debugging & Instruments", "description": "Use LLDB, breakpoints, and Instruments for profiling. Instruments finds memory leaks and performance issues.", "type": "required", "resources": ["https://developer.apple.com/documentation/xcode/debugging", "https://developer.apple.com/instruments/"]},
+        {"id": "core-5-5", "label": "SwiftLint", "description": "Enforce Swift coding conventions with SwiftLint. Consistent style across the team.", "type": "required", "resources": ["https://github.com/realm/SwiftLint", "https://realm.github.io/SwiftLint/"]},
+        {"id": "core-5-6", "label": "Codable", "description": "Encode and decode JSON, Plist, and custom formats with Codable. The standard serialization protocol.", "type": "required", "resources": ["https://developer.apple.com/documentation/swift/codable", "https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types"]},
+        {"id": "core-5-7", "label": "Property Wrappers", "description": "Add logic to property access with @propertyWrapper. Used in SwiftUI (@State, @Binding, @Published).", "type": "required", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/properties#Property-Wrappers", "https://developer.apple.com/swift/"]},
+        {"id": "core-5-8", "label": "Macros (Swift 5.9+)", "description": "Generate code at compile time with Swift macros. Macros reduce boilerplate and enable metaprogramming.", "type": "advanced", "resources": ["https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros", "https://developer.apple.com/swift/"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-swiftui", "label": "SwiftUI", "icon": "🎨", "category": "UI Frameworks", "category_icon": "🖥️"},
+    {"id": "path-uikit", "label": "UIKit", "icon": "📱", "category": "UI Frameworks", "category_icon": "🖥️"},
+    {"id": "path-combine", "label": "Combine", "icon": "🔄", "category": "Reactive", "category_icon": "🔀"},
+    {"id": "path-core-data", "label": "Core Data", "icon": "🗄️", "category": "Data Persistence", "category_icon": "💾"},
+    {"id": "path-swiftdata", "label": "SwiftData", "icon": "📊", "category": "Data Persistence", "category_icon": "💾"},
+    {"id": "path-vapor", "label": "Vapor", "icon": "💨", "category": "Server-Side Swift", "category_icon": "🌐"},
+    {"id": "path-hummingbird", "label": "Hummingbird", "icon": "🐦", "category": "Server-Side Swift", "category_icon": "🌐"},
+    {"id": "path-arkit", "label": "ARKit", "icon": "🔮", "category": "AR/VR", "category_icon": "🥽"},
+    {"id": "path-realitykit", "label": "RealityKit", "icon": "🌐", "category": "AR/VR", "category_icon": "🥽"},
+    {"id": "path-spritekit", "label": "SpriteKit", "icon": "🎮", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-scenekit", "label": "SceneKit", "icon": "🎬", "category": "3D Graphics", "category_icon": "🎨"},
+    {"id": "path-core-ml", "label": "Core ML", "icon": "🧠", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-widgetkit", "label": "WidgetKit", "icon": "📋", "category": "App Extensions", "category_icon": "🔌"},
+    {"id": "path-swift-algorithms", "label": "Swift Algorithms", "icon": "⚡", "category": "Libraries", "category_icon": "📚"},
+    {"id": "path-tca", "label": "The Composable Architecture", "icon": "🏗️", "category": "Architecture", "category_icon": "🏗️"}
+  ]
+}

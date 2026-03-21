@@ -1,0 +1,1 @@
+{"name": "Octave", "packages": [{"name": "signal", "url": "https://octave.sourceforge.io/signal/", "desc": "Signal processing"}, {"name": "control", "url": "https://octave.sourceforge.io/control/", "desc": "Control systems"}, {"name": "image", "url": "https://octave.sourceforge.io/image/", "desc": "Image processing"}]}

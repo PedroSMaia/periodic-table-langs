@@ -1,0 +1,49 @@
+{
+  "language": "PowerShell",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "PowerShell Fundamentals",
+      "description": "Cmdlets, pipeline, variables, and the object-oriented shell.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & Console", "description": "Install PowerShell 7+ (cross-platform) and use the terminal or ISE/VS Code.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell", "https://learn.microsoft.com/en-us/powershell/scripting/overview"]},
+        {"id": "core-1-2", "label": "Cmdlets & Verb-Noun Convention", "description": "Get-Process, Set-Location, New-Item. PowerShell commands follow Verb-Noun naming.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-overview", "https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started"]},
+        {"id": "core-1-3", "label": "The Pipeline", "description": "Chain commands with | — objects flow through the pipeline, not text. PowerShell's killer feature.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/04-pipelines", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pipelines"]},
+        {"id": "core-1-4", "label": "Variables & Data Types", "description": "$variable syntax, [string], [int], [bool], [array], [hashtable]. Variables are prefixed with $.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/02-the-help-system", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables"]},
+        {"id": "core-1-5", "label": "Strings & Here-Strings", "description": "Single/double quotes, string interpolation, here-strings @\"...\"@. Double-quoted strings expand variables.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_quoting_rules", "https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-string-substitutions"]},
+        {"id": "core-1-6", "label": "Arrays & Hashtables", "description": "@() for arrays, @{} for hashtables. Collections are fundamental to PowerShell scripting.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables"]},
+        {"id": "core-1-7", "label": "Control Flow", "description": "if/elseif/else, switch, for, foreach, while, do-while/do-until.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_if", "https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/06-flow-control"]},
+        {"id": "core-1-8", "label": "Functions", "description": "Define with function keyword, parameters with param(), and CmdletBinding for advanced functions.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions", "https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/09-functions"]},
+        {"id": "core-1-9", "label": "Get-Help & Get-Command", "description": "Discover commands and read documentation from the shell. The built-in help system is comprehensive.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/02-the-help-system", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-help"]},
+        {"id": "core-1-10", "label": "Error Handling", "description": "try/catch/finally, $ErrorActionPreference, and -ErrorAction. Terminating vs non-terminating errors.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_try_catch_finally", "https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-exceptions"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Scripting & Automation",
+      "description": "Scripts, modules, remoting, and system administration.",
+      "topics": [
+        {"id": "core-2-1", "label": "Scripts (.ps1)", "description": "Write and execute scripts, execution policies, and script parameters.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scripts", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies"]},
+        {"id": "core-2-2", "label": "Modules", "description": "Create reusable modules with .psm1 files. Import-Module and module manifests (.psd1).", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/scripting/developer/module/writing-a-windows-powershell-module", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_modules"]},
+        {"id": "core-2-3", "label": "PowerShell Gallery", "description": "Find and install modules from the PowerShell Gallery with Install-Module.", "type": "required", "resources": ["https://www.powershellgallery.com/", "https://learn.microsoft.com/en-us/powershell/scripting/gallery/overview"]},
+        {"id": "core-2-4", "label": "Remoting", "description": "Execute commands on remote machines with Invoke-Command and Enter-PSSession.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/running-remote-commands", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote"]},
+        {"id": "core-2-5", "label": "Working with Files", "description": "Get-Content, Set-Content, Test-Path, Get-ChildItem, Copy-Item, Remove-Item.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/scripting/samples/working-with-files-and-folders", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/"]},
+        {"id": "core-2-6", "label": "Regular Expressions", "description": "-match, -replace, [regex], and Select-String for pattern matching.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_regular_expressions", "https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-regex"]},
+        {"id": "core-2-7", "label": "JSON, CSV & XML", "description": "ConvertTo-Json, ConvertFrom-Json, Import-Csv, Export-Csv. Data interchange formats.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/convertto-json", "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv"]},
+        {"id": "core-2-8", "label": "Pester (Testing)", "description": "Write tests with Describe, It, Should. Pester is PowerShell's testing framework.", "type": "required", "resources": ["https://pester.dev/docs/quick-start", "https://pester.dev/docs/usage/assertions"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-azure-powershell", "label": "Azure PowerShell", "icon": "☁️", "category": "Cloud", "category_icon": "☁️"},
+    {"id": "path-aws-powershell", "label": "AWS Tools for PowerShell", "icon": "🔶", "category": "Cloud", "category_icon": "☁️"},
+    {"id": "path-dsc", "label": "Desired State Configuration", "icon": "⚙️", "category": "Configuration", "category_icon": "🔧"},
+    {"id": "path-active-directory", "label": "Active Directory", "icon": "🏢", "category": "Administration", "category_icon": "🔧"},
+    {"id": "path-exchange-online", "label": "Exchange Online", "icon": "📧", "category": "Administration", "category_icon": "🔧"},
+    {"id": "path-graph-api", "label": "Microsoft Graph API", "icon": "📊", "category": "API", "category_icon": "🔌"},
+    {"id": "path-pester-advanced", "label": "Pester Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-psscriptanalyzer", "label": "PSScriptAnalyzer", "icon": "🔍", "category": "Code Quality", "category_icon": "✨"},
+    {"id": "path-winrm-ssh", "label": "WinRM & SSH Remoting", "icon": "🔗", "category": "Remoting", "category_icon": "🔗"},
+    {"id": "path-ps-classes", "label": "PowerShell Classes & DSC Resources", "icon": "🏗️", "category": "Advanced", "category_icon": "⚙️"}
+  ]
+}

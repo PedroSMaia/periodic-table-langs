@@ -1,0 +1,118 @@
+{
+  "language": "TypeScript",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "TypeScript Fundamentals",
+      "description": "Setup, basic types, and the type system foundation.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & Configuration", "description": "Install TypeScript, configure tsconfig.json, and understand compiler options. tsconfig controls how strict TS is.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html", "https://www.typescriptlang.org/tsconfig"]},
+        {"id": "core-1-2", "label": "Basic Types", "description": "string, number, boolean, null, undefined, any, unknown, never, void. The foundation of TypeScript's type system.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/everyday-types.html", "https://www.typescriptlang.org/docs/handbook/basic-types.html"]},
+        {"id": "core-1-3", "label": "Type Annotations & Inference", "description": "Explicitly annotate types or let TypeScript infer them. TS infers most types — only annotate when needed.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-annotations-on-variables", "https://www.typescriptlang.org/docs/handbook/type-inference.html"]},
+        {"id": "core-1-4", "label": "Arrays & Tuples", "description": "Typed arrays (string[]) and fixed-length tuples ([string, number]). Tuples are useful for return types.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/objects.html#tuple-types", "https://www.typescriptlang.org/docs/handbook/basic-types.html#array"]},
+        {"id": "core-1-5", "label": "Object Types", "description": "Inline object types, optional properties (?), and readonly. Object types describe the shape of data.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/objects.html", "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#object-types"]},
+        {"id": "core-1-6", "label": "Union & Intersection Types", "description": "Combine types with | (union) and & (intersection). Unions model values that can be one of several types.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types", "https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html"]},
+        {"id": "core-1-7", "label": "Type Aliases & Interfaces", "description": "Name types with type and interface. Interfaces are extendable; type aliases are more flexible.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases", "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#interfaces"]},
+        {"id": "core-1-8", "label": "Literal Types", "description": "Narrow types to specific values — 'hello', 42, true. Literal types enable precise type checking.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types", "https://www.typescriptlang.org/docs/handbook/literal-types.html"]},
+        {"id": "core-1-9", "label": "Enums", "description": "Numeric and string enums for named constants. Prefer const enums or union types for tree-shaking.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/enums.html", "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#enums"]},
+        {"id": "core-1-10", "label": "Type Assertions", "description": "Override inferred types with as. Use sparingly — assertions bypass type checking.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions", "https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Functions & Generics",
+      "description": "Typed functions, overloads, and generic programming.",
+      "topics": [
+        {"id": "core-2-1", "label": "Function Types", "description": "Type parameters and return types. Function type expressions describe callback shapes.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/functions.html", "https://www.typescriptlang.org/docs/handbook/functions.html"]},
+        {"id": "core-2-2", "label": "Optional & Default Parameters", "description": "Optional (param?) and default (param = value) parameters in typed functions.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/functions.html#optional-parameters", "https://www.typescriptlang.org/docs/handbook/functions.html"]},
+        {"id": "core-2-3", "label": "Rest Parameters & Spread", "description": "Typed rest parameters (...args: string[]) and spread in function calls.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/functions.html#rest-parameters-and-arguments", "https://www.typescriptlang.org/docs/handbook/functions.html"]},
+        {"id": "core-2-4", "label": "Function Overloads", "description": "Multiple function signatures for different input/output combinations. Overloads describe complex APIs.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads", "https://www.typescriptlang.org/docs/handbook/functions.html#overloads"]},
+        {"id": "core-2-5", "label": "Generics Basics", "description": "Write reusable functions and types with type parameters <T>. Generics are TypeScript's most powerful feature.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/generics.html", "https://www.typescriptlang.org/docs/handbook/generics.html"]},
+        {"id": "core-2-6", "label": "Generic Constraints", "description": "Constrain type parameters with extends. Constraints ensure the generic type has required properties.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-constraints", "https://www.typescriptlang.org/docs/handbook/generics.html#generic-constraints"]},
+        {"id": "core-2-7", "label": "Generic Utility Types", "description": "Partial, Required, Pick, Omit, Record, Readonly, ReturnType, Parameters. Built-in type transformations.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/utility-types.html", "https://www.typescriptlang.org/docs/handbook/2/types-from-types.html"]},
+        {"id": "core-2-8", "label": "typeof & keyof", "description": "Extract types from values (typeof) and keys (keyof). Powerful for deriving types from existing code.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/typeof-types.html", "https://www.typescriptlang.org/docs/handbook/2/keyof-types.html"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Advanced Types",
+      "description": "Narrowing, discriminated unions, and type manipulation.",
+      "topics": [
+        {"id": "core-3-1", "label": "Type Narrowing", "description": "Narrow types with typeof, instanceof, in, and truthiness checks. Narrowing is how TS understands control flow.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/narrowing.html", "https://www.typescriptlang.org/docs/handbook/advanced-types.html"]},
+        {"id": "core-3-2", "label": "Discriminated Unions", "description": "Union types with a common literal discriminant field. The most important pattern for modeling state in TS.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions", "https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html"]},
+        {"id": "core-3-3", "label": "Type Guards", "description": "User-defined type guards with is return type. Custom narrowing for complex type checks.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates", "https://www.typescriptlang.org/docs/handbook/advanced-types.html#user-defined-type-guards"]},
+        {"id": "core-3-4", "label": "Mapped Types", "description": "Transform properties of existing types with [K in keyof T]. Mapped types create new types from old ones.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/mapped-types.html", "https://www.typescriptlang.org/docs/handbook/advanced-types.html#mapped-types"]},
+        {"id": "core-3-5", "label": "Conditional Types", "description": "T extends U ? X : Y for type-level branching. Powers complex utility types and library APIs.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/2/conditional-types.html", "https://www.typescriptlang.org/docs/handbook/advanced-types.html#conditional-types"]},
+        {"id": "core-3-6", "label": "Template Literal Types", "description": "String manipulation at the type level. Create typed string patterns like `${string}/${string}`.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html", "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html"]},
+        {"id": "core-3-7", "label": "Indexed Access Types", "description": "Access nested types with Type['property']. Extract types from arrays, objects, and tuples.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html", "https://www.typescriptlang.org/docs/handbook/advanced-types.html"]},
+        {"id": "core-3-8", "label": "infer Keyword", "description": "Extract types within conditional types with infer. Powers ReturnType, Parameters, and custom extractions.", "type": "advanced", "resources": ["https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#inferring-within-conditional-types", "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Classes & OOP",
+      "description": "Typed classes, access modifiers, and decorators.",
+      "topics": [
+        {"id": "core-4-1", "label": "Class Basics", "description": "Typed fields, constructors, methods, and parameter properties. TS classes add type safety to JS classes.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/classes.html", "https://www.typescriptlang.org/docs/handbook/classes.html"]},
+        {"id": "core-4-2", "label": "Access Modifiers", "description": "public, private, protected, and #private fields. Control member visibility at compile time.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/classes.html#member-visibility", "https://www.typescriptlang.org/docs/handbook/classes.html"]},
+        {"id": "core-4-3", "label": "Abstract Classes", "description": "Define partial implementations that must be extended. Abstract classes are templates for derived classes.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/classes.html#abstract-classes-and-members", "https://www.typescriptlang.org/docs/handbook/classes.html#abstract-classes"]},
+        {"id": "core-4-4", "label": "Implementing Interfaces", "description": "Classes implement interfaces with implements keyword. Enforces contracts on class structure.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/classes.html#implements-clauses", "https://www.typescriptlang.org/docs/handbook/interfaces.html"]},
+        {"id": "core-4-5", "label": "Generic Classes", "description": "Parameterize classes with type parameters. Generic classes create reusable, type-safe containers.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-classes", "https://www.typescriptlang.org/docs/handbook/generics.html#generic-classes"]},
+        {"id": "core-4-6", "label": "Decorators", "description": "Annotate classes and members with decorators (Stage 3). Used heavily in Angular, NestJS, and TypeORM.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/decorators.html", "https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#decorators"]},
+        {"id": "core-4-7", "label": "Mixins", "description": "Compose class behavior from multiple sources. TypeScript's pattern for multiple inheritance.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/mixins.html", "https://www.typescriptlang.org/docs/handbook/2/classes.html"]},
+        {"id": "core-4-8", "label": "this Type", "description": "Use this as a return type for fluent APIs and builder patterns. Enables method chaining with proper types.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/2/classes.html#this-types", "https://www.typescriptlang.org/docs/handbook/advanced-types.html#polymorphic-this-types"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Modules & Project Setup",
+      "description": "Module systems, declaration files, and project configuration.",
+      "topics": [
+        {"id": "core-5-1", "label": "ES Module Syntax", "description": "import/export with type annotations. TypeScript extends JS modules with type-only imports.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/modules.html", "https://www.typescriptlang.org/docs/handbook/modules.html"]},
+        {"id": "core-5-2", "label": "Type-Only Imports", "description": "import type { T } to import only type information. Ensures types are erased at compile time.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export", "https://www.typescriptlang.org/docs/handbook/2/modules.html"]},
+        {"id": "core-5-3", "label": "Declaration Files (.d.ts)", "description": "Describe types for JS libraries. DefinitelyTyped (@types/*) provides types for popular packages.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html", "https://www.typescriptlang.org/docs/handbook/2/type-declarations.html"]},
+        {"id": "core-5-4", "label": "tsconfig Deep Dive", "description": "strict, target, module, moduleResolution, paths, and baseUrl. Config controls TS's behavior and strictness.", "type": "required", "resources": ["https://www.typescriptlang.org/tsconfig", "https://www.typescriptlang.org/docs/handbook/tsconfig-json.html"]},
+        {"id": "core-5-5", "label": "Project References", "description": "Split large projects into sub-projects with composite and references. Enables incremental builds.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/project-references.html", "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html#project-references"]},
+        {"id": "core-5-6", "label": "Path Aliases", "description": "Configure import aliases with paths in tsconfig. Clean imports like @/components instead of ../../../.", "type": "optional", "resources": ["https://www.typescriptlang.org/tsconfig#paths", "https://www.typescriptlang.org/docs/handbook/module-resolution.html"]},
+        {"id": "core-5-7", "label": "Ambient Declarations", "description": "Declare types for global variables and modules without implementations. Used for browser globals and legacy code.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/declaration-files/by-example.html", "https://www.typescriptlang.org/docs/handbook/2/type-declarations.html#declare"]},
+        {"id": "core-5-8", "label": "Monorepo Setup", "description": "Configure TS in monorepos with project references and tools like Turborepo or Nx.", "type": "advanced", "resources": ["https://www.typescriptlang.org/docs/handbook/project-references.html", "https://turbo.build/repo/docs"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Patterns & Best Practices",
+      "description": "Idiomatic TypeScript patterns, strictness, and code quality.",
+      "topics": [
+        {"id": "core-6-1", "label": "Strict Mode", "description": "Enable strict: true for maximum type safety. Strict mode catches more bugs and is recommended for all projects.", "type": "required", "resources": ["https://www.typescriptlang.org/tsconfig#strict", "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"]},
+        {"id": "core-6-2", "label": "Branded Types", "description": "Create nominal types with branding for type-safe IDs and units. Prevents mixing incompatible values.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/2/types-from-types.html", "https://www.typescriptlang.org/play"]},
+        {"id": "core-6-3", "label": "Exhaustiveness Checking", "description": "Use never in switch defaults to ensure all cases are handled. Catch missing cases at compile time.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/narrowing.html#exhaustiveness-checking", "https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html"]},
+        {"id": "core-6-4", "label": "Type vs Interface Guidelines", "description": "When to use type vs interface. Interfaces for objects and extension; types for unions and complex types.", "type": "required", "resources": ["https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces", "https://www.typescriptlang.org/docs/handbook/advanced-types.html"]},
+        {"id": "core-6-5", "label": "Zod & Runtime Validation", "description": "Validate data at runtime with Zod and infer TypeScript types from schemas. Bridges runtime and compile-time safety.", "type": "optional", "resources": ["https://zod.dev/", "https://github.com/colinhacks/zod"]},
+        {"id": "core-6-6", "label": "ESLint for TypeScript", "description": "Configure typescript-eslint for TS-aware linting rules. Catches type-related bugs ESLint alone misses.", "type": "required", "resources": ["https://typescript-eslint.io/getting-started", "https://typescript-eslint.io/rules/"]},
+        {"id": "core-6-7", "label": "Testing TypeScript", "description": "Test TS with Vitest or Jest with ts-jest. Type testing with expect-type for library authors.", "type": "required", "resources": ["https://vitest.dev/guide/", "https://jestjs.io/docs/getting-started#using-typescript"]},
+        {"id": "core-6-8", "label": "Migration from JavaScript", "description": "Incrementally adopt TypeScript in existing JS projects with allowJs and checkJs.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html", "https://www.typescriptlang.org/docs/handbook/intro-to-js-ts.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-react-ts", "label": "React + TypeScript", "icon": "⚛️", "category": "Frontend", "category_icon": "🌐"},
+    {"id": "path-nextjs-ts", "label": "Next.js", "icon": "▲", "category": "Frontend", "category_icon": "🌐"},
+    {"id": "path-angular-ts", "label": "Angular", "icon": "🅰️", "category": "Frontend", "category_icon": "🌐"},
+    {"id": "path-vue-ts", "label": "Vue + TypeScript", "icon": "💚", "category": "Frontend", "category_icon": "🌐"},
+    {"id": "path-nestjs-ts", "label": "NestJS", "icon": "🐱", "category": "Backend", "category_icon": "⚙️"},
+    {"id": "path-express-ts", "label": "Express + TS", "icon": "🚂", "category": "Backend", "category_icon": "⚙️"},
+    {"id": "path-trpc", "label": "tRPC", "icon": "🔗", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-graphql-ts", "label": "GraphQL + TS", "icon": "◆", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-prisma-ts", "label": "Prisma", "icon": "🔷", "category": "Database", "category_icon": "💾"},
+    {"id": "path-drizzle", "label": "Drizzle ORM", "icon": "💧", "category": "Database", "category_icon": "💾"},
+    {"id": "path-typeorm", "label": "TypeORM", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-zod-ts", "label": "Zod", "icon": "✅", "category": "Validation", "category_icon": "🛡️"},
+    {"id": "path-react-native-ts", "label": "React Native + TS", "icon": "📱", "category": "Mobile", "category_icon": "📱"},
+    {"id": "path-electron-ts", "label": "Electron + TS", "icon": "💻", "category": "Desktop", "category_icon": "🖥️"},
+    {"id": "path-vitest-ts", "label": "Vitest", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-playwright-ts", "label": "Playwright", "icon": "🎭", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-turborepo", "label": "Turborepo", "icon": "🔄", "category": "Monorepo", "category_icon": "📦"},
+    {"id": "path-effect-ts", "label": "Effect", "icon": "⚡", "category": "Functional", "category_icon": "λ"},
+    {"id": "path-rxjs", "label": "RxJS", "icon": "🔁", "category": "Reactive", "category_icon": "🔄"}
+  ]
+}

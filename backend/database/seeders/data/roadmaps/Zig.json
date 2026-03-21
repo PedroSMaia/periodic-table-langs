@@ -1,0 +1,33 @@
+{
+  "language": "Zig",
+  "core": [
+    {"id": "core-1", "label": "Zig Fundamentals", "description": "Syntax, types, comptime, and memory management.", "topics": [
+      {"id": "core-1-1", "label": "Installation & Build System", "description": "Install Zig and use its built-in build system. Zig also serves as a C/C++ cross-compiler.", "type": "required", "resources": ["https://ziglang.org/learn/", "https://ziglang.org/documentation/master/"]},
+      {"id": "core-1-2", "label": "Variables & Types", "description": "const/var, integers (u8-u128, i8-i128), floats, bool, optionals (?T), and error unions.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Variables", "https://zig.guide/language-basics/variables"]},
+      {"id": "core-1-3", "label": "Control Flow", "description": "if/else, switch, while, for. if and switch are expressions that return values.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Blocks", "https://zig.guide/language-basics/control-flow"]},
+      {"id": "core-1-4", "label": "Functions", "description": "fn keyword, comptime parameters, and inline functions. Functions are values.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Functions", "https://zig.guide/language-basics/functions"]},
+      {"id": "core-1-5", "label": "Structs & Enums", "description": "Structs with methods, tagged unions (enums with payloads). No inheritance — composition only.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#struct", "https://zig.guide/language-basics/structs"]},
+      {"id": "core-1-6", "label": "Slices & Arrays", "description": "Fixed arrays [N]T and slices []T. Slices are fat pointers with length.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Slices", "https://zig.guide/language-basics/slices"]},
+      {"id": "core-1-7", "label": "Error Handling", "description": "Error unions (anyerror!T), try, catch, and errdefer. Errors are values, not exceptions.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Errors", "https://zig.guide/language-basics/errors"]},
+      {"id": "core-1-8", "label": "Optionals", "description": "?T for nullable values, orelse and .? for unwrapping. No null by default.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Optionals", "https://zig.guide/language-basics/optionals"]},
+      {"id": "core-1-9", "label": "Memory Management", "description": "Allocators, no hidden allocations. Choose your allocator per context (arena, page, GPA).", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Memory", "https://zig.guide/standard-library/allocators"]},
+      {"id": "core-1-10", "label": "Comptime", "description": "Compile-time code execution for generics, constants, and metaprogramming. Zig's defining feature.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#comptime", "https://zig.guide/language-basics/comptime"]}
+    ]},
+    {"id": "core-2", "label": "Advanced Zig", "description": "Async, C interop, testing, and the standard library.", "topics": [
+      {"id": "core-2-1", "label": "Pointers", "description": "*T single pointers, [*]T many pointers, and pointer arithmetic. Explicit but safe.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Pointers", "https://zig.guide/language-basics/pointers"]},
+      {"id": "core-2-2", "label": "C Interop", "description": "@cImport to include C headers directly. Zig can compile and link C code seamlessly.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#C-Interop", "https://zig.guide/working-with-c/c-interop"]},
+      {"id": "core-2-3", "label": "Testing", "description": "Built-in test blocks with test \"name\" { }. Run tests with zig test.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Zig-Test", "https://zig.guide/language-basics/testing"]},
+      {"id": "core-2-4", "label": "Standard Library", "description": "std.mem, std.fs, std.net, std.json, std.fmt. Comprehensive but minimal standard library.", "type": "required", "resources": ["https://ziglang.org/documentation/master/std/", "https://zig.guide/standard-library/"]},
+      {"id": "core-2-5", "label": "Build System (build.zig)", "description": "Configure builds programmatically in Zig. Dependencies, cross-compilation, and custom steps.", "type": "required", "resources": ["https://ziglang.org/documentation/master/#Zig-Build-System", "https://zig.guide/build-system/"]},
+      {"id": "core-2-6", "label": "Async I/O", "description": "async/await and event loops for concurrent I/O. Still evolving in Zig.", "type": "optional", "resources": ["https://ziglang.org/documentation/master/#Async-and-Await", "https://zig.guide/"]}
+    ]}
+  ],
+  "paths": [
+    {"id": "path-zig-embedded", "label": "Embedded Zig", "icon": "📟", "category": "Embedded", "category_icon": "🔌"},
+    {"id": "path-zig-gamedev", "label": "Game Development", "icon": "🎮", "category": "Game Dev", "category_icon": "🕹️"},
+    {"id": "path-zig-wasm", "label": "WebAssembly", "icon": "🕸️", "category": "WebAssembly", "category_icon": "🌐"},
+    {"id": "path-zig-os", "label": "OS Development", "icon": "🐧", "category": "Systems", "category_icon": "💻"},
+    {"id": "path-zig-networking", "label": "Networking", "icon": "🌐", "category": "Networking", "category_icon": "🔗"},
+    {"id": "path-zig-cross-compile", "label": "Cross-Compilation", "icon": "🔄", "category": "Build", "category_icon": "🔧"}
+  ]
+}

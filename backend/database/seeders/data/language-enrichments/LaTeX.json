@@ -1,0 +1,1 @@
+{"name": "LaTeX", "packages": [{"name": "TeX Live", "url": "https://tug.org/texlive/", "desc": "TeX distribution"}, {"name": "TikZ/PGF", "url": "https://github.com/pgf-tikz/pgf", "desc": "Diagrams"}, {"name": "Beamer", "url": "https://github.com/josephwright/beamer", "desc": "Presentations"}, {"name": "biblatex", "url": "https://github.com/plk/biblatex", "desc": "Bibliography"}]}

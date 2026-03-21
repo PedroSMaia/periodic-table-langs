@@ -1,0 +1,1 @@
+{"name": "AWK", "packages": [{"name": "GAWK", "url": "https://www.gnu.org/software/gawk/", "desc": "GNU AWK"}, {"name": "mawk", "url": "https://invisible-island.net/mawk/", "desc": "Fast AWK"}]}

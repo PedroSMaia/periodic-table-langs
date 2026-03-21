@@ -1,0 +1,1 @@
+{"name": "SystemVerilog", "packages": [{"name": "UVM", "url": "https://www.accellera.org/", "desc": "Verification methodology"}, {"name": "Verilator", "url": "https://www.veripool.org/verilator/", "desc": "Simulator"}]}

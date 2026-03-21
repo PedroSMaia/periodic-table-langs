@@ -1,0 +1,24 @@
+{
+  "language": "Nim",
+  "core": [
+    {"id": "core-1", "label": "Nim Fundamentals", "description": "Syntax, types, and Nim's Python-like ergonomics with C-like performance.", "topics": [
+      {"id": "core-1-1", "label": "Installation & Nimble", "description": "Install Nim and use Nimble package manager. Nim compiles to C, C++, or JavaScript.", "type": "required", "resources": ["https://nim-lang.org/install.html", "https://nim-lang.org/docs/tut1.html"]},
+      {"id": "core-1-2", "label": "Variables & Types", "description": "var (mutable), let (immutable), const (compile-time). Indentation-based syntax like Python.", "type": "required", "resources": ["https://nim-lang.org/docs/tut1.html#variables", "https://nim-lang.org/docs/manual.html"]},
+      {"id": "core-1-3", "label": "Control Flow", "description": "if/elif/else, case, for, while. Indentation-sensitive with no braces.", "type": "required", "resources": ["https://nim-lang.org/docs/tut1.html#control-flow-statements", "https://nim-lang.org/docs/manual.html"]},
+      {"id": "core-1-4", "label": "Procedures & Functions", "description": "proc for side effects, func for pure functions. Uniform function call syntax (UFCS).", "type": "required", "resources": ["https://nim-lang.org/docs/tut1.html#procedures", "https://nim-lang.org/docs/manual.html#procedures"]},
+      {"id": "core-1-5", "label": "Strings & Sequences", "description": "Mutable strings, seq[T] dynamic arrays, and array[N, T] fixed arrays.", "type": "required", "resources": ["https://nim-lang.org/docs/tut1.html#basic-types-strings", "https://nim-lang.org/docs/manual.html"]},
+      {"id": "core-1-6", "label": "Objects & Inheritance", "description": "object types with inheritance via of keyword. Nim supports OOP and value types.", "type": "required", "resources": ["https://nim-lang.org/docs/tut2.html#object-oriented-programming", "https://nim-lang.org/docs/manual.html"]},
+      {"id": "core-1-7", "label": "Enums & Variants", "description": "Enumeration types and object variants for tagged unions.", "type": "required", "resources": ["https://nim-lang.org/docs/tut1.html#advanced-types-enumerations", "https://nim-lang.org/docs/manual.html"]},
+      {"id": "core-1-8", "label": "Error Handling", "description": "try/except/finally with Exception hierarchy, and Option/Result patterns.", "type": "required", "resources": ["https://nim-lang.org/docs/tut2.html#exceptions", "https://nim-lang.org/docs/manual.html"]},
+      {"id": "core-1-9", "label": "Generics & Templates", "description": "Generic procedures and compile-time templates for metaprogramming.", "type": "required", "resources": ["https://nim-lang.org/docs/tut2.html#generics", "https://nim-lang.org/docs/manual.html#generics"]},
+      {"id": "core-1-10", "label": "Macros", "description": "AST-level metaprogramming with macro keyword. Nim macros are extremely powerful.", "type": "advanced", "resources": ["https://nim-lang.org/docs/tut3.html", "https://nim-lang.org/docs/manual.html#macros"]}
+    ]}
+  ],
+  "paths": [
+    {"id": "path-nim-web", "label": "Jester / Prologue (Web)", "icon": "🌐", "category": "Web", "category_icon": "🌐"},
+    {"id": "path-nim-game", "label": "Game Development", "icon": "🎮", "category": "Game Dev", "category_icon": "🕹️"},
+    {"id": "path-nim-embedded", "label": "Embedded Systems", "icon": "📟", "category": "Embedded", "category_icon": "🔌"},
+    {"id": "path-nim-gui", "label": "GUI (NiGui / wNim)", "icon": "🖼️", "category": "Desktop", "category_icon": "🖥️"},
+    {"id": "path-nim-scripting", "label": "Scripting & Automation", "icon": "📝", "category": "Scripting", "category_icon": "💻"}
+  ]
+}

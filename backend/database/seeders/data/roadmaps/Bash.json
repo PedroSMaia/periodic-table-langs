@@ -1,0 +1,49 @@
+{
+  "language": "Bash",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Bash Fundamentals",
+      "description": "Shell basics, commands, variables, and scripting.",
+      "topics": [
+        {"id": "core-1-1", "label": "Shell & Terminal Basics", "description": "Understand the terminal, shell types (bash, zsh, sh), and how to run commands.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html", "https://linuxcommand.org/lc3_learning_the_shell.php"]},
+        {"id": "core-1-2", "label": "Variables", "description": "Assign with NAME=value (no spaces), access with $NAME or ${NAME}. Variables are untyped strings.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Shell-Variables", "https://tldp.org/LDP/abs/html/variables-and-typeletting.html"]},
+        {"id": "core-1-3", "label": "Quoting ('', \"\", $())", "description": "Single quotes (literal), double quotes (expand variables), backticks/$(command substitution).", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Quoting", "https://tldp.org/LDP/abs/html/quoting.html"]},
+        {"id": "core-1-4", "label": "Control Flow", "description": "if/elif/else/fi, case/esac, for, while, until. Test conditions with [[ ]] or [ ].", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Conditional-Constructs", "https://tldp.org/LDP/abs/html/tests.html"]},
+        {"id": "core-1-5", "label": "Functions", "description": "Define with function name() { } or name() { }. Functions are the primary code reuse mechanism.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Shell-Functions", "https://tldp.org/LDP/abs/html/functions.html"]},
+        {"id": "core-1-6", "label": "Arguments ($1, $@, $#)", "description": "Access script and function arguments with positional parameters. $0 is the script name.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Positional-Parameters", "https://tldp.org/LDP/abs/html/othertypesv.html"]},
+        {"id": "core-1-7", "label": "Pipes & Redirection", "description": "| for piping, >, >>, <, 2>&1, /dev/null. Pipes connect command outputs to inputs.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Redirections", "https://tldp.org/LDP/abs/html/io-redirection.html"]},
+        {"id": "core-1-8", "label": "Exit Codes & set -e", "description": "$? for last exit code, set -euo pipefail for strict mode. Always use strict mode in scripts.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin", "https://tldp.org/LDP/abs/html/exit-status.html"]},
+        {"id": "core-1-9", "label": "String Manipulation", "description": "${var#pattern}, ${var%pattern}, ${var/find/replace}, ${#var}. Bash has built-in string operations.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion", "https://tldp.org/LDP/abs/html/string-manipulation.html"]},
+        {"id": "core-1-10", "label": "Arrays", "description": "Indexed arrays (arr=(a b c)) and associative arrays (declare -A). Loop with ${arr[@]}.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Arrays", "https://tldp.org/LDP/abs/html/arrays.html"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Advanced Scripting",
+      "description": "Text processing, process management, and best practices.",
+      "topics": [
+        {"id": "core-2-1", "label": "grep, sed, awk", "description": "Text searching (grep), stream editing (sed), and pattern processing (awk). The Unix text processing trinity.", "type": "required", "resources": ["https://www.gnu.org/software/grep/manual/grep.html", "https://www.gnu.org/software/sed/manual/sed.html"]},
+        {"id": "core-2-2", "label": "find & xargs", "description": "Search for files and execute commands on results. Essential for batch operations.", "type": "required", "resources": ["https://www.gnu.org/software/findutils/manual/html_mono/find.html", "https://man7.org/linux/man-pages/man1/xargs.1.html"]},
+        {"id": "core-2-3", "label": "Process Management", "description": "Background jobs (&), fg, bg, jobs, wait, kill, trap. Manage processes from scripts.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Job-Control", "https://tldp.org/LDP/abs/html/process-sub.html"]},
+        {"id": "core-2-4", "label": "Trap & Signal Handling", "description": "Catch signals (SIGINT, SIGTERM) and cleanup with trap. Essential for robust scripts.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins", "https://tldp.org/LDP/abs/html/debugging.html"]},
+        {"id": "core-2-5", "label": "Here Documents", "description": "Multi-line input with <<EOF. Used for embedding config, SQL, and multi-line strings.", "type": "required", "resources": ["https://www.gnu.org/software/bash/manual/bash.html#Here-Documents", "https://tldp.org/LDP/abs/html/here-docs.html"]},
+        {"id": "core-2-6", "label": "cron & Scheduling", "description": "Schedule recurring tasks with crontab. Automate backups, reports, and maintenance.", "type": "required", "resources": ["https://man7.org/linux/man-pages/man5/crontab.5.html", "https://crontab.guru/"]},
+        {"id": "core-2-7", "label": "Debugging (set -x, shellcheck)", "description": "Trace execution with set -x and lint with ShellCheck. ShellCheck catches common bash mistakes.", "type": "required", "resources": ["https://www.shellcheck.net/", "https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin"]},
+        {"id": "core-2-8", "label": "Best Practices", "description": "Strict mode, quoting, portability, and script structure. Write reliable, maintainable shell scripts.", "type": "required", "resources": ["https://google.github.io/styleguide/shellguide.html", "https://mywiki.wooledge.org/BashGuide"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-linux-admin", "label": "Linux Administration", "icon": "🐧", "category": "System Administration", "category_icon": "🔧"},
+    {"id": "path-devops-bash", "label": "DevOps Automation", "icon": "🔄", "category": "DevOps", "category_icon": "⚙️"},
+    {"id": "path-docker-bash", "label": "Docker & Containers", "icon": "🐳", "category": "DevOps", "category_icon": "⚙️"},
+    {"id": "path-ci-cd-bash", "label": "CI/CD Pipelines", "icon": "🔄", "category": "DevOps", "category_icon": "⚙️"},
+    {"id": "path-networking-bash", "label": "Network Scripting", "icon": "🌐", "category": "Networking", "category_icon": "🔗"},
+    {"id": "path-security-bash", "label": "Security Scripting", "icon": "🔒", "category": "Security", "category_icon": "🔐"},
+    {"id": "path-awk-advanced", "label": "AWK Advanced", "icon": "📝", "category": "Text Processing", "category_icon": "📝"},
+    {"id": "path-zsh", "label": "Zsh & Oh My Zsh", "icon": "⚡", "category": "Shell", "category_icon": "💻"},
+    {"id": "path-bats", "label": "BATS (Testing)", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-systemd", "label": "systemd Services", "icon": "⚙️", "category": "System Administration", "category_icon": "🔧"}
+  ]
+}

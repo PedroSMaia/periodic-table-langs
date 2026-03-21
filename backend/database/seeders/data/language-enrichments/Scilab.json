@@ -1,0 +1,1 @@
+{"name": "Scilab", "packages": [{"name": "ATOMS", "url": "https://atoms.scilab.org/", "desc": "Module manager"}, {"name": "Xcos", "url": "https://www.scilab.org/", "desc": "Block diagram simulator"}]}

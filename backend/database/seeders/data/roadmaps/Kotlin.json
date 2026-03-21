@@ -1,0 +1,100 @@
+{
+  "language": "Kotlin",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Kotlin Fundamentals",
+      "description": "Syntax, types, null safety, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Setup & Tooling", "description": "Install Kotlin with IntelliJ or the command-line compiler. Kotlin runs on the JVM, JS, or Native.", "type": "required", "resources": ["https://kotlinlang.org/docs/getting-started.html", "https://kotlinlang.org/docs/command-line.html"]},
+        {"id": "core-1-2", "label": "Variables (val & var)", "description": "Immutable val vs mutable var. Kotlin encourages immutability by default.", "type": "required", "resources": ["https://kotlinlang.org/docs/basic-syntax.html#variables", "https://kotlinlang.org/docs/basic-types.html"]},
+        {"id": "core-1-3", "label": "Basic Types", "description": "Int, Long, Double, Float, Boolean, Char, String. Everything is an object in Kotlin — no primitives in source code.", "type": "required", "resources": ["https://kotlinlang.org/docs/basic-types.html", "https://kotlinlang.org/docs/numbers.html"]},
+        {"id": "core-1-4", "label": "String Templates", "description": "Embed expressions in strings with $variable and ${expression}. Cleaner than string concatenation.", "type": "required", "resources": ["https://kotlinlang.org/docs/strings.html#string-templates", "https://kotlinlang.org/docs/basic-syntax.html"]},
+        {"id": "core-1-5", "label": "Control Flow", "description": "if (as expression), when (powerful switch), for, while. when replaces switch and is exhaustive for enums/sealed.", "type": "required", "resources": ["https://kotlinlang.org/docs/control-flow.html", "https://kotlinlang.org/docs/basic-syntax.html"]},
+        {"id": "core-1-6", "label": "Null Safety", "description": "Nullable types (String?), safe calls (?.), Elvis operator (?:), and non-null assertion (!!). Kotlin eliminates NPEs.", "type": "required", "resources": ["https://kotlinlang.org/docs/null-safety.html", "https://kotlinlang.org/docs/basic-syntax.html#nullable-values-and-null-checks"]},
+        {"id": "core-1-7", "label": "Functions", "description": "Single-expression functions, default parameters, named arguments. Kotlin functions are concise and flexible.", "type": "required", "resources": ["https://kotlinlang.org/docs/functions.html", "https://kotlinlang.org/docs/basic-syntax.html#functions"]},
+        {"id": "core-1-8", "label": "Collections", "description": "List, Set, Map with mutable and immutable variants. Rich standard library for collection operations.", "type": "required", "resources": ["https://kotlinlang.org/docs/collections-overview.html", "https://kotlinlang.org/docs/list-operations.html"]},
+        {"id": "core-1-9", "label": "Ranges & Progressions", "description": "Create ranges with .., downTo, step. Ranges are used in for loops and contains checks.", "type": "required", "resources": ["https://kotlinlang.org/docs/ranges.html", "https://kotlinlang.org/docs/control-flow.html#for-loops"]},
+        {"id": "core-1-10", "label": "Type Checks & Smart Casts", "description": "Check types with is and automatic smart casting. The compiler tracks type checks for safe access.", "type": "required", "resources": ["https://kotlinlang.org/docs/typecasts.html", "https://kotlinlang.org/docs/control-flow.html"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "OOP & Classes",
+      "description": "Classes, inheritance, data classes, sealed classes, and objects.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Constructors", "description": "Primary and secondary constructors, init blocks. Primary constructors are in the class header.", "type": "required", "resources": ["https://kotlinlang.org/docs/classes.html", "https://kotlinlang.org/docs/classes.html#constructors"]},
+        {"id": "core-2-2", "label": "Properties", "description": "Val/var properties with custom getters/setters, backing fields, and lateinit.", "type": "required", "resources": ["https://kotlinlang.org/docs/properties.html", "https://kotlinlang.org/docs/properties.html#getters-and-setters"]},
+        {"id": "core-2-3", "label": "Inheritance & open", "description": "Classes are final by default — use open for inheritance. Override methods with override.", "type": "required", "resources": ["https://kotlinlang.org/docs/inheritance.html", "https://kotlinlang.org/docs/classes.html"]},
+        {"id": "core-2-4", "label": "Interfaces", "description": "Interfaces with abstract and default method implementations. A class can implement multiple interfaces.", "type": "required", "resources": ["https://kotlinlang.org/docs/interfaces.html", "https://kotlinlang.org/docs/classes.html"]},
+        {"id": "core-2-5", "label": "Data Classes", "description": "Auto-generate equals, hashCode, toString, copy with data class. Perfect for DTOs and value objects.", "type": "required", "resources": ["https://kotlinlang.org/docs/data-classes.html", "https://kotlinlang.org/docs/basic-syntax.html"]},
+        {"id": "core-2-6", "label": "Sealed Classes & Interfaces", "description": "Restrict class hierarchies for exhaustive when expressions. Ideal for state machines and result types.", "type": "required", "resources": ["https://kotlinlang.org/docs/sealed-classes.html", "https://kotlinlang.org/docs/control-flow.html"]},
+        {"id": "core-2-7", "label": "Object Declarations & Companions", "description": "Singletons with object and static-like members with companion object. Kotlin has no static keyword.", "type": "required", "resources": ["https://kotlinlang.org/docs/object-declarations.html", "https://kotlinlang.org/docs/object-declarations.html#companion-objects"]},
+        {"id": "core-2-8", "label": "Enums", "description": "Enum classes with properties, methods, and abstract members. Type-safe constants.", "type": "required", "resources": ["https://kotlinlang.org/docs/enum-classes.html", "https://kotlinlang.org/docs/basic-syntax.html"]},
+        {"id": "core-2-9", "label": "Delegation", "description": "Delegate interface implementation with by. Composition over inheritance made easy.", "type": "optional", "resources": ["https://kotlinlang.org/docs/delegation.html", "https://kotlinlang.org/docs/delegated-properties.html"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Functional Kotlin",
+      "description": "Lambdas, higher-order functions, and collection operations.",
+      "topics": [
+        {"id": "core-3-1", "label": "Lambda Expressions", "description": "Concise anonymous functions with { params -> body }. Lambdas are used everywhere in Kotlin.", "type": "required", "resources": ["https://kotlinlang.org/docs/lambdas.html", "https://kotlinlang.org/docs/lambdas.html#lambda-expressions-and-anonymous-functions"]},
+        {"id": "core-3-2", "label": "Higher-Order Functions", "description": "Functions that take or return functions. Foundation of Kotlin's functional style.", "type": "required", "resources": ["https://kotlinlang.org/docs/lambdas.html#higher-order-functions", "https://kotlinlang.org/docs/functions.html"]},
+        {"id": "core-3-3", "label": "Collection Operations", "description": "map, filter, flatMap, groupBy, associate, zip, fold, reduce. Kotlin's collection API is exceptionally rich.", "type": "required", "resources": ["https://kotlinlang.org/docs/collection-operations.html", "https://kotlinlang.org/docs/collection-transformations.html"]},
+        {"id": "core-3-4", "label": "Sequences", "description": "Lazy evaluation with sequences for large collections. Sequences avoid intermediate collection allocation.", "type": "required", "resources": ["https://kotlinlang.org/docs/sequences.html", "https://kotlinlang.org/docs/collection-operations.html"]},
+        {"id": "core-3-5", "label": "Scope Functions", "description": "let, run, with, apply, also. Scope functions execute code blocks on objects concisely.", "type": "required", "resources": ["https://kotlinlang.org/docs/scope-functions.html", "https://kotlinlang.org/docs/coding-conventions.html"]},
+        {"id": "core-3-6", "label": "Extension Functions", "description": "Add methods to existing classes without inheritance. Extension functions are Kotlin's killer feature.", "type": "required", "resources": ["https://kotlinlang.org/docs/extensions.html", "https://kotlinlang.org/docs/extensions.html#extension-functions"]},
+        {"id": "core-3-7", "label": "Destructuring", "description": "Destructure data classes, pairs, and maps in declarations and lambdas.", "type": "required", "resources": ["https://kotlinlang.org/docs/destructuring-declarations.html", "https://kotlinlang.org/docs/basic-syntax.html"]},
+        {"id": "core-3-8", "label": "Inline Functions", "description": "Eliminate lambda overhead with inline. Inline functions are important for performance-critical APIs.", "type": "optional", "resources": ["https://kotlinlang.org/docs/inline-functions.html", "https://kotlinlang.org/docs/lambdas.html"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Generics & Advanced Features",
+      "description": "Generics, variance, coroutines introduction, and DSLs.",
+      "topics": [
+        {"id": "core-4-1", "label": "Generics", "description": "Type parameters, generic functions, and generic classes. Kotlin generics are similar to Java but with reified types.", "type": "required", "resources": ["https://kotlinlang.org/docs/generics.html", "https://kotlinlang.org/docs/basic-syntax.html"]},
+        {"id": "core-4-2", "label": "Variance (in/out)", "description": "Declaration-site variance with in (contravariance) and out (covariance). Cleaner than Java's wildcards.", "type": "required", "resources": ["https://kotlinlang.org/docs/generics.html#variance", "https://kotlinlang.org/docs/generics.html#declaration-site-variance"]},
+        {"id": "core-4-3", "label": "Reified Type Parameters", "description": "Access generic types at runtime with inline reified. Avoids type erasure limitations.", "type": "optional", "resources": ["https://kotlinlang.org/docs/inline-functions.html#reified-type-parameters", "https://kotlinlang.org/docs/generics.html"]},
+        {"id": "core-4-4", "label": "Coroutines Basics", "description": "Lightweight concurrency with suspend functions and coroutine builders (launch, async). Kotlin's async solution.", "type": "required", "resources": ["https://kotlinlang.org/docs/coroutines-basics.html", "https://kotlinlang.org/docs/coroutines-guide.html"]},
+        {"id": "core-4-5", "label": "Coroutine Scopes & Dispatchers", "description": "CoroutineScope, GlobalScope, Dispatchers.IO/Default/Main. Scopes manage coroutine lifecycles.", "type": "required", "resources": ["https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html", "https://kotlinlang.org/docs/coroutines-basics.html"]},
+        {"id": "core-4-6", "label": "Flow", "description": "Asynchronous cold streams with Flow. Kotlin's reactive streams built on coroutines.", "type": "required", "resources": ["https://kotlinlang.org/docs/flow.html", "https://kotlinlang.org/docs/coroutines-guide.html"]},
+        {"id": "core-4-7", "label": "Type-Safe Builders (DSLs)", "description": "Build domain-specific languages with lambdas with receivers. Used in Gradle, Ktor, and Compose.", "type": "optional", "resources": ["https://kotlinlang.org/docs/type-safe-builders.html", "https://kotlinlang.org/docs/lambdas.html#function-literals-with-receiver"]},
+        {"id": "core-4-8", "label": "Operator Overloading", "description": "Define custom operators with operator fun. Makes domain types expressive.", "type": "optional", "resources": ["https://kotlinlang.org/docs/operator-overloading.html", "https://kotlinlang.org/docs/basic-syntax.html"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Error Handling & Testing",
+      "description": "Exceptions, testing, and build tools.",
+      "topics": [
+        {"id": "core-5-1", "label": "Exception Handling", "description": "try/catch/finally as expressions. Kotlin has no checked exceptions — all are unchecked.", "type": "required", "resources": ["https://kotlinlang.org/docs/exceptions.html", "https://kotlinlang.org/docs/basic-syntax.html"]},
+        {"id": "core-5-2", "label": "Result Type", "description": "Wrap success/failure with Result<T>. Functional error handling without exceptions.", "type": "optional", "resources": ["https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-result/", "https://kotlinlang.org/docs/inline-functions.html"]},
+        {"id": "core-5-3", "label": "Gradle with Kotlin DSL", "description": "Build Kotlin projects with build.gradle.kts. Kotlin DSL provides type-safe build configuration.", "type": "required", "resources": ["https://kotlinlang.org/docs/gradle-configure-project.html", "https://docs.gradle.org/current/userguide/kotlin_dsl.html"]},
+        {"id": "core-5-4", "label": "JUnit 5 & Kotlin", "description": "Write tests with JUnit 5 and Kotlin's concise syntax. Test Kotlin idioms naturally.", "type": "required", "resources": ["https://kotlinlang.org/docs/jvm-test-using-junit.html", "https://junit.org/junit5/docs/current/user-guide/"]},
+        {"id": "core-5-5", "label": "Kotest", "description": "Kotlin-native testing framework with expressive matchers and property testing.", "type": "optional", "resources": ["https://kotest.io/docs/quickstart", "https://kotest.io/docs/framework/framework.html"]},
+        {"id": "core-5-6", "label": "MockK", "description": "Kotlin-first mocking library. Supports coroutines, extension functions, and Kotlin-specific features.", "type": "required", "resources": ["https://mockk.io/", "https://mockk.io/#dsl-tables"]},
+        {"id": "core-5-7", "label": "Java Interop", "description": "Call Java from Kotlin and vice versa. Kotlin is 100% interoperable with Java.", "type": "required", "resources": ["https://kotlinlang.org/docs/java-interop.html", "https://kotlinlang.org/docs/java-to-kotlin-interop.html"]},
+        {"id": "core-5-8", "label": "Kotlin Multiplatform", "description": "Share code across JVM, JS, iOS, and Native. KMP enables true cross-platform development.", "type": "optional", "resources": ["https://kotlinlang.org/docs/multiplatform.html", "https://kotlinlang.org/docs/multiplatform-get-started.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-android-kotlin", "label": "Android (Jetpack)", "icon": "🤖", "category": "Mobile", "category_icon": "📱"},
+    {"id": "path-jetpack-compose", "label": "Jetpack Compose", "icon": "🎨", "category": "Mobile", "category_icon": "📱"},
+    {"id": "path-kmp-mobile", "label": "KMP Mobile (iOS + Android)", "icon": "📱", "category": "Cross-Platform", "category_icon": "🌐"},
+    {"id": "path-compose-multiplatform", "label": "Compose Multiplatform", "icon": "🖼️", "category": "Cross-Platform", "category_icon": "🌐"},
+    {"id": "path-ktor-server", "label": "Ktor (Server)", "icon": "🌐", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-spring-boot-kotlin", "label": "Spring Boot + Kotlin", "icon": "🍃", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-exposed", "label": "Exposed ORM", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-ktorm", "label": "Ktorm", "icon": "📝", "category": "Database", "category_icon": "💾"},
+    {"id": "path-arrow-kt", "label": "Arrow", "icon": "🏹", "category": "Functional", "category_icon": "λ"},
+    {"id": "path-kotlinx-serialization", "label": "kotlinx.serialization", "icon": "📦", "category": "Serialization", "category_icon": "🔄"},
+    {"id": "path-coroutines-advanced", "label": "Coroutines Advanced", "icon": "⚡", "category": "Concurrency", "category_icon": "🔀"},
+    {"id": "path-ktor-client", "label": "Ktor (Client)", "icon": "🔗", "category": "Networking", "category_icon": "🔗"},
+    {"id": "path-kotest-advanced", "label": "Kotest Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-detekt", "label": "Detekt", "icon": "🔍", "category": "Code Quality", "category_icon": "✨"},
+    {"id": "path-kotlin-native", "label": "Kotlin/Native", "icon": "⚙️", "category": "Native", "category_icon": "🔧"}
+  ]
+}

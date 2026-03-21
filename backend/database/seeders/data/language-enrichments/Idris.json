@@ -1,0 +1,1 @@
+{"name": "Idris", "tools": [{"name": "Idris 2", "url": "https://www.idris-lang.org/", "desc": "Compiler"}], "packages": [{"name": "contrib", "url": "https://github.com/idris-lang/Idris2", "desc": "Contrib libraries"}]}

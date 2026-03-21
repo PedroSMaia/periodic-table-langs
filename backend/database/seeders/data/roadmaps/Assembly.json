@@ -1,0 +1,49 @@
+{
+  "language": "Assembly",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Assembly Fundamentals",
+      "description": "Architecture basics, registers, and instruction set.",
+      "topics": [
+        {"id": "core-1-1", "label": "CPU Architecture Overview", "description": "Understand registers, ALU, memory hierarchy, and the fetch-decode-execute cycle.", "type": "required", "resources": ["https://www.nasm.us/doc/", "https://en.wikipedia.org/wiki/X86_assembly_language"]},
+        {"id": "core-1-2", "label": "Assembler Setup (NASM)", "description": "Install NASM and write your first program. NASM is the most popular x86 assembler.", "type": "required", "resources": ["https://www.nasm.us/doc/nasmdoc1.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-1-3", "label": "Registers (x86-64)", "description": "General purpose (rax-r15), flags, instruction pointer, stack pointer, and segment registers.", "type": "required", "resources": ["https://www.cs.virginia.edu/~evans/cs216/guides/x86.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-1-4", "label": "Data Movement (MOV, LEA)", "description": "Move data between registers and memory. MOV is the most used instruction.", "type": "required", "resources": ["https://www.nasm.us/doc/nasmdoc3.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-1-5", "label": "Arithmetic Instructions", "description": "ADD, SUB, MUL, IMUL, DIV, IDIV, INC, DEC, NEG. Integer arithmetic operations.", "type": "required", "resources": ["https://www.cs.virginia.edu/~evans/cs216/guides/x86.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-1-6", "label": "Control Flow (JMP, Jcc, CMP)", "description": "Conditional and unconditional jumps, comparison, and flags. Assembly's version of if/else and loops.", "type": "required", "resources": ["https://www.nasm.us/doc/nasmdoc3.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-1-7", "label": "The Stack (PUSH, POP)", "description": "Use the stack for local variables, function arguments, and saving registers.", "type": "required", "resources": ["https://www.cs.virginia.edu/~evans/cs216/guides/x86.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-1-8", "label": "Functions (CALL, RET)", "description": "Calling conventions, stack frames, prologue/epilogue. How functions work at the machine level.", "type": "required", "resources": ["https://cs.lmu.edu/~ray/notes/nasmtutorial/", "https://www.cs.virginia.edu/~evans/cs216/guides/x86.html"]},
+        {"id": "core-1-9", "label": "System Calls", "description": "Invoke OS services with syscall (Linux) or int 0x80. Read, write, exit system calls.", "type": "required", "resources": ["https://cs.lmu.edu/~ray/notes/nasmtutorial/", "https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/"]},
+        {"id": "core-1-10", "label": "Data Section & Memory", "description": "Define data with db, dw, dd, dq in .data and .bss sections. Understand memory layout.", "type": "required", "resources": ["https://www.nasm.us/doc/nasmdoc3.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Advanced Assembly",
+      "description": "Addressing modes, SIMD, debugging, and linking.",
+      "topics": [
+        {"id": "core-2-1", "label": "Addressing Modes", "description": "Immediate, register, direct, indirect, indexed, and base+displacement addressing.", "type": "required", "resources": ["https://www.nasm.us/doc/nasmdoc3.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-2-2", "label": "Bitwise Operations", "description": "AND, OR, XOR, NOT, SHL, SHR, ROL, ROR. Bit manipulation at the lowest level.", "type": "required", "resources": ["https://www.cs.virginia.edu/~evans/cs216/guides/x86.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-2-3", "label": "String Instructions", "description": "MOVSB, CMPSB, STOSB, LODSB, SCASB with REP prefix. Fast memory operations.", "type": "optional", "resources": ["https://www.nasm.us/doc/nasmdoc3.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-2-4", "label": "Floating Point (SSE/AVX)", "description": "SIMD instructions for parallel floating-point math. Modern x86 uses SSE/AVX instead of x87.", "type": "optional", "resources": ["https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-2-5", "label": "Calling Conventions", "description": "System V AMD64 ABI — argument passing, return values, and callee/caller-saved registers.", "type": "required", "resources": ["https://cs.lmu.edu/~ray/notes/nasmtutorial/", "https://wiki.osdev.org/System_V_ABI"]},
+        {"id": "core-2-6", "label": "Linking with C", "description": "Link assembly with C code using gcc/ld. Call C library functions from assembly.", "type": "required", "resources": ["https://cs.lmu.edu/~ray/notes/nasmtutorial/", "https://www.nasm.us/doc/nasmdoc9.html"]},
+        {"id": "core-2-7", "label": "Debugging with GDB", "description": "Debug assembly with GDB — inspect registers, memory, and step through instructions.", "type": "required", "resources": ["https://sourceware.org/gdb/current/onlinedocs/gdb/", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]},
+        {"id": "core-2-8", "label": "Godbolt Compiler Explorer", "description": "Study compiler output and write assembly interactively in the browser.", "type": "required", "resources": ["https://godbolt.org/", "https://cs.lmu.edu/~ray/notes/nasmtutorial/"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-x86-64", "label": "x86-64 Deep Dive", "icon": "💻", "category": "Architectures", "category_icon": "🔧"},
+    {"id": "path-arm-assembly", "label": "ARM Assembly", "icon": "📱", "category": "Architectures", "category_icon": "🔧"},
+    {"id": "path-risc-v", "label": "RISC-V Assembly", "icon": "🔬", "category": "Architectures", "category_icon": "🔧"},
+    {"id": "path-os-dev", "label": "OS Development", "icon": "🐧", "category": "Systems", "category_icon": "💻"},
+    {"id": "path-reverse-engineering", "label": "Reverse Engineering", "icon": "🔍", "category": "Security", "category_icon": "🔐"},
+    {"id": "path-exploit-dev", "label": "Exploit Development", "icon": "🛡️", "category": "Security", "category_icon": "🔐"},
+    {"id": "path-embedded-asm", "label": "Embedded Systems", "icon": "📟", "category": "Embedded", "category_icon": "🔌"},
+    {"id": "path-simd", "label": "SIMD Programming", "icon": "⚡", "category": "Performance", "category_icon": "🏎️"},
+    {"id": "path-bootloader", "label": "Bootloader Development", "icon": "🔄", "category": "Systems", "category_icon": "💻"},
+    {"id": "path-demoscene", "label": "Demoscene & Size Coding", "icon": "🎨", "category": "Creative", "category_icon": "🎮"}
+  ]
+}

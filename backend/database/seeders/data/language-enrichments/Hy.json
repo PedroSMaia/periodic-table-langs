@@ -1,0 +1,1 @@
+{"name": "Hy", "tools": [{"name": "hy", "url": "https://hylang.org/", "desc": "Compiler/REPL"}], "packages": [{"name": "Hy stdlib", "url": "https://docs.hylang.org/", "desc": "Standard macros"}]}

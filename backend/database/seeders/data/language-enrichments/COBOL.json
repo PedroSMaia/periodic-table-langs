@@ -1,0 +1,1 @@
+{"name": "COBOL", "packages": [{"name": "GnuCOBOL", "url": "https://gnucobol.sourceforge.io/", "desc": "Free compiler"}, {"name": "IBM COBOL", "url": "https://www.ibm.com/docs/en/cobol-zos", "desc": "Enterprise compiler"}]}

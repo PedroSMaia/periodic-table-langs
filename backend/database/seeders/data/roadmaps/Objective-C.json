@@ -1,0 +1,28 @@
+{
+  "language": "Objective-C",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Objective-C Fundamentals",
+      "description": "Syntax, messaging, classes, and Foundation framework.",
+      "topics": [
+        {"id": "core-1-1", "label": "Xcode Setup", "description": "Install Xcode and create an Objective-C project. ObjC is still used in legacy iOS/macOS codebases.", "type": "required", "resources": ["https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html", "https://developer.apple.com/xcode/"]},
+        {"id": "core-1-2", "label": "Syntax & Messaging", "description": "Message syntax [object method:arg], @interface/@implementation, and method signatures.", "type": "required", "resources": ["https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithObjects/WorkingwithObjects.html", "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocObjectsClasses.html"]},
+        {"id": "core-1-3", "label": "Data Types", "description": "NSString, NSNumber, NSArray, NSDictionary, BOOL, NSInteger, CGFloat, and C primitives.", "type": "required", "resources": ["https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/FoundationTypesandCollections/FoundationTypesandCollections.html", "https://developer.apple.com/documentation/foundation"]},
+        {"id": "core-1-4", "label": "Properties & Memory", "description": "Properties with @property, attributes (strong, weak, copy, nonatomic), and ARC.", "type": "required", "resources": ["https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html", "https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html"]},
+        {"id": "core-1-5", "label": "Classes & Inheritance", "description": "Define classes with @interface/@implementation, inherit from NSObject, and override methods.", "type": "required", "resources": ["https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/DefiningClasses/DefiningClasses.html", "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocDefiningClasses.html"]},
+        {"id": "core-1-6", "label": "Protocols & Delegates", "description": "Define contracts with @protocol and use the delegate pattern. The primary ObjC design pattern.", "type": "required", "resources": ["https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithProtocols/WorkingwithProtocols.html", "https://developer.apple.com/documentation/swift/using-objective-c-runtime-features-in-swift"]},
+        {"id": "core-1-7", "label": "Blocks", "description": "Closures/anonymous functions with ^{ } syntax. Used in completion handlers and GCD.", "type": "required", "resources": ["https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html", "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Blocks/Articles/00_Introduction.html"]},
+        {"id": "core-1-8", "label": "Categories & Extensions", "description": "Add methods to existing classes with categories. Extensions add private methods.", "type": "required", "resources": ["https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html", "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocCategories.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-uikit-objc", "label": "UIKit", "icon": "📱", "category": "iOS", "category_icon": "📱"},
+    {"id": "path-core-data-objc", "label": "Core Data", "icon": "🗄️", "category": "Data", "category_icon": "💾"},
+    {"id": "path-gcd", "label": "Grand Central Dispatch", "icon": "⚡", "category": "Concurrency", "category_icon": "🔀"},
+    {"id": "path-cocoapods", "label": "CocoaPods", "icon": "📦", "category": "Package Management", "category_icon": "📚"},
+    {"id": "path-swift-migration", "label": "Swift Migration", "icon": "🔄", "category": "Migration", "category_icon": "🔧"},
+    {"id": "path-appkit", "label": "AppKit (macOS)", "icon": "🖥️", "category": "macOS", "category_icon": "🖥️"}
+  ]
+}

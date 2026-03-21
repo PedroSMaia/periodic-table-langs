@@ -1,0 +1,81 @@
+{
+  "language": "Scala",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Scala Fundamentals",
+      "description": "Syntax, types, val/var, and basic constructs.",
+      "topics": [
+        {"id": "core-1-1", "label": "Setup & sbt", "description": "Install Scala with Coursier and build projects with sbt. sbt is Scala's primary build tool.", "type": "required", "resources": ["https://docs.scala-lang.org/getting-started/index.html", "https://www.scala-sbt.org/1.x/docs/"]},
+        {"id": "core-1-2", "label": "Val, Var & Type Inference", "description": "Immutable val, mutable var, and powerful type inference. Scala encourages immutability.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/basics.html", "https://docs.scala-lang.org/overviews/scala-book/variables-and-data-types.html"]},
+        {"id": "core-1-3", "label": "Basic Types & Expressions", "description": "Int, Double, String, Boolean, Unit. Everything is an expression in Scala — if/match return values.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/unified-types.html", "https://docs.scala-lang.org/overviews/scala-book/built-in-types.html"]},
+        {"id": "core-1-4", "label": "Functions & Methods", "description": "def methods, anonymous functions, and higher-order functions. Functions are first-class values.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/basics.html#functions", "https://docs.scala-lang.org/overviews/scala-book/functions.html"]},
+        {"id": "core-1-5", "label": "Control Structures", "description": "if/else (as expressions), while, for comprehensions. for comprehensions are Scala's swiss-army knife.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/for-comprehensions.html", "https://docs.scala-lang.org/overviews/scala-book/for-loops.html"]},
+        {"id": "core-1-6", "label": "String Interpolation", "description": "s\"\", f\"\", and raw\"\" string interpolators. Embed expressions directly in strings.", "type": "required", "resources": ["https://docs.scala-lang.org/overviews/core/string-interpolation.html", "https://docs.scala-lang.org/tour/string-interpolation.html"]},
+        {"id": "core-1-7", "label": "Collections (List, Vector, Map, Set)", "description": "Immutable collections by default with rich functional APIs. Scala's collection library is world-class.", "type": "required", "resources": ["https://docs.scala-lang.org/overviews/collections-2.13/introduction.html", "https://docs.scala-lang.org/overviews/scala-book/collections.html"]},
+        {"id": "core-1-8", "label": "Tuples", "description": "Group values of different types. Tuples are useful for multiple returns and pattern matching.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/tuples.html", "https://docs.scala-lang.org/overviews/scala-book/tuples.html"]},
+        {"id": "core-1-9", "label": "Pattern Matching", "description": "match/case for powerful decomposition. Pattern matching is Scala's most distinctive feature.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/pattern-matching.html", "https://docs.scala-lang.org/overviews/scala-book/match-expressions.html"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "OOP & Traits",
+      "description": "Classes, objects, traits, and Scala's type hierarchy.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Objects", "description": "Define classes with constructors and companion objects (Scala's static equivalent).", "type": "required", "resources": ["https://docs.scala-lang.org/tour/classes.html", "https://docs.scala-lang.org/tour/singleton-objects.html"]},
+        {"id": "core-2-2", "label": "Case Classes", "description": "Immutable data classes with auto-generated equals, hashCode, toString, copy, and unapply.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/case-classes.html", "https://docs.scala-lang.org/overviews/scala-book/case-classes.html"]},
+        {"id": "core-2-3", "label": "Traits", "description": "Composable units of behavior — like interfaces with implementations. Mix multiple traits into a class.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/traits.html", "https://docs.scala-lang.org/overviews/scala-book/traits.html"]},
+        {"id": "core-2-4", "label": "Sealed Traits & ADTs", "description": "Restrict trait extensions for exhaustive pattern matching. The foundation of algebraic data types.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/pattern-matching.html#sealed-types", "https://docs.scala-lang.org/scala3/book/types-adts-gadts.html"]},
+        {"id": "core-2-5", "label": "Enums (Scala 3)", "description": "First-class enums with parameters and methods. Scala 3 enums replace sealed trait + case object patterns.", "type": "required", "resources": ["https://docs.scala-lang.org/scala3/book/types-adts-gadts.html", "https://docs.scala-lang.org/scala3/reference/enums/enums.html"]},
+        {"id": "core-2-6", "label": "Inheritance & Mixins", "description": "extends for inheritance, with for mixing in traits. Linearization determines method resolution.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/mixin-class-composition.html", "https://docs.scala-lang.org/overviews/scala-book/traits.html"]},
+        {"id": "core-2-7", "label": "Abstract Classes", "description": "Classes with unimplemented members. Use abstract classes when you need constructor parameters.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/abstract-type-members.html", "https://docs.scala-lang.org/overviews/scala-book/abstract-classes.html"]},
+        {"id": "core-2-8", "label": "Generics & Variance", "description": "Type parameters with covariance (+T), contravariance (-T), and bounds.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/variances.html", "https://docs.scala-lang.org/tour/generic-classes.html"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Functional Programming",
+      "description": "Higher-order functions, Option, Either, and functional patterns.",
+      "topics": [
+        {"id": "core-3-1", "label": "Higher-Order Functions", "description": "Pass and return functions. map, flatMap, filter, fold, reduce on collections.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/higher-order-functions.html", "https://docs.scala-lang.org/overviews/scala-book/higher-order-functions.html"]},
+        {"id": "core-3-2", "label": "Option[T]", "description": "Represent optional values with Some(value) or None. Eliminates null pointer exceptions.", "type": "required", "resources": ["https://docs.scala-lang.org/overviews/scala-book/no-null-values.html", "https://www.scala-lang.org/api/current/scala/Option.html"]},
+        {"id": "core-3-3", "label": "Either[L, R]", "description": "Represent success (Right) or failure (Left). Either is Scala's functional error handling.", "type": "required", "resources": ["https://www.scala-lang.org/api/current/scala/util/Either.html", "https://docs.scala-lang.org/overviews/scala-book/functional-error-handling.html"]},
+        {"id": "core-3-4", "label": "Try[T]", "description": "Wrap exceptions in Success or Failure. Try bridges exception-based and functional error handling.", "type": "required", "resources": ["https://www.scala-lang.org/api/current/scala/util/Try.html", "https://docs.scala-lang.org/overviews/scala-book/functional-error-handling.html"]},
+        {"id": "core-3-5", "label": "For Comprehensions", "description": "Syntactic sugar for chaining flatMap/map/filter. Clean composition of monadic operations.", "type": "required", "resources": ["https://docs.scala-lang.org/tour/for-comprehensions.html", "https://docs.scala-lang.org/overviews/scala-book/for-expressions.html"]},
+        {"id": "core-3-6", "label": "Partial Functions", "description": "Functions defined for a subset of inputs with case syntax. Used in collect and error handlers.", "type": "optional", "resources": ["https://docs.scala-lang.org/tour/pattern-matching.html", "https://www.scala-lang.org/api/current/scala/PartialFunction.html"]},
+        {"id": "core-3-7", "label": "Currying & Partial Application", "description": "Multiple parameter lists and partially applied functions. Enables DSLs and type inference.", "type": "optional", "resources": ["https://docs.scala-lang.org/tour/multiple-parameter-lists.html", "https://docs.scala-lang.org/overviews/scala-book/functions.html"]},
+        {"id": "core-3-8", "label": "Implicits / Given (Scala 3)", "description": "Implicit conversions, parameters, and Scala 3's given/using. Powers type classes and dependency injection.", "type": "advanced", "resources": ["https://docs.scala-lang.org/scala3/book/ca-given-using-clauses.html", "https://docs.scala-lang.org/scala3/book/ca-context-parameters.html"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Concurrency & Testing",
+      "description": "Futures, Akka basics, testing, and build tools.",
+      "topics": [
+        {"id": "core-4-1", "label": "Futures", "description": "Asynchronous computation with Future and ExecutionContext. Compose with map, flatMap, recover.", "type": "required", "resources": ["https://docs.scala-lang.org/overviews/core/futures.html", "https://www.scala-lang.org/api/current/scala/concurrent/Future.html"]},
+        {"id": "core-4-2", "label": "Promise", "description": "Complete Futures manually with Promise. Bridge callback APIs to Future-based code.", "type": "optional", "resources": ["https://docs.scala-lang.org/overviews/core/futures.html#promises", "https://www.scala-lang.org/api/current/scala/concurrent/Promise.html"]},
+        {"id": "core-4-3", "label": "ScalaTest", "description": "The most popular Scala testing framework with multiple styles (FunSuite, FlatSpec, WordSpec).", "type": "required", "resources": ["https://www.scalatest.org/user_guide", "https://www.scalatest.org/at_a_glance/FunSuite"]},
+        {"id": "core-4-4", "label": "Mocking (ScalaMock)", "description": "Mock traits and classes for isolated unit tests.", "type": "optional", "resources": ["https://scalamock.org/", "https://www.scalatest.org/user_guide/testing_with_mock_objects"]},
+        {"id": "core-4-5", "label": "sbt Deep Dive", "description": "Multi-project builds, plugins, publishing. sbt's configuration is Scala code.", "type": "required", "resources": ["https://www.scala-sbt.org/1.x/docs/", "https://www.scala-sbt.org/1.x/docs/Multi-Project.html"]},
+        {"id": "core-4-6", "label": "Java Interop", "description": "Call Java from Scala and vice versa. Scala compiles to JVM bytecode with full interop.", "type": "required", "resources": ["https://docs.scala-lang.org/tutorials/scala-for-java-programmers.html", "https://docs.scala-lang.org/overviews/jdk-compatibility/overview.html"]},
+        {"id": "core-4-7", "label": "Error Handling Patterns", "description": "Choose between exceptions, Option, Either, and Try based on context. Functional error handling best practices.", "type": "required", "resources": ["https://docs.scala-lang.org/overviews/scala-book/functional-error-handling.html", "https://docs.scala-lang.org/tour/pattern-matching.html"]},
+        {"id": "core-4-8", "label": "Type Classes", "description": "Ad-hoc polymorphism with traits and implicits/given. The FP pattern for extensible behavior.", "type": "advanced", "resources": ["https://docs.scala-lang.org/scala3/book/ca-type-classes.html", "https://docs.scala-lang.org/overviews/scala-book/type-classes.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-akka", "label": "Akka", "icon": "⚡", "category": "Concurrency", "category_icon": "🔀"},
+    {"id": "path-play-framework", "label": "Play Framework", "icon": "▶️", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-http4s", "label": "http4s", "icon": "🌐", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-zio", "label": "ZIO", "icon": "⚡", "category": "Effect Systems", "category_icon": "λ"},
+    {"id": "path-cats-effect", "label": "Cats Effect", "icon": "🐱", "category": "Effect Systems", "category_icon": "λ"},
+    {"id": "path-spark-scala", "label": "Apache Spark", "icon": "✨", "category": "Big Data", "category_icon": "📊"},
+    {"id": "path-kafka-scala", "label": "Apache Kafka", "icon": "📨", "category": "Streaming", "category_icon": "🔄"},
+    {"id": "path-slick", "label": "Slick", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-doobie", "label": "Doobie", "icon": "📝", "category": "Database", "category_icon": "💾"},
+    {"id": "path-circe", "label": "Circe (JSON)", "icon": "📦", "category": "Serialization", "category_icon": "🔄"},
+    {"id": "path-fs2", "label": "FS2 (Streams)", "icon": "🌊", "category": "Streaming", "category_icon": "🔄"},
+    {"id": "path-scala-native", "label": "Scala Native", "icon": "⚙️", "category": "Native", "category_icon": "🔧"},
+    {"id": "path-scalajs", "label": "Scala.js", "icon": "🌐", "category": "Frontend", "category_icon": "🖥️"}
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "language": "JavaScript",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "JavaScript Fundamentals",
+      "description": "Syntax, types, operators, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Variables (let, const, var)", "description": "Declare variables with let and const. Understand var hoisting and why const is preferred by default.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types", "https://javascript.info/variables"]},
+        {"id": "core-1-2", "label": "Data Types", "description": "string, number, bigint, boolean, null, undefined, symbol, and object. JS is dynamically typed.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures", "https://javascript.info/types"]},
+        {"id": "core-1-3", "label": "Operators & Type Coercion", "description": "Arithmetic, comparison (=== vs ==), logical, and nullish coalescing (??). Type coercion is JS's biggest gotcha.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_operators", "https://javascript.info/operators"]},
+        {"id": "core-1-4", "label": "Control Flow", "description": "if/else, switch, for, while, for...of, for...in, break, continue. Standard flow control.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling", "https://javascript.info/ifelse"]},
+        {"id": "core-1-5", "label": "Strings", "description": "Template literals, string methods, and Unicode. Template literals with backticks are the modern standard.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String", "https://javascript.info/string"]},
+        {"id": "core-1-6", "label": "Arrays", "description": "push, pop, map, filter, reduce, find, includes, slice, splice. Arrays are the most-used data structure.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array", "https://javascript.info/array-methods"]},
+        {"id": "core-1-7", "label": "Objects", "description": "Object literals, property access, computed keys, shorthand, and destructuring. Objects are JS's core data container.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects", "https://javascript.info/object"]},
+        {"id": "core-1-8", "label": "Destructuring & Spread", "description": "Extract values from arrays/objects and spread elements. Essential for clean modern JS code.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment", "https://javascript.info/destructuring-assignment"]},
+        {"id": "core-1-9", "label": "Map, Set, WeakMap, WeakSet", "description": "Keyed collections beyond plain objects. Map allows any key type; Set stores unique values.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map", "https://javascript.info/map-set"]},
+        {"id": "core-1-10", "label": "JSON", "description": "Parse and stringify JSON. JSON is the universal format for data exchange.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON", "https://javascript.info/json"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Functions & Scope",
+      "description": "Function declarations, closures, and execution context.",
+      "topics": [
+        {"id": "core-2-1", "label": "Function Declarations & Expressions", "description": "Named functions, anonymous functions, and hoisting differences. Functions are first-class citizens in JS.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions", "https://javascript.info/function-basics"]},
+        {"id": "core-2-2", "label": "Arrow Functions", "description": "Concise syntax with => and lexical this binding. Arrow functions don't have their own this or arguments.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions", "https://javascript.info/arrow-functions-basics"]},
+        {"id": "core-2-3", "label": "Parameters & Defaults", "description": "Default parameters, rest parameters (...args), and the arguments object.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters", "https://javascript.info/function-basics"]},
+        {"id": "core-2-4", "label": "Closures", "description": "Functions that capture their enclosing scope. Closures are fundamental to JS patterns like modules and callbacks.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures", "https://javascript.info/closure"]},
+        {"id": "core-2-5", "label": "this Keyword", "description": "Understand this in different contexts — global, method, constructor, arrow, and with call/apply/bind.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this", "https://javascript.info/object-methods"]},
+        {"id": "core-2-6", "label": "Higher-Order Functions", "description": "Functions that take or return functions — map, filter, reduce, sort callbacks. Core functional pattern.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions", "https://javascript.info/function-expressions"]},
+        {"id": "core-2-7", "label": "IIFE & Module Pattern", "description": "Immediately Invoked Function Expressions and the revealing module pattern. Historical but still seen in codebases.", "type": "optional", "resources": ["https://developer.mozilla.org/en-US/docs/Glossary/IIFE", "https://javascript.info/modules-intro"]},
+        {"id": "core-2-8", "label": "Scope & Hoisting", "description": "Block scope (let/const), function scope (var), and temporal dead zone. Scope bugs are common for beginners.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Glossary/Scope", "https://javascript.info/closure"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Asynchronous JavaScript",
+      "description": "Callbacks, promises, async/await, and the event loop.",
+      "topics": [
+        {"id": "core-3-1", "label": "The Event Loop", "description": "Understand the call stack, task queue, and microtask queue. The event loop explains all async behavior in JS.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop", "https://javascript.info/event-loop"]},
+        {"id": "core-3-2", "label": "Callbacks", "description": "Pass functions as arguments for async completion. Callbacks are the original async pattern but lead to callback hell.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Glossary/Callback_function", "https://javascript.info/callbacks"]},
+        {"id": "core-3-3", "label": "Promises", "description": "Represent eventual values with Promise, then, catch, finally. Promises chain async operations cleanly.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise", "https://javascript.info/promise-basics"]},
+        {"id": "core-3-4", "label": "Promise Combinators", "description": "Promise.all, allSettled, race, and any. Combine multiple promises for parallel async operations.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all", "https://javascript.info/promise-api"]},
+        {"id": "core-3-5", "label": "async/await", "description": "Write async code that reads like synchronous code. async/await is syntactic sugar over promises.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises", "https://javascript.info/async-await"]},
+        {"id": "core-3-6", "label": "Error Handling in Async", "description": "try/catch with async/await and .catch() with promises. Unhandled rejections crash Node.js processes.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises", "https://javascript.info/async-await"]},
+        {"id": "core-3-7", "label": "Fetch API", "description": "Make HTTP requests with fetch(). The modern replacement for XMLHttpRequest.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch", "https://javascript.info/fetch"]},
+        {"id": "core-3-8", "label": "Iterators & Generators", "description": "Custom iterables with Symbol.iterator and generator functions with yield. Power async iteration patterns.", "type": "optional", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators", "https://javascript.info/generators"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "OOP & Prototypes",
+      "description": "Classes, prototypes, inheritance, and object patterns.",
+      "topics": [
+        {"id": "core-4-1", "label": "Prototypal Inheritance", "description": "Understand __proto__, Object.create, and the prototype chain. JS inheritance is prototype-based, not class-based.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain", "https://javascript.info/prototype-inheritance"]},
+        {"id": "core-4-2", "label": "Classes", "description": "ES6 class syntax with constructor, methods, static, and private fields (#). Classes are syntactic sugar over prototypes.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes", "https://javascript.info/class"]},
+        {"id": "core-4-3", "label": "Inheritance with extends", "description": "Extend classes, call super(), and override methods. Class inheritance works through the prototype chain.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/extends", "https://javascript.info/class-inheritance"]},
+        {"id": "core-4-4", "label": "Getters & Setters", "description": "Define computed properties with get/set. Useful for validation and derived values.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get", "https://javascript.info/property-accessors"]},
+        {"id": "core-4-5", "label": "Symbols", "description": "Unique identifiers for object properties. Symbols enable well-known protocols like Symbol.iterator.", "type": "optional", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol", "https://javascript.info/symbol"]},
+        {"id": "core-4-6", "label": "Proxy & Reflect", "description": "Intercept object operations with Proxy. Used in frameworks for reactivity and validation.", "type": "advanced", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy", "https://javascript.info/proxy"]},
+        {"id": "core-4-7", "label": "Mixins & Composition", "description": "Compose behavior from multiple sources instead of deep inheritance. Preferred over class hierarchies.", "type": "optional", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#mix-ins", "https://javascript.info/mixins"]},
+        {"id": "core-4-8", "label": "Object.freeze, seal, assign", "description": "Control object mutability and shallow copy. Important for immutable state patterns.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze", "https://javascript.info/object-copy"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Modules & Tooling",
+      "description": "ES modules, package management, and development tools.",
+      "topics": [
+        {"id": "core-5-1", "label": "ES Modules", "description": "import/export syntax for code organization. ES modules are the standard module system for JavaScript.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules", "https://javascript.info/modules-intro"]},
+        {"id": "core-5-2", "label": "CommonJS (require)", "description": "Node.js module system with require/module.exports. Still widely used in Node.js codebases.", "type": "required", "resources": ["https://nodejs.org/api/modules.html", "https://javascript.info/modules-intro"]},
+        {"id": "core-5-3", "label": "npm & package.json", "description": "Install dependencies, manage scripts, and understand semver. npm is the default JS package manager.", "type": "required", "resources": ["https://docs.npmjs.com/about-npm", "https://docs.npmjs.com/cli/v10/configuring-npm/package-json"]},
+        {"id": "core-5-4", "label": "Bundlers (Vite, webpack)", "description": "Bundle modules for the browser. Vite is the modern default; webpack is still everywhere.", "type": "required", "resources": ["https://vite.dev/guide/", "https://webpack.js.org/concepts/"]},
+        {"id": "core-5-5", "label": "Linting with ESLint", "description": "Catch bugs and enforce style with ESLint. ESLint is the standard JS linter.", "type": "required", "resources": ["https://eslint.org/docs/latest/use/getting-started", "https://eslint.org/docs/latest/rules/"]},
+        {"id": "core-5-6", "label": "Prettier", "description": "Opinionated code formatter. Prettier ends style debates and integrates with ESLint.", "type": "required", "resources": ["https://prettier.io/docs/en/index.html", "https://prettier.io/docs/en/integrating-with-linters"]},
+        {"id": "core-5-7", "label": "Debugging in DevTools", "description": "Chrome DevTools debugger — breakpoints, network tab, console, and profiler.", "type": "required", "resources": ["https://developer.chrome.com/docs/devtools/", "https://developer.chrome.com/docs/devtools/javascript/"]},
+        {"id": "core-5-8", "label": "TypeScript Basics", "description": "Add static types to JavaScript with TypeScript. TS catches bugs at compile time and improves IDE support.", "type": "optional", "resources": ["https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html", "https://www.typescriptlang.org/docs/"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Error Handling & DOM",
+      "description": "Exception handling, the DOM API, and browser events.",
+      "topics": [
+        {"id": "core-6-1", "label": "try/catch/finally", "description": "Handle runtime errors and throw custom errors. Proper error handling prevents silent failures.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch", "https://javascript.info/try-catch"]},
+        {"id": "core-6-2", "label": "Custom Errors", "description": "Extend Error class for domain-specific errors. Custom errors make debugging and error handling clearer.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error", "https://javascript.info/custom-errors"]},
+        {"id": "core-6-3", "label": "DOM Selection & Manipulation", "description": "querySelector, createElement, textContent, classList, and attribute methods. The DOM is how JS interacts with HTML.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model", "https://javascript.info/document"]},
+        {"id": "core-6-4", "label": "Events & Event Delegation", "description": "addEventListener, event bubbling, capturing, and delegation. Delegation handles events on dynamic content.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events", "https://javascript.info/event-delegation"]},
+        {"id": "core-6-5", "label": "Local Storage & Session Storage", "description": "Persist data in the browser with localStorage and sessionStorage. Simple key-value storage for client state.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API", "https://javascript.info/localstorage"]},
+        {"id": "core-6-6", "label": "Regular Expressions", "description": "Pattern matching with RegExp. Used for validation, parsing, and search/replace.", "type": "optional", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions", "https://javascript.info/regular-expressions"]},
+        {"id": "core-6-7", "label": "Timers & requestAnimationFrame", "description": "setTimeout, setInterval, and requestAnimationFrame for scheduling. Used in animations and polling.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/API/setTimeout", "https://javascript.info/settimeout-setinterval"]},
+        {"id": "core-6-8", "label": "Web APIs Overview", "description": "Intersection Observer, Clipboard, Geolocation, Notifications, and more. The browser provides a rich API surface.", "type": "optional", "resources": ["https://developer.mozilla.org/en-US/docs/Web/API", "https://javascript.info/ui"]}
+      ]
+    },
+    {
+      "id": "core-7",
+      "label": "Testing & Best Practices",
+      "description": "Testing frameworks, code quality, and modern JS patterns.",
+      "topics": [
+        {"id": "core-7-1", "label": "Jest / Vitest", "description": "Write unit tests with assertions, mocks, and snapshots. Vitest is the modern alternative with Vite compatibility.", "type": "required", "resources": ["https://jestjs.io/docs/getting-started", "https://vitest.dev/guide/"]},
+        {"id": "core-7-2", "label": "Testing Library", "description": "Test DOM components by user behavior, not implementation details. Works with React, Vue, and vanilla JS.", "type": "required", "resources": ["https://testing-library.com/docs/", "https://testing-library.com/docs/dom-testing-library/intro"]},
+        {"id": "core-7-3", "label": "E2E Testing (Playwright)", "description": "End-to-end browser testing with Playwright. Tests real user flows across browsers.", "type": "optional", "resources": ["https://playwright.dev/docs/intro", "https://playwright.dev/docs/writing-tests"]},
+        {"id": "core-7-4", "label": "Immutability Patterns", "description": "Avoid mutation with spread, Object.freeze, and immutable updates. Immutability prevents subtle bugs.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze", "https://javascript.info/object-copy"]},
+        {"id": "core-7-5", "label": "Error Boundaries & Defensive Coding", "description": "Validate inputs, handle edge cases, and fail gracefully. Defensive code is reliable code.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling", "https://javascript.info/try-catch"]},
+        {"id": "core-7-6", "label": "Performance Basics", "description": "Debouncing, throttling, lazy loading, and avoiding layout thrashing. Know the common performance pitfalls.", "type": "optional", "resources": ["https://developer.mozilla.org/en-US/docs/Web/Performance", "https://web.dev/performance/"]},
+        {"id": "core-7-7", "label": "Security Basics (XSS, CSRF)", "description": "Prevent cross-site scripting and request forgery. Sanitize user input and use Content Security Policy.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/Security", "https://owasp.org/www-community/attacks/xss/"]},
+        {"id": "core-7-8", "label": "Modern JS Features (ES2020+)", "description": "Optional chaining (?.), nullish coalescing (??), at(), structuredClone, and top-level await.", "type": "required", "resources": ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining", "https://javascript.info/optional-chaining"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-react", "label": "React", "icon": "⚛️", "category": "Frontend Frameworks", "category_icon": "🌐"},
+    {"id": "path-vue", "label": "Vue.js", "icon": "💚", "category": "Frontend Frameworks", "category_icon": "🌐"},
+    {"id": "path-svelte", "label": "Svelte", "icon": "🔥", "category": "Frontend Frameworks", "category_icon": "🌐"},
+    {"id": "path-angular", "label": "Angular", "icon": "🅰️", "category": "Frontend Frameworks", "category_icon": "🌐"},
+    {"id": "path-nextjs", "label": "Next.js", "icon": "▲", "category": "Full-Stack Frameworks", "category_icon": "🏗️"},
+    {"id": "path-nuxt", "label": "Nuxt", "icon": "💚", "category": "Full-Stack Frameworks", "category_icon": "🏗️"},
+    {"id": "path-astro", "label": "Astro", "icon": "🚀", "category": "Full-Stack Frameworks", "category_icon": "🏗️"},
+    {"id": "path-nodejs", "label": "Node.js", "icon": "🟢", "category": "Backend", "category_icon": "⚙️"},
+    {"id": "path-express", "label": "Express", "icon": "🚂", "category": "Backend", "category_icon": "⚙️"},
+    {"id": "path-nestjs", "label": "NestJS", "icon": "🐱", "category": "Backend", "category_icon": "⚙️"},
+    {"id": "path-deno", "label": "Deno", "icon": "🦕", "category": "Runtime", "category_icon": "⚡"},
+    {"id": "path-bun", "label": "Bun", "icon": "🍞", "category": "Runtime", "category_icon": "⚡"},
+    {"id": "path-electron", "label": "Electron", "icon": "💻", "category": "Desktop", "category_icon": "🖥️"},
+    {"id": "path-tauri", "label": "Tauri", "icon": "🦀", "category": "Desktop", "category_icon": "🖥️"},
+    {"id": "path-react-native", "label": "React Native", "icon": "📱", "category": "Mobile", "category_icon": "📱"},
+    {"id": "path-threejs", "label": "Three.js", "icon": "🎨", "category": "Graphics & 3D", "category_icon": "🎮"},
+    {"id": "path-d3", "label": "D3.js", "icon": "📊", "category": "Data Visualization", "category_icon": "📉"},
+    {"id": "path-prisma", "label": "Prisma", "icon": "🔷", "category": "Database & ORM", "category_icon": "💾"},
+    {"id": "path-mongoose", "label": "Mongoose", "icon": "🍃", "category": "Database & ORM", "category_icon": "💾"},
+    {"id": "path-jest-advanced", "label": "Jest Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-playwright", "label": "Playwright", "icon": "🎭", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-graphql-js", "label": "GraphQL", "icon": "◆", "category": "API", "category_icon": "🔌"},
+    {"id": "path-socket-io", "label": "Socket.IO", "icon": "📡", "category": "Real-Time", "category_icon": "🔄"},
+    {"id": "path-webpack-advanced", "label": "Webpack Advanced", "icon": "📦", "category": "Build Tools", "category_icon": "🔧"},
+    {"id": "path-storybook", "label": "Storybook", "icon": "📖", "category": "UI Development", "category_icon": "🎨"}
+  ]
+}

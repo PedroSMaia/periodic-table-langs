@@ -1,0 +1,1 @@
+{"name": "Verilog", "packages": [{"name": "Icarus Verilog", "url": "https://iverilog.fandom.com/", "desc": "Open-source simulator"}, {"name": "Verilator", "url": "https://www.veripool.org/verilator/", "desc": "Fast simulator"}]}

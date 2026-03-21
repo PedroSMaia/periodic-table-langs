@@ -1,0 +1,1 @@
+{"name": "Pascal", "packages": [{"name": "Lazarus LCL", "url": "https://www.lazarus-ide.org/", "desc": "GUI components"}, {"name": "fpc-units", "url": "https://www.freepascal.org/", "desc": "Standard units"}]}

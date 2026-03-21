@@ -1,0 +1,84 @@
+{
+  "language": "Dart",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Dart Fundamentals",
+      "description": "Syntax, types, null safety, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Setup & DartPad", "description": "Install the Dart SDK and experiment with DartPad online. Dart runs on VM, compiles to JS, and to native.", "type": "required", "resources": ["https://dart.dev/get-dart", "https://dartpad.dev/"]},
+        {"id": "core-1-2", "label": "Variables & Types", "description": "var, final, const, and explicit types. Dart is strongly typed with sound null safety.", "type": "required", "resources": ["https://dart.dev/language/variables", "https://dart.dev/language/built-in-types"]},
+        {"id": "core-1-3", "label": "Null Safety", "description": "Non-nullable by default — use Type? for nullable. Dart eliminates null reference errors at compile time.", "type": "required", "resources": ["https://dart.dev/null-safety", "https://dart.dev/language/type-system"]},
+        {"id": "core-1-4", "label": "Control Flow", "description": "if/else, switch, for, for-in, while, do-while. Switch supports patterns in Dart 3.", "type": "required", "resources": ["https://dart.dev/language/branches", "https://dart.dev/language/loops"]},
+        {"id": "core-1-5", "label": "Functions", "description": "Arrow functions, optional/named parameters, and first-class functions. Functions are objects in Dart.", "type": "required", "resources": ["https://dart.dev/language/functions", "https://dart.dev/guides/language/language-tour#functions"]},
+        {"id": "core-1-6", "label": "Strings", "description": "String interpolation with $var and ${expr}, multi-line strings, and common methods.", "type": "required", "resources": ["https://dart.dev/language/built-in-types#strings", "https://api.dart.dev/stable/dart-core/String-class.html"]},
+        {"id": "core-1-7", "label": "Collections (List, Map, Set)", "description": "Typed generic collections with rich APIs. Spread operator (...) and collection-if/for.", "type": "required", "resources": ["https://dart.dev/language/collections", "https://dart.dev/guides/language/language-tour#lists"]},
+        {"id": "core-1-8", "label": "Pattern Matching (Dart 3)", "description": "Destructuring and matching with switch expressions and if-case. Modern Dart's most impactful feature.", "type": "required", "resources": ["https://dart.dev/language/patterns", "https://dart.dev/language/branches#switch-expressions"]},
+        {"id": "core-1-9", "label": "Records (Dart 3)", "description": "Anonymous immutable aggregate types. Records enable multiple return values and structured data.", "type": "required", "resources": ["https://dart.dev/language/records", "https://dart.dev/language/type-system"]},
+        {"id": "core-1-10", "label": "Operators", "description": "Cascade (..), null-aware (?., ??), spread (...), and type test (is, as) operators.", "type": "required", "resources": ["https://dart.dev/language/operators", "https://dart.dev/guides/language/language-tour#operators"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Object-Oriented Dart",
+      "description": "Classes, mixins, extensions, and Dart's object model.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Constructors", "description": "Named, factory, const, and redirecting constructors. Dart has rich constructor syntax.", "type": "required", "resources": ["https://dart.dev/language/classes", "https://dart.dev/language/constructors"]},
+        {"id": "core-2-2", "label": "Properties & Getters/Setters", "description": "Final fields, computed properties with get/set. Properties are the idiomatic way to expose state.", "type": "required", "resources": ["https://dart.dev/language/methods#getters-and-setters", "https://dart.dev/language/classes"]},
+        {"id": "core-2-3", "label": "Inheritance", "description": "Extend classes with extends and override methods. Dart supports single inheritance.", "type": "required", "resources": ["https://dart.dev/language/extend", "https://dart.dev/language/classes"]},
+        {"id": "core-2-4", "label": "Abstract Classes & Interfaces", "description": "Abstract classes for partial implementations. Every class implicitly defines an interface.", "type": "required", "resources": ["https://dart.dev/language/class-modifiers#abstract", "https://dart.dev/language/classes#implicit-interfaces"]},
+        {"id": "core-2-5", "label": "Mixins", "description": "Reuse code across class hierarchies with mixin and with. Mixins solve the diamond problem.", "type": "required", "resources": ["https://dart.dev/language/mixins", "https://dart.dev/language/classes"]},
+        {"id": "core-2-6", "label": "Enums", "description": "Enhanced enums with fields, methods, and interface implementation (Dart 2.17+).", "type": "required", "resources": ["https://dart.dev/language/enums", "https://dart.dev/language/built-in-types"]},
+        {"id": "core-2-7", "label": "Extension Methods", "description": "Add methods to existing types without modifying them. Extensions improve API ergonomics.", "type": "required", "resources": ["https://dart.dev/language/extension-methods", "https://dart.dev/guides/language/language-tour"]},
+        {"id": "core-2-8", "label": "Sealed Classes (Dart 3)", "description": "Restrict subclasses for exhaustive switch. Sealed classes enable algebraic data types.", "type": "required", "resources": ["https://dart.dev/language/class-modifiers#sealed", "https://dart.dev/language/branches"]},
+        {"id": "core-2-9", "label": "Generics", "description": "Type-safe generic classes, functions, and methods. Dart generics are reified at runtime.", "type": "required", "resources": ["https://dart.dev/language/generics", "https://dart.dev/guides/language/language-tour#generics"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Async Programming",
+      "description": "Futures, Streams, async/await, and isolates.",
+      "topics": [
+        {"id": "core-3-1", "label": "Futures & async/await", "description": "Handle asynchronous operations with Future and async/await. Foundation of Dart's async model.", "type": "required", "resources": ["https://dart.dev/language/async", "https://dart.dev/codelabs/async-await"]},
+        {"id": "core-3-2", "label": "Error Handling in Async", "description": "try/catch with async/await and .catchError on Futures. Handle async errors properly.", "type": "required", "resources": ["https://dart.dev/language/error-handling", "https://dart.dev/guides/language/language-tour#exceptions"]},
+        {"id": "core-3-3", "label": "Streams", "description": "Async sequences of data with Stream. Listen to events, transform, and combine streams.", "type": "required", "resources": ["https://dart.dev/language/async#stream", "https://dart.dev/tutorials/language/streams"]},
+        {"id": "core-3-4", "label": "Stream Controllers", "description": "Create custom streams with StreamController. Bridge between imperative and stream-based code.", "type": "required", "resources": ["https://api.dart.dev/stable/dart-async/StreamController-class.html", "https://dart.dev/articles/libraries/creating-streams"]},
+        {"id": "core-3-5", "label": "Isolates", "description": "True parallelism with isolates — separate memory, message passing. For CPU-heavy tasks.", "type": "optional", "resources": ["https://dart.dev/language/isolates", "https://dart.dev/guides/language/concurrency"]},
+        {"id": "core-3-6", "label": "Generators", "description": "sync* and async* for lazy and async iterable generation.", "type": "optional", "resources": ["https://dart.dev/language/functions#generators", "https://dart.dev/guides/language/language-tour"]},
+        {"id": "core-3-7", "label": "Completer", "description": "Create Futures manually with Completer for bridging callback APIs.", "type": "optional", "resources": ["https://api.dart.dev/stable/dart-async/Completer-class.html", "https://dart.dev/guides/language/language-tour"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Packages, Testing & Tooling",
+      "description": "Pub package manager, testing, and development tools.",
+      "topics": [
+        {"id": "core-4-1", "label": "Pub & pubspec.yaml", "description": "Manage dependencies with pub.dev and pubspec.yaml. Pub is Dart's package manager.", "type": "required", "resources": ["https://dart.dev/tools/pub/get-started", "https://pub.dev/"]},
+        {"id": "core-4-2", "label": "Unit Testing", "description": "Write tests with the test package — test(), expect(), group(), setUp/tearDown.", "type": "required", "resources": ["https://dart.dev/guides/testing", "https://pub.dev/packages/test"]},
+        {"id": "core-4-3", "label": "Mocking (Mockito)", "description": "Mock dependencies with the mockito package. Isolate units under test.", "type": "required", "resources": ["https://pub.dev/packages/mockito", "https://dart.dev/guides/testing"]},
+        {"id": "core-4-4", "label": "Dart Analyzer & Lints", "description": "Static analysis with the Dart analyzer and recommended lint rules.", "type": "required", "resources": ["https://dart.dev/tools/analysis", "https://pub.dev/packages/lints"]},
+        {"id": "core-4-5", "label": "dart format", "description": "Auto-format Dart code with the official formatter. Consistent style across all Dart projects.", "type": "required", "resources": ["https://dart.dev/tools/dart-format", "https://dart.dev/effective-dart/style"]},
+        {"id": "core-4-6", "label": "Libraries & Parts", "description": "Organize code with library, import, export, and part. Dart's module system.", "type": "required", "resources": ["https://dart.dev/language/libraries", "https://dart.dev/guides/language/language-tour#libraries-and-imports"]},
+        {"id": "core-4-7", "label": "Code Generation", "description": "Use build_runner and source_gen for code generation. Powers json_serializable, freezed, etc.", "type": "optional", "resources": ["https://dart.dev/tools/build_runner", "https://pub.dev/packages/build_runner"]},
+        {"id": "core-4-8", "label": "Effective Dart", "description": "Follow Dart's official style guide for idiomatic, readable code.", "type": "required", "resources": ["https://dart.dev/effective-dart", "https://dart.dev/effective-dart/style"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-flutter", "label": "Flutter", "icon": "💙", "category": "Cross-Platform UI", "category_icon": "📱"},
+    {"id": "path-flutter-web", "label": "Flutter Web", "icon": "🌐", "category": "Cross-Platform UI", "category_icon": "📱"},
+    {"id": "path-flutter-desktop", "label": "Flutter Desktop", "icon": "🖥️", "category": "Cross-Platform UI", "category_icon": "📱"},
+    {"id": "path-riverpod", "label": "Riverpod", "icon": "🔄", "category": "State Management", "category_icon": "⚙️"},
+    {"id": "path-bloc", "label": "BLoC Pattern", "icon": "🧱", "category": "State Management", "category_icon": "⚙️"},
+    {"id": "path-provider", "label": "Provider", "icon": "📦", "category": "State Management", "category_icon": "⚙️"},
+    {"id": "path-dart-server", "label": "Shelf (Server)", "icon": "🌐", "category": "Backend", "category_icon": "⚙️"},
+    {"id": "path-serverpod", "label": "Serverpod", "icon": "🚀", "category": "Backend", "category_icon": "⚙️"},
+    {"id": "path-drift", "label": "Drift (Database)", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-isar", "label": "Isar", "icon": "💾", "category": "Database", "category_icon": "💾"},
+    {"id": "path-freezed", "label": "Freezed", "icon": "❄️", "category": "Code Generation", "category_icon": "🔧"},
+    {"id": "path-dio", "label": "Dio (HTTP)", "icon": "🔗", "category": "Networking", "category_icon": "🔗"},
+    {"id": "path-flutter-test", "label": "Flutter Testing", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-flame", "label": "Flame (Game Engine)", "icon": "🔥", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-dart-ffi", "label": "Dart FFI", "icon": "🔌", "category": "Native Interop", "category_icon": "🔧"}
+  ]
+}

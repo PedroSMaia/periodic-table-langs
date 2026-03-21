@@ -1,0 +1,47 @@
+{
+  "language": "Visual Basic",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "VB.NET Fundamentals",
+      "description": "Syntax, types, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": ".NET SDK & Visual Studio", "description": "Install .NET SDK and Visual Studio or VS Code. VB.NET runs on the .NET runtime.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/getting-started/", "https://dotnet.microsoft.com/en-us/learn"]},
+        {"id": "core-1-2", "label": "Hello World & Program Structure", "description": "Module, Sub Main, Console.WriteLine. Understand VB.NET's verbose but readable syntax.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/getting-started/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/program-structure/"]},
+        {"id": "core-1-3", "label": "Variables & Data Types", "description": "Dim, Integer, String, Boolean, Double, Date. VB.NET is strongly typed with Option Strict.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/data-types/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/data-types/"]},
+        {"id": "core-1-4", "label": "Operators", "description": "Arithmetic, comparison, logical (And, Or, Not, AndAlso, OrElse), string concatenation (&).", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/operators/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/operators-and-expressions/"]},
+        {"id": "core-1-5", "label": "Control Flow", "description": "If/ElseIf/Else/End If, Select Case, For/Next, For Each, While, Do Loop.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/control-flow/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/statements/"]},
+        {"id": "core-1-6", "label": "Strings", "description": "String methods, interpolation ($\"\"), concatenation, and StringBuilder.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/strings/", "https://learn.microsoft.com/en-us/dotnet/api/system.string"]},
+        {"id": "core-1-7", "label": "Arrays & Collections", "description": "Arrays, List(Of T), Dictionary(Of TKey, TValue). Generic collections are type-safe.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/arrays/", "https://learn.microsoft.com/en-us/dotnet/standard/collections/"]},
+        {"id": "core-1-8", "label": "Subs & Functions", "description": "Sub (no return) and Function (with return). ByVal and ByRef parameter passing.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/procedures/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/statements/function-statement"]},
+        {"id": "core-1-9", "label": "Error Handling", "description": "Try/Catch/Finally and custom exceptions. Structured error handling replaced On Error.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/error-types", "https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/statements/try-catch-finally-statement"]},
+        {"id": "core-1-10", "label": "Option Strict & Option Explicit", "description": "Enable strict type checking and require variable declaration. Always use these for safer code.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/statements/option-strict-statement", "https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/statements/option-explicit-statement"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "OOP & .NET Integration",
+      "description": "Classes, inheritance, LINQ, and .NET framework.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Objects", "description": "Define classes with properties, constructors (New), and methods.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/objects-and-classes/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/concepts/object-oriented-programming"]},
+        {"id": "core-2-2", "label": "Properties", "description": "Auto-properties, Property Get/Set, and ReadOnly properties.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/procedures/property-procedures", "https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/statements/property-statement"]},
+        {"id": "core-2-3", "label": "Inheritance & Interfaces", "description": "Inherits for class inheritance, Implements for interfaces. Overrides and MustOverride.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/objects-and-classes/inheritance-basics", "https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/interfaces/"]},
+        {"id": "core-2-4", "label": "Generics", "description": "Type-safe generic classes and methods with (Of T).", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/data-types/generic-types", "https://learn.microsoft.com/en-us/dotnet/standard/generics/"]},
+        {"id": "core-2-5", "label": "LINQ", "description": "Query collections with From, Where, Select, Order By. LINQ integrates queries into the language.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/concepts/linq/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/linq/"]},
+        {"id": "core-2-6", "label": "Events & Delegates", "description": "Event-driven programming with Event, RaiseEvent, AddHandler, and WithEvents.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/events/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/statements/event-statement"]},
+        {"id": "core-2-7", "label": "File I/O", "description": "Read and write files with System.IO classes and My.Computer.FileSystem.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/developing-apps/programming/drives-directories-files/", "https://learn.microsoft.com/en-us/dotnet/standard/io/"]},
+        {"id": "core-2-8", "label": "Async/Await", "description": "Asynchronous programming with Async Function and Await. Same .NET async model as C#.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/visual-basic/programming-guide/concepts/async/", "https://learn.microsoft.com/en-us/dotnet/visual-basic/language-reference/modifiers/async"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-winforms-vb", "label": "Windows Forms", "icon": "🪟", "category": "Desktop", "category_icon": "🖥️"},
+    {"id": "path-wpf-vb", "label": "WPF", "icon": "🖼️", "category": "Desktop", "category_icon": "🖥️"},
+    {"id": "path-aspnet-vb", "label": "ASP.NET", "icon": "🌐", "category": "Web", "category_icon": "🌐"},
+    {"id": "path-vba", "label": "VBA (Office Automation)", "icon": "📊", "category": "Automation", "category_icon": "⚙️"},
+    {"id": "path-ef-vb", "label": "Entity Framework", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-ado-net", "label": "ADO.NET", "icon": "📝", "category": "Database", "category_icon": "💾"},
+    {"id": "path-vb-testing", "label": "MSTest / NUnit", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-xaml-vb", "label": "XAML & Data Binding", "icon": "🔗", "category": "UI", "category_icon": "🎨"}
+  ]
+}

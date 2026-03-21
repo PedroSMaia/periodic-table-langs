@@ -1,0 +1,1 @@
+{"name": "D", "links": {"discord": "https://discord.gg/dlang", "forum": "https://forum.dlang.org/"}, "tools": [{"name": "dub", "url": "https://code.dlang.org/", "desc": "Package manager"}], "packages": [{"name": "Vibe.d", "url": "https://vibed.org/", "desc": "Web framework"}, {"name": "Mir", "url": "https://github.com/libmir", "desc": "Numerical"}]}

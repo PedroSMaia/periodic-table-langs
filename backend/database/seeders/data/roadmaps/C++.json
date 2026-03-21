@@ -1,0 +1,133 @@
+{
+  "language": "C++",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "C++ Fundamentals",
+      "description": "Syntax, types, compilation, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Compilation & Toolchain", "description": "Compile with g++/clang++, understand translation units, and linking. C++ compilation is more complex than most languages.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/translation_phases", "https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/"]},
+        {"id": "core-1-2", "label": "Basic Types & Variables", "description": "int, double, char, bool, auto, and const. C++ has strong typing with type deduction via auto.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/types", "https://www.learncpp.com/cpp-tutorial/fundamental-data-types/"]},
+        {"id": "core-1-3", "label": "Control Flow", "description": "if/else, switch, for, while, range-based for, and structured bindings. Modern C++ has cleaner iteration patterns.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/statements", "https://www.learncpp.com/cpp-tutorial/control-flow-introduction/"]},
+        {"id": "core-1-4", "label": "Functions & Overloading", "description": "Define functions with overloading, default arguments, and inline. Function overloading is a key C++ feature.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/functions", "https://www.learncpp.com/cpp-tutorial/introduction-to-functions/"]},
+        {"id": "core-1-5", "label": "References & Pointers", "description": "Understand lvalue references, pointers, const references, and nullptr. References are safer aliases for objects.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/reference", "https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/"]},
+        {"id": "core-1-6", "label": "Strings (std::string)", "description": "Use std::string instead of C-style char arrays. string provides safe, convenient text manipulation.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/string/basic_string", "https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring/"]},
+        {"id": "core-1-7", "label": "Arrays & std::array", "description": "Fixed-size arrays with bounds safety. std::array is preferred over C-style arrays in modern C++.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/container/array", "https://www.learncpp.com/cpp-tutorial/stdarray-length-and-indexing/"]},
+        {"id": "core-1-8", "label": "std::vector", "description": "Dynamic arrays that grow automatically. vector is the most used container in C++.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/container/vector", "https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector-and-list-constructors/"]},
+        {"id": "core-1-9", "label": "Namespaces", "description": "Organize code into namespaces to avoid name collisions. Essential for library development and large projects.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/namespace", "https://www.learncpp.com/cpp-tutorial/user-defined-namespaces-and-the-scope-resolution-operator/"]},
+        {"id": "core-1-10", "label": "Enums & enum class", "description": "Scoped enumerations (enum class) for type-safe named constants. Preferred over C-style unscoped enums.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/enum", "https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Object-Oriented Programming",
+      "description": "Classes, inheritance, polymorphism, and operator overloading.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Structs", "description": "Define classes with constructors, destructors, and member functions. Classes are C++'s primary abstraction mechanism.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/classes", "https://www.learncpp.com/cpp-tutorial/introduction-to-classes-and-class-members/"]},
+        {"id": "core-2-2", "label": "Constructors & Destructors", "description": "Default, parameterized, copy, and move constructors plus destructors. RAII depends on proper constructor/destructor design.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/constructor", "https://www.learncpp.com/cpp-tutorial/introduction-to-constructors/"]},
+        {"id": "core-2-3", "label": "Inheritance", "description": "Single and multiple inheritance, virtual base classes. Inheritance enables code reuse and polymorphic behavior.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/derived_class", "https://www.learncpp.com/cpp-tutorial/introduction-to-inheritance/"]},
+        {"id": "core-2-4", "label": "Virtual Functions & Polymorphism", "description": "Runtime polymorphism with virtual functions, override, and pure virtual (abstract). The foundation of extensible designs.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/virtual", "https://www.learncpp.com/cpp-tutorial/virtual-functions/"]},
+        {"id": "core-2-5", "label": "Operator Overloading", "description": "Define custom behavior for +, ==, <<, [], etc. Makes user-defined types feel like built-in types.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/operators", "https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/"]},
+        {"id": "core-2-6", "label": "Copy & Move Semantics", "description": "Rule of three/five/zero, copy/move constructors, and assignment operators. Move semantics eliminate unnecessary copies.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/move_constructor", "https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/"]},
+        {"id": "core-2-7", "label": "RAII", "description": "Resource Acquisition Is Initialization — tie resource lifetimes to object lifetimes. RAII is C++'s most important idiom.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/raii", "https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/"]},
+        {"id": "core-2-8", "label": "Friend Functions & Classes", "description": "Grant access to private members selectively. Used sparingly for operator overloading and tightly coupled classes.", "type": "optional", "resources": ["https://en.cppreference.com/w/cpp/language/friend", "https://www.learncpp.com/cpp-tutorial/friend-non-member-functions/"]},
+        {"id": "core-2-9", "label": "Static Members", "description": "Class-level variables and functions shared across all instances. Useful for counters, factories, and singletons.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/static", "https://www.learncpp.com/cpp-tutorial/static-member-variables/"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Templates & Generic Programming",
+      "description": "Function templates, class templates, and compile-time polymorphism.",
+      "topics": [
+        {"id": "core-3-1", "label": "Function Templates", "description": "Write type-generic functions with template<typename T>. Templates are C++'s mechanism for generic programming.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/function_template", "https://www.learncpp.com/cpp-tutorial/function-templates/"]},
+        {"id": "core-3-2", "label": "Class Templates", "description": "Create generic data structures and classes. The STL is built entirely on class templates.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/class_template", "https://www.learncpp.com/cpp-tutorial/class-templates/"]},
+        {"id": "core-3-3", "label": "Template Specialization", "description": "Provide custom implementations for specific types. Specialization handles edge cases in generic code.", "type": "optional", "resources": ["https://en.cppreference.com/w/cpp/language/template_specialization", "https://www.learncpp.com/cpp-tutorial/class-template-specialization/"]},
+        {"id": "core-3-4", "label": "Variadic Templates", "description": "Templates that accept any number of arguments. Powers std::tuple, std::variant, and modern library designs.", "type": "advanced", "resources": ["https://en.cppreference.com/w/cpp/language/parameter_pack", "https://www.learncpp.com/cpp-tutorial/variadic-templates/"]},
+        {"id": "core-3-5", "label": "Concepts (C++20)", "description": "Constrain template parameters with readable requirements. Concepts replace SFINAE with clear error messages.", "type": "optional", "resources": ["https://en.cppreference.com/w/cpp/language/constraints", "https://www.learncpp.com/cpp-tutorial/introduction-to-concepts/"]},
+        {"id": "core-3-6", "label": "constexpr & Compile-Time", "description": "Evaluate functions and variables at compile time. constexpr enables zero-runtime-cost abstractions.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/constexpr", "https://www.learncpp.com/cpp-tutorial/constexpr-and-consteval-functions/"]},
+        {"id": "core-3-7", "label": "auto & decltype", "description": "Type deduction with auto and decltype. Reduces verbosity especially with complex template types.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/auto", "https://www.learncpp.com/cpp-tutorial/type-deduction-with-pointers-references-and-const/"]},
+        {"id": "core-3-8", "label": "SFINAE & Type Traits", "description": "Substitution Failure Is Not An Error — advanced template metaprogramming. Used in library code for conditional compilation.", "type": "advanced", "resources": ["https://en.cppreference.com/w/cpp/language/sfinae", "https://en.cppreference.com/w/cpp/header/type_traits"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "STL Containers & Algorithms",
+      "description": "Standard library containers, iterators, and algorithms.",
+      "topics": [
+        {"id": "core-4-1", "label": "Sequence Containers", "description": "vector, deque, list, forward_list, and array. Choose the right container based on access and insertion patterns.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/container", "https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector-and-list-constructors/"]},
+        {"id": "core-4-2", "label": "Associative Containers", "description": "map, set, multimap, multiset (ordered) and their unordered variants. Maps and sets are essential for fast lookups.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/container/map", "https://www.learncpp.com/cpp-tutorial/stdmap-and-stdmultimap/"]},
+        {"id": "core-4-3", "label": "Iterators", "description": "Input, output, forward, bidirectional, and random access iterators. Iterators are the glue between containers and algorithms.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/iterator", "https://www.learncpp.com/cpp-tutorial/introduction-to-iterators/"]},
+        {"id": "core-4-4", "label": "STL Algorithms", "description": "sort, find, transform, accumulate, copy, remove_if, and more. Algorithms express intent better than raw loops.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/algorithm", "https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/"]},
+        {"id": "core-4-5", "label": "Lambda Expressions", "description": "Inline anonymous functions with captures. Lambdas are used everywhere with STL algorithms and callbacks.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/lambda", "https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/"]},
+        {"id": "core-4-6", "label": "Ranges (C++20)", "description": "Composable views and range adaptors for lazy pipelines. Ranges modernize the STL algorithm interface.", "type": "optional", "resources": ["https://en.cppreference.com/w/cpp/ranges", "https://www.learncpp.com/cpp-tutorial/introduction-to-stdviews/"]},
+        {"id": "core-4-7", "label": "std::optional, variant, any", "description": "Type-safe alternatives to null pointers and void*. These vocabulary types make APIs more expressive.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/utility/optional", "https://www.learncpp.com/cpp-tutorial/stdoptional/"]},
+        {"id": "core-4-8", "label": "std::string_view", "description": "Non-owning string references for zero-copy string passing. Avoids unnecessary string copies in function parameters.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/string/basic_string_view", "https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Memory Management & Smart Pointers",
+      "description": "Smart pointers, ownership semantics, and memory safety.",
+      "topics": [
+        {"id": "core-5-1", "label": "unique_ptr", "description": "Exclusive ownership smart pointer that auto-deletes. Use unique_ptr by default for heap allocations.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/memory/unique_ptr", "https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/"]},
+        {"id": "core-5-2", "label": "shared_ptr & weak_ptr", "description": "Reference-counted shared ownership. weak_ptr breaks circular references. Use sparingly — prefer unique_ptr.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/memory/shared_ptr", "https://www.learncpp.com/cpp-tutorial/stdshared_ptr/"]},
+        {"id": "core-5-3", "label": "make_unique & make_shared", "description": "Factory functions for exception-safe smart pointer creation. Always prefer make_unique/make_shared over raw new.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique", "https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/"]},
+        {"id": "core-5-4", "label": "Move Semantics Deep Dive", "description": "Rvalue references, std::move, and perfect forwarding. Move semantics are key to writing efficient modern C++.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/move_constructor", "https://www.learncpp.com/cpp-tutorial/move-constructors-and-move-assignment/"]},
+        {"id": "core-5-5", "label": "Custom Allocators", "description": "Write allocators for specialized memory strategies — pools, arenas, stack allocators. Used in games and embedded.", "type": "advanced", "resources": ["https://en.cppreference.com/w/cpp/named_req/Allocator", "https://www.learncpp.com/cpp-tutorial/overloading-new-and-delete/"]},
+        {"id": "core-5-6", "label": "Placement New", "description": "Construct objects in pre-allocated memory. Used in memory pools, custom containers, and embedded systems.", "type": "advanced", "resources": ["https://en.cppreference.com/w/cpp/language/new#Placement_new", "https://www.geeksforgeeks.org/placement-new-operator-cpp/"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Error Handling & Concurrency",
+      "description": "Exceptions, error patterns, and multi-threaded programming.",
+      "topics": [
+        {"id": "core-6-1", "label": "Exceptions", "description": "throw, try/catch, and exception hierarchies. C++ exceptions integrate with RAII for safe resource cleanup.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/exceptions", "https://www.learncpp.com/cpp-tutorial/the-need-for-exceptions/"]},
+        {"id": "core-6-2", "label": "noexcept", "description": "Mark functions as non-throwing for optimization and documentation. Move operations should always be noexcept.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/language/noexcept_spec", "https://www.learncpp.com/cpp-tutorial/exception-specifications-and-noexcept/"]},
+        {"id": "core-6-3", "label": "std::expected (C++23)", "description": "Monadic error handling as an alternative to exceptions. Represents either a value or an error.", "type": "optional", "resources": ["https://en.cppreference.com/w/cpp/utility/expected", "https://www.learncpp.com/cpp-tutorial/stdexpected/"]},
+        {"id": "core-6-4", "label": "std::thread", "description": "Launch and manage threads for concurrent execution. Multi-threading is essential for modern applications.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/thread/thread", "https://www.learncpp.com/cpp-tutorial/introduction-to-concurrency/"]},
+        {"id": "core-6-5", "label": "Mutexes & Locks", "description": "Protect shared data with mutex, lock_guard, unique_lock, and shared_lock. Prevents data races.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/thread/mutex", "https://www.learncpp.com/cpp-tutorial/stdmutex/"]},
+        {"id": "core-6-6", "label": "Condition Variables", "description": "Synchronize threads by waiting for conditions. Used for producer-consumer and event-driven patterns.", "type": "required", "resources": ["https://en.cppreference.com/w/cpp/thread/condition_variable", "https://www.learncpp.com/cpp-tutorial/stdcondition_variable/"]},
+        {"id": "core-6-7", "label": "Futures & Promises", "description": "async, future, and promise for asynchronous result passing. Higher-level than raw threads for many tasks.", "type": "optional", "resources": ["https://en.cppreference.com/w/cpp/thread/future", "https://www.learncpp.com/cpp-tutorial/stdfuture-and-stdasync/"]},
+        {"id": "core-6-8", "label": "Atomics", "description": "Lock-free programming with std::atomic. Critical for high-performance concurrent data structures.", "type": "advanced", "resources": ["https://en.cppreference.com/w/cpp/atomic/atomic", "https://www.learncpp.com/cpp-tutorial/stdatomic/"]}
+      ]
+    },
+    {
+      "id": "core-7",
+      "label": "Build Systems & Testing",
+      "description": "CMake, package managers, testing frameworks, and debugging.",
+      "topics": [
+        {"id": "core-7-1", "label": "CMake", "description": "The de facto build system for C++. Write CMakeLists.txt for cross-platform builds.", "type": "required", "resources": ["https://cmake.org/cmake/help/latest/guide/tutorial/index.html", "https://cliutils.gitlab.io/modern-cmake/"]},
+        {"id": "core-7-2", "label": "vcpkg / Conan", "description": "C++ package managers for dependency management. vcpkg and Conan save you from manual library building.", "type": "required", "resources": ["https://vcpkg.io/en/getting-started.html", "https://docs.conan.io/2/tutorial.html"]},
+        {"id": "core-7-3", "label": "Google Test", "description": "Industry-standard C++ testing framework. Write unit tests with TEST, EXPECT, and ASSERT macros.", "type": "required", "resources": ["https://google.github.io/googletest/", "https://www.learncpp.com/cpp-tutorial/introduction-to-testing-your-code/"]},
+        {"id": "core-7-4", "label": "Catch2", "description": "Header-only testing framework with BDD-style syntax. Popular for its simplicity and single-header setup.", "type": "optional", "resources": ["https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md", "https://www.learncpp.com/cpp-tutorial/introduction-to-testing-your-code/"]},
+        {"id": "core-7-5", "label": "Google Benchmark", "description": "Microbenchmarking framework for performance-critical code. Measure before optimizing.", "type": "optional", "resources": ["https://github.com/google/benchmark", "https://www.bfilipek.com/2016/01/micro-benchmarking-libraries-for-c.html"]},
+        {"id": "core-7-6", "label": "Sanitizers", "description": "AddressSanitizer, UndefinedBehaviorSanitizer, ThreadSanitizer. Compile-time flags that catch runtime bugs.", "type": "required", "resources": ["https://clang.llvm.org/docs/AddressSanitizer.html", "https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html"]},
+        {"id": "core-7-7", "label": "Debugging with GDB/LLDB", "description": "Step through C++ code, inspect objects, and trace crashes. Essential for debugging complex template errors.", "type": "required", "resources": ["https://sourceware.org/gdb/current/onlinedocs/gdb/", "https://lldb.llvm.org/use/tutorial.html"]},
+        {"id": "core-7-8", "label": "clang-format & clang-tidy", "description": "Auto-format code and apply static analysis fixes. Enforces consistent style across C++ projects.", "type": "required", "resources": ["https://clang.llvm.org/docs/ClangFormat.html", "https://clang.llvm.org/extra/clang-tidy/"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-unreal-engine", "label": "Unreal Engine", "icon": "🎮", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-sfml", "label": "SFML", "icon": "🖼️", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-sdl2-cpp", "label": "SDL2", "icon": "🕹️", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-qt", "label": "Qt", "icon": "🪟", "category": "GUI Frameworks", "category_icon": "🖥️"},
+    {"id": "path-imgui", "label": "Dear ImGui", "icon": "🎛️", "category": "GUI Frameworks", "category_icon": "🖥️"},
+    {"id": "path-vulkan-cpp", "label": "Vulkan", "icon": "🌋", "category": "Graphics & Rendering", "category_icon": "🎨"},
+    {"id": "path-opengl-cpp", "label": "OpenGL", "icon": "🖼️", "category": "Graphics & Rendering", "category_icon": "🎨"},
+    {"id": "path-opencv", "label": "OpenCV", "icon": "👁️", "category": "Computer Vision", "category_icon": "📷"},
+    {"id": "path-boost", "label": "Boost", "icon": "🚀", "category": "Libraries", "category_icon": "📚"},
+    {"id": "path-grpc-cpp", "label": "gRPC", "icon": "🔗", "category": "Networking", "category_icon": "🌐"},
+    {"id": "path-asio", "label": "Asio", "icon": "⚡", "category": "Networking", "category_icon": "🌐"},
+    {"id": "path-ros", "label": "ROS 2", "icon": "🤖", "category": "Robotics", "category_icon": "🦾"},
+    {"id": "path-tensorflow-cpp", "label": "TensorFlow C++", "icon": "🧠", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-onnx-runtime", "label": "ONNX Runtime", "icon": "⚙️", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-cmake-advanced", "label": "CMake Advanced", "icon": "🔨", "category": "Build Systems", "category_icon": "🔧"},
+    {"id": "path-conan", "label": "Conan", "icon": "📦", "category": "Build Systems", "category_icon": "🔧"},
+    {"id": "path-catch2", "label": "Catch2", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-google-test", "label": "Google Test", "icon": "✅", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-embedded-cpp", "label": "Embedded C++", "icon": "📟", "category": "Embedded Systems", "category_icon": "🔌"},
+    {"id": "path-llvm", "label": "LLVM", "icon": "🔗", "category": "Compilers", "category_icon": "⚙️"}
+  ]
+}

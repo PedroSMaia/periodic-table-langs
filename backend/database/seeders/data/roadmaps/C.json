@@ -1,0 +1,136 @@
+{
+  "language": "C",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "C Fundamentals",
+      "description": "Compilation, basic syntax, data types, and program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Compilation & Toolchain", "description": "Compile C programs with gcc/clang, understand preprocessing, compiling, assembling, and linking stages.", "type": "required", "resources": ["https://gcc.gnu.org/onlinedocs/", "https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/"]},
+        {"id": "core-1-2", "label": "Hello World & Program Structure", "description": "Understand main(), #include, return values, and basic program layout. Every C program starts here.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/main_function", "https://www.learn-c.org/"]},
+        {"id": "core-1-3", "label": "Data Types & Variables", "description": "int, char, float, double, and their sizes. Understanding data types is critical for memory-aware programming.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/type", "https://www.tutorialspoint.com/cprogramming/c_data_types.htm"]},
+        {"id": "core-1-4", "label": "Operators & Expressions", "description": "Arithmetic, comparison, logical, bitwise, and assignment operators. These form all computation in C.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/expressions", "https://www.geeksforgeeks.org/operators-in-c/"]},
+        {"id": "core-1-5", "label": "Control Flow", "description": "if/else, switch, for, while, do-while, break, continue, and goto. Control flow is straightforward but fundamental.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/statements", "https://www.learn-c.org/en/Conditions"]},
+        {"id": "core-1-6", "label": "Functions", "description": "Declare, define, and call functions. Understand prototypes and header files. Functions are C's primary abstraction.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/functions", "https://www.tutorialspoint.com/cprogramming/c_functions.htm"]},
+        {"id": "core-1-7", "label": "Arrays", "description": "Fixed-size contiguous memory blocks. Arrays are the foundation of most data structures in C.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/array", "https://www.learn-c.org/en/Arrays"]},
+        {"id": "core-1-8", "label": "Strings", "description": "Null-terminated char arrays and string.h functions. String handling in C requires care to avoid buffer overflows.", "type": "required", "resources": ["https://en.cppreference.com/w/c/string/byte", "https://www.tutorialspoint.com/cprogramming/c_strings.htm"]},
+        {"id": "core-1-9", "label": "Preprocessor Directives", "description": "#define, #include, #ifdef, #ifndef, and macros. The preprocessor runs before compilation and controls conditional compilation.", "type": "required", "resources": ["https://en.cppreference.com/w/c/preprocessor", "https://www.tutorialspoint.com/cprogramming/c_preprocessors.htm"]},
+        {"id": "core-1-10", "label": "Header Files & Linking", "description": "Separate declarations (.h) from implementations (.c). Proper header organization is key to scalable C projects.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/translation_phases", "https://gcc.gnu.org/onlinedocs/gcc/Link-Options.html"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Pointers & Memory",
+      "description": "Pointer arithmetic, dynamic allocation, and memory management.",
+      "topics": [
+        {"id": "core-2-1", "label": "Pointer Basics", "description": "Understand addresses, dereferencing, and pointer declaration. Pointers are what make C powerful and dangerous.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/pointer", "https://www.learn-c.org/en/Pointers"]},
+        {"id": "core-2-2", "label": "Pointer Arithmetic", "description": "Increment, decrement, and offset pointers to traverse memory. Essential for array manipulation and buffer processing.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/operator_arithmetic", "https://www.tutorialspoint.com/cprogramming/c_pointer_arithmetic.htm"]},
+        {"id": "core-2-3", "label": "Pointers & Arrays", "description": "Arrays decay to pointers and can be indexed via pointer arithmetic. This duality is central to C idioms.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/array", "https://www.geeksforgeeks.org/pointer-array-array-pointer/"]},
+        {"id": "core-2-4", "label": "Pointers to Pointers", "description": "Double pointers for dynamic 2D arrays and modifying pointer arguments. Common in system programming APIs.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/pointer", "https://www.tutorialspoint.com/cprogramming/c_pointer_to_pointer.htm"]},
+        {"id": "core-2-5", "label": "Dynamic Memory (malloc/free)", "description": "Allocate heap memory with malloc, calloc, realloc, and release with free. Manual memory management is C's core skill.", "type": "required", "resources": ["https://en.cppreference.com/w/c/memory", "https://www.learn-c.org/en/Dynamic_allocation"]},
+        {"id": "core-2-6", "label": "Memory Leaks & Dangling Pointers", "description": "Detect and avoid common memory bugs. Leaks and dangling pointers cause crashes and security vulnerabilities.", "type": "required", "resources": ["https://valgrind.org/docs/manual/mc-manual.html", "https://www.geeksforgeeks.org/dangling-void-null-wild-pointers/"]},
+        {"id": "core-2-7", "label": "Function Pointers", "description": "Store and call functions via pointers. Function pointers enable callbacks, plugins, and polymorphism in C.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/pointer#Pointers_to_functions", "https://www.learn-c.org/en/Function_Pointers"]},
+        {"id": "core-2-8", "label": "void Pointers", "description": "Generic pointers that can hold any address. Used in generic data structures and library APIs like qsort.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/pointer", "https://www.geeksforgeeks.org/void-pointer-c-cpp/"]},
+        {"id": "core-2-9", "label": "const Correctness", "description": "Use const with pointers and function parameters to prevent unintended modifications. Improves safety and API clarity.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/const", "https://www.geeksforgeeks.org/const-qualifier-in-c/"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Structs, Unions & Enums",
+      "description": "Composite data types and user-defined types.",
+      "topics": [
+        {"id": "core-3-1", "label": "Structs", "description": "Group related variables into a single type. Structs are C's primary mechanism for creating complex data types.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/struct", "https://www.learn-c.org/en/Structures"]},
+        {"id": "core-3-2", "label": "Nested Structs & Arrays of Structs", "description": "Build hierarchical data with structs containing structs and struct arrays. Models real-world data relationships.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/struct", "https://www.geeksforgeeks.org/structures-c/"]},
+        {"id": "core-3-3", "label": "Pointers to Structs", "description": "Access struct members via pointers using the -> operator. Essential for linked data structures and APIs.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/operator_member_access", "https://www.tutorialspoint.com/cprogramming/c_pointer_to_structures.htm"]},
+        {"id": "core-3-4", "label": "Typedef", "description": "Create type aliases for readability. typedef is commonly used with structs and function pointers.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/typedef", "https://www.tutorialspoint.com/cprogramming/c_typedef.htm"]},
+        {"id": "core-3-5", "label": "Unions", "description": "Overlay multiple types in the same memory. Unions save memory when only one member is active at a time.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/union", "https://www.geeksforgeeks.org/union-c/"]},
+        {"id": "core-3-6", "label": "Enums", "description": "Named integer constants for readability. Enums replace magic numbers and improve code documentation.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/enum", "https://www.geeksforgeeks.org/enumeration-enum-c/"]},
+        {"id": "core-3-7", "label": "Bit Fields", "description": "Pack data into specific bit widths within structs. Used in hardware registers and network protocols.", "type": "advanced", "resources": ["https://en.cppreference.com/w/c/language/bit_field", "https://www.tutorialspoint.com/cprogramming/c_bit_fields.htm"]},
+        {"id": "core-3-8", "label": "Struct Padding & Alignment", "description": "Understand how compilers add padding for alignment. Affects struct size and is critical for binary protocols.", "type": "advanced", "resources": ["https://en.cppreference.com/w/c/language/object#Alignment", "https://www.geeksforgeeks.org/structure-member-alignment-padding-and-data-packing/"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "File I/O & Standard Library",
+      "description": "File operations, standard library functions, and error handling.",
+      "topics": [
+        {"id": "core-4-1", "label": "File I/O with stdio", "description": "fopen, fclose, fread, fwrite, fprintf, fscanf. File I/O is essential for data processing and persistence.", "type": "required", "resources": ["https://en.cppreference.com/w/c/io", "https://www.tutorialspoint.com/cprogramming/c_file_io.htm"]},
+        {"id": "core-4-2", "label": "Binary File I/O", "description": "Read and write raw bytes with fread/fwrite. Binary I/O is used for images, databases, and serialization.", "type": "required", "resources": ["https://en.cppreference.com/w/c/io/fread", "https://www.geeksforgeeks.org/readwrite-structure-file-c/"]},
+        {"id": "core-4-3", "label": "Error Handling with errno", "description": "Check errno and use perror/strerror for system call errors. C has no exceptions — errno is the standard error mechanism.", "type": "required", "resources": ["https://en.cppreference.com/w/c/error/errno", "https://www.tutorialspoint.com/cprogramming/c_error_handling.htm"]},
+        {"id": "core-4-4", "label": "String Library (string.h)", "description": "strcpy, strncpy, strcat, strcmp, strlen, memcpy, memset. Know these functions and their safe alternatives.", "type": "required", "resources": ["https://en.cppreference.com/w/c/string/byte", "https://www.tutorialspoint.com/c_standard_library/string_h.htm"]},
+        {"id": "core-4-5", "label": "Math Library", "description": "sqrt, pow, abs, floor, ceil, and trigonometric functions from math.h. Link with -lm.", "type": "required", "resources": ["https://en.cppreference.com/w/c/numeric/math", "https://www.tutorialspoint.com/c_standard_library/math_h.htm"]},
+        {"id": "core-4-6", "label": "stdlib Utilities", "description": "atoi, strtol, rand, srand, qsort, bsearch, exit. General-purpose utilities you'll use constantly.", "type": "required", "resources": ["https://en.cppreference.com/w/c/utility", "https://www.tutorialspoint.com/c_standard_library/stdlib_h.htm"]},
+        {"id": "core-4-7", "label": "Command-Line Arguments", "description": "Parse argc and argv to accept program arguments. CLI argument handling is standard for C tools.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/main_function", "https://www.tutorialspoint.com/cprogramming/c_command_line_arguments.htm"]},
+        {"id": "core-4-8", "label": "Assertions", "description": "Use assert() for debugging invariants. Assertions catch programmer errors during development.", "type": "optional", "resources": ["https://en.cppreference.com/w/c/error/assert", "https://www.geeksforgeeks.org/assertions-cc/"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Data Structures in C",
+      "description": "Implement fundamental data structures using pointers and dynamic memory.",
+      "topics": [
+        {"id": "core-5-1", "label": "Linked Lists", "description": "Singly and doubly linked lists with dynamic allocation. The classic C data structure exercise.", "type": "required", "resources": ["https://www.learn-c.org/en/Linked_lists", "https://www.geeksforgeeks.org/data-structures/linked-list/"]},
+        {"id": "core-5-2", "label": "Stacks & Queues", "description": "Implement stacks (LIFO) and queues (FIFO) with arrays or linked lists. Fundamental for parsing and scheduling.", "type": "required", "resources": ["https://www.geeksforgeeks.org/stack-data-structure/", "https://www.geeksforgeeks.org/queue-data-structure/"]},
+        {"id": "core-5-3", "label": "Hash Tables", "description": "Build a hash map with chaining or open addressing. Hash tables provide O(1) average-case lookups.", "type": "required", "resources": ["https://www.geeksforgeeks.org/hashing-data-structure/", "https://benhoyt.com/writings/hash-table-in-c/"]},
+        {"id": "core-5-4", "label": "Binary Trees", "description": "Implement binary search trees with insert, search, and delete. Trees are used in databases, compilers, and OS kernels.", "type": "required", "resources": ["https://www.geeksforgeeks.org/binary-search-tree-data-structure/", "https://www.learn-c.org/en/Binary_trees"]},
+        {"id": "core-5-5", "label": "Dynamic Arrays", "description": "Build a growable array (vector) with realloc. Understanding dynamic arrays helps you appreciate higher-level languages.", "type": "required", "resources": ["https://en.cppreference.com/w/c/memory/realloc", "https://www.geeksforgeeks.org/dynamically-growing-array-in-c/"]},
+        {"id": "core-5-6", "label": "Graphs", "description": "Represent graphs with adjacency lists or matrices. Graph algorithms power networking, routing, and social networks.", "type": "optional", "resources": ["https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/", "https://www.tutorialspoint.com/data_structures_algorithms/graph_data_structure.htm"]},
+        {"id": "core-5-7", "label": "Sorting Algorithms", "description": "Implement quicksort, mergesort, and understand qsort. Sorting is the most studied family of algorithms.", "type": "required", "resources": ["https://en.cppreference.com/w/c/algorithm/qsort", "https://www.geeksforgeeks.org/sorting-algorithms/"]},
+        {"id": "core-5-8", "label": "Generic Data Structures with void*", "description": "Use void pointers and function pointers for type-generic containers. This is how C achieves polymorphism.", "type": "advanced", "resources": ["https://en.cppreference.com/w/c/language/pointer", "https://www.geeksforgeeks.org/generic-linked-list-in-c/"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Build Systems & Debugging",
+      "description": "Makefiles, build tools, debugging, and profiling.",
+      "topics": [
+        {"id": "core-6-1", "label": "Makefiles", "description": "Write Makefiles with targets, dependencies, and variables. Make is the traditional C build tool.", "type": "required", "resources": ["https://www.gnu.org/software/make/manual/make.html", "https://makefiletutorial.com/"]},
+        {"id": "core-6-2", "label": "CMake", "description": "Cross-platform build system generation. CMake is the modern standard for C/C++ projects.", "type": "required", "resources": ["https://cmake.org/cmake/help/latest/guide/tutorial/index.html", "https://cliutils.gitlab.io/modern-cmake/"]},
+        {"id": "core-6-3", "label": "GDB Debugging", "description": "Step through code, set breakpoints, inspect variables with GDB. The essential C debugger.", "type": "required", "resources": ["https://sourceware.org/gdb/current/onlinedocs/gdb/", "https://www.cs.cmu.edu/~gilpin/tutorial/"]},
+        {"id": "core-6-4", "label": "Valgrind", "description": "Detect memory leaks, invalid reads/writes, and use-after-free. Valgrind is indispensable for C development.", "type": "required", "resources": ["https://valgrind.org/docs/manual/quick-start.html", "https://www.cprogramming.com/debugging/valgrind.html"]},
+        {"id": "core-6-5", "label": "AddressSanitizer", "description": "Compile with -fsanitize=address for runtime memory error detection. Faster than Valgrind for many checks.", "type": "required", "resources": ["https://clang.llvm.org/docs/AddressSanitizer.html", "https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html"]},
+        {"id": "core-6-6", "label": "Compiler Warnings", "description": "Use -Wall -Wextra -Werror -pedantic to catch bugs at compile time. Warnings are your first line of defense.", "type": "required", "resources": ["https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html", "https://clang.llvm.org/docs/DiagnosticsReference.html"]},
+        {"id": "core-6-7", "label": "Static Analysis", "description": "Use tools like cppcheck or clang-tidy to find bugs without running the code. Catches issues compilers miss.", "type": "optional", "resources": ["https://cppcheck.sourceforge.io/", "https://clang.llvm.org/extra/clang-tidy/"]},
+        {"id": "core-6-8", "label": "Profiling with gprof/perf", "description": "Find performance bottlenecks with profiling tools. Optimize based on data, not guesses.", "type": "optional", "resources": ["https://sourceware.org/binutils/docs/gprof/", "https://perf.wiki.kernel.org/index.php/Main_Page"]}
+      ]
+    },
+    {
+      "id": "core-7",
+      "label": "Advanced C & System Programming",
+      "description": "POSIX APIs, concurrency, and advanced language features.",
+      "topics": [
+        {"id": "core-7-1", "label": "POSIX File Descriptors", "description": "Low-level I/O with open, read, write, close. Understanding file descriptors is key to Unix system programming.", "type": "required", "resources": ["https://man7.org/linux/man-pages/man2/open.2.html", "https://www.geeksforgeeks.org/input-output-system-calls-c-create-open-close-read-write/"]},
+        {"id": "core-7-2", "label": "Processes (fork/exec)", "description": "Create child processes with fork and replace them with exec. Foundation of Unix process management.", "type": "required", "resources": ["https://man7.org/linux/man-pages/man2/fork.2.html", "https://www.geeksforgeeks.org/fork-system-call/"]},
+        {"id": "core-7-3", "label": "Signals", "description": "Handle asynchronous events with signal handlers. Signals are used for graceful shutdown and inter-process communication.", "type": "required", "resources": ["https://man7.org/linux/man-pages/man7/signal.7.html", "https://www.geeksforgeeks.org/signals-c-language/"]},
+        {"id": "core-7-4", "label": "Pipes & IPC", "description": "Inter-process communication with pipes, named pipes, and shared memory. Essential for multi-process architectures.", "type": "optional", "resources": ["https://man7.org/linux/man-pages/man2/pipe.2.html", "https://www.geeksforgeeks.org/ipc-using-message-queues/"]},
+        {"id": "core-7-5", "label": "Sockets", "description": "Network programming with TCP/UDP sockets. Sockets are the foundation of all network communication.", "type": "optional", "resources": ["https://man7.org/linux/man-pages/man2/socket.2.html", "https://beej.us/guide/bgnet/"]},
+        {"id": "core-7-6", "label": "pthreads", "description": "POSIX threads for concurrent programming — create, join, mutex, and condition variables.", "type": "required", "resources": ["https://man7.org/linux/man-pages/man7/pthreads.7.html", "https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html"]},
+        {"id": "core-7-7", "label": "Bitwise Operations", "description": "AND, OR, XOR, shifts, and bit masks. Used in embedded systems, protocols, and performance-critical code.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/operator_arithmetic", "https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/"]},
+        {"id": "core-7-8", "label": "Volatile & Restrict", "description": "Understand volatile for hardware registers and restrict for optimization hints. Important for embedded and performance.", "type": "advanced", "resources": ["https://en.cppreference.com/w/c/language/volatile", "https://en.cppreference.com/w/c/language/restrict"]},
+        {"id": "core-7-9", "label": "Undefined Behavior", "description": "Recognize and avoid undefined behavior — signed overflow, null deref, strict aliasing. UB is C's biggest pitfall.", "type": "required", "resources": ["https://en.cppreference.com/w/c/language/behavior", "https://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-linux-kernel", "label": "Linux Kernel", "icon": "🐧", "category": "Operating Systems", "category_icon": "💻"},
+    {"id": "path-freertos", "label": "FreeRTOS", "icon": "⏱️", "category": "Embedded Systems", "category_icon": "📟"},
+    {"id": "path-zephyr", "label": "Zephyr RTOS", "icon": "💨", "category": "Embedded Systems", "category_icon": "📟"},
+    {"id": "path-stm32-hal", "label": "STM32 HAL", "icon": "🔌", "category": "Embedded Systems", "category_icon": "📟"},
+    {"id": "path-sdl2", "label": "SDL2", "icon": "🎮", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-opengl", "label": "OpenGL", "icon": "🖼️", "category": "Graphics", "category_icon": "🎨"},
+    {"id": "path-vulkan", "label": "Vulkan", "icon": "🌋", "category": "Graphics", "category_icon": "🎨"},
+    {"id": "path-sqlite", "label": "SQLite", "icon": "🗄️", "category": "Database Engines", "category_icon": "💾"},
+    {"id": "path-libcurl", "label": "libcurl", "icon": "🌐", "category": "Networking", "category_icon": "🔗"},
+    {"id": "path-libuv", "label": "libuv", "icon": "♻️", "category": "Networking", "category_icon": "🔗"},
+    {"id": "path-gtk", "label": "GTK", "icon": "🪟", "category": "GUI Libraries", "category_icon": "🖥️"},
+    {"id": "path-cmake", "label": "CMake", "icon": "🔨", "category": "Build Systems", "category_icon": "🔧"},
+    {"id": "path-meson", "label": "Meson", "icon": "⚡", "category": "Build Systems", "category_icon": "🔧"},
+    {"id": "path-openssl", "label": "OpenSSL", "icon": "🔒", "category": "Cryptography", "category_icon": "🔐"},
+    {"id": "path-libsodium", "label": "libsodium", "icon": "🧂", "category": "Cryptography", "category_icon": "🔐"},
+    {"id": "path-cunit", "label": "CUnit", "icon": "✅", "category": "Testing", "category_icon": "🧪"},
+    {"id": "path-unity-test", "label": "Unity Test", "icon": "🧪", "category": "Testing", "category_icon": "🧪"},
+    {"id": "path-flex-bison", "label": "Flex & Bison", "icon": "📝", "category": "Compilers & Parsers", "category_icon": "⚙️"},
+    {"id": "path-llvm-c", "label": "LLVM C API", "icon": "🔗", "category": "Compilers & Parsers", "category_icon": "⚙️"},
+    {"id": "path-raylib", "label": "Raylib", "icon": "🕹️", "category": "Game Development", "category_icon": "🕹️"}
+  ]
+}

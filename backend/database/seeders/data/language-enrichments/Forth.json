@@ -1,0 +1,1 @@
+{"name": "Forth", "tools": [{"name": "gforth", "url": "https://gforth.org/", "desc": "GNU Forth"}], "packages": [{"name": "Mecrisp", "url": "https://mecrisp.sourceforge.net/", "desc": "ARM Forth"}]}

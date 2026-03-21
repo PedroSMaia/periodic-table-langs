@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->default()
             ->login()
-            ->path('admin')
+            ->path(env('FILAMENT_PATH', 'manage-ptl'))
             ->colors([
                 'primary' => Color::Amber,
             ])

@@ -161,7 +161,7 @@ Make sure the email matches one of the `ADMIN_EMAILS` in your `.env`.
 |---|---|
 | Frontend | http://localhost:5173 |
 | Backend API | http://localhost:8000/api |
-| Filament Admin | http://localhost:8000/admin |
+| Filament Admin | http://localhost:8000/manage-ptl (configurable via `FILAMENT_PATH`) |
 | Horizon Dashboard | http://localhost:8000/horizon |
 
 > **Note:** If you run the frontend outside Docker (e.g. `npm run dev` on the host), create `frontend/.env` with:
@@ -209,7 +209,7 @@ cd backend
 
 ### Using the Filament admin
 
-1. Go to `http://localhost:8000/admin`
+1. Go to `http://localhost:8000/manage-ptl` (or your configured `FILAMENT_PATH`)
 2. Navigate to **Languages → View** for any language
 3. Click **Regenerate Roadmap** to queue a roadmap generation
 4. In the **Roadmap Paths** section, click **Generate** on individual paths or **Generate All Missing**

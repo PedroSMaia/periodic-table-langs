@@ -1,0 +1,1 @@
+{"name": "Agda", "tools": [{"name": "Agda", "url": "https://agda.readthedocs.io/", "desc": "Proof assistant"}, {"name": "agda-mode", "url": "https://agda.readthedocs.io/en/latest/tools/emacs-mode.html", "desc": "Emacs mode"}], "packages": [{"name": "agda-stdlib", "url": "https://github.com/agda/agda-stdlib", "desc": "Standard library"}]}

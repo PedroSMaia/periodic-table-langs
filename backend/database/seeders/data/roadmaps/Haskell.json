@@ -1,0 +1,81 @@
+{
+  "language": "Haskell",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Haskell Fundamentals",
+      "description": "Setup, types, functions, and pure functional basics.",
+      "topics": [
+        {"id": "core-1-1", "label": "GHCup & Stack", "description": "Install GHC, Cabal, and Stack with GHCup. Stack manages project builds and dependencies.", "type": "required", "resources": ["https://www.haskell.org/ghcup/", "https://docs.haskellstack.org/en/stable/"]},
+        {"id": "core-1-2", "label": "Basic Types", "description": "Int, Integer, Double, Char, String, Bool. Haskell is statically typed with powerful type inference.", "type": "required", "resources": ["https://www.haskell.org/tutorial/goodies.html", "https://learnyouahaskell.github.io/types-and-typeclasses.html"]},
+        {"id": "core-1-3", "label": "Functions", "description": "Define functions with equations, pattern matching, and guards. All functions are curried by default.", "type": "required", "resources": ["https://learnyouahaskell.github.io/syntax-in-functions.html", "https://www.haskell.org/tutorial/functions.html"]},
+        {"id": "core-1-4", "label": "Lists", "description": "Cons (:), list comprehensions, head, tail, map, filter, foldl, foldr. Lists are the fundamental data structure.", "type": "required", "resources": ["https://learnyouahaskell.github.io/starting-out.html#an-intro-to-lists", "https://wiki.haskell.org/How_to_work_on_lists"]},
+        {"id": "core-1-5", "label": "Tuples", "description": "Fixed-size heterogeneous containers. fst, snd for pairs, and pattern matching for larger tuples.", "type": "required", "resources": ["https://learnyouahaskell.github.io/starting-out.html#tuples", "https://www.haskell.org/tutorial/goodies.html"]},
+        {"id": "core-1-6", "label": "Pattern Matching", "description": "Decompose values in function definitions, case expressions, and let/where bindings.", "type": "required", "resources": ["https://learnyouahaskell.github.io/syntax-in-functions.html#pattern-matching", "https://www.haskell.org/tutorial/patterns.html"]},
+        {"id": "core-1-7", "label": "Guards & Where/Let", "description": "Conditional logic with guards (|) and local definitions with where and let...in.", "type": "required", "resources": ["https://learnyouahaskell.github.io/syntax-in-functions.html#guards-guards", "https://www.haskell.org/tutorial/functions.html"]},
+        {"id": "core-1-8", "label": "Higher-Order Functions", "description": "map, filter, fold, (.), ($), flip. Higher-order functions are the core of Haskell programming.", "type": "required", "resources": ["https://learnyouahaskell.github.io/higher-order-functions.html", "https://www.haskell.org/tutorial/functions.html"]},
+        {"id": "core-1-9", "label": "Lambda Expressions", "description": "Anonymous functions with \\x -> body. Used for short inline function definitions.", "type": "required", "resources": ["https://learnyouahaskell.github.io/higher-order-functions.html#lambdas", "https://wiki.haskell.org/Lambda_abstraction"]},
+        {"id": "core-1-10", "label": "Recursion", "description": "Haskell has no loops — recursion replaces iteration. Understand tail recursion and accumulator patterns.", "type": "required", "resources": ["https://learnyouahaskell.github.io/recursion.html", "https://www.haskell.org/tutorial/functions.html"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Type System & Type Classes",
+      "description": "Algebraic data types, type classes, and polymorphism.",
+      "topics": [
+        {"id": "core-2-1", "label": "Type Signatures", "description": "Annotate functions with :: for documentation and type checking. Read type signatures fluently.", "type": "required", "resources": ["https://learnyouahaskell.github.io/types-and-typeclasses.html", "https://www.haskell.org/tutorial/goodies.html"]},
+        {"id": "core-2-2", "label": "Algebraic Data Types", "description": "Define custom types with data — sum types (|) and product types. ADTs model domain data precisely.", "type": "required", "resources": ["https://learnyouahaskell.github.io/making-our-own-types-and-typeclasses.html", "https://www.haskell.org/tutorial/goodies.html"]},
+        {"id": "core-2-3", "label": "Record Syntax", "description": "Named fields for data types. Records auto-generate accessor functions.", "type": "required", "resources": ["https://learnyouahaskell.github.io/making-our-own-types-and-typeclasses.html#record-syntax", "https://wiki.haskell.org/Record_syntax"]},
+        {"id": "core-2-4", "label": "Type Classes", "description": "Eq, Ord, Show, Read, Num, Functor. Type classes are Haskell's mechanism for ad-hoc polymorphism.", "type": "required", "resources": ["https://learnyouahaskell.github.io/types-and-typeclasses.html#typeclasses-101", "https://www.haskell.org/tutorial/classes.html"]},
+        {"id": "core-2-5", "label": "Deriving", "description": "Auto-derive type class instances with deriving. Reduces boilerplate for common instances.", "type": "required", "resources": ["https://learnyouahaskell.github.io/making-our-own-types-and-typeclasses.html#derived-instances", "https://wiki.haskell.org/Deriving"]},
+        {"id": "core-2-6", "label": "Maybe & Either", "description": "Maybe for optional values, Either for error handling. The functional alternatives to null and exceptions.", "type": "required", "resources": ["https://learnyouahaskell.github.io/making-our-own-types-and-typeclasses.html", "https://wiki.haskell.org/Maybe"]},
+        {"id": "core-2-7", "label": "Parametric Polymorphism", "description": "Generic functions with type variables (a, b). Haskell's parametricity provides strong guarantees.", "type": "required", "resources": ["https://learnyouahaskell.github.io/types-and-typeclasses.html#type-variables", "https://www.haskell.org/tutorial/goodies.html"]},
+        {"id": "core-2-8", "label": "Newtype & Type Aliases", "description": "type for aliases, newtype for zero-cost wrappers, data for new types. Choose the right abstraction.", "type": "required", "resources": ["https://learnyouahaskell.github.io/making-our-own-types-and-typeclasses.html#the-newtype-keyword", "https://wiki.haskell.org/Newtype"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Functors, Monads & IO",
+      "description": "Functor, Applicative, Monad, and performing I/O.",
+      "topics": [
+        {"id": "core-3-1", "label": "Functor", "description": "Map over wrapped values with fmap / <$>. Functor is the simplest mapping abstraction.", "type": "required", "resources": ["https://learnyouahaskell.github.io/functors-applicative-functors-and-monoids.html", "https://wiki.haskell.org/Functor"]},
+        {"id": "core-3-2", "label": "Applicative", "description": "Apply wrapped functions to wrapped values with <*> and pure. Between Functor and Monad.", "type": "required", "resources": ["https://learnyouahaskell.github.io/functors-applicative-functors-and-monoids.html#applicative-functors", "https://wiki.haskell.org/Applicative_functor"]},
+        {"id": "core-3-3", "label": "Monad", "description": "Sequence computations with >>= (bind) and do-notation. Monads are Haskell's core abstraction for effects.", "type": "required", "resources": ["https://learnyouahaskell.github.io/a-fistful-of-monads.html", "https://wiki.haskell.org/Monad"]},
+        {"id": "core-3-4", "label": "do-Notation", "description": "Syntactic sugar for monadic code. Makes sequential Monad operations readable.", "type": "required", "resources": ["https://learnyouahaskell.github.io/a-fistful-of-monads.html#do-notation", "https://www.haskell.org/tutorial/io.html"]},
+        {"id": "core-3-5", "label": "IO Monad", "description": "Perform side effects (console, files, network) inside the IO monad. Pure code stays separate.", "type": "required", "resources": ["https://learnyouahaskell.github.io/input-and-output.html", "https://www.haskell.org/tutorial/io.html"]},
+        {"id": "core-3-6", "label": "File I/O", "description": "Read and write files with readFile, writeFile, and handles. All I/O happens in the IO monad.", "type": "required", "resources": ["https://learnyouahaskell.github.io/input-and-output.html#files-and-streams", "https://wiki.haskell.org/IO"]},
+        {"id": "core-3-7", "label": "Monad Transformers", "description": "Stack monads with ReaderT, StateT, ExceptT. Transformers combine multiple effects.", "type": "advanced", "resources": ["https://wiki.haskell.org/Monad_Transformers_Explained", "https://www.haskell.org/tutorial/monads.html"]},
+        {"id": "core-3-8", "label": "Laziness", "description": "Haskell is lazy by default — expressions are evaluated only when needed. Understand thunks and seq.", "type": "required", "resources": ["https://wiki.haskell.org/Lazy_evaluation", "https://learnyouahaskell.github.io/higher-order-functions.html"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Modules, Testing & Tooling",
+      "description": "Project structure, testing, and the Haskell ecosystem.",
+      "topics": [
+        {"id": "core-4-1", "label": "Modules & Imports", "description": "Organize code with module declarations and qualified imports.", "type": "required", "resources": ["https://learnyouahaskell.github.io/modules.html", "https://www.haskell.org/tutorial/modules.html"]},
+        {"id": "core-4-2", "label": "Cabal & Stack Projects", "description": "Create projects with cabal init or stack new. Manage dependencies in .cabal files.", "type": "required", "resources": ["https://cabal.readthedocs.io/en/stable/getting-started.html", "https://docs.haskellstack.org/en/stable/"]},
+        {"id": "core-4-3", "label": "HSpec", "description": "BDD-style testing with describe, it, shouldBe. The most popular Haskell testing framework.", "type": "required", "resources": ["https://hspec.github.io/", "https://hspec.github.io/getting-started.html"]},
+        {"id": "core-4-4", "label": "QuickCheck", "description": "Property-based testing with random input generation. QuickCheck is Haskell's most influential testing tool.", "type": "required", "resources": ["https://hackage.haskell.org/package/QuickCheck", "https://wiki.haskell.org/Introduction_to_QuickCheck1"]},
+        {"id": "core-4-5", "label": "Hackage & Hoogle", "description": "Find packages on Hackage and search by type signature with Hoogle.", "type": "required", "resources": ["https://hackage.haskell.org/", "https://hoogle.haskell.org/"]},
+        {"id": "core-4-6", "label": "Common Libraries", "description": "text, bytestring, containers, aeson (JSON), http-client. The essential Haskell packages.", "type": "required", "resources": ["https://hackage.haskell.org/package/text", "https://hackage.haskell.org/package/aeson"]},
+        {"id": "core-4-7", "label": "GHC Extensions", "description": "OverloadedStrings, DeriveGeneric, TypeApplications, GADTs. GHC extensions extend the language.", "type": "optional", "resources": ["https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts.html", "https://wiki.haskell.org/Language_extensions"]},
+        {"id": "core-4-8", "label": "Performance & Profiling", "description": "Strictness annotations (!), BangPatterns, and GHC profiling. Understand space leaks from laziness.", "type": "advanced", "resources": ["https://wiki.haskell.org/Performance", "https://ghc.gitlab.haskell.org/ghc/doc/users_guide/profiling.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-servant", "label": "Servant", "icon": "🌐", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-yesod", "label": "Yesod", "icon": "🏗️", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-scotty", "label": "Scotty", "icon": "🪶", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-persistent", "label": "Persistent (Database)", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-aeson", "label": "Aeson (JSON)", "icon": "📦", "category": "Serialization", "category_icon": "🔄"},
+    {"id": "path-lens", "label": "Lens", "icon": "🔍", "category": "Libraries", "category_icon": "📚"},
+    {"id": "path-parsec", "label": "Parsec / Megaparsec", "icon": "📝", "category": "Parsing", "category_icon": "⚙️"},
+    {"id": "path-stm", "label": "STM (Concurrency)", "icon": "⚡", "category": "Concurrency", "category_icon": "🔀"},
+    {"id": "path-xmonad", "label": "XMonad", "icon": "🪟", "category": "Desktop", "category_icon": "🖥️"},
+    {"id": "path-pandoc", "label": "Pandoc", "icon": "📄", "category": "Document Processing", "category_icon": "📝"},
+    {"id": "path-quickcheck-advanced", "label": "QuickCheck Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-ghcjs", "label": "GHCJS (Compile to JS)", "icon": "🌐", "category": "Frontend", "category_icon": "🖥️"}
+  ]
+}

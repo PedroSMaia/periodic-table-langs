@@ -1,0 +1,144 @@
+{
+  "language": "Python",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Python Fundamentals",
+      "description": "Core syntax, data types, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & REPL", "description": "Install Python and use the interactive interpreter to run code. Understanding the REPL accelerates experimentation.", "type": "required", "resources": ["https://docs.python.org/3/using/index.html", "https://realpython.com/installing-python/"]},
+        {"id": "core-1-2", "label": "Variables & Data Types", "description": "Learn int, float, str, bool, and None. Python is dynamically typed, so understanding type behavior is essential.", "type": "required", "resources": ["https://docs.python.org/3/library/stdtypes.html", "https://realpython.com/python-data-types/"]},
+        {"id": "core-1-3", "label": "Strings & Formatting", "description": "Master string methods, slicing, and f-strings. String manipulation is one of the most common tasks in Python.", "type": "required", "resources": ["https://docs.python.org/3/library/string.html", "https://realpython.com/python-f-strings/"]},
+        {"id": "core-1-4", "label": "Operators & Expressions", "description": "Arithmetic, comparison, logical, and bitwise operators. These form the building blocks of all program logic.", "type": "required", "resources": ["https://docs.python.org/3/reference/expressions.html", "https://realpython.com/python-operators-expressions/"]},
+        {"id": "core-1-5", "label": "Control Flow", "description": "if/elif/else, for loops, while loops, break, continue, and pass. Control flow governs how your program makes decisions.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/controlflow.html", "https://realpython.com/python-conditional-statements/"]},
+        {"id": "core-1-6", "label": "Lists & Tuples", "description": "Ordered sequences — mutable lists and immutable tuples. These are the most used data structures in Python.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/datastructures.html", "https://realpython.com/python-lists-tuples/"]},
+        {"id": "core-1-7", "label": "Dictionaries & Sets", "description": "Key-value mappings and unique collections. Dicts are used everywhere in Python for fast lookups.", "type": "required", "resources": ["https://docs.python.org/3/library/stdtypes.html#mapping-types-dict", "https://realpython.com/python-dicts/"]},
+        {"id": "core-1-8", "label": "List Comprehensions", "description": "Concise syntax for creating lists from iterables. Comprehensions are idiomatic Python and improve readability.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions", "https://realpython.com/list-comprehension-python/"]},
+        {"id": "core-1-9", "label": "Input & Output", "description": "Read user input and print formatted output. Fundamental for interactive scripts and debugging.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/inputoutput.html", "https://realpython.com/python-input-output/"]},
+        {"id": "core-1-10", "label": "Basic Debugging", "description": "Use print statements and the built-in debugger (pdb) to trace issues. Essential skill from day one.", "type": "required", "resources": ["https://docs.python.org/3/library/pdb.html", "https://realpython.com/python-debugging-pdb/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Functions & Modular Code",
+      "description": "Writing reusable code with functions, modules, and packages.",
+      "topics": [
+        {"id": "core-2-1", "label": "Defining Functions", "description": "Create functions with def, parameters, and return values. Functions are the primary unit of code reuse.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/controlflow.html#defining-functions", "https://realpython.com/defining-your-own-python-function/"]},
+        {"id": "core-2-2", "label": "Arguments & Parameters", "description": "Positional, keyword, default, *args, and **kwargs. Flexible argument handling makes functions more powerful.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions", "https://realpython.com/python-kwargs-and-args/"]},
+        {"id": "core-2-3", "label": "Scope & Closures", "description": "Understand local, enclosing, global, and built-in scope (LEGB rule). Scope bugs are common for beginners.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces", "https://realpython.com/python-scope-legb-rule/"]},
+        {"id": "core-2-4", "label": "Lambda Functions", "description": "Anonymous single-expression functions. Useful with map, filter, sorted, and as callbacks.", "type": "required", "resources": ["https://docs.python.org/3/reference/expressions.html#lambda", "https://realpython.com/python-lambda/"]},
+        {"id": "core-2-5", "label": "Modules & Imports", "description": "Organize code into modules and packages. The import system is central to Python project structure.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/modules.html", "https://realpython.com/python-modules-packages/"]},
+        {"id": "core-2-6", "label": "Standard Library Overview", "description": "Explore os, sys, json, datetime, collections, itertools, and more. The stdlib saves you from reinventing the wheel.", "type": "required", "resources": ["https://docs.python.org/3/library/index.html", "https://realpython.com/python-standard-library/"]},
+        {"id": "core-2-7", "label": "Docstrings & Help", "description": "Write documentation strings and use help(). Good docstrings make code self-documenting.", "type": "required", "resources": ["https://peps.python.org/pep-0257/", "https://realpython.com/documenting-python-code/"]},
+        {"id": "core-2-8", "label": "Recursion", "description": "Functions that call themselves for divide-and-conquer problems. Important for algorithms and tree traversals.", "type": "optional", "resources": ["https://docs.python.org/3/tutorial/controlflow.html", "https://realpython.com/python-recursion/"]},
+        {"id": "core-2-9", "label": "Higher-Order Functions", "description": "Functions that take or return other functions — map, filter, reduce, and functools. Foundation for functional patterns.", "type": "optional", "resources": ["https://docs.python.org/3/library/functools.html", "https://realpython.com/python-map-function/"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Object-Oriented Programming",
+      "description": "Classes, objects, inheritance, and Python's data model.",
+      "topics": [
+        {"id": "core-3-1", "label": "Classes & Objects", "description": "Define classes with __init__, attributes, and methods. OOP is the backbone of most Python libraries.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/classes.html", "https://realpython.com/python3-object-oriented-programming/"]},
+        {"id": "core-3-2", "label": "Instance vs Class vs Static Methods", "description": "Understand self, @classmethod, and @staticmethod. Each serves a different purpose in class design.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/classes.html#method-objects", "https://realpython.com/instance-class-and-static-methods-demystified/"]},
+        {"id": "core-3-3", "label": "Inheritance & MRO", "description": "Single and multiple inheritance, super(), and method resolution order. Enables code reuse across class hierarchies.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/classes.html#inheritance", "https://realpython.com/inheritance-composition-python/"]},
+        {"id": "core-3-4", "label": "Properties & Descriptors", "description": "Use @property for computed attributes and control access. Properties keep your API clean while adding logic.", "type": "required", "resources": ["https://docs.python.org/3/library/functions.html#property", "https://realpython.com/python-property/"]},
+        {"id": "core-3-5", "label": "Dunder Methods", "description": "Implement __str__, __repr__, __eq__, __len__, __getitem__, etc. Dunder methods integrate your classes with Python's syntax.", "type": "required", "resources": ["https://docs.python.org/3/reference/datamodel.html#special-method-names", "https://realpython.com/python-magic-methods/"]},
+        {"id": "core-3-6", "label": "Abstract Base Classes", "description": "Define interfaces with abc.ABC and @abstractmethod. ABCs enforce contracts in class hierarchies.", "type": "optional", "resources": ["https://docs.python.org/3/library/abc.html", "https://realpython.com/python-interface/"]},
+        {"id": "core-3-7", "label": "Dataclasses", "description": "Use @dataclass for boilerplate-free data containers. Dataclasses reduce repetitive __init__ and __repr__ code.", "type": "required", "resources": ["https://docs.python.org/3/library/dataclasses.html", "https://realpython.com/python-data-classes/"]},
+        {"id": "core-3-8", "label": "Enums", "description": "Define named constants with enum.Enum. Enums prevent magic values and improve code clarity.", "type": "optional", "resources": ["https://docs.python.org/3/library/enum.html", "https://realpython.com/python-enum/"]},
+        {"id": "core-3-9", "label": "Slots & Memory", "description": "Use __slots__ to reduce memory usage in classes with many instances. Important for performance-sensitive code.", "type": "advanced", "resources": ["https://docs.python.org/3/reference/datamodel.html#slots", "https://realpython.com/python-slots/"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Error Handling & File I/O",
+      "description": "Exception handling, file operations, and working with data formats.",
+      "topics": [
+        {"id": "core-4-1", "label": "Exceptions & Try/Except", "description": "Handle runtime errors gracefully with try/except/else/finally. Proper error handling prevents crashes in production.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/errors.html", "https://realpython.com/python-exceptions/"]},
+        {"id": "core-4-2", "label": "Custom Exceptions", "description": "Create domain-specific exception classes. Custom exceptions make error handling more expressive.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/errors.html#user-defined-exceptions", "https://realpython.com/python-exceptions/#creating-custom-exceptions"]},
+        {"id": "core-4-3", "label": "Context Managers", "description": "Use with statements and write custom context managers. They guarantee cleanup of resources like files and connections.", "type": "required", "resources": ["https://docs.python.org/3/reference/compound_stmts.html#the-with-statement", "https://realpython.com/python-with-statement/"]},
+        {"id": "core-4-4", "label": "Reading & Writing Files", "description": "Open, read, write, and append to text and binary files. File I/O is essential for data processing scripts.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files", "https://realpython.com/read-write-files-python/"]},
+        {"id": "core-4-5", "label": "Working with JSON", "description": "Serialize and deserialize data with the json module. JSON is the standard for API communication and config files.", "type": "required", "resources": ["https://docs.python.org/3/library/json.html", "https://realpython.com/python-json/"]},
+        {"id": "core-4-6", "label": "Working with CSV", "description": "Read and write CSV files with the csv module. CSV is ubiquitous in data exchange and reporting.", "type": "required", "resources": ["https://docs.python.org/3/library/csv.html", "https://realpython.com/python-csv/"]},
+        {"id": "core-4-7", "label": "Pathlib", "description": "Use pathlib.Path for cross-platform file path manipulation. Pathlib is cleaner than os.path for modern Python.", "type": "required", "resources": ["https://docs.python.org/3/library/pathlib.html", "https://realpython.com/python-pathlib/"]},
+        {"id": "core-4-8", "label": "Logging", "description": "Replace print debugging with the logging module. Logging provides levels, formatting, and output control for production.", "type": "required", "resources": ["https://docs.python.org/3/library/logging.html", "https://realpython.com/python-logging/"]},
+        {"id": "core-4-9", "label": "Regular Expressions", "description": "Pattern matching with the re module. Regex is powerful for text parsing, validation, and search-replace.", "type": "optional", "resources": ["https://docs.python.org/3/library/re.html", "https://realpython.com/regex-python/"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Iterators, Generators & Decorators",
+      "description": "Advanced Python patterns for elegant and efficient code.",
+      "topics": [
+        {"id": "core-5-1", "label": "Iterators & Iterables", "description": "Understand the iterator protocol (__iter__, __next__). Iteration is at the heart of Python's for loops and comprehensions.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/classes.html#iterators", "https://realpython.com/python-iterators-iterables/"]},
+        {"id": "core-5-2", "label": "Generators", "description": "Create lazy sequences with yield. Generators are memory-efficient for processing large datasets.", "type": "required", "resources": ["https://docs.python.org/3/tutorial/classes.html#generators", "https://realpython.com/introduction-to-python-generators/"]},
+        {"id": "core-5-3", "label": "Generator Expressions", "description": "Inline generator syntax similar to list comprehensions. Use them for memory-efficient pipelines.", "type": "required", "resources": ["https://docs.python.org/3/reference/expressions.html#generator-expressions", "https://realpython.com/introduction-to-python-generators/#building-generators-with-generator-expressions"]},
+        {"id": "core-5-4", "label": "Decorators", "description": "Wrap functions with @decorator syntax to add behavior. Decorators are used everywhere — Flask routes, caching, auth, etc.", "type": "required", "resources": ["https://docs.python.org/3/glossary.html#term-decorator", "https://realpython.com/primer-on-python-decorators/"]},
+        {"id": "core-5-5", "label": "functools Utilities", "description": "Use lru_cache, partial, wraps, and reduce from functools. These tools complement decorators and functional patterns.", "type": "required", "resources": ["https://docs.python.org/3/library/functools.html", "https://realpython.com/python-functools-module/"]},
+        {"id": "core-5-6", "label": "itertools", "description": "Chain, product, permutations, combinations, and more. itertools provides efficient building blocks for iteration.", "type": "optional", "resources": ["https://docs.python.org/3/library/itertools.html", "https://realpython.com/python-itertools/"]},
+        {"id": "core-5-7", "label": "collections Module", "description": "Counter, defaultdict, OrderedDict, namedtuple, deque. Specialized containers for common patterns.", "type": "required", "resources": ["https://docs.python.org/3/library/collections.html", "https://realpython.com/python-collections-module/"]},
+        {"id": "core-5-8", "label": "Type Hints", "description": "Annotate functions and variables with types using typing module. Type hints improve IDE support and catch bugs early.", "type": "required", "resources": ["https://docs.python.org/3/library/typing.html", "https://realpython.com/python-type-checking/"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Testing & Code Quality",
+      "description": "Writing tests, linting, and maintaining code standards.",
+      "topics": [
+        {"id": "core-6-1", "label": "unittest", "description": "Python's built-in test framework with TestCase classes. Understanding unittest is important since many projects use it.", "type": "required", "resources": ["https://docs.python.org/3/library/unittest.html", "https://realpython.com/python-testing/"]},
+        {"id": "core-6-2", "label": "pytest", "description": "The most popular Python testing framework with fixtures and plugins. pytest's simplicity makes testing enjoyable.", "type": "required", "resources": ["https://docs.pytest.org/en/stable/", "https://realpython.com/pytest-python-testing/"]},
+        {"id": "core-6-3", "label": "Mocking", "description": "Use unittest.mock to isolate units under test. Mocking external dependencies makes tests fast and reliable.", "type": "required", "resources": ["https://docs.python.org/3/library/unittest.mock.html", "https://realpython.com/python-mock-library/"]},
+        {"id": "core-6-4", "label": "Code Coverage", "description": "Measure test coverage with coverage.py. Coverage reports reveal untested code paths.", "type": "optional", "resources": ["https://coverage.readthedocs.io/", "https://realpython.com/python-code-quality/#code-coverage"]},
+        {"id": "core-6-5", "label": "Linting with Ruff", "description": "Use Ruff (or flake8/pylint) to enforce code style and catch errors. Linters catch bugs before they reach production.", "type": "required", "resources": ["https://docs.astral.sh/ruff/", "https://realpython.com/python-code-quality/"]},
+        {"id": "core-6-6", "label": "Code Formatting", "description": "Auto-format code with Black or Ruff formatter. Consistent formatting eliminates style debates in teams.", "type": "required", "resources": ["https://black.readthedocs.io/en/stable/", "https://docs.astral.sh/ruff/formatter/"]},
+        {"id": "core-6-7", "label": "Static Type Checking", "description": "Run mypy to verify type annotations at build time. Catches type errors without running the code.", "type": "optional", "resources": ["https://mypy.readthedocs.io/en/stable/", "https://realpython.com/python-type-checking/#static-type-checking"]},
+        {"id": "core-6-8", "label": "Pre-commit Hooks", "description": "Automate linting and formatting on every commit. Pre-commit prevents bad code from entering the repository.", "type": "optional", "resources": ["https://pre-commit.com/", "https://realpython.com/python-code-quality/#pre-commit"]}
+      ]
+    },
+    {
+      "id": "core-7",
+      "label": "Packaging, Environments & Concurrency",
+      "description": "Virtual environments, dependency management, and concurrent programming.",
+      "topics": [
+        {"id": "core-7-1", "label": "Virtual Environments", "description": "Isolate project dependencies with venv. Virtual environments prevent dependency conflicts between projects.", "type": "required", "resources": ["https://docs.python.org/3/library/venv.html", "https://realpython.com/python-virtual-environments-a-primer/"]},
+        {"id": "core-7-2", "label": "pip & Requirements", "description": "Install packages and pin versions with requirements.txt. Proper dependency management ensures reproducible builds.", "type": "required", "resources": ["https://pip.pypa.io/en/stable/", "https://realpython.com/what-is-pip/"]},
+        {"id": "core-7-3", "label": "Poetry / uv", "description": "Modern dependency management with lock files. Poetry and uv provide deterministic installs and better workflows.", "type": "optional", "resources": ["https://python-poetry.org/docs/", "https://docs.astral.sh/uv/"]},
+        {"id": "core-7-4", "label": "Building Packages", "description": "Create distributable packages with pyproject.toml and setuptools. Packaging lets you share and reuse your code.", "type": "optional", "resources": ["https://packaging.python.org/en/latest/tutorials/packaging-projects/", "https://realpython.com/pypi-publish-python-package/"]},
+        {"id": "core-7-5", "label": "Threading", "description": "Run I/O-bound tasks concurrently with the threading module. Useful for network requests and file operations.", "type": "required", "resources": ["https://docs.python.org/3/library/threading.html", "https://realpython.com/intro-to-python-threading/"]},
+        {"id": "core-7-6", "label": "Multiprocessing", "description": "Bypass the GIL with process-based parallelism. Multiprocessing is the way to use multiple CPU cores in Python.", "type": "required", "resources": ["https://docs.python.org/3/library/multiprocessing.html", "https://realpython.com/python-multiprocessing/"]},
+        {"id": "core-7-7", "label": "Asyncio", "description": "Write asynchronous code with async/await. Asyncio excels at handling thousands of concurrent I/O operations.", "type": "required", "resources": ["https://docs.python.org/3/library/asyncio.html", "https://realpython.com/async-io-python/"]},
+        {"id": "core-7-8", "label": "concurrent.futures", "description": "High-level interface for threading and multiprocessing with ThreadPoolExecutor and ProcessPoolExecutor.", "type": "optional", "resources": ["https://docs.python.org/3/library/concurrent.futures.html", "https://realpython.com/python-concurrency/"]},
+        {"id": "core-7-9", "label": "The GIL", "description": "Understand the Global Interpreter Lock and its impact on threading. Knowing the GIL explains why multiprocessing exists.", "type": "advanced", "resources": ["https://docs.python.org/3/glossary.html#term-global-interpreter-lock", "https://realpython.com/python-gil/"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-django", "label": "Django", "icon": "🟢", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-flask", "label": "Flask", "icon": "🧪", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-fastapi", "label": "FastAPI", "icon": "⚡", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-numpy", "label": "NumPy", "icon": "🔢", "category": "Data Science & ML", "category_icon": "📊"},
+    {"id": "path-pandas", "label": "Pandas", "icon": "🐼", "category": "Data Science & ML", "category_icon": "📊"},
+    {"id": "path-scikit-learn", "label": "scikit-learn", "icon": "🤖", "category": "Data Science & ML", "category_icon": "📊"},
+    {"id": "path-tensorflow", "label": "TensorFlow", "icon": "🧠", "category": "Data Science & ML", "category_icon": "📊"},
+    {"id": "path-pytorch", "label": "PyTorch", "icon": "🔥", "category": "Data Science & ML", "category_icon": "📊"},
+    {"id": "path-matplotlib", "label": "Matplotlib", "icon": "📈", "category": "Data Visualization", "category_icon": "📉"},
+    {"id": "path-plotly", "label": "Plotly", "icon": "📊", "category": "Data Visualization", "category_icon": "📉"},
+    {"id": "path-ansible", "label": "Ansible", "icon": "⚙️", "category": "DevOps & Automation", "category_icon": "🔧"},
+    {"id": "path-selenium", "label": "Selenium", "icon": "🌐", "category": "Web Scraping & Automation", "category_icon": "🕷️"},
+    {"id": "path-scrapy", "label": "Scrapy", "icon": "🕸️", "category": "Web Scraping & Automation", "category_icon": "🕷️"},
+    {"id": "path-beautifulsoup", "label": "Beautiful Soup", "icon": "🍲", "category": "Web Scraping & Automation", "category_icon": "🕷️"},
+    {"id": "path-pygame", "label": "Pygame", "icon": "🎮", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-tkinter", "label": "Tkinter", "icon": "🖼️", "category": "GUI Development", "category_icon": "🖥️"},
+    {"id": "path-pyqt", "label": "PyQt", "icon": "🪟", "category": "GUI Development", "category_icon": "🖥️"},
+    {"id": "path-sqlalchemy", "label": "SQLAlchemy", "icon": "🗄️", "category": "Database & ORM", "category_icon": "💾"},
+    {"id": "path-celery", "label": "Celery", "icon": "📋", "category": "Task Queues & Background Jobs", "category_icon": "⏱️"},
+    {"id": "path-click", "label": "Click", "icon": "🖱️", "category": "CLI Tools", "category_icon": "💻"},
+    {"id": "path-typer", "label": "Typer", "icon": "⌨️", "category": "CLI Tools", "category_icon": "💻"},
+    {"id": "path-scipy", "label": "SciPy", "icon": "🔬", "category": "Scientific Computing", "category_icon": "🧬"},
+    {"id": "path-sympy", "label": "SymPy", "icon": "➗", "category": "Scientific Computing", "category_icon": "🧬"},
+    {"id": "path-pydantic", "label": "Pydantic", "icon": "✅", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-graphene", "label": "Graphene", "icon": "◆", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-micropython", "label": "MicroPython", "icon": "📟", "category": "IoT & Embedded", "category_icon": "🔌"}
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "language": "R",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "R Fundamentals",
+      "description": "Syntax, vectors, data types, and RStudio.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & RStudio", "description": "Install R and RStudio IDE. RStudio is the standard environment for R development.", "type": "required", "resources": ["https://cran.r-project.org/", "https://posit.co/download/rstudio-desktop/"]},
+        {"id": "core-1-2", "label": "Vectors", "description": "Atomic vectors (numeric, character, logical, integer) are R's fundamental data type. Everything is a vector.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Vectors-and-assignment", "https://r4ds.hadley.nz/vectors"]},
+        {"id": "core-1-3", "label": "Data Types", "description": "numeric, integer, character, logical, complex, factor. Understand type coercion rules.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Objects", "https://r4ds.hadley.nz/logicals"]},
+        {"id": "core-1-4", "label": "Operators & Vectorization", "description": "Arithmetic and logical operations are vectorized — they apply element-wise. This is R's core paradigm.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Vectors-and-assignment", "https://r4ds.hadley.nz/numbers"]},
+        {"id": "core-1-5", "label": "Control Flow", "description": "if/else, ifelse(), for, while, repeat, next, break. Prefer vectorized operations over loops.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Conditional-execution", "https://r4ds.hadley.nz/iteration"]},
+        {"id": "core-1-6", "label": "Functions", "description": "Define functions with function(), default arguments, and ... (dot-dot-dot). Functions are first-class.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Writing-your-own-functions", "https://r4ds.hadley.nz/functions"]},
+        {"id": "core-1-7", "label": "Lists", "description": "Heterogeneous ordered collections. Lists can contain any type, including other lists.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Lists", "https://r4ds.hadley.nz/vectors"]},
+        {"id": "core-1-8", "label": "Matrices & Arrays", "description": "Multi-dimensional numeric data with matrix() and array(). Used for linear algebra and tabular computations.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Arrays-and-matrices", "https://r4ds.hadley.nz/vectors"]},
+        {"id": "core-1-9", "label": "Factors", "description": "Categorical variables with levels. Factors are essential for statistical modeling and plotting.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Factors", "https://r4ds.hadley.nz/factors"]},
+        {"id": "core-1-10", "label": "Data Frames", "description": "Tabular data with rows and columns. Data frames are R's central data structure.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Data-frames", "https://r4ds.hadley.nz/data-transform"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Data Manipulation",
+      "description": "Tidyverse, dplyr, and data wrangling.",
+      "topics": [
+        {"id": "core-2-1", "label": "Tidyverse Overview", "description": "The tidyverse is a collection of packages for data science. Install with install.packages('tidyverse').", "type": "required", "resources": ["https://www.tidyverse.org/", "https://r4ds.hadley.nz/"]},
+        {"id": "core-2-2", "label": "dplyr Verbs", "description": "filter, select, mutate, arrange, summarise, group_by. The core data manipulation verbs.", "type": "required", "resources": ["https://dplyr.tidyverse.org/", "https://r4ds.hadley.nz/data-transform"]},
+        {"id": "core-2-3", "label": "The Pipe (%>% and |>)", "description": "Chain operations with pipes for readable data pipelines. |> is R's native pipe (4.1+).", "type": "required", "resources": ["https://r4ds.hadley.nz/data-transform#sec-the-pipe", "https://magrittr.tidyverse.org/"]},
+        {"id": "core-2-4", "label": "tidyr (Reshape Data)", "description": "pivot_longer, pivot_wider, separate, unite. Transform data between wide and long formats.", "type": "required", "resources": ["https://tidyr.tidyverse.org/", "https://r4ds.hadley.nz/data-tidy"]},
+        {"id": "core-2-5", "label": "Joins", "description": "left_join, inner_join, full_join, anti_join. Combine data frames by matching columns.", "type": "required", "resources": ["https://dplyr.tidyverse.org/reference/mutate-joins.html", "https://r4ds.hadley.nz/joins"]},
+        {"id": "core-2-6", "label": "String Manipulation (stringr)", "description": "str_detect, str_replace, str_extract, str_split. Consistent string operations.", "type": "required", "resources": ["https://stringr.tidyverse.org/", "https://r4ds.hadley.nz/strings"]},
+        {"id": "core-2-7", "label": "Date/Time (lubridate)", "description": "Parse, manipulate, and compute with dates and times.", "type": "required", "resources": ["https://lubridate.tidyverse.org/", "https://r4ds.hadley.nz/datetimes"]},
+        {"id": "core-2-8", "label": "Reading Data (readr, readxl)", "description": "Import CSV, TSV, Excel, and other formats. readr is faster and more consistent than base R.", "type": "required", "resources": ["https://readr.tidyverse.org/", "https://r4ds.hadley.nz/data-import"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Visualization & Statistics",
+      "description": "ggplot2, statistical analysis, and reporting.",
+      "topics": [
+        {"id": "core-3-1", "label": "ggplot2 Basics", "description": "Build plots with the grammar of graphics — aes(), geom_*, facets, scales, themes.", "type": "required", "resources": ["https://ggplot2.tidyverse.org/", "https://r4ds.hadley.nz/data-visualize"]},
+        {"id": "core-3-2", "label": "Statistical Tests", "description": "t.test, chisq.test, cor.test, wilcox.test. R has built-in functions for common statistical tests.", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Statistical-models-in-R", "https://www.statmethods.net/stats/index.html"]},
+        {"id": "core-3-3", "label": "Linear Regression", "description": "Fit models with lm(), interpret coefficients, and check assumptions with summary() and plot().", "type": "required", "resources": ["https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Linear-models", "https://r4ds.hadley.nz/model-basics"]},
+        {"id": "core-3-4", "label": "R Markdown / Quarto", "description": "Combine code, output, and narrative in reproducible reports. Quarto is the next generation.", "type": "required", "resources": ["https://quarto.org/docs/get-started/", "https://rmarkdown.rstudio.com/"]},
+        {"id": "core-3-5", "label": "Apply Family & purrr", "description": "Functional iteration with map(), map_dbl(), walk(). purrr replaces apply/sapply/lapply.", "type": "required", "resources": ["https://purrr.tidyverse.org/", "https://r4ds.hadley.nz/iteration"]},
+        {"id": "core-3-6", "label": "Packages & CRAN", "description": "Install from CRAN, create your own packages with devtools. R has 20,000+ packages.", "type": "required", "resources": ["https://cran.r-project.org/", "https://r-pkgs.org/"]},
+        {"id": "core-3-7", "label": "Debugging & Profiling", "description": "browser(), debug(), traceback(), and profvis for performance. Debug R functions interactively.", "type": "required", "resources": ["https://adv-r.hadley.nz/debugging.html", "https://cran.r-project.org/doc/manuals/r-release/R-exts.html"]},
+        {"id": "core-3-8", "label": "testthat", "description": "Unit testing for R with expect_*, test_that, and describe. Standard testing framework.", "type": "required", "resources": ["https://testthat.r-lib.org/", "https://r-pkgs.org/testing-basics.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-ggplot2-advanced", "label": "ggplot2 Advanced", "icon": "📊", "category": "Visualization", "category_icon": "📉"},
+    {"id": "path-plotly-r", "label": "Plotly", "icon": "📈", "category": "Visualization", "category_icon": "📉"},
+    {"id": "path-shiny", "label": "Shiny", "icon": "✨", "category": "Web Apps", "category_icon": "🌐"},
+    {"id": "path-tidymodels", "label": "Tidymodels", "icon": "🤖", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-caret", "label": "caret", "icon": "🎯", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-bioconductor", "label": "Bioconductor", "icon": "🧬", "category": "Bioinformatics", "category_icon": "🔬"},
+    {"id": "path-sf-spatial", "label": "sf (Spatial Data)", "icon": "🗺️", "category": "Geospatial", "category_icon": "🌍"},
+    {"id": "path-data-table", "label": "data.table", "icon": "⚡", "category": "Performance", "category_icon": "🏎️"},
+    {"id": "path-sparklyr", "label": "sparklyr", "icon": "✨", "category": "Big Data", "category_icon": "📊"},
+    {"id": "path-plumber", "label": "Plumber (APIs)", "icon": "🔌", "category": "API", "category_icon": "🔌"},
+    {"id": "path-renv", "label": "renv (Environments)", "icon": "📦", "category": "Reproducibility", "category_icon": "🔄"},
+    {"id": "path-rcpp", "label": "Rcpp", "icon": "⚡", "category": "Performance", "category_icon": "🏎️"}
+  ]
+}

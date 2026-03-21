@@ -1,0 +1,64 @@
+{
+  "language": "MATLAB",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "MATLAB Fundamentals",
+      "description": "Environment, matrices, arrays, and basic operations.",
+      "topics": [
+        {"id": "core-1-1", "label": "MATLAB Environment", "description": "Navigate the MATLAB desktop — Command Window, Workspace, Editor, and help system.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/getting-started-with-matlab.html", "https://www.mathworks.com/help/matlab/matlab_env/desktop.html"]},
+        {"id": "core-1-2", "label": "Variables & Data Types", "description": "double, char, string, logical, cell, struct. MATLAB is dynamically typed with matrices as default.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/data-types.html", "https://www.mathworks.com/help/matlab/matlab_prog/fundamental-matlab-classes.html"]},
+        {"id": "core-1-3", "label": "Matrices & Arrays", "description": "Create, index, and manipulate matrices. Matrices are MATLAB's core — the name means MATrix LABoratory.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/matrices-and-arrays.html", "https://www.mathworks.com/help/matlab/learn_matlab/matrices-and-arrays.html"]},
+        {"id": "core-1-4", "label": "Matrix Operations", "description": "Element-wise (.*) vs matrix (*) operations, transpose, inverse, eigenvalues.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/matlab_prog/array-vs-matrix-operations.html", "https://www.mathworks.com/help/matlab/ref/mtimes.html"]},
+        {"id": "core-1-5", "label": "Indexing & Slicing", "description": "Linear indexing, colon operator, logical indexing. MATLAB uses 1-based indexing.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/math/array-indexing.html", "https://www.mathworks.com/help/matlab/learn_matlab/array-indexing.html"]},
+        {"id": "core-1-6", "label": "Control Flow", "description": "if/elseif/else, switch, for, while, break, continue. Prefer vectorized operations over loops.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/control-flow.html", "https://www.mathworks.com/help/matlab/ref/if.html"]},
+        {"id": "core-1-7", "label": "Functions", "description": "Define functions in .m files with input/output arguments. Functions are MATLAB's primary code organization.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/functions.html", "https://www.mathworks.com/help/matlab/ref/function.html"]},
+        {"id": "core-1-8", "label": "Scripts vs Functions", "description": "Scripts share workspace, functions have local scope. Understand when to use each.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/learn_matlab/scripts-and-functions.html", "https://www.mathworks.com/help/matlab/matlab_prog/scripts.html"]},
+        {"id": "core-1-9", "label": "String Operations", "description": "Modern string arrays vs legacy char arrays. Use string for new code.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/characters-and-strings.html", "https://www.mathworks.com/help/matlab/ref/string.html"]},
+        {"id": "core-1-10", "label": "Cell Arrays & Structs", "description": "Heterogeneous containers (cell) and named-field records (struct). Flexible data organization.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/cell-arrays.html", "https://www.mathworks.com/help/matlab/structures.html"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Plotting & Visualization",
+      "description": "2D/3D plots, figure customization, and data visualization.",
+      "topics": [
+        {"id": "core-2-1", "label": "Basic Plotting", "description": "plot, scatter, bar, histogram. MATLAB's plotting capabilities are a major strength.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/2-and-3d-plots.html", "https://www.mathworks.com/help/matlab/ref/plot.html"]},
+        {"id": "core-2-2", "label": "Figure Customization", "description": "Titles, labels, legends, axes, colors, and line styles. Publication-quality figures.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/formatting-and-annotation.html", "https://www.mathworks.com/help/matlab/ref/title.html"]},
+        {"id": "core-2-3", "label": "Subplots & Layouts", "description": "Multiple plots in one figure with subplot and tiledlayout.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/ref/subplot.html", "https://www.mathworks.com/help/matlab/ref/tiledlayout.html"]},
+        {"id": "core-2-4", "label": "3D Plots", "description": "surf, mesh, contour, plot3. Visualize 3D data and surfaces.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/surface-and-mesh-plots-1.html", "https://www.mathworks.com/help/matlab/ref/surf.html"]},
+        {"id": "core-2-5", "label": "Importing Data", "description": "readtable, readmatrix, load, csvread. Import from CSV, Excel, text, and MAT files.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/import_export/ways-to-import-text-files.html", "https://www.mathworks.com/help/matlab/ref/readtable.html"]},
+        {"id": "core-2-6", "label": "Tables", "description": "Tabular data with named columns using table. The modern way to handle structured data.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/tables.html", "https://www.mathworks.com/help/matlab/ref/table.html"]},
+        {"id": "core-2-7", "label": "Linear Algebra", "description": "Solve systems (A\\b), decompositions (lu, qr, svd, eig). MATLAB excels at linear algebra.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/linear-algebra.html", "https://www.mathworks.com/help/matlab/ref/mldivide.html"]},
+        {"id": "core-2-8", "label": "Error Handling", "description": "try/catch, error(), warning(), assert(). Handle errors gracefully in MATLAB.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/error-handling.html", "https://www.mathworks.com/help/matlab/ref/try.html"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Advanced MATLAB",
+      "description": "OOP, toolboxes, performance, and deployment.",
+      "topics": [
+        {"id": "core-3-1", "label": "Object-Oriented Programming", "description": "Define classes with classdef, properties, methods, and inheritance.", "type": "optional", "resources": ["https://www.mathworks.com/help/matlab/object-oriented-programming.html", "https://www.mathworks.com/help/matlab/matlab_oop/create-a-simple-class.html"]},
+        {"id": "core-3-2", "label": "Vectorization & Performance", "description": "Replace loops with vectorized operations. Pre-allocate arrays and use profiler.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html", "https://www.mathworks.com/help/matlab/ref/profile.html"]},
+        {"id": "core-3-3", "label": "Debugging", "description": "Set breakpoints, step through code, inspect variables. MATLAB's debugger is integrated in the editor.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/debugging-code.html", "https://www.mathworks.com/help/matlab/ref/dbstop.html"]},
+        {"id": "core-3-4", "label": "Testing Framework", "description": "Write unit tests with matlab.unittest. Test functions and classes systematically.", "type": "optional", "resources": ["https://www.mathworks.com/help/matlab/matlab-unit-test-framework.html", "https://www.mathworks.com/help/matlab/ref/matlab.unittest.testcase-class.html"]},
+        {"id": "core-3-5", "label": "App Designer", "description": "Build interactive GUIs with App Designer's drag-and-drop interface.", "type": "optional", "resources": ["https://www.mathworks.com/help/matlab/app-designer.html", "https://www.mathworks.com/help/matlab/creating_guis/create-a-simple-app-or-gui-using-app-designer.html"]},
+        {"id": "core-3-6", "label": "MEX Files & C Integration", "description": "Call C/C++ from MATLAB for performance-critical code.", "type": "advanced", "resources": ["https://www.mathworks.com/help/matlab/call-mex-file-functions.html", "https://www.mathworks.com/help/matlab/matlab_external/introducing-mex-files.html"]},
+        {"id": "core-3-7", "label": "Symbolic Math", "description": "Symbolic computation with the Symbolic Math Toolbox. Solve equations analytically.", "type": "optional", "resources": ["https://www.mathworks.com/help/symbolic/", "https://www.mathworks.com/help/symbolic/create-symbolic-numbers-variables-and-expressions.html"]},
+        {"id": "core-3-8", "label": "Live Scripts", "description": "Combine code, output, and formatted text in interactive documents.", "type": "required", "resources": ["https://www.mathworks.com/help/matlab/matlab_prog/what-is-a-live-script-or-function.html", "https://www.mathworks.com/help/matlab/live-scripts-and-functions.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-signal-processing", "label": "Signal Processing Toolbox", "icon": "📡", "category": "Toolboxes", "category_icon": "🔧"},
+    {"id": "path-image-processing", "label": "Image Processing Toolbox", "icon": "🖼️", "category": "Toolboxes", "category_icon": "🔧"},
+    {"id": "path-control-systems", "label": "Control System Toolbox", "icon": "🎛️", "category": "Toolboxes", "category_icon": "🔧"},
+    {"id": "path-deep-learning", "label": "Deep Learning Toolbox", "icon": "🧠", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-statistics-ml", "label": "Statistics & ML Toolbox", "icon": "📊", "category": "Machine Learning", "category_icon": "📊"},
+    {"id": "path-simulink", "label": "Simulink", "icon": "🔄", "category": "Simulation", "category_icon": "⚙️"},
+    {"id": "path-optimization", "label": "Optimization Toolbox", "icon": "📈", "category": "Toolboxes", "category_icon": "🔧"},
+    {"id": "path-robotics", "label": "Robotics System Toolbox", "icon": "🤖", "category": "Robotics", "category_icon": "🦾"},
+    {"id": "path-parallel-computing", "label": "Parallel Computing Toolbox", "icon": "⚡", "category": "Performance", "category_icon": "🏎️"},
+    {"id": "path-matlab-compiler", "label": "MATLAB Compiler", "icon": "📦", "category": "Deployment", "category_icon": "🚀"}
+  ]
+}

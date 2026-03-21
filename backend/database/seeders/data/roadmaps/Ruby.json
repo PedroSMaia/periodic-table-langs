@@ -1,0 +1,85 @@
+{
+  "language": "Ruby",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Ruby Fundamentals",
+      "description": "Syntax, types, and the object-oriented basics.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & IRB", "description": "Install Ruby with rbenv/asdf and use IRB for interactive exploration. IRB is Ruby's REPL.", "type": "required", "resources": ["https://www.ruby-lang.org/en/documentation/installation/", "https://ruby-doc.org/3.3.0/IRB.html"]},
+        {"id": "core-1-2", "label": "Variables & Data Types", "description": "Integers, floats, strings, symbols, booleans, nil. Everything in Ruby is an object.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/", "https://www.ruby-lang.org/en/documentation/quickstart/"]},
+        {"id": "core-1-3", "label": "Strings & Symbols", "description": "String interpolation, methods, and immutable symbols. Symbols are used as hash keys and identifiers.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/String.html", "https://ruby-doc.org/3.3.0/Symbol.html"]},
+        {"id": "core-1-4", "label": "Arrays", "description": "Dynamic arrays with rich methods — map, select, reject, each, reduce, flatten, compact.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Array.html", "https://www.ruby-lang.org/en/documentation/quickstart/"]},
+        {"id": "core-1-5", "label": "Hashes", "description": "Key-value pairs with symbol keys and string keys. Hashes are Ruby's dictionary type.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Hash.html", "https://www.ruby-lang.org/en/documentation/quickstart/"]},
+        {"id": "core-1-6", "label": "Control Flow", "description": "if/elsif/else, unless, case/when, while, until, for, and ternary. unless and until are Ruby-specific.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/syntax/control_expressions_rdoc.html", "https://www.ruby-lang.org/en/documentation/quickstart/"]},
+        {"id": "core-1-7", "label": "Methods", "description": "Define methods with def, default parameters, and implicit return. The last expression is the return value.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/syntax/methods_rdoc.html", "https://www.ruby-lang.org/en/documentation/quickstart/"]},
+        {"id": "core-1-8", "label": "Blocks, Procs & Lambdas", "description": "Pass code blocks with {} or do/end, create Proc and lambda objects. Blocks are central to Ruby idioms.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Proc.html", "https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/"]},
+        {"id": "core-1-9", "label": "Iterators & Enumerable", "description": "each, map, select, reject, reduce, any?, all?, find. Enumerable is Ruby's most powerful mixin.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Enumerable.html", "https://www.rubyguides.com/2018/10/ruby-map-method/"]},
+        {"id": "core-1-10", "label": "Ranges", "description": "Create ranges with .. and ... for iteration, slicing, and conditions.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Range.html", "https://www.ruby-lang.org/en/documentation/quickstart/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Object-Oriented Ruby",
+      "description": "Classes, modules, mixins, and Ruby's object model.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Objects", "description": "Define classes with initialize, instance variables (@), and methods. Everything is an object in Ruby.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Class.html", "https://www.ruby-lang.org/en/documentation/quickstart/"]},
+        {"id": "core-2-2", "label": "Attr Accessors", "description": "Generate getters/setters with attr_reader, attr_writer, attr_accessor. Reduces boilerplate.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Module.html#method-i-attr_accessor", "https://www.rubyguides.com/2018/11/attr_accessor/"]},
+        {"id": "core-2-3", "label": "Inheritance", "description": "Single inheritance with <, super, and method overriding. Ruby has single class inheritance.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/syntax/modules_and_classes_rdoc.html", "https://www.rubyguides.com/2019/01/ruby-inheritance/"]},
+        {"id": "core-2-4", "label": "Modules & Mixins", "description": "Share behavior across classes with include and extend. Modules solve the single-inheritance limitation.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Module.html", "https://www.rubyguides.com/2018/10/ruby-modules/"]},
+        {"id": "core-2-5", "label": "Access Control", "description": "public, private, protected methods. Private means private to the instance in Ruby.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/syntax/modules_and_classes_rdoc.html", "https://www.rubyguides.com/2018/10/method-visibility/"]},
+        {"id": "core-2-6", "label": "Duck Typing", "description": "Ruby cares about what an object can do, not what it is. respond_to? checks capabilities.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Object.html#method-i-respond_to-3F", "https://www.rubyguides.com/2019/02/ruby-duck-typing/"]},
+        {"id": "core-2-7", "label": "Open Classes & Monkey Patching", "description": "Reopen and modify existing classes at runtime. Powerful but use responsibly.", "type": "optional", "resources": ["https://ruby-doc.org/3.3.0/Class.html", "https://www.rubyguides.com/2017/07/ruby-monkey-patching/"]},
+        {"id": "core-2-8", "label": "Comparable & Enumerable", "description": "Include Comparable for sorting and Enumerable for collection methods on your classes.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Comparable.html", "https://ruby-doc.org/3.3.0/Enumerable.html"]},
+        {"id": "core-2-9", "label": "Struct & Data", "description": "Quick value objects with Struct and immutable Data (Ruby 3.2+). Reduce class boilerplate.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Struct.html", "https://ruby-doc.org/3.3.0/Data.html"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Error Handling & I/O",
+      "description": "Exceptions, file operations, and working with data.",
+      "topics": [
+        {"id": "core-3-1", "label": "Exceptions", "description": "begin/rescue/ensure/raise for error handling. Ruby exceptions are objects inheriting from Exception.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Exception.html", "https://www.rubyguides.com/2019/06/ruby-rescue-exceptions/"]},
+        {"id": "core-3-2", "label": "Custom Exceptions", "description": "Create domain-specific error classes inheriting from StandardError.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/StandardError.html", "https://www.rubyguides.com/2019/06/ruby-rescue-exceptions/"]},
+        {"id": "core-3-3", "label": "File I/O", "description": "Read and write files with File.read, File.write, and block form for auto-closing.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/File.html", "https://www.rubyguides.com/2015/05/working-with-files-ruby/"]},
+        {"id": "core-3-4", "label": "JSON & YAML", "description": "Parse and generate JSON and YAML. JSON is standard for APIs, YAML for configuration.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/exts/json/JSON.html", "https://ruby-doc.org/3.3.0/stdlibs/yaml/YAML.html"]},
+        {"id": "core-3-5", "label": "Regular Expressions", "description": "Pattern matching with /regex/ and =~ operator. Ruby has first-class regex support.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/Regexp.html", "https://www.rubyguides.com/2015/06/ruby-regex/"]},
+        {"id": "core-3-6", "label": "String Processing", "description": "gsub, scan, split, match, encode. Advanced string manipulation methods.", "type": "required", "resources": ["https://ruby-doc.org/3.3.0/String.html", "https://www.rubyguides.com/2018/01/ruby-string-methods/"]},
+        {"id": "core-3-7", "label": "Metaprogramming Basics", "description": "define_method, method_missing, send, respond_to_missing?. Ruby's dynamic nature enables powerful metaprogramming.", "type": "optional", "resources": ["https://ruby-doc.org/3.3.0/Object.html#method-i-send", "https://www.rubyguides.com/2018/11/ruby-metaprogramming/"]},
+        {"id": "core-3-8", "label": "Pattern Matching", "description": "Structural pattern matching with case/in (Ruby 3+). Match arrays, hashes, and custom objects.", "type": "optional", "resources": ["https://ruby-doc.org/3.3.0/syntax/pattern_matching_rdoc.html", "https://www.rubyguides.com/2021/07/ruby-pattern-matching/"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Gems, Bundler & Testing",
+      "description": "Package management, testing, and code quality.",
+      "topics": [
+        {"id": "core-4-1", "label": "RubyGems & Bundler", "description": "Manage dependencies with Gemfile and Bundler. RubyGems is Ruby's package system.", "type": "required", "resources": ["https://bundler.io/guides/getting_started.html", "https://guides.rubygems.org/"]},
+        {"id": "core-4-2", "label": "RSpec", "description": "Behavior-driven testing with describe, it, expect. RSpec is the most popular Ruby testing framework.", "type": "required", "resources": ["https://rspec.info/documentation/", "https://rspec.info/features/3-13/rspec-core/"]},
+        {"id": "core-4-3", "label": "Minitest", "description": "Ruby's built-in testing framework. Simpler than RSpec with both assertion and spec styles.", "type": "optional", "resources": ["https://ruby-doc.org/3.3.0/stdlibs/minitest/Minitest.html", "https://github.com/minitest/minitest"]},
+        {"id": "core-4-4", "label": "Mocking & Stubbing", "description": "Isolate tests with RSpec mocks or Mocha. Mock external dependencies for fast, reliable tests.", "type": "required", "resources": ["https://rspec.info/features/3-13/rspec-mocks/", "https://github.com/freerange/mocha"]},
+        {"id": "core-4-5", "label": "RuboCop", "description": "Lint and auto-format Ruby code. RuboCop enforces the Ruby Style Guide.", "type": "required", "resources": ["https://docs.rubocop.org/rubocop/", "https://rubystyle.guide/"]},
+        {"id": "core-4-6", "label": "Debugging (debug gem)", "description": "Step-through debugging with Ruby's built-in debug gem. Set breakpoints with binding.break.", "type": "required", "resources": ["https://github.com/ruby/debug", "https://ruby-doc.org/3.3.0/stdlibs/debug/Debug.html"]},
+        {"id": "core-4-7", "label": "Rake", "description": "Ruby's build tool for task automation. Define tasks in Rakefiles.", "type": "required", "resources": ["https://ruby.github.io/rake/", "https://github.com/ruby/rake"]},
+        {"id": "core-4-8", "label": "Concurrency (Ractor & Fiber)", "description": "Ractors for parallel execution and Fibers for cooperative concurrency. Ruby 3 added true parallelism.", "type": "advanced", "resources": ["https://ruby-doc.org/3.3.0/Ractor.html", "https://ruby-doc.org/3.3.0/Fiber.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-rails", "label": "Ruby on Rails", "icon": "🛤️", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-sinatra", "label": "Sinatra", "icon": "🎤", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-hanami", "label": "Hanami", "icon": "🌸", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-hotwire", "label": "Hotwire (Turbo + Stimulus)", "icon": "⚡", "category": "Frontend", "category_icon": "🖥️"},
+    {"id": "path-activerecord", "label": "ActiveRecord", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-sequel-rb", "label": "Sequel", "icon": "📝", "category": "Database", "category_icon": "💾"},
+    {"id": "path-sidekiq", "label": "Sidekiq", "icon": "⚙️", "category": "Background Jobs", "category_icon": "⏱️"},
+    {"id": "path-rspec-advanced", "label": "RSpec Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-capybara", "label": "Capybara", "icon": "🐹", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-devise", "label": "Devise", "icon": "🔒", "category": "Authentication", "category_icon": "🔐"},
+    {"id": "path-graphql-ruby", "label": "GraphQL Ruby", "icon": "◆", "category": "API", "category_icon": "🔌"},
+    {"id": "path-jekyll", "label": "Jekyll", "icon": "📝", "category": "Static Sites", "category_icon": "📄"},
+    {"id": "path-chef-puppet", "label": "Chef / Puppet", "icon": "🔧", "category": "DevOps", "category_icon": "🔧"},
+    {"id": "path-dry-rb", "label": "dry-rb", "icon": "🏜️", "category": "Libraries", "category_icon": "📚"},
+    {"id": "path-sorbet", "label": "Sorbet (Type Checking)", "icon": "🔍", "category": "Code Quality", "category_icon": "✨"}
+  ]
+}

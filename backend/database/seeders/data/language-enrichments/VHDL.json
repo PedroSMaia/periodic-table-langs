@@ -1,0 +1,1 @@
+{"name": "VHDL", "packages": [{"name": "IEEE std_logic_1164", "url": "https://standards.ieee.org/", "desc": "Standard logic"}, {"name": "OSVVM", "url": "https://osvvm.org/", "desc": "Verification methodology"}, {"name": "VUnit", "url": "https://vunit.github.io/", "desc": "Unit testing"}]}

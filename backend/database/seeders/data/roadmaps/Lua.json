@@ -1,0 +1,49 @@
+{
+  "language": "Lua",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Lua Fundamentals",
+      "description": "Syntax, types, tables, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & REPL", "description": "Install Lua and use the interactive interpreter. Lua is tiny (~300KB) and embeds easily.", "type": "required", "resources": ["https://www.lua.org/start.html", "https://www.lua.org/manual/5.4/"]},
+        {"id": "core-1-2", "label": "Variables & Types", "description": "nil, boolean, number, string, function, table, userdata, thread. Lua has 8 types and dynamic typing.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#2.1", "https://www.lua.org/pil/2.html"]},
+        {"id": "core-1-3", "label": "Strings", "description": "String concatenation (..), length (#), and string library functions. Strings are immutable.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#6.4", "https://www.lua.org/pil/20.html"]},
+        {"id": "core-1-4", "label": "Control Flow", "description": "if/elseif/else/end, while, repeat/until, for (numeric and generic), break. No switch/case.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#3.3", "https://www.lua.org/pil/4.3.html"]},
+        {"id": "core-1-5", "label": "Functions", "description": "First-class functions, multiple returns, variadic (...), and closures. Functions are values in Lua.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#3.4.10", "https://www.lua.org/pil/5.html"]},
+        {"id": "core-1-6", "label": "Tables", "description": "The only data structure — arrays, dictionaries, objects, and modules are all tables.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#2.1", "https://www.lua.org/pil/11.html"]},
+        {"id": "core-1-7", "label": "Tables as Arrays", "description": "1-based indexed tables with #, table.insert, table.remove, table.sort.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#6.6", "https://www.lua.org/pil/11.1.html"]},
+        {"id": "core-1-8", "label": "Iterators (pairs, ipairs)", "description": "Iterate tables with pairs (all keys) and ipairs (sequential integer keys).", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#6.1", "https://www.lua.org/pil/7.html"]},
+        {"id": "core-1-9", "label": "Local vs Global", "description": "Variables are global by default — use local for scoping. Always use local.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#3.5", "https://www.lua.org/pil/4.2.html"]},
+        {"id": "core-1-10", "label": "Error Handling", "description": "pcall, xpcall, error, and assert. Lua uses protected calls instead of try/catch.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#2.3", "https://www.lua.org/pil/8.4.html"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Advanced Lua",
+      "description": "Metatables, OOP, modules, and coroutines.",
+      "topics": [
+        {"id": "core-2-1", "label": "Metatables & Metamethods", "description": "Customize table behavior with __index, __newindex, __add, __tostring, etc. Metatables power Lua's OOP.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#2.4", "https://www.lua.org/pil/13.html"]},
+        {"id": "core-2-2", "label": "OOP with Metatables", "description": "Implement classes and inheritance using tables and __index chains. Lua has no built-in class system.", "type": "required", "resources": ["https://www.lua.org/pil/16.html", "https://www.lua.org/pil/16.1.html"]},
+        {"id": "core-2-3", "label": "Modules & require", "description": "Create and load modules with require. Modules are tables returned from Lua files.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#6.3", "https://www.lua.org/pil/15.html"]},
+        {"id": "core-2-4", "label": "Closures & Upvalues", "description": "Functions capture local variables from enclosing scopes. Closures are Lua's primary encapsulation tool.", "type": "required", "resources": ["https://www.lua.org/pil/6.1.html", "https://www.lua.org/manual/5.4/manual.html#3.5"]},
+        {"id": "core-2-5", "label": "Coroutines", "description": "Cooperative multitasking with coroutine.create, resume, yield. Lua coroutines are stackful.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#2.6", "https://www.lua.org/pil/9.html"]},
+        {"id": "core-2-6", "label": "Pattern Matching", "description": "Lua patterns (simpler than regex) with string.find, string.match, string.gmatch, string.gsub.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#6.4.1", "https://www.lua.org/pil/20.2.html"]},
+        {"id": "core-2-7", "label": "File I/O", "description": "Read and write files with io.open, io.read, io.write. Simple file handle API.", "type": "required", "resources": ["https://www.lua.org/manual/5.4/manual.html#6.8", "https://www.lua.org/pil/21.html"]},
+        {"id": "core-2-8", "label": "C API Basics", "description": "Embed Lua in C/C++ applications and call C from Lua. The C API is Lua's primary integration point.", "type": "advanced", "resources": ["https://www.lua.org/manual/5.4/manual.html#4", "https://www.lua.org/pil/24.html"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-love2d", "label": "LÖVE 2D", "icon": "❤️", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-roblox-lua", "label": "Roblox (Luau)", "icon": "🎮", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-defold", "label": "Defold", "icon": "🎯", "category": "Game Development", "category_icon": "🕹️"},
+    {"id": "path-neovim-lua", "label": "Neovim Plugins", "icon": "📝", "category": "Editor Scripting", "category_icon": "⌨️"},
+    {"id": "path-openresty", "label": "OpenResty", "icon": "🌐", "category": "Web/Networking", "category_icon": "🌐"},
+    {"id": "path-redis-lua", "label": "Redis Scripting", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-wireshark-lua", "label": "Wireshark Dissectors", "icon": "🦈", "category": "Networking", "category_icon": "🔗"},
+    {"id": "path-luarocks", "label": "LuaRocks", "icon": "📦", "category": "Package Management", "category_icon": "📚"},
+    {"id": "path-embedded-lua", "label": "Embedded Lua (IoT)", "icon": "📟", "category": "Embedded", "category_icon": "🔌"},
+    {"id": "path-wow-addons", "label": "WoW Addons", "icon": "⚔️", "category": "Game Modding", "category_icon": "🎮"}
+  ]
+}

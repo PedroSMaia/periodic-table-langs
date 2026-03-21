@@ -1,0 +1,62 @@
+{
+  "language": "F#",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "F# Fundamentals",
+      "description": "Syntax, types, immutability, and functional basics.",
+      "topics": [
+        {"id": "core-1-1", "label": ".NET Setup & F# Interactive", "description": "Install .NET SDK and use dotnet fsi (F# Interactive). F# runs on the .NET runtime.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/get-started/", "https://fsharp.org/use/"]},
+        {"id": "core-1-2", "label": "Let Bindings & Immutability", "description": "Bind values with let (immutable by default). Use mutable only when necessary.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/values/", "https://fsharpforfunandprofit.com/posts/let-use-do/"]},
+        {"id": "core-1-3", "label": "Basic Types", "description": "int, float, string, bool, char, unit. F# is statically typed with powerful type inference.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/basic-types", "https://fsharpforfunandprofit.com/posts/overview-of-types-in-fsharp/"]},
+        {"id": "core-1-4", "label": "Functions", "description": "Define with let, currying by default, partial application, and function composition (>>).", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/functions/", "https://fsharpforfunandprofit.com/posts/function-values-and-simple-values/"]},
+        {"id": "core-1-5", "label": "Pipe Operator (|>)", "description": "Chain function calls for readable data pipelines. The pipe is F#'s most used operator.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/symbol-and-operator-reference/", "https://fsharpforfunandprofit.com/posts/function-composition/"]},
+        {"id": "core-1-6", "label": "Tuples", "description": "Group values with (a, b, c). Tuples are used for multiple returns and pattern matching.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/tuples", "https://fsharpforfunandprofit.com/posts/tuples/"]},
+        {"id": "core-1-7", "label": "Lists, Arrays & Sequences", "description": "Immutable lists [1;2;3], mutable arrays [|1;2;3|], and lazy sequences. Rich module functions.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/lists", "https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/sequences"]},
+        {"id": "core-1-8", "label": "Pattern Matching", "description": "match...with for exhaustive decomposition. Pattern matching is F#'s primary control flow mechanism.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/pattern-matching", "https://fsharpforfunandprofit.com/posts/match-expression/"]},
+        {"id": "core-1-9", "label": "Records", "description": "Immutable data types with named fields. Records have structural equality by default.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/records", "https://fsharpforfunandprofit.com/posts/records/"]},
+        {"id": "core-1-10", "label": "Discriminated Unions", "description": "Sum types with cases that can carry data. DUs model domain states precisely.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/discriminated-unions", "https://fsharpforfunandprofit.com/posts/discriminated-unions/"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Type System & Error Handling",
+      "description": "Option, Result, units of measure, and computation expressions.",
+      "topics": [
+        {"id": "core-2-1", "label": "Option Type", "description": "Some value or None. F# uses Option instead of null for absent values.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/options", "https://fsharpforfunandprofit.com/posts/the-option-type/"]},
+        {"id": "core-2-2", "label": "Result Type", "description": "Ok value or Error for railway-oriented programming. Functional error handling.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/results", "https://fsharpforfunandprofit.com/posts/recipe-part2/"]},
+        {"id": "core-2-3", "label": "Active Patterns", "description": "Custom pattern matching with (|Pattern|) syntax. Extend pattern matching for your domain.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/active-patterns", "https://fsharpforfunandprofit.com/posts/convenience-active-patterns/"]},
+        {"id": "core-2-4", "label": "Units of Measure", "description": "Compile-time dimensional analysis with [<Measure>]. Prevent unit mismatch bugs.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/units-of-measure", "https://fsharpforfunandprofit.com/posts/units-of-measure/"]},
+        {"id": "core-2-5", "label": "Modules & Namespaces", "description": "Organize code with module and namespace. Modules contain values, namespaces contain types.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/modules", "https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/namespaces"]},
+        {"id": "core-2-6", "label": "Computation Expressions", "description": "async { }, task { }, result { }. Computation expressions are F#'s monad abstraction.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/computation-expressions", "https://fsharpforfunandprofit.com/posts/computation-expressions-intro/"]},
+        {"id": "core-2-7", "label": "Async & Task", "description": "Async workflows with async { } and .NET task interop with task { }.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/async-expressions", "https://learn.microsoft.com/en-us/dotnet/fsharp/tutorials/async"]},
+        {"id": "core-2-8", "label": "Type Providers", "description": "Generate types from external data sources at compile time. CSV, JSON, SQL type providers.", "type": "optional", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/tutorials/type-providers/", "https://fsharp.github.io/FSharp.Data/"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "OOP, Testing & .NET Integration",
+      "description": "Classes, testing, and interop with the .NET ecosystem.",
+      "topics": [
+        {"id": "core-3-1", "label": "Classes & Interfaces", "description": "Define classes, implement interfaces, and use object expressions. F# supports OOP for .NET interop.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/classes", "https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/interfaces"]},
+        {"id": "core-3-2", "label": "C# Interop", "description": "Call C# libraries from F# and vice versa. Full .NET interoperability.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/", "https://fsharpforfunandprofit.com/posts/completeness-anything-csharp-can-do/"]},
+        {"id": "core-3-3", "label": "NUnit / Expecto", "description": "Test F# with NUnit, xUnit, or the F#-native Expecto framework.", "type": "required", "resources": ["https://github.com/haf/expecto", "https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-fsharp-with-nunit"]},
+        {"id": "core-3-4", "label": "FsCheck (Property Testing)", "description": "Property-based testing inspired by QuickCheck. Generate random inputs to find edge cases.", "type": "optional", "resources": ["https://fscheck.github.io/FsCheck/", "https://fscheck.github.io/FsCheck/QuickStart.html"]},
+        {"id": "core-3-5", "label": "Domain Modeling", "description": "Use DUs, records, and single-case unions for type-safe domain modeling. Make illegal states unrepresentable.", "type": "required", "resources": ["https://fsharpforfunandprofit.com/ddd/", "https://fsharpforfunandprofit.com/posts/designing-with-types-intro/"]},
+        {"id": "core-3-6", "label": "Collection Pipelines", "description": "List.map, Seq.filter, Array.fold with |> for data transformation. F#'s bread and butter.", "type": "required", "resources": ["https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/lists", "https://fsharpforfunandprofit.com/posts/list-module-functions/"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-giraffe", "label": "Giraffe (Web)", "icon": "🦒", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-saturn", "label": "Saturn", "icon": "🪐", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-fable", "label": "Fable (Compile to JS)", "icon": "🌐", "category": "Frontend", "category_icon": "🖥️"},
+    {"id": "path-elmish", "label": "Elmish (MVU)", "icon": "🔄", "category": "Frontend", "category_icon": "🖥️"},
+    {"id": "path-fsharp-data", "label": "FSharp.Data", "icon": "📊", "category": "Data Access", "category_icon": "💾"},
+    {"id": "path-dapper-fsharp", "label": "Dapper.FSharp", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-safe-stack", "label": "SAFE Stack", "icon": "🏗️", "category": "Full Stack", "category_icon": "🌐"},
+    {"id": "path-bolero", "label": "Bolero (Blazor)", "icon": "🔥", "category": "Frontend", "category_icon": "🖥️"},
+    {"id": "path-fscheck-advanced", "label": "FsCheck Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-fantomas", "label": "Fantomas (Formatter)", "icon": "🎭", "category": "Code Quality", "category_icon": "✨"}
+  ]
+}

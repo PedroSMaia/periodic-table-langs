@@ -1,0 +1,49 @@
+{
+  "language": "Perl",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "Perl Fundamentals",
+      "description": "Syntax, variables, operators, and basic I/O.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & Running Scripts", "description": "Install Perl and run scripts with perl script.pl. Perl is pre-installed on most Unix systems.", "type": "required", "resources": ["https://www.perl.org/get.html", "https://perldoc.perl.org/perlintro"]},
+        {"id": "core-1-2", "label": "Scalars ($)", "description": "Single values — strings, numbers, references. The $ sigil marks scalar context.", "type": "required", "resources": ["https://perldoc.perl.org/perldata#Scalar-values", "https://perldoc.perl.org/perlintro#Perl-variable-types"]},
+        {"id": "core-1-3", "label": "Arrays (@)", "description": "Ordered lists with push, pop, shift, unshift, splice, sort, grep, map.", "type": "required", "resources": ["https://perldoc.perl.org/perldata#Array-values", "https://perldoc.perl.org/perlfunc"]},
+        {"id": "core-1-4", "label": "Hashes (%)", "description": "Key-value pairs with keys, values, each, exists, delete.", "type": "required", "resources": ["https://perldoc.perl.org/perldata#Hash-values", "https://perldoc.perl.org/perlintro"]},
+        {"id": "core-1-5", "label": "Operators", "description": "String (eq, ne, lt) vs numeric (==, !=, <) operators. Context sensitivity is core to Perl.", "type": "required", "resources": ["https://perldoc.perl.org/perlop", "https://perldoc.perl.org/perlintro"]},
+        {"id": "core-1-6", "label": "Control Flow", "description": "if/elsif/else, unless, while, until, for, foreach, and statement modifiers.", "type": "required", "resources": ["https://perldoc.perl.org/perlsyn", "https://perldoc.perl.org/perlintro"]},
+        {"id": "core-1-7", "label": "Regular Expressions", "description": "Perl's regex engine is legendary — m//, s///, qr//, captures, and modifiers. Regex is Perl's superpower.", "type": "required", "resources": ["https://perldoc.perl.org/perlre", "https://perldoc.perl.org/perlretut"]},
+        {"id": "core-1-8", "label": "Subroutines", "description": "Define functions with sub, pass arguments via @_, return values. Perl subs are flexible.", "type": "required", "resources": ["https://perldoc.perl.org/perlsub", "https://perldoc.perl.org/perlintro"]},
+        {"id": "core-1-9", "label": "File I/O", "description": "Open, read, write files with open/close and filehandles. Always use three-argument open.", "type": "required", "resources": ["https://perldoc.perl.org/perlopentut", "https://perldoc.perl.org/perlio"]},
+        {"id": "core-1-10", "label": "use strict & use warnings", "description": "Enable strict mode and warnings for safer code. Always start scripts with these pragmas.", "type": "required", "resources": ["https://perldoc.perl.org/strict", "https://perldoc.perl.org/warnings"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "References & Data Structures",
+      "description": "References, complex data structures, and OOP.",
+      "topics": [
+        {"id": "core-2-1", "label": "References", "description": "Create references with \\, dereference with $, @, %, ->. References enable complex data structures.", "type": "required", "resources": ["https://perldoc.perl.org/perlref", "https://perldoc.perl.org/perlreftut"]},
+        {"id": "core-2-2", "label": "Complex Data Structures", "description": "Arrays of arrays, hashes of arrays, arrays of hashes. Build nested structures with references.", "type": "required", "resources": ["https://perldoc.perl.org/perldsc", "https://perldoc.perl.org/perllol"]},
+        {"id": "core-2-3", "label": "OOP Basics", "description": "bless references into packages for object-oriented Perl. Perl OOP is built on packages and references.", "type": "required", "resources": ["https://perldoc.perl.org/perlobj", "https://perldoc.perl.org/perlootut"]},
+        {"id": "core-2-4", "label": "Moose/Moo", "description": "Modern OOP with Moose (full-featured) or Moo (lightweight). Declarative attributes and roles.", "type": "required", "resources": ["https://metacpan.org/pod/Moose", "https://metacpan.org/pod/Moo"]},
+        {"id": "core-2-5", "label": "Error Handling", "description": "die, warn, eval for exception handling. Try::Tiny for clean try/catch syntax.", "type": "required", "resources": ["https://perldoc.perl.org/perldiag", "https://metacpan.org/pod/Try::Tiny"]},
+        {"id": "core-2-6", "label": "Modules & CPAN", "description": "use/require modules and install from CPAN. CPAN is Perl's massive library ecosystem.", "type": "required", "resources": ["https://perldoc.perl.org/perlmod", "https://www.cpan.org/"]},
+        {"id": "core-2-7", "label": "Testing (Test::More)", "description": "Write tests with ok, is, like, done_testing. Perl has a strong testing culture.", "type": "required", "resources": ["https://perldoc.perl.org/Test::More", "https://perldoc.perl.org/perlnewmod"]},
+        {"id": "core-2-8", "label": "Text Processing", "description": "One-liners, awk-like processing, and text transformation. Perl excels at text munging.", "type": "required", "resources": ["https://perldoc.perl.org/perlrun", "https://perldoc.perl.org/perlre"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-mojolicious", "label": "Mojolicious", "icon": "🌐", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-dancer", "label": "Dancer2", "icon": "💃", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-catalyst", "label": "Catalyst", "icon": "⚗️", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-dbi", "label": "DBI (Database)", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-dbix-class", "label": "DBIx::Class", "icon": "📝", "category": "Database", "category_icon": "💾"},
+    {"id": "path-bioperl", "label": "BioPerl", "icon": "🧬", "category": "Bioinformatics", "category_icon": "🔬"},
+    {"id": "path-perl-regex", "label": "Advanced Regex", "icon": "🔍", "category": "Text Processing", "category_icon": "📝"},
+    {"id": "path-cpan-authoring", "label": "CPAN Authoring", "icon": "📦", "category": "Ecosystem", "category_icon": "📚"},
+    {"id": "path-moose-advanced", "label": "Moose Advanced", "icon": "🫎", "category": "OOP", "category_icon": "🏗️"},
+    {"id": "path-perl-sysadmin", "label": "System Administration", "icon": "🔧", "category": "DevOps", "category_icon": "⚙️"}
+  ]
+}

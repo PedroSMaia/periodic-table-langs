@@ -1,0 +1,121 @@
+{
+  "language": "PHP",
+  "core": [
+    {
+      "id": "core-1",
+      "label": "PHP Fundamentals",
+      "description": "Syntax, types, and basic program structure.",
+      "topics": [
+        {"id": "core-1-1", "label": "Installation & Setup", "description": "Install PHP, configure php.ini, and use the built-in development server. Understand PHP's request lifecycle.", "type": "required", "resources": ["https://www.php.net/manual/en/install.php", "https://www.php.net/manual/en/features.commandline.webserver.php"]},
+        {"id": "core-1-2", "label": "Variables & Data Types", "description": "Strings, integers, floats, booleans, arrays, null. PHP is dynamically typed with loose comparisons.", "type": "required", "resources": ["https://www.php.net/manual/en/language.types.php", "https://www.php.net/manual/en/language.variables.basics.php"]},
+        {"id": "core-1-3", "label": "Operators & Type Juggling", "description": "Arithmetic, comparison (=== vs ==), logical, and null coalescing (??). Strict comparison avoids type juggling bugs.", "type": "required", "resources": ["https://www.php.net/manual/en/language.operators.php", "https://www.php.net/manual/en/language.types.type-juggling.php"]},
+        {"id": "core-1-4", "label": "Control Flow", "description": "if/elseif/else, switch, match (PHP 8), for, foreach, while. match is a strict-comparison switch.", "type": "required", "resources": ["https://www.php.net/manual/en/language.control-structures.php", "https://www.php.net/manual/en/control-structures.match.php"]},
+        {"id": "core-1-5", "label": "Strings", "description": "Single/double quotes, heredoc, nowdoc, string functions, and interpolation. Strings are the most manipulated type.", "type": "required", "resources": ["https://www.php.net/manual/en/language.types.string.php", "https://www.php.net/manual/en/ref.strings.php"]},
+        {"id": "core-1-6", "label": "Arrays", "description": "Indexed and associative arrays, array functions (map, filter, reduce, sort). PHP arrays are ordered maps.", "type": "required", "resources": ["https://www.php.net/manual/en/language.types.array.php", "https://www.php.net/manual/en/ref.array.php"]},
+        {"id": "core-1-7", "label": "Functions", "description": "Define functions with type declarations, default parameters, and return types. PHP 8 adds union types and named arguments.", "type": "required", "resources": ["https://www.php.net/manual/en/language.functions.php", "https://www.php.net/manual/en/functions.arguments.php"]},
+        {"id": "core-1-8", "label": "Superglobals", "description": "$_GET, $_POST, $_SESSION, $_COOKIE, $_SERVER, $_ENV. Superglobals are how PHP accesses request data.", "type": "required", "resources": ["https://www.php.net/manual/en/language.variables.superglobals.php", "https://www.php.net/manual/en/reserved.variables.php"]},
+        {"id": "core-1-9", "label": "Include & Require", "description": "Include PHP files with require, require_once, include. File inclusion is PHP's basic code organization.", "type": "required", "resources": ["https://www.php.net/manual/en/function.require.php", "https://www.php.net/manual/en/function.include.php"]},
+        {"id": "core-1-10", "label": "Error Handling", "description": "Try/catch exceptions, error levels, set_error_handler. PHP 8 promotes errors to exceptions.", "type": "required", "resources": ["https://www.php.net/manual/en/language.exceptions.php", "https://www.php.net/manual/en/language.errors.php"]}
+      ]
+    },
+    {
+      "id": "core-2",
+      "label": "Object-Oriented PHP",
+      "description": "Classes, interfaces, traits, and OOP patterns.",
+      "topics": [
+        {"id": "core-2-1", "label": "Classes & Objects", "description": "Define classes with properties, methods, and constructors. OOP is the standard for modern PHP.", "type": "required", "resources": ["https://www.php.net/manual/en/language.oop5.php", "https://www.php.net/manual/en/language.oop5.basic.php"]},
+        {"id": "core-2-2", "label": "Constructor Promotion", "description": "PHP 8 constructor promotion reduces boilerplate for property initialization.", "type": "required", "resources": ["https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion", "https://stitcher.io/blog/constructor-promotion-in-php-8"]},
+        {"id": "core-2-3", "label": "Inheritance & abstract", "description": "Extend classes, override methods, and define abstract classes. PHP supports single inheritance.", "type": "required", "resources": ["https://www.php.net/manual/en/language.oop5.inheritance.php", "https://www.php.net/manual/en/language.oop5.abstract.php"]},
+        {"id": "core-2-4", "label": "Interfaces", "description": "Define contracts with interface. A class can implement multiple interfaces.", "type": "required", "resources": ["https://www.php.net/manual/en/language.oop5.interfaces.php", "https://www.php.net/manual/en/language.oop5.php"]},
+        {"id": "core-2-5", "label": "Traits", "description": "Reuse methods across classes with traits. Traits solve the single-inheritance limitation.", "type": "required", "resources": ["https://www.php.net/manual/en/language.oop5.traits.php", "https://www.php.net/manual/en/language.oop5.php"]},
+        {"id": "core-2-6", "label": "Enums (PHP 8.1)", "description": "Type-safe enumerations with backed values. Enums replace class constants for finite sets.", "type": "required", "resources": ["https://www.php.net/manual/en/language.enumerations.php", "https://stitcher.io/blog/php-enums"]},
+        {"id": "core-2-7", "label": "Readonly Properties & Classes", "description": "Immutable properties with readonly (PHP 8.1) and readonly classes (PHP 8.2).", "type": "required", "resources": ["https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties", "https://stitcher.io/blog/readonly-classes-in-php-82"]},
+        {"id": "core-2-8", "label": "Magic Methods", "description": "__construct, __toString, __get, __set, __call, __invoke. Magic methods customize object behavior.", "type": "required", "resources": ["https://www.php.net/manual/en/language.oop5.magic.php", "https://www.php.net/manual/en/language.oop5.overloading.php"]},
+        {"id": "core-2-9", "label": "Namespaces", "description": "Organize code with namespaces and use statements. Namespaces prevent class name collisions.", "type": "required", "resources": ["https://www.php.net/manual/en/language.namespaces.php", "https://www.php.net/manual/en/language.namespaces.rationale.php"]},
+        {"id": "core-2-10", "label": "Type Declarations", "description": "Parameter types, return types, union types, intersection types, and nullable (?Type). Strict typing with declare(strict_types=1).", "type": "required", "resources": ["https://www.php.net/manual/en/language.types.declarations.php", "https://www.php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration"]}
+      ]
+    },
+    {
+      "id": "core-3",
+      "label": "Composer & Autoloading",
+      "description": "Dependency management, autoloading, and the PHP ecosystem.",
+      "topics": [
+        {"id": "core-3-1", "label": "Composer Basics", "description": "Install Composer, manage dependencies with composer.json, and understand Packagist. Composer is PHP's package manager.", "type": "required", "resources": ["https://getcomposer.org/doc/00-intro.md", "https://getcomposer.org/doc/01-basic-usage.md"]},
+        {"id": "core-3-2", "label": "PSR-4 Autoloading", "description": "Map namespaces to directories with PSR-4. Autoloading eliminates manual require/include.", "type": "required", "resources": ["https://www.php-fig.org/psr/psr-4/", "https://getcomposer.org/doc/04-schema.md#autoload"]},
+        {"id": "core-3-3", "label": "PSR Standards", "description": "PHP-FIG standards for coding style (PSR-12), logging (PSR-3), HTTP (PSR-7/15). PSRs ensure interoperability.", "type": "required", "resources": ["https://www.php-fig.org/psr/", "https://www.php-fig.org/psr/psr-12/"]},
+        {"id": "core-3-4", "label": "File I/O", "description": "Read and write files with file_get_contents, file_put_contents, fopen, and SplFileObject.", "type": "required", "resources": ["https://www.php.net/manual/en/ref.filesystem.php", "https://www.php.net/manual/en/function.file-get-contents.php"]},
+        {"id": "core-3-5", "label": "Working with JSON", "description": "json_encode and json_decode for serialization. JSON is the standard for API communication.", "type": "required", "resources": ["https://www.php.net/manual/en/book.json.php", "https://www.php.net/manual/en/function.json-encode.php"]},
+        {"id": "core-3-6", "label": "Regular Expressions", "description": "PCRE pattern matching with preg_match, preg_replace, preg_split. Regex is powerful for validation and parsing.", "type": "optional", "resources": ["https://www.php.net/manual/en/book.pcre.php", "https://www.php.net/manual/en/function.preg-match.php"]},
+        {"id": "core-3-7", "label": "Date & Time", "description": "DateTime, DateTimeImmutable, DateInterval, and Carbon. Immutable DateTime is preferred for safety.", "type": "required", "resources": ["https://www.php.net/manual/en/class.datetimeimmutable.php", "https://www.php.net/manual/en/book.datetime.php"]},
+        {"id": "core-3-8", "label": "Closures & Arrow Functions", "description": "Anonymous functions with function() and short closures with fn(). Closures capture variables with use().", "type": "required", "resources": ["https://www.php.net/manual/en/functions.anonymous.php", "https://www.php.net/manual/en/functions.arrow.php"]}
+      ]
+    },
+    {
+      "id": "core-4",
+      "label": "Database & PDO",
+      "description": "Database access, prepared statements, and ORM basics.",
+      "topics": [
+        {"id": "core-4-1", "label": "PDO Basics", "description": "Connect to databases with PDO. PDO is the standard database abstraction layer in PHP.", "type": "required", "resources": ["https://www.php.net/manual/en/book.pdo.php", "https://www.php.net/manual/en/pdo.connections.php"]},
+        {"id": "core-4-2", "label": "Prepared Statements", "description": "Prevent SQL injection with parameterized queries. Never concatenate user input into SQL.", "type": "required", "resources": ["https://www.php.net/manual/en/pdo.prepared-statements.php", "https://www.php.net/manual/en/pdostatement.execute.php"]},
+        {"id": "core-4-3", "label": "CRUD Operations", "description": "SELECT, INSERT, UPDATE, DELETE with PDO. The fundamental database operations.", "type": "required", "resources": ["https://www.php.net/manual/en/pdostatement.fetch.php", "https://www.php.net/manual/en/pdo.query.php"]},
+        {"id": "core-4-4", "label": "Transactions", "description": "Atomic operations with beginTransaction, commit, rollBack. Transactions ensure data consistency.", "type": "required", "resources": ["https://www.php.net/manual/en/pdo.transactions.php", "https://www.php.net/manual/en/pdo.begintransaction.php"]},
+        {"id": "core-4-5", "label": "Migrations", "description": "Version-control database schema changes. Migrations are standard in modern PHP frameworks.", "type": "required", "resources": ["https://laravel.com/docs/migrations", "https://www.doctrine-project.org/projects/doctrine-migrations/en/current/reference/introduction.html"]},
+        {"id": "core-4-6", "label": "Query Builder Concepts", "description": "Build SQL programmatically with a fluent API. Query builders are safer and more readable than raw SQL.", "type": "required", "resources": ["https://laravel.com/docs/queries", "https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html"]},
+        {"id": "core-4-7", "label": "Caching Basics", "description": "Cache database queries and computed results with Redis or Memcached. Caching improves performance dramatically.", "type": "optional", "resources": ["https://www.php.net/manual/en/book.redis.php", "https://laravel.com/docs/cache"]},
+        {"id": "core-4-8", "label": "Database Security", "description": "SQL injection prevention, password hashing with password_hash/verify, and input sanitization.", "type": "required", "resources": ["https://www.php.net/manual/en/security.database.sql-injection.php", "https://www.php.net/manual/en/function.password-hash.php"]}
+      ]
+    },
+    {
+      "id": "core-5",
+      "label": "Web Fundamentals",
+      "description": "HTTP, sessions, cookies, and building web applications.",
+      "topics": [
+        {"id": "core-5-1", "label": "HTTP Request/Response", "description": "Understand the request lifecycle, headers, status codes, and the request-response model.", "type": "required", "resources": ["https://www.php.net/manual/en/reserved.variables.server.php", "https://www.php.net/manual/en/function.header.php"]},
+        {"id": "core-5-2", "label": "Forms & Input Handling", "description": "Process GET/POST data, validate input, and handle file uploads. Always validate and sanitize user input.", "type": "required", "resources": ["https://www.php.net/manual/en/tutorial.forms.php", "https://www.php.net/manual/en/filter.filters.validate.php"]},
+        {"id": "core-5-3", "label": "Sessions", "description": "Maintain state across requests with $_SESSION. Sessions store server-side user data.", "type": "required", "resources": ["https://www.php.net/manual/en/book.session.php", "https://www.php.net/manual/en/session.examples.basic.php"]},
+        {"id": "core-5-4", "label": "Cookies", "description": "Set and read cookies with setcookie(). Cookies store small amounts of client-side data.", "type": "required", "resources": ["https://www.php.net/manual/en/function.setcookie.php", "https://www.php.net/manual/en/features.cookies.php"]},
+        {"id": "core-5-5", "label": "Security (XSS, CSRF)", "description": "Prevent cross-site scripting with htmlspecialchars and CSRF with tokens. Security is not optional.", "type": "required", "resources": ["https://www.php.net/manual/en/function.htmlspecialchars.php", "https://owasp.org/www-community/attacks/csrf"]},
+        {"id": "core-5-6", "label": "HTTP Client (Guzzle)", "description": "Make HTTP requests with Guzzle. The standard PHP HTTP client library.", "type": "required", "resources": ["https://docs.guzzlephp.org/en/stable/", "https://docs.guzzlephp.org/en/stable/quickstart.html"]},
+        {"id": "core-5-7", "label": "Templating", "description": "Separate logic from presentation with Blade, Twig, or plain PHP templates.", "type": "required", "resources": ["https://laravel.com/docs/blade", "https://twig.symfony.com/doc/3.x/"]},
+        {"id": "core-5-8", "label": "REST API Basics", "description": "Build RESTful APIs with proper HTTP methods, status codes, and JSON responses.", "type": "required", "resources": ["https://laravel.com/docs/controllers#resource-controllers", "https://symfony.com/doc/current/controller.html"]}
+      ]
+    },
+    {
+      "id": "core-6",
+      "label": "Testing & Code Quality",
+      "description": "PHPUnit, static analysis, and code quality tools.",
+      "topics": [
+        {"id": "core-6-1", "label": "PHPUnit", "description": "Write unit tests with assertions, data providers, and mocks. PHPUnit is the standard PHP testing framework.", "type": "required", "resources": ["https://phpunit.de/documentation.html", "https://phpunit.de/getting-started/phpunit-11.html"]},
+        {"id": "core-6-2", "label": "Pest", "description": "Expressive testing with Pest's fluent syntax. Pest wraps PHPUnit with a cleaner API.", "type": "optional", "resources": ["https://pestphp.com/docs/installation", "https://pestphp.com/docs/writing-tests"]},
+        {"id": "core-6-3", "label": "Mocking", "description": "Mock dependencies with PHPUnit mocks or Mockery. Isolate units under test.", "type": "required", "resources": ["https://phpunit.de/manual/current/en/test-doubles.html", "https://docs.mockery.io/en/latest/"]},
+        {"id": "core-6-4", "label": "Static Analysis (PHPStan)", "description": "Find bugs without running code with PHPStan or Psalm. Static analysis catches type errors early.", "type": "required", "resources": ["https://phpstan.org/user-guide/getting-started", "https://psalm.dev/docs/"]},
+        {"id": "core-6-5", "label": "Code Style (PHP CS Fixer)", "description": "Auto-format code to follow PSR-12 or custom rules. Consistent formatting across the project.", "type": "required", "resources": ["https://cs.symfony.com/", "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer"]},
+        {"id": "core-6-6", "label": "Debugging (Xdebug)", "description": "Step-through debugging, profiling, and coverage with Xdebug. Essential for complex debugging.", "type": "required", "resources": ["https://xdebug.org/docs/", "https://xdebug.org/docs/step_debug"]},
+        {"id": "core-6-7", "label": "Logging (Monolog)", "description": "Structured logging with PSR-3 and Monolog. Proper logging is critical for production debugging.", "type": "required", "resources": ["https://github.com/Seldaek/monolog", "https://www.php-fig.org/psr/psr-3/"]},
+        {"id": "core-6-8", "label": "CI/CD for PHP", "description": "Run tests, linting, and static analysis in GitHub Actions or GitLab CI.", "type": "optional", "resources": ["https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-php", "https://laravel.com/docs/testing"]}
+      ]
+    }
+  ],
+  "paths": [
+    {"id": "path-laravel", "label": "Laravel", "icon": "🔴", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-symfony", "label": "Symfony", "icon": "⚫", "category": "Web Frameworks", "category_icon": "🌐"},
+    {"id": "path-slim", "label": "Slim", "icon": "🪶", "category": "Micro Frameworks", "category_icon": "🌐"},
+    {"id": "path-livewire", "label": "Livewire", "icon": "⚡", "category": "Frontend Integration", "category_icon": "🖥️"},
+    {"id": "path-inertia", "label": "Inertia.js", "icon": "🔄", "category": "Frontend Integration", "category_icon": "🖥️"},
+    {"id": "path-filament", "label": "Filament", "icon": "🔷", "category": "Admin Panels", "category_icon": "🛠️"},
+    {"id": "path-wordpress", "label": "WordPress", "icon": "📝", "category": "CMS", "category_icon": "📄"},
+    {"id": "path-drupal", "label": "Drupal", "icon": "💧", "category": "CMS", "category_icon": "📄"},
+    {"id": "path-magento", "label": "Magento", "icon": "🛒", "category": "E-Commerce", "category_icon": "🛍️"},
+    {"id": "path-woocommerce", "label": "WooCommerce", "icon": "🛍️", "category": "E-Commerce", "category_icon": "🛍️"},
+    {"id": "path-eloquent", "label": "Eloquent ORM", "icon": "🗄️", "category": "Database", "category_icon": "💾"},
+    {"id": "path-doctrine", "label": "Doctrine ORM", "icon": "📚", "category": "Database", "category_icon": "💾"},
+    {"id": "path-phpunit-advanced", "label": "PHPUnit Advanced", "icon": "🧪", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-pest-php", "label": "Pest", "icon": "🐛", "category": "Testing", "category_icon": "✅"},
+    {"id": "path-laravel-queue", "label": "Laravel Queues & Horizon", "icon": "📋", "category": "Background Jobs", "category_icon": "⏱️"},
+    {"id": "path-rabbitmq-php", "label": "RabbitMQ", "icon": "🐇", "category": "Messaging", "category_icon": "📬"},
+    {"id": "path-api-platform", "label": "API Platform", "icon": "🔌", "category": "API Development", "category_icon": "🔌"},
+    {"id": "path-swoole", "label": "Swoole", "icon": "🚀", "category": "Async PHP", "category_icon": "⚡"},
+    {"id": "path-phpstan-advanced", "label": "PHPStan Advanced", "icon": "🔍", "category": "Code Quality", "category_icon": "✨"},
+    {"id": "path-rector", "label": "Rector", "icon": "🔧", "category": "Code Quality", "category_icon": "✨"}
+  ]
+}
