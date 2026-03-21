@@ -364,6 +364,16 @@ periodic-table-langs/
 
 ---
 
+## Documentation
+
+- [API Reference](docs/API.md) — all endpoints with request/response examples
+- [Architecture](docs/ARCHITECTURE.md) — system design, tech stack, and data flow
+- [Database Schema](docs/DATABASE.md) — tables, relationships, and JSON structures
+- [Contributing](CONTRIBUTING.md) — how to report issues, suggest content, and contribute code
+- [Changelog](CHANGELOG.md) — version history and release notes
+
+---
+
 ## License
 
-MIT
+[MIT](LICENSE)
