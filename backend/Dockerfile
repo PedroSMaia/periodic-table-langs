@@ -18,7 +18,11 @@ COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-scripts --no-autoloader
 
 COPY . .
+
+# Create minimal .env for artisan package:discover during build
+RUN cp .env.example .env 2>/dev/null || echo "APP_KEY=base64:placeholder" > .env
 RUN composer dump-autoload --optimize
+RUN rm .env
 
 # ── Production stage ──────────────────────────────────────────
 FROM php:8.4-cli
