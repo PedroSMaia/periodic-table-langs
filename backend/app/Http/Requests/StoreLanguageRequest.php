@@ -8,6 +8,7 @@ class StoreLanguageRequest extends FormRequest
 {
     public function authorize(): bool
     {
+        // Authorization handled by admin.api_key middleware on the route
         return true;
     }
 

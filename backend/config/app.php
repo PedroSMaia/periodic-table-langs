@@ -67,6 +67,8 @@ return [
 
     'timezone' => 'UTC',
 
+    'admin_emails' => env('ADMIN_EMAILS', ''),
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration

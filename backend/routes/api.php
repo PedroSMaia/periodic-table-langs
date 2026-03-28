@@ -12,12 +12,14 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('languages', LanguageController::class);
+// Languages: public read, admin-only write
+Route::apiResource('languages', LanguageController::class)->only(['index', 'show']);
+Route::apiResource('languages', LanguageController::class)->only(['store', 'update', 'destroy'])->middleware('admin.api_key');
 Route::get('/metrics', [MetricsController::class, 'index']);
 
-// Auth routes (public)
-Route::post('/auth/register', [AuthController::class, 'register']);
-Route::post('/auth/login',    [AuthController::class, 'login']);
+// Auth routes (public, rate limited)
+Route::post('/auth/register', [AuthController::class, 'register'])->middleware('throttle:5,1');
+Route::post('/auth/login',    [AuthController::class, 'login'])->middleware('throttle:5,1');
 
 // Auth routes (authenticated)
 Route::middleware('auth:sanctum')->group(function () {
