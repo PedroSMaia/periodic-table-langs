@@ -81,6 +81,9 @@ export default function Cell({
 
     return (
         <div
+            role="button"
+            tabIndex={0}
+            aria-label={lang.name}
             onClick={() => mode === "compare" ? onCompare(lang) : onClick(lang)}
             onMouseEnter={() => setHov(true)}
             onMouseLeave={() => setHov(false)}

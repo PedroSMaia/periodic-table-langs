@@ -490,7 +490,7 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
                 a.download = lang.name.toLowerCase().replace(/\s+/g, "-") + "-roadmap.png";
                 a.href = canvas.toDataURL("image/png");
                 a.click();
-            } catch (err) { console.error("Screenshot failed", err); }
+            } catch { /* screenshot failed */ }
         } else {
             try { await navigator.clipboard.writeText(url); } catch { /* fallback */ }
             setCopied(true);
@@ -574,7 +574,7 @@ export default function RoadmapModal({ lang, roadmap, loading, error, onClose, T
     const selectedPath = (roadmap?.paths ?? []).find(p => p.id === selectedPathId);
 
     return (
-        <div ref={modalRef} style={{ position: "fixed", inset: 0, zIndex: 100, background: th.bg + "F5", backdropFilter: "blur(8px)", display: "flex", flexDirection: "column" }}>
+        <div ref={modalRef} role="dialog" aria-modal="true" aria-label={lang.name + " roadmap"} style={{ position: "fixed", inset: 0, zIndex: 100, background: th.bg + "F5", backdropFilter: "blur(8px)", display: "flex", flexDirection: "column" }}>
             <style>{flowOverride(th)}</style>
 
             {/* Header */}

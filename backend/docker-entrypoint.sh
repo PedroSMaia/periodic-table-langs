@@ -15,5 +15,8 @@ php artisan storage:link 2>/dev/null || true
 # Start cron daemon in background
 cron
 
-# Start PHP server
-exec php artisan serve --host=0.0.0.0 --port=8000
+# Start nginx in background
+nginx
+
+# Start PHP-FPM (foreground — main process)
+exec php-fpm

@@ -50,10 +50,13 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
+    public static function adminEmails(): array
+    {
+        return array_filter(explode(',', config('app.admin_emails', '')));
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
-        $adminEmails = array_filter(explode(',', config('app.admin_emails', '')));
-
-        return in_array($this->email, $adminEmails);
+        return in_array($this->email, static::adminEmails());
     }
 }

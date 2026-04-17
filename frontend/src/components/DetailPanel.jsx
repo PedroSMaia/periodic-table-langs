@@ -48,7 +48,7 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
         navigator.clipboard.writeText(url).then(() => {
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
-        });
+        }).catch(() => {});
     };
 
     // Swipe-down-to-close: record the Y position on touch start
@@ -140,6 +140,9 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
 
             {/* Panel itself */}
             <div
+                role="dialog"
+                aria-modal="true"
+                aria-label={lang.name + " details"}
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
                 style={{
@@ -206,6 +209,7 @@ export default function DetailPanel({ lang, onClose, isMobile, onAddToCompare, i
 
                             <button
                                 onClick={close}
+                                aria-label="Close panel"
                                 style={{ width: "30px", height: "30px", borderRadius: "50%", background: th.card, border: "1px solid " + th.border, color: th.sub, cursor: "pointer", fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}
                             >✕</button>
                         </div>

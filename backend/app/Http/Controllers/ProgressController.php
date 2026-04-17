@@ -26,7 +26,7 @@ class ProgressController extends Controller
     public function upsert(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'language'         => 'required|string|max:100',
+            'language'         => 'required|string|max:100|exists:languages,name',
             'completed_topics' => 'present|array',
             'completed_topics.*' => 'string',
             'selected_path_id' => 'nullable|string|max:255',

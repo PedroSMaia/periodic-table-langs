@@ -68,6 +68,9 @@ export default function SearchModal({ onClose, onSelect, T, langs = [], metrics 
     return (
         <div
             onKeyDown={handleKey}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search languages"
             onClick={onClose}
             style={{ position: "fixed", inset: 0, background: "rgba(11,15,25,0.88)", backdropFilter: "blur(10px)", zIndex: 100, display: "flex", alignItems: "flex-start", justifyContent: "center", paddingTop: "70px" }}
         >
@@ -84,6 +87,10 @@ export default function SearchModal({ onClose, onSelect, T, langs = [], metrics 
                         value={q}
                         onChange={e => setQ(e.target.value)}
                         placeholder="Search languages…"
+                        aria-label="Search programming languages"
+                        role="combobox"
+                        aria-expanded={results.length > 0}
+                        aria-autocomplete="list"
                         style={{ flex: 1, background: "transparent", border: "none", outline: "none", color: th.text, fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "15px" }}
                     />
                     <kbd style={{ padding: "2px 7px", borderRadius: "5px", border: "1px solid " + th.border, background: th.card, color: th.dim, fontFamily: "'JetBrains Mono',monospace", fontSize: "10px", whiteSpace: "nowrap" }}>ESC</kbd>

@@ -22,12 +22,13 @@ COPY . .
 # Optimize autoloader without running post-scripts (artisan needs DB/Redis at runtime, not build)
 RUN COMPOSER_ALLOW_SUPERUSER=1 composer dump-autoload --optimize --no-scripts
 
-# ── Production stage ──────────────────────────────────────────
-FROM php:8.4-cli
+# ── Production stage (PHP-FPM) ───────────────────────────────
+FROM php:8.4-fpm
 
 RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libfreetype6-dev libonig-dev \
-    libxml2-dev libzip-dev libicu-dev default-mysql-client cron \
+    libxml2-dev libzip-dev libicu-dev default-mysql-client \
+    cron nginx \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-configure intl \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip intl \
@@ -45,12 +46,17 @@ COPY --from=build /var/www/html /var/www/html
 RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-# Add cron for scheduler
-RUN echo "* * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1" | crontab -
+# Add cron for scheduler (run as www-data)
+RUN echo "* * * * * www-data cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1" > /etc/cron.d/scheduler \
+    && chmod 0644 /etc/cron.d/scheduler \
+    && crontab -u www-data /etc/cron.d/scheduler
+
+# Nginx config for backend API
+COPY docker-nginx.conf /etc/nginx/sites-available/default
 
 EXPOSE 8000
 
-# Start cron + PHP server
+# Start cron + nginx + PHP-FPM
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 

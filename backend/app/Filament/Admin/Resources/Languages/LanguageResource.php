@@ -9,6 +9,7 @@ use App\Filament\Admin\Resources\Languages\Pages\ViewLanguage;
 use App\Filament\Admin\Resources\Languages\Schemas\LanguageForm;
 use App\Filament\Admin\Resources\Languages\Schemas\LanguageInfolist;
 use App\Filament\Admin\Resources\Languages\Tables\LanguagesTable;
+use App\Filament\Admin\Resources\Languages\RelationManagers\RoadmapPathsRelationManager;
 use App\Models\Language;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -39,7 +40,9 @@ class LanguageResource extends Resource
 
     public static function getRelations(): array
     {
-        return [];
+        return [
+            RoadmapPathsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
